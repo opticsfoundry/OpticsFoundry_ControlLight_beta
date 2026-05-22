@@ -1,0 +1,25 @@
+var class_c_device_a_d9854 =
+[
+    [ "CDeviceAD9854", "class_c_device_a_d9854.html#abc010cd2ebc813342f3b2841359ffa05", null ],
+    [ "~CDeviceAD9854", "class_c_device_a_d9854.html#acf7ef26e9d6d655da52893520ee65b93", null ],
+    [ "SetAttenuation", "class_c_device_a_d9854.html#a0e566a1dd62b569a33453ae510b6b535", null ],
+    [ "SetClearACC1", "class_c_device_a_d9854.html#a74876915cce75d3f542eada2014bf135", null ],
+    [ "SetFrequency", "class_c_device_a_d9854.html#a53d1ac27ad6e64af0bdab3e586d22dc5", null ],
+    [ "SetFrequencyTuningWord", "class_c_device_a_d9854.html#a57503f88d774e045e5c62908db090064", null ],
+    [ "SetFSKBit", "class_c_device_a_d9854.html#a64b7f527b237884d53aeb663b2a71572", null ],
+    [ "SetFSKMode", "class_c_device_a_d9854.html#afe58c6ea0820f76719973e369d2cb6bd", null ],
+    [ "SetModulationFrequency", "class_c_device_a_d9854.html#a3fc237f74981f10dc7ed6f95278b09a2", null ],
+    [ "SetPower", "class_c_device_a_d9854.html#a6bec165b0d33afb0a69495e352cebed6", null ],
+    [ "SetRampRateClock", "class_c_device_a_d9854.html#a46ac3d7dc78ecccd50d5d6ae53830ebd", null ],
+    [ "SetRegister", "class_c_device_a_d9854.html#a2e2d32ec666c785ddf8ecf9962b366f2", null ],
+    [ "SetStartFrequency", "class_c_device_a_d9854.html#a9d102d525c331198cf68b78d8b69f297", null ],
+    [ "SetStartFrequencyTuningWord", "class_c_device_a_d9854.html#a1ddc0c088147217265fab0f325691974", null ],
+    [ "SetStopFrequency", "class_c_device_a_d9854.html#af1aff8058cbbfa061f30690d420922d8", null ],
+    [ "SetStopFrequencyTuningWord", "class_c_device_a_d9854.html#a020aa5ecd59b007d61e29cc6b1fcafcf", null ],
+    [ "SetTriangleBit", "class_c_device_a_d9854.html#a14a9110548d8bbeb9fa3626e4f3de660", null ],
+    [ "SetValue", "class_c_device_a_d9854.html#a6a486d971ed8e87633cbac5291e834fd", null ],
+    [ "externalClockFrequency", "class_c_device_a_d9854.html#a8424566ecdaa45fd4d35422eb24e7062", null ],
+    [ "frequencyMultiplier", "class_c_device_a_d9854.html#ad96a6ab42bd98dea2f6b66f747281c95", null ],
+    [ "PLLReferenceMultiplier", "class_c_device_a_d9854.html#a4c2fd4cb285758fe8cc2fe1cfa7e2f36", null ],
+    [ "version", "class_c_device_a_d9854.html#af0f6a8d59800277f375d24420c9b7ab4", null ]
+];

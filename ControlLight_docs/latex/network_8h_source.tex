@@ -1,0 +1,101 @@
+\doxysection{network.\+h}
+\hypertarget{network_8h_source}{}\label{network_8h_source}\index{network.h@{network.h}}
+\mbox{\hyperlink{network_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifdef\ WIN32}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifdef\ \_WINSOCKAPI\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#undef\ \_WINSOCKAPI\_\ }\textcolor{comment}{//\ Prevent\ inclusion\ of\ Winsock.h}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <WinSock2.h>}\ \ \ \textcolor{comment}{//\ Include\ Winsock2.h\ before\ other\ headers}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <ws2tcpip.h>}\ \textcolor{comment}{//\ Optional:\ Include\ for\ additional\ Winsock\ functions\ like\ getaddrinfo}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Ensure\ that\ the\ Winsock\ library\ is\ linked}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\#pragma\ comment(lib,\ "{}Ws2\_32.lib"{})}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <Windows.h>}\ \ \ \ \textcolor{comment}{//\ Ensure\ Windows.h\ is\ included\ after\ Winsock2.h}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <afxsock.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <afxwin.h>}\ \textcolor{comment}{//\ This\ is\ a\ compatibility\ layer\ to\ define\ CString,\ and\ others}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{//\ WIN32}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{std_8h}{std.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <errno.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <sys/socket.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <netinet/in.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <arpa/inet.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <sys/wait.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <signal.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <netdb.h>}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WIN32}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_network_ae4c6f98dd9b44e1547f7eff0a0799dfc}{CNetwork}}}
+\DoxyCodeLine{00042\ \#ifdef\ \_WIN32}
+\DoxyCodeLine{00043\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ Attributes}}
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00049\ \ \ \ \ CSocket*\ \mbox{\hyperlink{class_c_network_a4bfd8dd7fae5d4bee6ffd05f5f0a4a29}{m\_pSocket}};}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{class_c_network_a4bfd8dd7fae5d4bee6ffd05f5f0a4a29}{m\_pSocket}};}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_network_a225f793bf19b96faf4f8688b2a36c5d1}{m\_socketfd}};}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ \ \ \ \ std::string\ \mbox{\hyperlink{class_c_network_ad78041ee8e9e37742ad515f58d709071}{m\_host}};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_network_a41f6cae3910e566dc07491466c2c5ba7}{m\_nPort}};}
+\DoxyCodeLine{00056\ \ \ \ \ std::string\ \mbox{\hyperlink{class_c_network_a6bdcc577661a3b3648063670e08d5f43}{m\_SocketName}};}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ Operations}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a039dff02b725f746409eaa09a103bce6}{ConnectSocket}}(\textcolor{keyword}{const}\ std::string\&\ host,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nPort,\ \textcolor{keyword}{const}\ std::string\&\ SocketName,\ \textcolor{keywordtype}{bool}\ reconnect\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{int}\ timeout\_s\ =\ 2);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a2ddc0a0564d0bf5b3cddf8f1ebb838a2}{ResetConnection}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ sleep\_time=2000);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a2d9dc5d77a9db1a996534cb3d3d1f3dd}{FlushInputBuffer}}();}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a75d59a0d4c53aa4a0ade70d6aaaca845}{FlushOutputBuffer}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_network_aa8f487a58a1d73e21e0af9601f9bfcc4}{SendMsg}}(\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}}\&\ strText);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a6487dc24383af3cc9adc7aa94199b971}{SendData}}(\textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Size);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_ad9636a38079916ec660c88092f84ad36}{SendString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}}\&\ str);\ \ \textcolor{comment}{//\ Helper\ for\ text-\/based\ protocols}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a19cf86a9324374a37d710e3a34e72da9}{ReceiveMsg}}(\textcolor{keywordtype}{char}\ end\_character\ =\ \textcolor{charliteral}{'\(\backslash\)n'},\ \textcolor{keywordtype}{bool}\ WaitForStartCharacter\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{char}\ start\_character\ =\ \textcolor{charliteral}{'*'},\ \textcolor{keywordtype}{double}\ timeout\_in\_seconds\ =\ 5);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a1ebf567f42570a93f29079c14d244e91}{ReceiveData}}(uint8\_t*\ buffer,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ buffer\_length,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ timeout\ =\ 5000);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a52997f0e0a9fcd43ada48a1b3673f9c3}{ReceiveString}}(\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}}\&\ outStr,\ \textcolor{keywordtype}{double}\ timeout\_in\_seconds\ =\ 5,\ \textcolor{keywordtype}{char}\ endChar\ =\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ Implementation}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_network_a55be2d3a1d45549c8199b1a4324996d6}{DebugStop}}();}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_network_aba707b1e7ba4ce923c90f9fa636f05a6}{DebugStart}}(\textcolor{keyword}{const}\ std::string\&\ Filename);}
+\DoxyCodeLine{00073\ \ \ \ \ ofstream\ *\mbox{\hyperlink{class_c_network_a187987b13ede6e699546871811d354cd}{DebugFile}};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_network_abdd54634e4dcfb17515ed74dd3e0b64c}{Flush}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_network_a6a9367568c0eb9ef88308696d786c08c}{StoreLastMessage}}(\textcolor{keyword}{const}\ std::string\&\ Message);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a63cd36d8c60d6a8e5cc962fead4ab36c}{GetMessage}}(\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}}\ \&Message,\ \textcolor{keywordtype}{double}\ timeout\_in\_seconds\ =\ 5,\ \textcolor{keywordtype}{int}\ mode\ =\ 1);}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}}\ \mbox{\hyperlink{class_c_network_a8db02b78a8f17f1ec7ccdb6ff5a15f7f}{LastMessage}};}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{class_c_network_ae4c6f98dd9b44e1547f7eff0a0799dfc}{CNetwork}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_network_a5f8c44eababcef02f4ce7af3592dba37}{\string~CNetwork}}();}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_network_ae05676ec152f6b4a5880e51d837ddb80}{DisconnectSocket}}();}
+\DoxyCodeLine{00081\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{bool}\ WaitForRead(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ timeout\_ms);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ WaitForWrite(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ timeout\_ms);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ New\ reconnect/retry\ helpers:}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_ad6e6c1704cdd7e80e5521e83d6a02362}{IsConnected}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_network_a665c20541840dcf938b63284847cc33f}{Reconnect}}(\textcolor{keywordtype}{int}\ maxRetries\ =\ 3,\ \textcolor{keywordtype}{int}\ timeout\_s\ =2,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ delay\_ms\ =\ 1000);}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//bool\ SendDataWithRetry(const\ uint8\_t*\ data,\ unsigned\ long\ size,\ int\ maxRetries\ =\ 3,\ unsigned\ long\ delay\_ms\ =\ 1000);}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//bool\ ReceiveDataWithRetry(uint8\_t*\ buffer,\ unsigned\ long\ size,\ unsigned\ long\ timeout\_ms\ =\ 5000,\ int\ maxRetries\ =\ 3,\ unsigned\ long\ delay\_ms\ =\ 1000);}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ (Optional)\ Track\ connection\ status}}
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_lastOpFailed\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ for\ auto-\/reconnect,\ if\ desired}}
+\DoxyCodeLine{00095\ \};}
+
+\end{DoxyCode}

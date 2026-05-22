@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__auto_config_8h_source" xml:lang="en-US">
+<title>AutoConfig.h</title>
+<indexterm><primary>AutoConfig.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;cstddef&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;cstdint&gt;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+6 
+7 <emphasis role="preprocessor">#include&#32;&quot;include/json.hpp&quot;</emphasis>
+8 
+9 <emphasis role="keyword">using&#32;</emphasis><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link>&#32;=&#32;nlohmann::json;
+10 
+11 <emphasis role="preprocessor">#ifdef&#32;API_CLASS</emphasis>
+12 <emphasis role="keyword">class&#32;</emphasis>ControlLight_API;
+13 <emphasis role="keywordtype">void</emphasis>&#32;SetAutoConfigAPI(ControlLight_API*&#32;api);
+14 <emphasis role="preprocessor">#endif</emphasis>
+15 
+16 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__auto_config_8h_1a9a2d1d12ab3ed08865b5240475b62f27">WriteConfigEEPROM</link>(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;data,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;length);
+17 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__auto_config_8h_1a2faf204872538e44ce9353aa487fb5d1">ReadConfigEEPROM</link>(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;<emphasis role="keywordtype">char</emphasis>*&#32;data,&#32;<emphasis role="keywordtype">size_t</emphasis>&amp;&#32;length,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;I2C_success);
+18 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__auto_config_8h_1aa96955d313627501ed9673d8f60478ab">WriteConfigAddress</link>(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;uint8_t&#32;address);
+19 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__auto_config_8h_1a55e9dce2e231a3a5eba12a96afea67a7">ReadConfigAddress</link>(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;uint8_t&amp;&#32;address,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;I2C_success);
+20 <link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link>&#32;<link linkend="__auto_config_8h_1a6d951a849e3a3e88aef07d03fae632b2">ReadConfiguration</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;filename&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+21 <link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link>&#32;<link linkend="__auto_config_8h_1ab0929365aa0b8147fea4bef38b73de7d">GetAutoConfigJSON</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;filename&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+</programlisting></section>

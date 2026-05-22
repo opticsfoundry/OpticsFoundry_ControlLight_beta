@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__network_client_8h_source" xml:lang="en-US">
+<title>NetworkClient.h</title>
+<indexterm><primary>NetworkClient.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="comment">//#define&#32;_AFXDLL</emphasis>
+4 
+5 <emphasis role="preprocessor">#ifdef&#32;WIN32</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&lt;afxwin.h&gt;</emphasis>
+7 <emphasis role="preprocessor">#endif</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_std_8h">std.h</link>&quot;</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_network_8h">network.h</link>&quot;</emphasis>
+10 
+11 
+12 
+13 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_network_client_1a61cfe49126cdac8b353ed6608e79f178">CNetworkClient</link>
+14 #ifdef&#32;WIN32
+15 &#32;&#32;&#32;&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;CObject
+16 <emphasis role="preprocessor">#endif</emphasis>
+17 {
+18 <emphasis role="keyword">private</emphasis>:
+19 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;mode;
+20 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DebugOn;
+21 &#32;&#32;&#32;&#32;std::string&#32;DebugFileName;
+22 <emphasis role="keyword">public</emphasis>:
+23 &#32;&#32;&#32;&#32;<link linkend="_class_c_network">CNetwork</link>*&#32;<link linkend="_class_c_network_client_1a1410e8c5240e0304ed027391c406b74f">Network</link>;
+24 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_client_1a8910ea6eed68c564400450d5862630e7">DebugStop</link>();
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_client_1aa31d2be69c20ce99700174dcd611168d">DebugStart</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;Filename);
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_client_1a5818c4d0f1aaa69b2bc491d0cf9dd7ae">StopFastWrite</link>();
+27 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_client_1a123998444e8b94e06afa8123e9e0ff85">StartFastWrite</link>();
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1abc51ae065d8ddbe4f1a6043b5e3a834d">FastWrite</link>;
+29 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_client_1a17f3a63ba6ba201dfb151df2321a2779">Flush</link>();
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1afbfb4cf24f716bb407ea9c81492d7d43">Ready</link>();
+31 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1ade76f1386eee005c6be7cfcaa2231e5c">ConnectSocket</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;host,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;port,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;SocketName);
+32 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a1eb667906194cfc5bf02c6bfc0cf1931">ReadDouble</link>(<emphasis role="keywordtype">double</emphasis>&#32;&amp;Value);
+33 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a078404ce92a9be5365035b7c2a04a307">ReadBool</link>(<emphasis role="keywordtype">bool</emphasis>&amp;&#32;Value);
+34 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a775fc0bec345b23432709469e62eeb4b">ReadInt</link>(<emphasis role="keywordtype">int</emphasis>&amp;&#32;Value,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_seconds&#32;=&#32;5);
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1ae4d8e702728214f13bd25b970248544f">ReadLong</link>(<emphasis role="keywordtype">long</emphasis>&amp;&#32;Value);
+36 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a2a50ebd0407f16f71833f1da86df58d0">ReadInt64</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;Value);
+37 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1ad0e3a1bcb3c054fff461fa8cdbbb98e7">SendCommand</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;&amp;comand);
+38 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1afe87778a8f16d9124d8aa8e6bc719aa3">SendData</link>(uint8_t*&#32;Data,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;Size,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SendReady&#32;=&#32;<emphasis role="keyword">true</emphasis>);
+39 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a45f8d92bbc28c4f6e810c61aa2c69bd0">WriteDouble</link>(<emphasis role="keywordtype">double</emphasis>&#32;d);
+40 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a3f15a752b8819c02939a66e93c85cf05">WriteInteger</link>(<emphasis role="keywordtype">long</emphasis>&#32;i);
+41 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a090cea8ba6a390bef4ba1e6b1d07dc24">WriteBoolean</link>(<emphasis role="keywordtype">bool</emphasis>&#32;b);
+42 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a8192fdd2fd91542acb36d7b55db8850f">WriteString</link>(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;s);
+43 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a4bc6c43fd50b859143384f2263e320b9">WriteChar</link>(<emphasis role="keywordtype">char</emphasis>&#32;c);
+44 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1afdb6aa09963fa6c9a14fd8ce2c87e443">Command</link>(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;comand,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DontWaitForReady&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+45 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1a19ac3b738e641c7b4c2e6f69a81c0492">AttemptCommand</link>(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;CommandString,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DontWaitForReady&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+46 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1ac843dfb3b55b53870f6ccc0ee4d6cdad">GetCommand</link>(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;&amp;<link linkend="_class_c_network_client_1afdb6aa09963fa6c9a14fd8ce2c87e443">Command</link>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_seconds&#32;=&#32;5);
+47 &#32;&#32;&#32;&#32;<link linkend="_class_c_network_client_1a61cfe49126cdac8b353ed6608e79f178">CNetworkClient</link>(<emphasis role="keywordtype">int</emphasis>&#32;amode,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;aFastWrite&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+48 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_network_client_1ae8b3e254e2b1d51d99b1c3960184f2e6">~CNetworkClient</link>();
+49 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_client_1a07ea9fe6812253a9c7b91551e0412e1f">Debug</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;filename);
+50 };
+</programlisting></section>

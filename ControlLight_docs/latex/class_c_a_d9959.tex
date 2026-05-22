@@ -1,0 +1,633 @@
+\doxysection{CAD9959 Class Reference}
+\hypertarget{class_c_a_d9959}{}\label{class_c_a_d9959}\index{CAD9959@{CAD9959}}
+
+
+{\ttfamily \#include $<$AD9959.\+h$>$}
+
+Inheritance diagram for CAD9959\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_a_d9959}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_a_d9959_aa88a117e95fc0f016e15e746bd6559ad}{CAD9959}} (unsigned short a\+Bus, unsigned long a\+Base\+Address, double a\+External\+Clock\+Frequency\+\_\+in\+\_\+\+Hz, double a\+Frequency\+Multiplier, bool a\+AD9958, \mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}\+\_\+\+My\+Device\+Sequencer)
+\item 
+virtual \mbox{\hyperlink{class_c_a_d9959_aabac4acc282ef510033395754fe5be69}{\texorpdfstring{$\sim$}{\string~}\+CAD9959}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a632fe73af485c771a13de373a187a58f}{Set\+IOUpdate}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a6cda1b0a97ee0d9cdf59fdc5775b48b9}{Set\+Reset}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a2ad6f52206e2f7065540779cc032a381}{Set\+Power\+Down}} (bool On\+Off, bool write\+\_\+immediately=true)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_aef55d8c1c03b2ac7c92ea09c9e9fc032}{Set\+Sync\+IO}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_aab7ef3db386644a0a1ef63abd2afe5e4}{Set\+P0}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a8e61cf3b2b799d02d075068cf780130f}{Set\+P1}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a3b692e47f207299555b43b19382593c6}{Set\+P2}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a8146049ee3c787bb47abdfd96ab1d4b4}{Set\+P3}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a966303ae0c62f2d9f090570e32fd629e}{Set\+Spare2}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a7e4daf662005c1667d8f60a6bff44761}{Set\+Spare1}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_af9f84dade5c6bf10e323cabf7cbb33b7}{Set\+Spare0}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_af6c36e7e306038277f5e0811c25fccff}{Set\+SDIO\+\_\+3}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a9176a345e8462a80dbf4f11cba5503a6}{Set\+SDIO\+\_\+2}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a3d1538bef33cea72d9dcd1609cd0c10a}{Set\+SDIO\+\_\+1}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_ae4fa396b7c230633effe950d703d6d57}{Initialise}} (void)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_abe0218ccf6f5615758929ae124cbd245}{Sync\+IO}} (void)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_afa8626eff8c75ddcf4b69820e60f085c}{Set\+QSPIMode}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a17012ee930cc35fc085f47a277b0605c}{Set\+Frequency}} (uint8\+\_\+t channel, float frequency)
+\begin{DoxyCompactList}\small\item\em Set the frequency output on a given channel of the DDS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_a_d9959_aa5188f193273997d8ec60a4453ba9932}{Set\+Amplitude}} (uint8\+\_\+t channel, float amplitude)
+\begin{DoxyCompactList}\small\item\em Set the amplitude scale factor on a given channel of the DDS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_a_d9959_a53c5d550b3ccb52f832b78eb97816708}{Set\+Attenuation}} (uint8\+\_\+t channel, double attenuation)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a09ad557c8c5157d092db31509714366d}{Set\+Phase\+Offset}} (uint8\+\_\+t channel, float phase)
+\begin{DoxyCompactList}\small\item\em Set the phase offset on a given channel of the DDS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_a_d9959_a102f89320e04bd0e8e5a077e8e57d34e}{Set\+Power\+State}} (\mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}{E\+\_\+\+AD9959\+\_\+\+PWR}} state)
+\begin{DoxyCompactList}\small\item\em Set the power state of the DDS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_a_d9959_a80bfca1eff0df35cd003214005020196}{Set\+Frequency\+Ch0}} (double frequency)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a48a3679897fa1810a4e6d3adc37c7576}{Set\+Frequency\+Ch1}} (double frequency)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a10551085f8d95598abbbff89934d4a05}{Set\+Frequency\+Ch2}} (double frequency)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_ac5c42a3aa8f228931a855eea5573b30d}{Set\+Frequency\+Ch3}} (double frequency)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a7d9a974b6e8245edf36bc9185496930f}{Set\+Intensity\+Ch0}} (double Intensity)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a5b51906cc8ec22aa0cac9efc1eaaa58d}{Set\+Intensity\+Ch1}} (double Intensity)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_ad16a0609b912ea10996acb12abff139f}{Set\+Intensity\+Ch2}} (double Intensity)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a54bfd6a7e90becf416cf4eaeb95719c7}{Set\+Intensity\+Ch3}} (double Intensity)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a332739a6cfd703a24506a2aaa5d896fd}{Set\+Attenuation\+Ch0}} (double Attenuation)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a3f714bc713f17105e2aed622bd94eed2}{Set\+Attenuation\+Ch1}} (double Attenuation)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_ae2bd58423ef4a185a1fb24b06bc10bfe}{Set\+Attenuation\+Ch2}} (double Attenuation)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_af1314efc3649975cefaa2c989fa13113}{Set\+Attenuation\+Ch3}} (double Attenuation)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a26bcefc6e2cef1af1c001ead8ab2e594}{Set\+Phase\+Offset\+Ch0}} (double phase)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a455e48c883554aeacdf7239609508d26}{Set\+Phase\+Offset\+Ch1}} (double phase)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_abfaa9e1a4ceb2ae8962b6aa8c1d9a2b1}{Set\+Phase\+Offset\+Ch2}} (double phase)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a0072fd80472ca74125c10e58ffa8894c}{Set\+Phase\+Offset\+Ch3}} (double phase)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_ab25f2f98571db2f4f9c49b6911ff7069}{Select\+Channel\+Ch0}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a73e7d3f7a547ed82d12502a56be26343}{Select\+Channel\+Ch1}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a72a73b72cde3b1a7ede267d3486f04eb}{Select\+Channel\+Ch2}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_afd33238d7c49eda194586ff9bd4b1bd0}{Select\+Channel\+Ch3}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a3c259ef86f62dd6e2e61d0e33a04c948}{Select\+Channel\+Ch0\+And1}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a08e0b5a7cbb4e0b948fa17442daff68f}{Select\+Channel\+Ch0\+To3}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a9c4383fab2e2785944120c437d210eff}{Select\+Channels}} (uint8\+\_\+t channels)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964}{Set\+Frequency\+Tuning\+Word}} (uint8\+\_\+t channel, uint32\+\_\+t ftw)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a694201198d2489854555310d1f0fc8ec}{Set\+Frequency\+Tuning\+Word\+Ch0}} (uint32\+\_\+t ftw)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a0d282dd8bb804dca072c7aef488abcc8}{Set\+Frequency\+Tuning\+Word\+Ch1}} (uint32\+\_\+t ftw)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_afe8cab5d30b53ec6b2ffa4a3a85740a9}{Set\+Frequency\+Tuning\+Word\+Ch2}} (uint32\+\_\+t ftw)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_af91cb7a3ed64dc32593f219a2410fb84}{Set\+Frequency\+Tuning\+Word\+Ch3}} (uint32\+\_\+t ftw)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a29dd3504aa4abfab58740e4452b0fc53}{Set\+IOUpdate\+Enabled}} (bool \+\_\+\+IOUpdate\+Enabled)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a4bb4da04d1b4010827a5be9397bbc67e}{Set\+Write\+Channels}} (uint8\+\_\+t channels)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_a213da72767bf7c8b327776f1be08801d}{Set\+Write\+Channels}} (bool channel0, bool channel1, bool channel2, bool channel3)
+\item 
+void \mbox{\hyperlink{class_c_a_d9959_abf14c16b323b452ab58b67069ba6c589}{Master\+Reset}} ()
+\item 
+bool \mbox{\hyperlink{class_c_a_d9959_a40bd9ee35f07c63d5abd8ba99979aa2c}{Set\+Register\+Bit}} (unsigned char Register\+Nr, unsigned char Bit\+Nr, bool Value, bool Get\+Value=false, bool Do\+IOUpdate=true)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{Set\+Register\+Bits}} (unsigned char Register\+Nr, unsigned char Lowest\+Bit\+Nr, unsigned char Nr\+Bits, uint32\+\_\+t Value, bool Get\+Value=false, bool Do\+IOUpdate=true, bool force\+Write=false)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_c_a_d9959_a21de8c6bad71977668963d4c89fe846b}{Set\+Value\+Direct}} (unsigned char Register\+Nr, uint32\+\_\+t Value, bool Get\+Value=false, bool Do\+IOUpdate=true, bool force\+Write=false)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_c_a_d9959_a85dab1279bf6c1957e5f8b3e90833159}{Set\+Value}} (unsigned char Register\+Nr, uint32\+\_\+t Value, bool Get\+Value=false, bool Do\+IOUpdate=true, bool force\+Write=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_multi_write_device_s_p_i}{CMulti\+Write\+Device\+SPI}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_c_multi_write_device_s_p_i_ab460375cc870879096703671fdcf0128}{Write\+To\+Bus}} ()
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a360cc28c0aff515956cb3268005fc7c6}{Write\+All\+To\+Bus}} ()
+\item 
+\mbox{\hyperlink{class_c_multi_write_device_s_p_i_a5c404d823894e21c689ae62b5df3527a}{CMulti\+Write\+Device\+SPI}} (unsigned short a\+Bus, unsigned long a\+Base\+Address, \mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}\+\_\+\+My\+Device\+Sequencer)
+\item 
+\mbox{\hyperlink{class_c_multi_write_device_s_p_i_a6256de4a496a9fa06d923211c698562d}{\texorpdfstring{$\sim$}{\string~}\+CMulti\+Write\+Device\+SPI}} ()
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_aa838021ef2d4dc7a50b5a7621e767b37}{Set\+SPIPort\+Bits}} (unsigned char \+\_\+\+SPI\+\_\+\+CS\+\_\+bit, unsigned char \+\_\+\+SDIO\+\_\+0\+\_\+bit, unsigned char \+\_\+\+SDIO\+\_\+1\+\_\+bit, unsigned char \+\_\+\+SDIO\+\_\+2\+\_\+bit, unsigned char \+\_\+\+SDIO\+\_\+3\+\_\+bit, unsigned char \+\_\+\+SPI\+\_\+\+SCLK\+\_\+bit)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_abaa235bd3663e29b1ad7d5dbaee9916c}{Add\+To\+Bus\+Buffer}} (unsigned short value)
+\item 
+virtual bool \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a43d882b4cc30609526e28a08f3028c82}{Has\+Something\+To\+Write\+To\+Bus}} ()
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_ab19290c96c86b3e0fc8615afcc5f69a2}{Set\+Control\+Register}} (unsigned char start\+\_\+bit, unsigned char nr\+\_\+bits, unsigned short value, bool write\+\_\+immediately=true)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a923a74547f2fb577663b494e12bb8790}{Set\+SPIClock}} (bool clock, bool write\+\_\+immediately=true)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a2228e7665e0a4dc7207b7172f964ae1c}{Set\+SPIChip\+Select}} (bool clock)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a339e7319309cd9044b7fed3662815571}{Set\+SPIData\+Out}} (bool clock)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a1c9be96f955251f14afc7ee9c6a5d51c}{Set\+SPIFrequency\+And\+Mode}} (double \+\_\+\+SPI\+\_\+frequency\+\_\+in\+\_\+\+Hz, const uint8\+\_\+t \+\_\+\+SPI\+\_\+mode)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a814c07fb2ce56c675466d292ec3a79ec}{Write\+SPIBit\+Banged}} (unsigned int number\+\_\+of\+\_\+bits\+\_\+out, uint64\+\_\+t data)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a49181f0d679dedec2d202164dd6708a6}{Write\+SPIBit\+Banged\+Mode0\+Simple}} (unsigned int number\+\_\+of\+\_\+bits\+\_\+out, uint64\+\_\+t data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_multi_write_device}{CMulti\+Write\+Device}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_a9e6e257eed6a370a88e7405665bfa390}{Switch\+Force\+Writing\+Mode}} (bool On\+Off)
+\item 
+void \mbox{\hyperlink{class_c_multi_write_device_a672b5dda62ea952136cc16a7f61544c4}{Enable}} (bool On\+Off)
+\item 
+\mbox{\hyperlink{class_c_multi_write_device_a82ab432239bfec0d80828a22185fad00}{CMulti\+Write\+Device}} ()
+\item 
+\mbox{\hyperlink{class_c_multi_write_device_ac5498dc620e170f43853722305f0b7e7}{\texorpdfstring{$\sim$}{\string~}\+CMulti\+Write\+Device}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_c_a_d9959_a9e897ce28716f4f30c47def792f643ec}{Frequency\+Multiplier}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_c_multi_write_device_s_p_i}{CMulti\+Write\+Device\+SPI}}}
+\begin{DoxyCompactItemize}
+\item 
+unsigned short \mbox{\hyperlink{class_c_multi_write_device_s_p_i_adc481f321d25e39cb2baa5f0fba07ab3}{Control\+Register\+Content}}
+\item 
+\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a571800d5b7ca564f2b7c74159db21bc2}{My\+Device\+Sequencer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_c_multi_write_device}{CMulti\+Write\+Device}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_c_multi_write_device_a1d423c7b7f1f644b8192a06ff54887b4}{Force\+Writing}}
+\item 
+unsigned short \mbox{\hyperlink{class_c_multi_write_device_acdf34f9d3eafb258a49d306e05325fc1}{Multi\+IOAddress}}
+\item 
+bool \mbox{\hyperlink{class_c_multi_write_device_ad7e1c697dece2c19bea64ad66586e328}{Enabled}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_a_d9959_aa88a117e95fc0f016e15e746bd6559ad}\index{CAD9959@{CAD9959}!CAD9959@{CAD9959}}
+\index{CAD9959@{CAD9959}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{CAD9959()}{CAD9959()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_aa88a117e95fc0f016e15e746bd6559ad} 
+CAD9959\+::\+CAD9959 (\begin{DoxyParamCaption}\item[{unsigned short}]{a\+Bus}{, }\item[{unsigned long}]{a\+Base\+Address}{, }\item[{double}]{a\+External\+Clock\+Frequency\+\_\+in\+\_\+\+Hz}{, }\item[{double}]{a\+Frequency\+Multiplier}{, }\item[{bool}]{a\+AD9958}{, }\item[{\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+My\+Device\+Sequencer}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_aabac4acc282ef510033395754fe5be69}\index{CAD9959@{CAD9959}!````~CAD9959@{\texorpdfstring{$\sim$}{\string~}CAD9959}}
+\index{````~CAD9959@{\texorpdfstring{$\sim$}{\string~}CAD9959}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CAD9959()}{\string~CAD9959()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_aabac4acc282ef510033395754fe5be69} 
+CAD9959\+::\texorpdfstring{$\sim$}{\string~}\+CAD9959 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_a_d9959_ae4fa396b7c230633effe950d703d6d57}\index{CAD9959@{CAD9959}!Initialise@{Initialise}}
+\index{Initialise@{Initialise}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_ae4fa396b7c230633effe950d703d6d57} 
+void CAD9959\+::\+Initialise (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_abf14c16b323b452ab58b67069ba6c589}\index{CAD9959@{CAD9959}!MasterReset@{MasterReset}}
+\index{MasterReset@{MasterReset}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{MasterReset()}{MasterReset()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_abf14c16b323b452ab58b67069ba6c589} 
+void CAD9959\+::\+Master\+Reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_ab25f2f98571db2f4f9c49b6911ff7069}\index{CAD9959@{CAD9959}!SelectChannelCh0@{SelectChannelCh0}}
+\index{SelectChannelCh0@{SelectChannelCh0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SelectChannelCh0()}{SelectChannelCh0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_ab25f2f98571db2f4f9c49b6911ff7069} 
+void CAD9959\+::\+Select\+Channel\+Ch0 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a3c259ef86f62dd6e2e61d0e33a04c948}\index{CAD9959@{CAD9959}!SelectChannelCh0And1@{SelectChannelCh0And1}}
+\index{SelectChannelCh0And1@{SelectChannelCh0And1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SelectChannelCh0And1()}{SelectChannelCh0And1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a3c259ef86f62dd6e2e61d0e33a04c948} 
+void CAD9959\+::\+Select\+Channel\+Ch0\+And1 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a08e0b5a7cbb4e0b948fa17442daff68f}\index{CAD9959@{CAD9959}!SelectChannelCh0To3@{SelectChannelCh0To3}}
+\index{SelectChannelCh0To3@{SelectChannelCh0To3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SelectChannelCh0To3()}{SelectChannelCh0To3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a08e0b5a7cbb4e0b948fa17442daff68f} 
+void CAD9959\+::\+Select\+Channel\+Ch0\+To3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a73e7d3f7a547ed82d12502a56be26343}\index{CAD9959@{CAD9959}!SelectChannelCh1@{SelectChannelCh1}}
+\index{SelectChannelCh1@{SelectChannelCh1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SelectChannelCh1()}{SelectChannelCh1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a73e7d3f7a547ed82d12502a56be26343} 
+void CAD9959\+::\+Select\+Channel\+Ch1 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a72a73b72cde3b1a7ede267d3486f04eb}\index{CAD9959@{CAD9959}!SelectChannelCh2@{SelectChannelCh2}}
+\index{SelectChannelCh2@{SelectChannelCh2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SelectChannelCh2()}{SelectChannelCh2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a72a73b72cde3b1a7ede267d3486f04eb} 
+void CAD9959\+::\+Select\+Channel\+Ch2 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_afd33238d7c49eda194586ff9bd4b1bd0}\index{CAD9959@{CAD9959}!SelectChannelCh3@{SelectChannelCh3}}
+\index{SelectChannelCh3@{SelectChannelCh3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SelectChannelCh3()}{SelectChannelCh3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_afd33238d7c49eda194586ff9bd4b1bd0} 
+void CAD9959\+::\+Select\+Channel\+Ch3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a9c4383fab2e2785944120c437d210eff}\index{CAD9959@{CAD9959}!SelectChannels@{SelectChannels}}
+\index{SelectChannels@{SelectChannels}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SelectChannels()}{SelectChannels()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a9c4383fab2e2785944120c437d210eff} 
+void CAD9959\+::\+Select\+Channels (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channels}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_aa5188f193273997d8ec60a4453ba9932}\index{CAD9959@{CAD9959}!SetAmplitude@{SetAmplitude}}
+\index{SetAmplitude@{SetAmplitude}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetAmplitude()}{SetAmplitude()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_aa5188f193273997d8ec60a4453ba9932} 
+void CAD9959\+::\+Set\+Amplitude (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{float}]{amplitude}{}\end{DoxyParamCaption})}
+
+
+
+Set the amplitude scale factor on a given channel of the DDS. 
+
+void \doxylink{class_c_a_d9959_aa5188f193273997d8ec60a4453ba9932}{Set\+Amplitude(uint8\+\_\+t channel, float amplitude)} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & Which channel to output on\+: 1\+: channel 0, 2\+: channel 1, 3\+: channel 0 and 1. \\
+\hline
+{\em amplitude} & Desired amplitude scale factor (0-\/100). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_a_d9959_a53c5d550b3ccb52f832b78eb97816708}\index{CAD9959@{CAD9959}!SetAttenuation@{SetAttenuation}}
+\index{SetAttenuation@{SetAttenuation}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetAttenuation()}{SetAttenuation()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a53c5d550b3ccb52f832b78eb97816708} 
+void CAD9959\+::\+Set\+Attenuation (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{double}]{attenuation}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a332739a6cfd703a24506a2aaa5d896fd}\index{CAD9959@{CAD9959}!SetAttenuationCh0@{SetAttenuationCh0}}
+\index{SetAttenuationCh0@{SetAttenuationCh0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetAttenuationCh0()}{SetAttenuationCh0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a332739a6cfd703a24506a2aaa5d896fd} 
+void CAD9959\+::\+Set\+Attenuation\+Ch0 (\begin{DoxyParamCaption}\item[{double}]{Attenuation}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a3f714bc713f17105e2aed622bd94eed2}\index{CAD9959@{CAD9959}!SetAttenuationCh1@{SetAttenuationCh1}}
+\index{SetAttenuationCh1@{SetAttenuationCh1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetAttenuationCh1()}{SetAttenuationCh1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a3f714bc713f17105e2aed622bd94eed2} 
+void CAD9959\+::\+Set\+Attenuation\+Ch1 (\begin{DoxyParamCaption}\item[{double}]{Attenuation}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_ae2bd58423ef4a185a1fb24b06bc10bfe}\index{CAD9959@{CAD9959}!SetAttenuationCh2@{SetAttenuationCh2}}
+\index{SetAttenuationCh2@{SetAttenuationCh2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetAttenuationCh2()}{SetAttenuationCh2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_ae2bd58423ef4a185a1fb24b06bc10bfe} 
+void CAD9959\+::\+Set\+Attenuation\+Ch2 (\begin{DoxyParamCaption}\item[{double}]{Attenuation}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_af1314efc3649975cefaa2c989fa13113}\index{CAD9959@{CAD9959}!SetAttenuationCh3@{SetAttenuationCh3}}
+\index{SetAttenuationCh3@{SetAttenuationCh3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetAttenuationCh3()}{SetAttenuationCh3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_af1314efc3649975cefaa2c989fa13113} 
+void CAD9959\+::\+Set\+Attenuation\+Ch3 (\begin{DoxyParamCaption}\item[{double}]{Attenuation}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a17012ee930cc35fc085f47a277b0605c}\index{CAD9959@{CAD9959}!SetFrequency@{SetFrequency}}
+\index{SetFrequency@{SetFrequency}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequency()}{SetFrequency()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a17012ee930cc35fc085f47a277b0605c} 
+void CAD9959\+::\+Set\+Frequency (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{float}]{frequency}{}\end{DoxyParamCaption})}
+
+
+
+Set the frequency output on a given channel of the DDS. 
+
+void \doxylink{class_c_a_d9959_a17012ee930cc35fc085f47a277b0605c}{Set\+Frequency(uint8\+\_\+t channel, float frequency)} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & Which channel to output on\+: 1\+: channel 0, 2\+: channel 1, 3\+: channel 0 and 1. \\
+\hline
+{\em frequency} & Desired output frequency in MHz. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_a_d9959_a80bfca1eff0df35cd003214005020196}\index{CAD9959@{CAD9959}!SetFrequencyCh0@{SetFrequencyCh0}}
+\index{SetFrequencyCh0@{SetFrequencyCh0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyCh0()}{SetFrequencyCh0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a80bfca1eff0df35cd003214005020196} 
+void CAD9959\+::\+Set\+Frequency\+Ch0 (\begin{DoxyParamCaption}\item[{double}]{frequency}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a48a3679897fa1810a4e6d3adc37c7576}\index{CAD9959@{CAD9959}!SetFrequencyCh1@{SetFrequencyCh1}}
+\index{SetFrequencyCh1@{SetFrequencyCh1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyCh1()}{SetFrequencyCh1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a48a3679897fa1810a4e6d3adc37c7576} 
+void CAD9959\+::\+Set\+Frequency\+Ch1 (\begin{DoxyParamCaption}\item[{double}]{frequency}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a10551085f8d95598abbbff89934d4a05}\index{CAD9959@{CAD9959}!SetFrequencyCh2@{SetFrequencyCh2}}
+\index{SetFrequencyCh2@{SetFrequencyCh2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyCh2()}{SetFrequencyCh2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a10551085f8d95598abbbff89934d4a05} 
+void CAD9959\+::\+Set\+Frequency\+Ch2 (\begin{DoxyParamCaption}\item[{double}]{frequency}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_ac5c42a3aa8f228931a855eea5573b30d}\index{CAD9959@{CAD9959}!SetFrequencyCh3@{SetFrequencyCh3}}
+\index{SetFrequencyCh3@{SetFrequencyCh3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyCh3()}{SetFrequencyCh3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_ac5c42a3aa8f228931a855eea5573b30d} 
+void CAD9959\+::\+Set\+Frequency\+Ch3 (\begin{DoxyParamCaption}\item[{double}]{frequency}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964}\index{CAD9959@{CAD9959}!SetFrequencyTuningWord@{SetFrequencyTuningWord}}
+\index{SetFrequencyTuningWord@{SetFrequencyTuningWord}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWord()}{SetFrequencyTuningWord()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964} 
+void CAD9959\+::\+Set\+Frequency\+Tuning\+Word (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{uint32\+\_\+t}]{ftw}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a694201198d2489854555310d1f0fc8ec}\index{CAD9959@{CAD9959}!SetFrequencyTuningWordCh0@{SetFrequencyTuningWordCh0}}
+\index{SetFrequencyTuningWordCh0@{SetFrequencyTuningWordCh0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWordCh0()}{SetFrequencyTuningWordCh0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a694201198d2489854555310d1f0fc8ec} 
+void CAD9959\+::\+Set\+Frequency\+Tuning\+Word\+Ch0 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ftw}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a0d282dd8bb804dca072c7aef488abcc8}\index{CAD9959@{CAD9959}!SetFrequencyTuningWordCh1@{SetFrequencyTuningWordCh1}}
+\index{SetFrequencyTuningWordCh1@{SetFrequencyTuningWordCh1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWordCh1()}{SetFrequencyTuningWordCh1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a0d282dd8bb804dca072c7aef488abcc8} 
+void CAD9959\+::\+Set\+Frequency\+Tuning\+Word\+Ch1 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ftw}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_afe8cab5d30b53ec6b2ffa4a3a85740a9}\index{CAD9959@{CAD9959}!SetFrequencyTuningWordCh2@{SetFrequencyTuningWordCh2}}
+\index{SetFrequencyTuningWordCh2@{SetFrequencyTuningWordCh2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWordCh2()}{SetFrequencyTuningWordCh2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_afe8cab5d30b53ec6b2ffa4a3a85740a9} 
+void CAD9959\+::\+Set\+Frequency\+Tuning\+Word\+Ch2 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ftw}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_af91cb7a3ed64dc32593f219a2410fb84}\index{CAD9959@{CAD9959}!SetFrequencyTuningWordCh3@{SetFrequencyTuningWordCh3}}
+\index{SetFrequencyTuningWordCh3@{SetFrequencyTuningWordCh3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWordCh3()}{SetFrequencyTuningWordCh3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_af91cb7a3ed64dc32593f219a2410fb84} 
+void CAD9959\+::\+Set\+Frequency\+Tuning\+Word\+Ch3 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{ftw}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_c_a_d9959_a7d9a974b6e8245edf36bc9185496930f}\index{CAD9959@{CAD9959}!SetIntensityCh0@{SetIntensityCh0}}
+\index{SetIntensityCh0@{SetIntensityCh0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetIntensityCh0()}{SetIntensityCh0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a7d9a974b6e8245edf36bc9185496930f} 
+void CAD9959\+::\+Set\+Intensity\+Ch0 (\begin{DoxyParamCaption}\item[{double}]{Intensity}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a5b51906cc8ec22aa0cac9efc1eaaa58d}\index{CAD9959@{CAD9959}!SetIntensityCh1@{SetIntensityCh1}}
+\index{SetIntensityCh1@{SetIntensityCh1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetIntensityCh1()}{SetIntensityCh1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a5b51906cc8ec22aa0cac9efc1eaaa58d} 
+void CAD9959\+::\+Set\+Intensity\+Ch1 (\begin{DoxyParamCaption}\item[{double}]{Intensity}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_ad16a0609b912ea10996acb12abff139f}\index{CAD9959@{CAD9959}!SetIntensityCh2@{SetIntensityCh2}}
+\index{SetIntensityCh2@{SetIntensityCh2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetIntensityCh2()}{SetIntensityCh2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_ad16a0609b912ea10996acb12abff139f} 
+void CAD9959\+::\+Set\+Intensity\+Ch2 (\begin{DoxyParamCaption}\item[{double}]{Intensity}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a54bfd6a7e90becf416cf4eaeb95719c7}\index{CAD9959@{CAD9959}!SetIntensityCh3@{SetIntensityCh3}}
+\index{SetIntensityCh3@{SetIntensityCh3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetIntensityCh3()}{SetIntensityCh3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a54bfd6a7e90becf416cf4eaeb95719c7} 
+void CAD9959\+::\+Set\+Intensity\+Ch3 (\begin{DoxyParamCaption}\item[{double}]{Intensity}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a632fe73af485c771a13de373a187a58f}\index{CAD9959@{CAD9959}!SetIOUpdate@{SetIOUpdate}}
+\index{SetIOUpdate@{SetIOUpdate}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetIOUpdate()}{SetIOUpdate()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a632fe73af485c771a13de373a187a58f} 
+void CAD9959\+::\+Set\+IOUpdate (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a29dd3504aa4abfab58740e4452b0fc53}\index{CAD9959@{CAD9959}!SetIOUpdateEnabled@{SetIOUpdateEnabled}}
+\index{SetIOUpdateEnabled@{SetIOUpdateEnabled}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetIOUpdateEnabled()}{SetIOUpdateEnabled()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a29dd3504aa4abfab58740e4452b0fc53} 
+void CAD9959\+::\+Set\+IOUpdate\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+\+IOUpdate\+Enabled}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_aab7ef3db386644a0a1ef63abd2afe5e4}\index{CAD9959@{CAD9959}!SetP0@{SetP0}}
+\index{SetP0@{SetP0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetP0()}{SetP0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_aab7ef3db386644a0a1ef63abd2afe5e4} 
+void CAD9959\+::\+Set\+P0 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a8e61cf3b2b799d02d075068cf780130f}\index{CAD9959@{CAD9959}!SetP1@{SetP1}}
+\index{SetP1@{SetP1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetP1()}{SetP1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a8e61cf3b2b799d02d075068cf780130f} 
+void CAD9959\+::\+Set\+P1 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a3b692e47f207299555b43b19382593c6}\index{CAD9959@{CAD9959}!SetP2@{SetP2}}
+\index{SetP2@{SetP2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetP2()}{SetP2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a3b692e47f207299555b43b19382593c6} 
+void CAD9959\+::\+Set\+P2 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a8146049ee3c787bb47abdfd96ab1d4b4}\index{CAD9959@{CAD9959}!SetP3@{SetP3}}
+\index{SetP3@{SetP3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetP3()}{SetP3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a8146049ee3c787bb47abdfd96ab1d4b4} 
+void CAD9959\+::\+Set\+P3 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a09ad557c8c5157d092db31509714366d}\index{CAD9959@{CAD9959}!SetPhaseOffset@{SetPhaseOffset}}
+\index{SetPhaseOffset@{SetPhaseOffset}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffset()}{SetPhaseOffset()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a09ad557c8c5157d092db31509714366d} 
+void CAD9959\+::\+Set\+Phase\+Offset (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{float}]{phase}{}\end{DoxyParamCaption})}
+
+
+
+Set the phase offset on a given channel of the DDS. 
+
+void DDS\+\_\+\+Set\+\_\+\+Phase\+\_\+\+Offset(uint8\+\_\+t channel, float phase) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & Which channel to output on\+: 1\+: channel 0, 2\+: channel 1, 3\+: channel 0 and 1. \\
+\hline
+{\em phase} & Desired phase offset. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_a_d9959_a26bcefc6e2cef1af1c001ead8ab2e594}\index{CAD9959@{CAD9959}!SetPhaseOffsetCh0@{SetPhaseOffsetCh0}}
+\index{SetPhaseOffsetCh0@{SetPhaseOffsetCh0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetCh0()}{SetPhaseOffsetCh0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a26bcefc6e2cef1af1c001ead8ab2e594} 
+void CAD9959\+::\+Set\+Phase\+Offset\+Ch0 (\begin{DoxyParamCaption}\item[{double}]{phase}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a455e48c883554aeacdf7239609508d26}\index{CAD9959@{CAD9959}!SetPhaseOffsetCh1@{SetPhaseOffsetCh1}}
+\index{SetPhaseOffsetCh1@{SetPhaseOffsetCh1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetCh1()}{SetPhaseOffsetCh1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a455e48c883554aeacdf7239609508d26} 
+void CAD9959\+::\+Set\+Phase\+Offset\+Ch1 (\begin{DoxyParamCaption}\item[{double}]{phase}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_abfaa9e1a4ceb2ae8962b6aa8c1d9a2b1}\index{CAD9959@{CAD9959}!SetPhaseOffsetCh2@{SetPhaseOffsetCh2}}
+\index{SetPhaseOffsetCh2@{SetPhaseOffsetCh2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetCh2()}{SetPhaseOffsetCh2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_abfaa9e1a4ceb2ae8962b6aa8c1d9a2b1} 
+void CAD9959\+::\+Set\+Phase\+Offset\+Ch2 (\begin{DoxyParamCaption}\item[{double}]{phase}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a0072fd80472ca74125c10e58ffa8894c}\index{CAD9959@{CAD9959}!SetPhaseOffsetCh3@{SetPhaseOffsetCh3}}
+\index{SetPhaseOffsetCh3@{SetPhaseOffsetCh3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetCh3()}{SetPhaseOffsetCh3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a0072fd80472ca74125c10e58ffa8894c} 
+void CAD9959\+::\+Set\+Phase\+Offset\+Ch3 (\begin{DoxyParamCaption}\item[{double}]{phase}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a2ad6f52206e2f7065540779cc032a381}\index{CAD9959@{CAD9959}!SetPowerDown@{SetPowerDown}}
+\index{SetPowerDown@{SetPowerDown}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPowerDown()}{SetPowerDown()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a2ad6f52206e2f7065540779cc032a381} 
+void CAD9959\+::\+Set\+Power\+Down (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{, }\item[{bool}]{write\+\_\+immediately}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a102f89320e04bd0e8e5a077e8e57d34e}\index{CAD9959@{CAD9959}!SetPowerState@{SetPowerState}}
+\index{SetPowerState@{SetPowerState}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPowerState()}{SetPowerState()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a102f89320e04bd0e8e5a077e8e57d34e} 
+void CAD9959\+::\+Set\+Power\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}{E\+\_\+\+AD9959\+\_\+\+PWR}}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Set the power state of the DDS. 
+
+void DDS\+\_\+\+Set\+\_\+\+Power\+\_\+\+State(\+E\+\_\+\+AD9959\+\_\+\+PWR state) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Desired power state. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_c_a_d9959_afa8626eff8c75ddcf4b69820e60f085c}\index{CAD9959@{CAD9959}!SetQSPIMode@{SetQSPIMode}}
+\index{SetQSPIMode@{SetQSPIMode}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetQSPIMode()}{SetQSPIMode()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_afa8626eff8c75ddcf4b69820e60f085c} 
+void CAD9959\+::\+Set\+QSPIMode (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a9a48eb51234850f01edcaccf79cf9d14}{CMulti\+Write\+Device\+SPI}}.
+
+\Hypertarget{class_c_a_d9959_a40bd9ee35f07c63d5abd8ba99979aa2c}\index{CAD9959@{CAD9959}!SetRegisterBit@{SetRegisterBit}}
+\index{SetRegisterBit@{SetRegisterBit}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetRegisterBit()}{SetRegisterBit()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a40bd9ee35f07c63d5abd8ba99979aa2c} 
+bool CAD9959\+::\+Set\+Register\+Bit (\begin{DoxyParamCaption}\item[{unsigned char}]{Register\+Nr}{, }\item[{unsigned char}]{Bit\+Nr}{, }\item[{bool}]{Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}, }\item[{bool}]{Do\+IOUpdate}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}\index{CAD9959@{CAD9959}!SetRegisterBits@{SetRegisterBits}}
+\index{SetRegisterBits@{SetRegisterBits}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetRegisterBits()}{SetRegisterBits()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0} 
+uint32\+\_\+t CAD9959\+::\+Set\+Register\+Bits (\begin{DoxyParamCaption}\item[{unsigned char}]{Register\+Nr}{, }\item[{unsigned char}]{Lowest\+Bit\+Nr}{, }\item[{unsigned char}]{Nr\+Bits}{, }\item[{uint32\+\_\+t}]{Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}, }\item[{bool}]{Do\+IOUpdate}{ = {\ttfamily true}, }\item[{bool}]{force\+Write}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a6cda1b0a97ee0d9cdf59fdc5775b48b9}\index{CAD9959@{CAD9959}!SetReset@{SetReset}}
+\index{SetReset@{SetReset}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetReset()}{SetReset()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a6cda1b0a97ee0d9cdf59fdc5775b48b9} 
+void CAD9959\+::\+Set\+Reset (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a3d1538bef33cea72d9dcd1609cd0c10a}\index{CAD9959@{CAD9959}!SetSDIO\_1@{SetSDIO\_1}}
+\index{SetSDIO\_1@{SetSDIO\_1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetSDIO\_1()}{SetSDIO\_1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a3d1538bef33cea72d9dcd1609cd0c10a} 
+void CAD9959\+::\+Set\+SDIO\+\_\+1 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a9176a345e8462a80dbf4f11cba5503a6}\index{CAD9959@{CAD9959}!SetSDIO\_2@{SetSDIO\_2}}
+\index{SetSDIO\_2@{SetSDIO\_2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetSDIO\_2()}{SetSDIO\_2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a9176a345e8462a80dbf4f11cba5503a6} 
+void CAD9959\+::\+Set\+SDIO\+\_\+2 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_af6c36e7e306038277f5e0811c25fccff}\index{CAD9959@{CAD9959}!SetSDIO\_3@{SetSDIO\_3}}
+\index{SetSDIO\_3@{SetSDIO\_3}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetSDIO\_3()}{SetSDIO\_3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_af6c36e7e306038277f5e0811c25fccff} 
+void CAD9959\+::\+Set\+SDIO\+\_\+3 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_af9f84dade5c6bf10e323cabf7cbb33b7}\index{CAD9959@{CAD9959}!SetSpare0@{SetSpare0}}
+\index{SetSpare0@{SetSpare0}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetSpare0()}{SetSpare0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_af9f84dade5c6bf10e323cabf7cbb33b7} 
+void CAD9959\+::\+Set\+Spare0 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a7e4daf662005c1667d8f60a6bff44761}\index{CAD9959@{CAD9959}!SetSpare1@{SetSpare1}}
+\index{SetSpare1@{SetSpare1}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetSpare1()}{SetSpare1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a7e4daf662005c1667d8f60a6bff44761} 
+void CAD9959\+::\+Set\+Spare1 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a966303ae0c62f2d9f090570e32fd629e}\index{CAD9959@{CAD9959}!SetSpare2@{SetSpare2}}
+\index{SetSpare2@{SetSpare2}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetSpare2()}{SetSpare2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a966303ae0c62f2d9f090570e32fd629e} 
+void CAD9959\+::\+Set\+Spare2 (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_aef55d8c1c03b2ac7c92ea09c9e9fc032}\index{CAD9959@{CAD9959}!SetSyncIO@{SetSyncIO}}
+\index{SetSyncIO@{SetSyncIO}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetSyncIO()}{SetSyncIO()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_aef55d8c1c03b2ac7c92ea09c9e9fc032} 
+void CAD9959\+::\+Set\+Sync\+IO (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a85dab1279bf6c1957e5f8b3e90833159}\index{CAD9959@{CAD9959}!SetValue@{SetValue}}
+\index{SetValue@{SetValue}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetValue()}{SetValue()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a85dab1279bf6c1957e5f8b3e90833159} 
+uint32\+\_\+t CAD9959\+::\+Set\+Value (\begin{DoxyParamCaption}\item[{unsigned char}]{Register\+Nr}{, }\item[{uint32\+\_\+t}]{Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}, }\item[{bool}]{Do\+IOUpdate}{ = {\ttfamily true}, }\item[{bool}]{force\+Write}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a21de8c6bad71977668963d4c89fe846b}\index{CAD9959@{CAD9959}!SetValueDirect@{SetValueDirect}}
+\index{SetValueDirect@{SetValueDirect}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetValueDirect()}{SetValueDirect()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a21de8c6bad71977668963d4c89fe846b} 
+uint32\+\_\+t CAD9959\+::\+Set\+Value\+Direct (\begin{DoxyParamCaption}\item[{unsigned char}]{Register\+Nr}{, }\item[{uint32\+\_\+t}]{Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}, }\item[{bool}]{Do\+IOUpdate}{ = {\ttfamily true}, }\item[{bool}]{force\+Write}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a213da72767bf7c8b327776f1be08801d}\index{CAD9959@{CAD9959}!SetWriteChannels@{SetWriteChannels}}
+\index{SetWriteChannels@{SetWriteChannels}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetWriteChannels()}{SetWriteChannels()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a213da72767bf7c8b327776f1be08801d} 
+void CAD9959\+::\+Set\+Write\+Channels (\begin{DoxyParamCaption}\item[{bool}]{channel0}{, }\item[{bool}]{channel1}{, }\item[{bool}]{channel2}{, }\item[{bool}]{channel3}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_a4bb4da04d1b4010827a5be9397bbc67e}\index{CAD9959@{CAD9959}!SetWriteChannels@{SetWriteChannels}}
+\index{SetWriteChannels@{SetWriteChannels}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SetWriteChannels()}{SetWriteChannels()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a4bb4da04d1b4010827a5be9397bbc67e} 
+void CAD9959\+::\+Set\+Write\+Channels (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channels}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9959_abe0218ccf6f5615758929ae124cbd245}\index{CAD9959@{CAD9959}!SyncIO@{SyncIO}}
+\index{SyncIO@{SyncIO}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{SyncIO()}{SyncIO()}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_abe0218ccf6f5615758929ae124cbd245} 
+void CAD9959\+::\+Sync\+IO (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_a_d9959_a9e897ce28716f4f30c47def792f643ec}\index{CAD9959@{CAD9959}!FrequencyMultiplier@{FrequencyMultiplier}}
+\index{FrequencyMultiplier@{FrequencyMultiplier}!CAD9959@{CAD9959}}
+\doxysubsubsection{\texorpdfstring{FrequencyMultiplier}{FrequencyMultiplier}}
+{\footnotesize\ttfamily \label{class_c_a_d9959_a9e897ce28716f4f30c47def792f643ec} 
+double CAD9959\+::\+Frequency\+Multiplier}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_a_d9959_8h}{AD9959.\+h}}\item 
+\mbox{\hyperlink{_a_d9959_8cpp}{AD9959.\+cpp}}\end{DoxyCompactItemize}

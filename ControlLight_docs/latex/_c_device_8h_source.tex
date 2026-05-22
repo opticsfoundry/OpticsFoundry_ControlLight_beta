@@ -1,0 +1,181 @@
+\doxysection{CDevice.\+h}
+\hypertarget{_c_device_8h_source}{}\label{_c_device_8h_source}\index{CDevice.h@{CDevice.h}}
+\mbox{\hyperlink{_c_device_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_control_a_p_i_8h}{ControlAPI.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}};}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \mbox{\hyperlink{class_c_device_a381f3a4f11fb87aadc77bcdc4524e33f}{MySequencer}};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_c_device_a7c5003e9b61986c46f6aa9ffd31324f3}{MyAddress}};}
+\DoxyCodeLine{00011\ \ \ \ \ std::string\ \mbox{\hyperlink{class_c_device_aaa6670dcb90af191c31aef9d88dbdcce}{MyType}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_ErrorOccured;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}(\mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \_MySequencer\ =\ \textcolor{keyword}{nullptr},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_MyAddress\ =\ 0,\ \textcolor{keyword}{const}\ std::string\ \_MyType\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_device_aa3ec8544aad768caa0c45b53c8915e0f}{\string~CDevice}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_a30356c4a419393fe39c946209c966ab1}{NotifyError}}(\textcolor{keyword}{const}\ std::string\&\ ErrorMessage,\ \textcolor{keywordtype}{bool}\ dothrow=\textcolor{keyword}{true});}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_abad094121bde679b4a68858b1a0e1c32}{ClearError}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_acaaa125920dec9e7f9f6b3d6a2225058}{ErrorOccured}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\_ErrorOccured;\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//In\ derived\ classes,\ SetValue\ accesses\ a\ table\ of\ registers\ (or\ similar)\ with\ specific\ functions,\ converts\ data\ as\ needed\ and\ translates}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//the\ call\ into\ an\ appropriate\ one\ of\ SetRegisters.}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a8e4c8e7c256a149d08debc49e190b27e}{SetValue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit)\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetValue:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//In\ derived\ classes,\ SetRegister\ accesses\ the\ registers\ (or\ similar)\ of\ the\ specific\ device,\ and\ directly\ writes\ to\ them}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_aed9d8c451787c53bf398292a57b20a99}{SetRegister}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetRegister:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_a8e4c8e7c256a149d08debc49e190b27e}{SetValue}}(SubAddress,\ Data,\ DataLength\_in\_bit,\ StartBit);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//the\ following\ are\ convenience\ functions,\ which\ allow\ us\ to\ define\ nice\ names\ to\ the\ few\ most\ important\ functions}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//They\ are\ defined\ here,\ such\ that\ we\ can\ easily\ handle\ errors\ if\ the\ wrong\ device\ is\ used\ for\ a\ given\ function}}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//Rack}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a6a8ccd405886c6bb81b886de3aa45c77}{SelectRackSlot}}(\textcolor{keyword}{const}\ uint8\_t\&\ SlotNr)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SelectRackSlot:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_ab7deca3acfd5322776186b07f597f9ec}{ResetI2CMultiplexer}}()\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::ResetI2CMultiplexer:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//Analog\ output}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a157c99b6b8d061e54ab2920a89711e6f}{SetVoltage}}(\textcolor{keywordtype}{double}\ Voltage)\ \{\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetVoltage:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//Digital\ output}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a671cf9349a711df3da9e655dc2928a84}{SetDigitalOutput}}(uint8\_t\ BitNr,\ \textcolor{keywordtype}{bool}\ OnOff)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetDigitalOutput:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//AD9854}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_aaa3e13859985f358428c4d51bafc37d3}{SetStartFrequency}}(\textcolor{keywordtype}{double}\ Frequency)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetStartFrequency:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_af0ac58636967e468139ea4ec7776b912}{SetStopFrequency}}(\textcolor{keywordtype}{double}\ Frequency)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetStopFrequency:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_ac9f2d8bc4810171cc290332dcf5aea77}{SetModulationFrequency}}(\textcolor{keywordtype}{double}\ Frequency)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetModulationFrequency:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a896e79990b77c5702bcacf217ebd8180}{SetPower}}(\textcolor{keywordtype}{double}\ Power)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetPower:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_abb0dc967e558b1e3218fb00c368e927f}{SetAttenuation}}(\textcolor{keywordtype}{double}\ Attenuation)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetAttenuation:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a266d2caa2f23ebc437e9cb26bf2ec3ad}{SetStartFrequencyTuningWord}}(uint64\_t)}
+\DoxyCodeLine{00086\ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetStartFrequencyTuningWord:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a60446e9222919ecb7f7c8f9e7c72ee43}{SetStopFrequencyTuningWord}}(uint64\_t)}
+\DoxyCodeLine{00092\ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetStopFrequencyTuningWord:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a5201f16fcc101d6594d33d0463664519}{SetFSKMode}}(uint8\_t\ mode)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetFSKMode:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a8e233a94cc5c177260a319ae158c3504}{SetRampRateClock}}(\textcolor{keywordtype}{int}\ rate)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetRampRateClock:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a7dc7cc4daab1c6e27468d7366a449e85}{SetClearACC1}}(\textcolor{keywordtype}{bool})\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetClearACC1:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_aa19bf3d0655119902bac344b8c4c5a2c}{SetTriangleBit}}(\textcolor{keywordtype}{bool})\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetTriangleBit:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_acef2ccddac12d4203fb363c1b18fdbe9}{SetFSKBit}}(\textcolor{keywordtype}{bool})\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetFSKBit:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//AD9858}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_ae8204d9f4edb81f19af2ceaeee04d65e}{SetFrequency}}(\textcolor{keywordtype}{double}\ Frequency)\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetFrequency:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00125\ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a2f948d164b6177a355b9f47a39d3a758}{SetFrequencyTuningWord}}(uint64\_t\ FrequencyTuningWord)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetFrequencyTuningWord:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{/*virtual\ bool\ SetPower(double\ Power)\ \{}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ \ \ \ \ \ AddErrorMessage("{}CDevice::SetPower:\ abstract\ function\ called"{});}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ \ \ \ \ \ return\ false;}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ \ \}*/}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{/*virtual\ bool\ SetAttenuation(double\ Power)\ \{}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ \ \ \ \ \ AddErrorMessage("{}CDevice::SetAttenuation:\ abstract\ function\ called"{});}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ \ \ \ \ \ return\ false;}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ \ \}*/}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//AD9959}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_acd05aa88ded012804e579a19ada672b5}{Reset}}()\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::Reset:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a537b4320f28a041f7c792cd8ee980489}{SetFrequency}}(uint8\_t\ channel,\ \textcolor{keywordtype}{double}\ Frequency)\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetFrequency:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a20124b1ebdce4ad278e9441c33a25df6}{SetFrequencyTuningWord}}(uint8\_t\ channel,\ uint64\_t\ FrequencyTuningWord)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetFrequencyTuningWord:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00153\ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a4972e649a5c5e33b1e2b19d4d977be1b}{SetPhase}}(uint8\_t\ channel,\ \textcolor{keywordtype}{double}\ Phase)\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetPhase:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_af08e809e1fe88612656716fef5055256}{SetPower}}(uint8\_t\ channel,\ \textcolor{keywordtype}{double}\ Power)\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetPower:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_ad5976661247c2d2a64fe6800be5ae0bc}{SetAttenuation}}(uint8\_t\ channel,\ \textcolor{keywordtype}{double}\ Power)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetAttenuation:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00165\ \ \ \ \ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_ae8de0378397c02c4cfe7cfc0cb672cd4}{SetIOUpdateEnabled}}(\textcolor{keywordtype}{bool}\ \_IOUpdateEnabled)\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_control_a_p_i_8cpp_a782e77be7b1f71cc6e749d3d6d673cdc}{AddErrorMessage}}(\textcolor{stringliteral}{"{}CDevice::SetIOUpdateEnabled:\ abstract\ function\ called"{}});}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \};}
+\DoxyCodeLine{00175\ }
+
+\end{DoxyCode}

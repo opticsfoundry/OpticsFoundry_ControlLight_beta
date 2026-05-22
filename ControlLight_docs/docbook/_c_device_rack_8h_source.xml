@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__c_device_rack_8h_source" xml:lang="en-US">
+<title>CDeviceRack.h</title>
+<indexterm><primary>CDeviceRack.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__c_device_8h">CDevice.h</link>&quot;</emphasis>
+4 
+5 <emphasis role="comment">//This&#32;class&#32;describes&#32;the&#32;whole&#32;chain&#32;of&#32;racks&#32;to&#32;which&#32;one&#32;sequencer&#32;is&#32;connected</emphasis>
+6 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_rack_1af6006be46c378fc669fc400cbdc9513d">CDeviceRack</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link>
+7 {
+8 <emphasis role="keyword">public</emphasis>:
+9 &#32;&#32;&#32;&#32;uint16_t&#32;<link linkend="_class_c_device_rack_1a7ac91345eb8a290493495a647d889306">LastValue</link>;
+10 &#32;&#32;&#32;&#32;<emphasis role="comment">//uint8_t&#32;MyRackAddress;</emphasis>
+11 <emphasis role="keyword">public</emphasis>:
+12 &#32;&#32;&#32;&#32;<link linkend="_class_c_device_rack_1af6006be46c378fc669fc400cbdc9513d">CDeviceRack</link>(
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;_MySequencer<emphasis role="comment">//,</emphasis>
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//unsigned&#32;int&#32;_MyRackAddress&#32;=&#32;0xFE</emphasis>
+15 &#32;&#32;&#32;&#32;);
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_device_rack_1a98262077159859bb778362e8744448af">~CDeviceRack</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+17 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;SetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+18 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;GetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+19 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;Configure();</emphasis>
+20 
+21 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_rack_1a6043ef13d9f7ae598bb814da2e776178">SetValue</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit);
+22 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;SetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+23 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;GetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+24 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;Configure();</emphasis>
+25 
+26 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_rack_1a7f738a5bf918553603adc869bb47bf4a">SelectRackSlot</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;RackNr,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;SlotNr)&#32;{
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//This&#32;conversion&#32;will&#32;need&#32;to&#32;be&#32;adjusted&#32;to&#32;each&#32;type&#32;of&#32;backplane&#32;or&#32;if&#32;we&#32;enable&#32;slot&#32;selection&#32;in&#32;enchained&#32;racks</emphasis>
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;SlotAddr&#32;=&#32;(SlotNr&#32;&lt;=&#32;3)&#32;?&#32;(SlotNr&#32;+&#32;12)&#32;:&#32;(SlotNr&#32;-&#32;4);
+29 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;Data&#32;=&#32;(SlotAddr&#32;&amp;&#32;0x0F)&#32;|&#32;((RackNr&#32;&amp;&#32;0x07)&#32;&lt;&lt;&#32;4);
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_device_rack_1a6043ef13d9f7ae598bb814da2e776178">SetValue</link>(0,&#32;&amp;Data,&#32;7,&#32;0);
+32 &#32;&#32;&#32;&#32;}
+33 
+34 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_rack_1ab31de98f93177cf21cc933415682a6c6">ResetI2CMultiplexer</link>()&#32;{
+35 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Here&#32;we&#32;assume&#32;that&#32;the&#32;bus&#32;uses&#32;a&#32;slow&#32;speed,&#32;so&#32;that&#32;the&#32;first-break-then-make&#32;logic&#32;of&#32;the&#32;arbiter&#32;has&#32;time&#32;to&#32;work.</emphasis>
+36 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//We&#32;need&#32;to&#32;test&#32;how&#32;fast&#32;one&#32;can&#32;go&#32;like&#32;this.&#32;As&#32;the&#32;delay&#32;between&#32;break&#32;and&#32;set&#32;of&#32;new&#32;demux&#32;input&#32;is&#32;20ns,&#32;and&#32;the&#32;remaining&#32;delay&#32;is&#32;monoflop&#32;controlled,&#32;it&#32;should&#32;be&#32;fine&#32;up&#32;to&#32;50MHz.</emphasis>
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;Data&#32;=&#32;1;
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;success&#32;=&#32;<link linkend="_class_c_device_rack_1a6043ef13d9f7ae598bb814da2e776178">SetValue</link>(0,&#32;&amp;Data,&#32;1,&#32;7);
+39 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_device_1a381f3a4f11fb87aadc77bcdc4524e33f">MySequencer</link>-&gt;Wait_ms(0.01);
+40 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Data&#32;=&#32;0;
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;success&#32;=&#32;success&#32;&amp;&amp;&#32;<link linkend="_class_c_device_rack_1a6043ef13d9f7ae598bb814da2e776178">SetValue</link>(0,&#32;&amp;Data,&#32;1,&#32;7);
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_device_1a381f3a4f11fb87aadc77bcdc4524e33f">MySequencer</link>-&gt;Wait_ms(0.01);
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;success;
+44 &#32;&#32;&#32;&#32;}
+45 };
+</programlisting></section>

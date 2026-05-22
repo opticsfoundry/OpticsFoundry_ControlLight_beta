@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__auto_config_8h" xml:lang="en-US">
+<title>AutoConfig.h File Reference</title>
+<indexterm><primary>AutoConfig.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;cstddef&gt;<?linebreak?>#include &lt;cstdint&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &quot;include/json.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> = nlohmann::json</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="__auto_config_8h_1a9a2d1d12ab3ed08865b5240475b62f27">WriteConfigEEPROM</link> (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, const char *data, size_t length)</para>
+</listitem>
+            <listitem><para>void <link linkend="__auto_config_8h_1a2faf204872538e44ce9353aa487fb5d1">ReadConfigEEPROM</link> (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, char *data, size_t &amp;length, bool &amp;I2C_success)</para>
+</listitem>
+            <listitem><para>void <link linkend="__auto_config_8h_1aa96955d313627501ed9673d8f60478ab">WriteConfigAddress</link> (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t address)</para>
+</listitem>
+            <listitem><para>void <link linkend="__auto_config_8h_1a55e9dce2e231a3a5eba12a96afea67a7">ReadConfigAddress</link> (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t &amp;address, bool &amp;I2C_success)</para>
+</listitem>
+            <listitem><para><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> <link linkend="__auto_config_8h_1a6d951a849e3a3e88aef07d03fae632b2">ReadConfiguration</link> (const std::string &amp;filename=&quot;&quot;)</para>
+</listitem>
+            <listitem><para><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> <link linkend="__auto_config_8h_1ab0929365aa0b8147fea4bef38b73de7d">GetAutoConfigJSON</link> (const std::string &amp;filename=&quot;&quot;)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d"/><section>
+    <title>json</title>
+<indexterm><primary>json</primary><secondary>AutoConfig.h</secondary></indexterm>
+<indexterm><primary>AutoConfig.h</primary><secondary>json</secondary></indexterm>
+<para><computeroutput>using <link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> = nlohmann::json</computeroutput></para></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__auto_config_8h_1ab0929365aa0b8147fea4bef38b73de7d"/><section>
+    <title>GetAutoConfigJSON()</title>
+<indexterm><primary>GetAutoConfigJSON</primary><secondary>AutoConfig.h</secondary></indexterm>
+<indexterm><primary>AutoConfig.h</primary><secondary>GetAutoConfigJSON</secondary></indexterm>
+<para><computeroutput><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> GetAutoConfigJSON (const std::string &amp; filename = <computeroutput>&quot;&quot;</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8h_1a55e9dce2e231a3a5eba12a96afea67a7"/><section>
+    <title>ReadConfigAddress()</title>
+<indexterm><primary>ReadConfigAddress</primary><secondary>AutoConfig.h</secondary></indexterm>
+<indexterm><primary>AutoConfig.h</primary><secondary>ReadConfigAddress</secondary></indexterm>
+<para><computeroutput>void ReadConfigAddress (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t &amp; address, bool &amp; I2C_success)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8h_1a2faf204872538e44ce9353aa487fb5d1"/><section>
+    <title>ReadConfigEEPROM()</title>
+<indexterm><primary>ReadConfigEEPROM</primary><secondary>AutoConfig.h</secondary></indexterm>
+<indexterm><primary>AutoConfig.h</primary><secondary>ReadConfigEEPROM</secondary></indexterm>
+<para><computeroutput>void ReadConfigEEPROM (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, char * data, size_t &amp; length, bool &amp; I2C_success)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8h_1a6d951a849e3a3e88aef07d03fae632b2"/><section>
+    <title>ReadConfiguration()</title>
+<indexterm><primary>ReadConfiguration</primary><secondary>AutoConfig.h</secondary></indexterm>
+<indexterm><primary>AutoConfig.h</primary><secondary>ReadConfiguration</secondary></indexterm>
+<para><computeroutput><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> ReadConfiguration (const std::string &amp; filename = <computeroutput>&quot;&quot;</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8h_1aa96955d313627501ed9673d8f60478ab"/><section>
+    <title>WriteConfigAddress()</title>
+<indexterm><primary>WriteConfigAddress</primary><secondary>AutoConfig.h</secondary></indexterm>
+<indexterm><primary>AutoConfig.h</primary><secondary>WriteConfigAddress</secondary></indexterm>
+<para><computeroutput>void WriteConfigAddress (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t address)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8h_1a9a2d1d12ab3ed08865b5240475b62f27"/><section>
+    <title>WriteConfigEEPROM()</title>
+<indexterm><primary>WriteConfigEEPROM</primary><secondary>AutoConfig.h</secondary></indexterm>
+<indexterm><primary>AutoConfig.h</primary><secondary>WriteConfigEEPROM</secondary></indexterm>
+<para><computeroutput>bool WriteConfigEEPROM (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, const char * data, size_t length)</computeroutput></para></section>
+</section>
+</section>

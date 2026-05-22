@@ -1,0 +1,56 @@
+\doxysection{CDevice\+AD9858.\+h}
+\hypertarget{_c_device_a_d9858_8h_source}{}\label{_c_device_a_d9858_8h_source}\index{CDeviceAD9858.h@{CDeviceAD9858.h}}
+\mbox{\hyperlink{_c_device_a_d9858_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_device_8h}{CDevice.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d9858}{CAD9858}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_a_d9858_ad5ebe8f8b428191b2cc00dfa78b0a8d8}{CDeviceAD9858}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_a_d9858_ac90bd9dbe829781616e25d38c4ac388c}{externalClockFrequency}};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_a_d9858_a58c6b334900e7516f4137c209a7c5a3c}{frequencyMultiplier}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_c_device_a_d9858_ad5ebe8f8b428191b2cc00dfa78b0a8d8}{CDeviceAD9858}}(}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \_MySequencer,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_MyAddress,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_externalClockFrequency,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_frequencyMultiplier}
+\DoxyCodeLine{00018\ \ \ \ \ );}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_device_a_d9858_af969014ced09e7ef6094e2b0ffd8291e}{\string~CDeviceAD9858}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a_d9858_a09af716b1a931f8672170ea4da064cbd}{SetRegister}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a_d9858_a2361616defde18e74fdef9f6088bf57e}{SetValue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ SetValue(unsigned\ int\ SubAddress,\ uint8\_t*\ Data,\ unsigned\ long\ DataLength);}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ GetValue(unsigned\ int\ SubAddress,\ uint8\_t*\ Data,\ unsigned\ long\ DataLength);}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ Configure();}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a_d9858_af28ad056447a38f2ec823ab43db48059}{SetFrequency}}(\textcolor{keywordtype}{double}\ Frequency)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_a_d9858_a2361616defde18e74fdef9f6088bf57e}{SetValue}}(4,\ (uint8\_t\ *)(\&Frequency),\ 64,\ 0);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a_d9858_a67f52dc88bd35f958983b1de45a82230}{SetFrequencyTuningWord}}(uint64\_t\ FrequencyTuningWord)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_a_d9858_a2361616defde18e74fdef9f6088bf57e}{SetValue}}(0,\ (uint8\_t*)(\&FrequencyTuningWord),\ 64,\ 0);}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a_d9858_a355a937eed23726c2acf94a39de0202d}{SetPower}}(\textcolor{keywordtype}{double}\ Power)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Intensity\ =\ Power;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Intensity\ <\ 1E-\/6)\ Intensity\ =\ 1E-\/6;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Attenuation\ =\ 10.0\ *\ (log(0.01\ *\ Intensity)\ /\ log(10.0));}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Attenuation\ >\ 0)\ Attenuation\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (Attenuation\ <\ -\/32)\ Attenuation\ =\ -\/32;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_a_d9858_a1f9b22892d3a571d6c240ddc77fa7dda}{SetAttenuation}}(Attenuation);}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_a_d9858_a1f9b22892d3a571d6c240ddc77fa7dda}{SetAttenuation}}(\textcolor{keywordtype}{double}\ Power)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_a_d9858_a2361616defde18e74fdef9f6088bf57e}{SetValue}}(20,\ (uint8\_t*)(\&Power),\ 64,\ 0);}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_c_a_d9858}{CAD9858}}*\ MyAD9858;}
+\DoxyCodeLine{00050\ \};}
+
+\end{DoxyCode}

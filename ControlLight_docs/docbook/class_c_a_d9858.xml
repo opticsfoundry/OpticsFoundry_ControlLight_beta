@@ -1,0 +1,470 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_a_d9858" xml:lang="en-US">
+<title>CAD9858 Class Reference</title>
+<indexterm><primary>CAD9858</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AD9858.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_c_a_d9858_1a5b55ef58ac884d20b361fb207d7f7568">CAD9858</link> (unsigned long aBaseAddress, double aExternalClockSpeed, double aFrequencyMultiplier, <link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MyDeviceSequencer)</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_a_d9858_1a1b287a93aa78dca09944bdabf16f9715">~CAD9858</link> ()</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9858_1ad23d4cfabd47db4b8e73406f1f92afd9">SetModulationFrequency</link> (double ModulationFrequency, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9858_1af8a9c8199e91a884fca30e65102d489a">MasterReset</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9858_1af962cc79731569f2e3770c67cc994f06">SetUpdateRegistersModeAutomatic</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9858_1ac73e98249df8ebdb966de15e558c0715">SetUpdateRegistersModeManual</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1aeb4ba9c68261e320c1e946b2dbca4b63">Set2GHzDividerDisable</link> (bool aDisable, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a8625d6c53615e437a91650b79c664df7">SetSYNCLKDisable</link> (bool aDisable, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a4dc395743ac2c1be750a52e30935a2b4">SetMixerPowerDown</link> (bool aPowerDown, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1acabc2b757faf9582ee0ced4513988fbb">SetPhaseDetectPowerDown</link> (bool aPowerDown, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a6a388b4025e94466a8c12256c6c470e5">SetPowerDown</link> (bool aPowerDown, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a8444e38024a21e9e5aaafed7807dc814">SetSDIOInputOnly</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1af12b9fe4c0c6aec710e545124e68c4f3">SetLSBFirst</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a006ca3231c0c8224499ef6fe7875995c">SetFrequencySweepEnable</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a6277c21701358b57832185a867e94eee">SetEnableSineOutput</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a8a18cca2e11de9fbb1f51c22ffbe9384">SetChargePumpOffset</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a485e191c37926ab88d252167efb1d4b1">SetChargePumpPolarity</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a4c394f8d30625cb698bfc77acbf84dac">SetAutoClearFrequencyAccumulator</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a3f6cfa6319063bcd02f9de8ddf6131a1">SetAutoClearPhaseAccumulator</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a8a460c352857bd5bfb77cd8d63502fba">SetLoadDeltaFrequencyTimer</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a6b7dfa13be60ebf83eca9a942a9e6f45">SetClearFrequencyAccumulator</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a87f99df96e64a05b06a88c1a4ba7a523">SetClearPhaseAccumulator</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a18718ea8f12a55e32fa7b8246ea1cca6">SetFastLockEnable</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a8ce3306f8471caefb28a95c42fff78f7">SetFTWForFastLock</link> (bool aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_c_a_d9858_1a0b8565f60e58d4ae5e7633a70ddf1e40">SetPhaseDetectorDividerRatioN</link> (uint8_t aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_c_a_d9858_1a3e1a48d677af1a94994bf0a1317b7b61">SetPhaseDetectorDividerRatioM</link> (uint8_t aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_c_a_d9858_1ae4595d63391732d68105b9345f0e7de0">SetFrequencyDetectModeChargePumpCurrent</link> (uint8_t aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_c_a_d9858_1ab43815d70c99e066920c94c89bcceb26">SetFinalClosedLoopModeChargePumpCurrent</link> (uint8_t aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_c_a_d9858_1a55f5523942d4fed31db13a182a10b7af">SetWideClosedLoopModeChargePumpCurrent</link> (uint8_t aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>int64_t <link linkend="_class_c_a_d9858_1a59afdacbcb2448fcdf98223276d5b413">SetDeltaFrequencyWord</link> (int64_t aDeltaFrequencyWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_a_d9858_1a824ca4beeb66e6fd97f5915765d1aae0">SetRampRateWord</link> (unsigned long aRampRateWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9858_1a65740774881d4681d45ebdadce3ebbfc">SetAttenuation</link> (double aValue, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9858_1a0b1839bde71aaf14f44c360cc449ac87">SetFrequency0</link> (double Frequency, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9858_1a08a819a58a1efebd47b1881c48d52f50">SetFrequency1</link> (double Frequency, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9858_1a25f86b7ec14c79aed86cc74ec0e94883">SetFrequency2</link> (double Frequency, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9858_1a9c79047a7caf95dc6523380c1d8504e2">SetFrequency3</link> (double Frequency, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>int64_t <link linkend="_class_c_a_d9858_1a75680424193966613b727c6d1d9c9bef">SetFrequencyTuningWord0</link> (const uint64_t &amp;FrequencyTuningWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>int64_t <link linkend="_class_c_a_d9858_1aa2bdca0ecd00b4722857d3cf261a3803">SetFrequencyTuningWord1</link> (const uint64_t &amp;FrequencyTuningWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>int64_t <link linkend="_class_c_a_d9858_1abdec734960f2e7104d1e5d9ca8083549">SetFrequencyTuningWord2</link> (const uint64_t &amp;FrequencyTuningWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>int64_t <link linkend="_class_c_a_d9858_1aaf3f21d14632592edcc4f5954e565002">SetFrequencyTuningWord3</link> (const uint64_t &amp;FrequencyTuningWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9858_1a276564fa5abd92dfec7ac5b73536893f">SetPhaseOffsetWord0</link> (unsigned short aPhaseOffsetWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9858_1a9314258070f73cfc8166d821aa05d277">SetPhaseOffsetWord1</link> (unsigned short aPhaseOffsetWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9858_1a878f3bc78a35d02c3447be8faba3aaea">SetPhaseOffsetWord2</link> (unsigned short aPhaseOffsetWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9858_1a487d9fa0ff114f3e6f95c8ed6c12dc6b">SetPhaseOffsetWord3</link> (unsigned short aPhaseOffsetWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a47b76f7cfdf9a6326e09a844deb327b8">SetPS0</link> (bool aPS0, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a37628c1ac9d96e165dc4de9d9bc707ca">SetPS1</link> (bool aPS1, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9858_1ac3247b8750d735aa14897320189c72ab">Enable</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_c_a_d9858_1af65c76a5d99e50188c0a1160049b0de9">SetFrequencyWritePrecision</link> (uint8_t Precision, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a7a85926f95ef3be942ca5aab394573d5">WriteToBus</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9858_1a2b52b1877e8535feea93e6e1039f012b">WriteAllToBus</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_a_d9858_1a64151c1bcf7e761b106fd742d0663d74">HasSomethingToWriteToBus</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9858_1af337c38d6e6af24807ded8e48bf25a66">FrequencyRamp</link> (double StartFrequency, double StopFrequency, double RampTime)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9858_1a466034372fd30efd981266820b591477">FrequencyModulation</link> (double StartFrequency, double StopFrequency, double ModulationFrequency)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>double <link linkend="_class_c_a_d9858_1a36bd3a54691cb740a4f6420c7c8b0a94">FrequencyMultiplier</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1add2d20978631316318a3bd72a0962d33">PS0</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a17d98069e94939c3fb594d1d88a07280">PS1</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9858_1a90d289ef0299c95bc007b00e878d6874">Enabled</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_a_d9858_1a5b55ef58ac884d20b361fb207d7f7568"/><section>
+    <title>CAD9858()</title>
+<indexterm><primary>CAD9858</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>CAD9858</secondary></indexterm>
+<para><computeroutput>CAD9858::CAD9858 (unsigned long aBaseAddress, double aExternalClockSpeed, double aFrequencyMultiplier, <link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * _MyDeviceSequencer)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a1b287a93aa78dca09944bdabf16f9715"/><section>
+    <title>~CAD9858()</title>
+<indexterm><primary>~CAD9858</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>~CAD9858</secondary></indexterm>
+<para><computeroutput>CAD9858::~CAD9858 ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_a_d9858_1ac3247b8750d735aa14897320189c72ab"/><section>
+    <title>Enable()</title>
+<indexterm><primary>Enable</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>Enable</secondary></indexterm>
+<para><computeroutput>void CAD9858::Enable (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a466034372fd30efd981266820b591477"/><section>
+    <title>FrequencyModulation()</title>
+<indexterm><primary>FrequencyModulation</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>FrequencyModulation</secondary></indexterm>
+<para><computeroutput>void CAD9858::FrequencyModulation (double StartFrequency, double StopFrequency, double ModulationFrequency)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1af337c38d6e6af24807ded8e48bf25a66"/><section>
+    <title>FrequencyRamp()</title>
+<indexterm><primary>FrequencyRamp</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>FrequencyRamp</secondary></indexterm>
+<para><computeroutput>void CAD9858::FrequencyRamp (double StartFrequency, double StopFrequency, double RampTime)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a64151c1bcf7e761b106fd742d0663d74"/><section>
+    <title>HasSomethingToWriteToBus()</title>
+<indexterm><primary>HasSomethingToWriteToBus</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>HasSomethingToWriteToBus</secondary></indexterm>
+<para><computeroutput>virtual bool CAD9858::HasSomethingToWriteToBus ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1af8a9c8199e91a884fca30e65102d489a"/><section>
+    <title>MasterReset()</title>
+<indexterm><primary>MasterReset</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>MasterReset</secondary></indexterm>
+<para><computeroutput>void CAD9858::MasterReset ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1aeb4ba9c68261e320c1e946b2dbca4b63"/><section>
+    <title>Set2GHzDividerDisable()</title>
+<indexterm><primary>Set2GHzDividerDisable</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>Set2GHzDividerDisable</secondary></indexterm>
+<para><computeroutput>bool CAD9858::Set2GHzDividerDisable (bool aDisable, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a65740774881d4681d45ebdadce3ebbfc"/><section>
+    <title>SetAttenuation()</title>
+<indexterm><primary>SetAttenuation</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetAttenuation</secondary></indexterm>
+<para><computeroutput>double CAD9858::SetAttenuation (double aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a4c394f8d30625cb698bfc77acbf84dac"/><section>
+    <title>SetAutoClearFrequencyAccumulator()</title>
+<indexterm><primary>SetAutoClearFrequencyAccumulator</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetAutoClearFrequencyAccumulator</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetAutoClearFrequencyAccumulator (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a3f6cfa6319063bcd02f9de8ddf6131a1"/><section>
+    <title>SetAutoClearPhaseAccumulator()</title>
+<indexterm><primary>SetAutoClearPhaseAccumulator</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetAutoClearPhaseAccumulator</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetAutoClearPhaseAccumulator (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a8a18cca2e11de9fbb1f51c22ffbe9384"/><section>
+    <title>SetChargePumpOffset()</title>
+<indexterm><primary>SetChargePumpOffset</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetChargePumpOffset</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetChargePumpOffset (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a485e191c37926ab88d252167efb1d4b1"/><section>
+    <title>SetChargePumpPolarity()</title>
+<indexterm><primary>SetChargePumpPolarity</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetChargePumpPolarity</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetChargePumpPolarity (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a6b7dfa13be60ebf83eca9a942a9e6f45"/><section>
+    <title>SetClearFrequencyAccumulator()</title>
+<indexterm><primary>SetClearFrequencyAccumulator</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetClearFrequencyAccumulator</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetClearFrequencyAccumulator (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a87f99df96e64a05b06a88c1a4ba7a523"/><section>
+    <title>SetClearPhaseAccumulator()</title>
+<indexterm><primary>SetClearPhaseAccumulator</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetClearPhaseAccumulator</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetClearPhaseAccumulator (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a59afdacbcb2448fcdf98223276d5b413"/><section>
+    <title>SetDeltaFrequencyWord()</title>
+<indexterm><primary>SetDeltaFrequencyWord</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetDeltaFrequencyWord</secondary></indexterm>
+<para><computeroutput>int64_t CAD9858::SetDeltaFrequencyWord (int64_t aDeltaFrequencyWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a6277c21701358b57832185a867e94eee"/><section>
+    <title>SetEnableSineOutput()</title>
+<indexterm><primary>SetEnableSineOutput</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetEnableSineOutput</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetEnableSineOutput (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a18718ea8f12a55e32fa7b8246ea1cca6"/><section>
+    <title>SetFastLockEnable()</title>
+<indexterm><primary>SetFastLockEnable</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFastLockEnable</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetFastLockEnable (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1ab43815d70c99e066920c94c89bcceb26"/><section>
+    <title>SetFinalClosedLoopModeChargePumpCurrent()</title>
+<indexterm><primary>SetFinalClosedLoopModeChargePumpCurrent</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFinalClosedLoopModeChargePumpCurrent</secondary></indexterm>
+<para><computeroutput>uint8_t CAD9858::SetFinalClosedLoopModeChargePumpCurrent (uint8_t aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a0b1839bde71aaf14f44c360cc449ac87"/><section>
+    <title>SetFrequency0()</title>
+<indexterm><primary>SetFrequency0</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequency0</secondary></indexterm>
+<para><computeroutput>double CAD9858::SetFrequency0 (double Frequency, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a08a819a58a1efebd47b1881c48d52f50"/><section>
+    <title>SetFrequency1()</title>
+<indexterm><primary>SetFrequency1</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequency1</secondary></indexterm>
+<para><computeroutput>double CAD9858::SetFrequency1 (double Frequency, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a25f86b7ec14c79aed86cc74ec0e94883"/><section>
+    <title>SetFrequency2()</title>
+<indexterm><primary>SetFrequency2</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequency2</secondary></indexterm>
+<para><computeroutput>double CAD9858::SetFrequency2 (double Frequency, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a9c79047a7caf95dc6523380c1d8504e2"/><section>
+    <title>SetFrequency3()</title>
+<indexterm><primary>SetFrequency3</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequency3</secondary></indexterm>
+<para><computeroutput>double CAD9858::SetFrequency3 (double Frequency, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1ae4595d63391732d68105b9345f0e7de0"/><section>
+    <title>SetFrequencyDetectModeChargePumpCurrent()</title>
+<indexterm><primary>SetFrequencyDetectModeChargePumpCurrent</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequencyDetectModeChargePumpCurrent</secondary></indexterm>
+<para><computeroutput>uint8_t CAD9858::SetFrequencyDetectModeChargePumpCurrent (uint8_t aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a006ca3231c0c8224499ef6fe7875995c"/><section>
+    <title>SetFrequencySweepEnable()</title>
+<indexterm><primary>SetFrequencySweepEnable</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequencySweepEnable</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetFrequencySweepEnable (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a75680424193966613b727c6d1d9c9bef"/><section>
+    <title>SetFrequencyTuningWord0()</title>
+<indexterm><primary>SetFrequencyTuningWord0</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequencyTuningWord0</secondary></indexterm>
+<para><computeroutput>int64_t CAD9858::SetFrequencyTuningWord0 (const uint64_t &amp; FrequencyTuningWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1aa2bdca0ecd00b4722857d3cf261a3803"/><section>
+    <title>SetFrequencyTuningWord1()</title>
+<indexterm><primary>SetFrequencyTuningWord1</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequencyTuningWord1</secondary></indexterm>
+<para><computeroutput>int64_t CAD9858::SetFrequencyTuningWord1 (const uint64_t &amp; FrequencyTuningWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1abdec734960f2e7104d1e5d9ca8083549"/><section>
+    <title>SetFrequencyTuningWord2()</title>
+<indexterm><primary>SetFrequencyTuningWord2</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequencyTuningWord2</secondary></indexterm>
+<para><computeroutput>int64_t CAD9858::SetFrequencyTuningWord2 (const uint64_t &amp; FrequencyTuningWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1aaf3f21d14632592edcc4f5954e565002"/><section>
+    <title>SetFrequencyTuningWord3()</title>
+<indexterm><primary>SetFrequencyTuningWord3</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequencyTuningWord3</secondary></indexterm>
+<para><computeroutput>int64_t CAD9858::SetFrequencyTuningWord3 (const uint64_t &amp; FrequencyTuningWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1af65c76a5d99e50188c0a1160049b0de9"/><section>
+    <title>SetFrequencyWritePrecision()</title>
+<indexterm><primary>SetFrequencyWritePrecision</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFrequencyWritePrecision</secondary></indexterm>
+<para><computeroutput>uint8_t CAD9858::SetFrequencyWritePrecision (uint8_t Precision, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a8ce3306f8471caefb28a95c42fff78f7"/><section>
+    <title>SetFTWForFastLock()</title>
+<indexterm><primary>SetFTWForFastLock</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetFTWForFastLock</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetFTWForFastLock (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a8a460c352857bd5bfb77cd8d63502fba"/><section>
+    <title>SetLoadDeltaFrequencyTimer()</title>
+<indexterm><primary>SetLoadDeltaFrequencyTimer</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetLoadDeltaFrequencyTimer</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetLoadDeltaFrequencyTimer (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1af12b9fe4c0c6aec710e545124e68c4f3"/><section>
+    <title>SetLSBFirst()</title>
+<indexterm><primary>SetLSBFirst</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetLSBFirst</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetLSBFirst (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a4dc395743ac2c1be750a52e30935a2b4"/><section>
+    <title>SetMixerPowerDown()</title>
+<indexterm><primary>SetMixerPowerDown</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetMixerPowerDown</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetMixerPowerDown (bool aPowerDown, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1ad23d4cfabd47db4b8e73406f1f92afd9"/><section>
+    <title>SetModulationFrequency()</title>
+<indexterm><primary>SetModulationFrequency</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetModulationFrequency</secondary></indexterm>
+<para><computeroutput>double CAD9858::SetModulationFrequency (double ModulationFrequency, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a3e1a48d677af1a94994bf0a1317b7b61"/><section>
+    <title>SetPhaseDetectorDividerRatioM()</title>
+<indexterm><primary>SetPhaseDetectorDividerRatioM</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPhaseDetectorDividerRatioM</secondary></indexterm>
+<para><computeroutput>uint8_t CAD9858::SetPhaseDetectorDividerRatioM (uint8_t aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a0b8565f60e58d4ae5e7633a70ddf1e40"/><section>
+    <title>SetPhaseDetectorDividerRatioN()</title>
+<indexterm><primary>SetPhaseDetectorDividerRatioN</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPhaseDetectorDividerRatioN</secondary></indexterm>
+<para><computeroutput>uint8_t CAD9858::SetPhaseDetectorDividerRatioN (uint8_t aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1acabc2b757faf9582ee0ced4513988fbb"/><section>
+    <title>SetPhaseDetectPowerDown()</title>
+<indexterm><primary>SetPhaseDetectPowerDown</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPhaseDetectPowerDown</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetPhaseDetectPowerDown (bool aPowerDown, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a276564fa5abd92dfec7ac5b73536893f"/><section>
+    <title>SetPhaseOffsetWord0()</title>
+<indexterm><primary>SetPhaseOffsetWord0</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPhaseOffsetWord0</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9858::SetPhaseOffsetWord0 (unsigned short aPhaseOffsetWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a9314258070f73cfc8166d821aa05d277"/><section>
+    <title>SetPhaseOffsetWord1()</title>
+<indexterm><primary>SetPhaseOffsetWord1</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPhaseOffsetWord1</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9858::SetPhaseOffsetWord1 (unsigned short aPhaseOffsetWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a878f3bc78a35d02c3447be8faba3aaea"/><section>
+    <title>SetPhaseOffsetWord2()</title>
+<indexterm><primary>SetPhaseOffsetWord2</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPhaseOffsetWord2</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9858::SetPhaseOffsetWord2 (unsigned short aPhaseOffsetWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a487d9fa0ff114f3e6f95c8ed6c12dc6b"/><section>
+    <title>SetPhaseOffsetWord3()</title>
+<indexterm><primary>SetPhaseOffsetWord3</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPhaseOffsetWord3</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9858::SetPhaseOffsetWord3 (unsigned short aPhaseOffsetWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a6a388b4025e94466a8c12256c6c470e5"/><section>
+    <title>SetPowerDown()</title>
+<indexterm><primary>SetPowerDown</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPowerDown</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetPowerDown (bool aPowerDown, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a47b76f7cfdf9a6326e09a844deb327b8"/><section>
+    <title>SetPS0()</title>
+<indexterm><primary>SetPS0</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPS0</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetPS0 (bool aPS0, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a37628c1ac9d96e165dc4de9d9bc707ca"/><section>
+    <title>SetPS1()</title>
+<indexterm><primary>SetPS1</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetPS1</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetPS1 (bool aPS1, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a824ca4beeb66e6fd97f5915765d1aae0"/><section>
+    <title>SetRampRateWord()</title>
+<indexterm><primary>SetRampRateWord</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetRampRateWord</secondary></indexterm>
+<para><computeroutput>unsigned long CAD9858::SetRampRateWord (unsigned long aRampRateWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a8444e38024a21e9e5aaafed7807dc814"/><section>
+    <title>SetSDIOInputOnly()</title>
+<indexterm><primary>SetSDIOInputOnly</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetSDIOInputOnly</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetSDIOInputOnly (bool aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a8625d6c53615e437a91650b79c664df7"/><section>
+    <title>SetSYNCLKDisable()</title>
+<indexterm><primary>SetSYNCLKDisable</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetSYNCLKDisable</secondary></indexterm>
+<para><computeroutput>bool CAD9858::SetSYNCLKDisable (bool aDisable, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1af962cc79731569f2e3770c67cc994f06"/><section>
+    <title>SetUpdateRegistersModeAutomatic()</title>
+<indexterm><primary>SetUpdateRegistersModeAutomatic</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetUpdateRegistersModeAutomatic</secondary></indexterm>
+<para><computeroutput>void CAD9858::SetUpdateRegistersModeAutomatic ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1ac73e98249df8ebdb966de15e558c0715"/><section>
+    <title>SetUpdateRegistersModeManual()</title>
+<indexterm><primary>SetUpdateRegistersModeManual</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetUpdateRegistersModeManual</secondary></indexterm>
+<para><computeroutput>void CAD9858::SetUpdateRegistersModeManual ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a55f5523942d4fed31db13a182a10b7af"/><section>
+    <title>SetWideClosedLoopModeChargePumpCurrent()</title>
+<indexterm><primary>SetWideClosedLoopModeChargePumpCurrent</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>SetWideClosedLoopModeChargePumpCurrent</secondary></indexterm>
+<para><computeroutput>uint8_t CAD9858::SetWideClosedLoopModeChargePumpCurrent (uint8_t aValue, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a2b52b1877e8535feea93e6e1039f012b"/><section>
+    <title>WriteAllToBus()</title>
+<indexterm><primary>WriteAllToBus</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>WriteAllToBus</secondary></indexterm>
+<para><computeroutput>void CAD9858::WriteAllToBus ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a7a85926f95ef3be942ca5aab394573d5"/><section>
+    <title>WriteToBus()</title>
+<indexterm><primary>WriteToBus</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>WriteToBus</secondary></indexterm>
+<para><computeroutput>bool CAD9858::WriteToBus ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_a_d9858_1a90d289ef0299c95bc007b00e878d6874"/><section>
+    <title>Enabled</title>
+<indexterm><primary>Enabled</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>Enabled</secondary></indexterm>
+<para><computeroutput>bool CAD9858::Enabled</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a36bd3a54691cb740a4f6420c7c8b0a94"/><section>
+    <title>FrequencyMultiplier</title>
+<indexterm><primary>FrequencyMultiplier</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>FrequencyMultiplier</secondary></indexterm>
+<para><computeroutput>double CAD9858::FrequencyMultiplier</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1add2d20978631316318a3bd72a0962d33"/><section>
+    <title>PS0</title>
+<indexterm><primary>PS0</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>PS0</secondary></indexterm>
+<para><computeroutput>bool CAD9858::PS0</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9858_1a17d98069e94939c3fb594d1d88a07280"/><section>
+    <title>PS1</title>
+<indexterm><primary>PS1</primary><secondary>CAD9858</secondary></indexterm>
+<indexterm><primary>CAD9858</primary><secondary>PS1</secondary></indexterm>
+<para><computeroutput>bool CAD9858::PS1</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__a_d9858_8h">AD9858.h</link><link linkend="__a_d9858_8cpp">AD9858.cpp</link></section>
+</section>

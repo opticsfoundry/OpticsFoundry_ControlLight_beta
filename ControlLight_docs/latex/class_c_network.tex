@@ -1,0 +1,249 @@
+\doxysection{CNetwork Class Reference}
+\hypertarget{class_c_network}{}\label{class_c_network}\index{CNetwork@{CNetwork}}
+
+
+{\ttfamily \#include $<$network.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_c_network_a039dff02b725f746409eaa09a103bce6}{Connect\+Socket}} (const std\+::string \&host, unsigned int n\+Port, const std\+::string \&Socket\+Name, bool reconnect=false, int timeout\+\_\+s=2)
+\item 
+bool \mbox{\hyperlink{class_c_network_a2ddc0a0564d0bf5b3cddf8f1ebb838a2}{Reset\+Connection}} (unsigned long sleep\+\_\+time=2000)
+\item 
+bool \mbox{\hyperlink{class_c_network_a2d9dc5d77a9db1a996534cb3d3d1f3dd}{Flush\+Input\+Buffer}} ()
+\item 
+bool \mbox{\hyperlink{class_c_network_a75d59a0d4c53aa4a0ade70d6aaaca845}{Flush\+Output\+Buffer}} ()
+\item 
+void \mbox{\hyperlink{class_c_network_aa8f487a58a1d73e21e0af9601f9bfcc4}{Send\+Msg}} (\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&str\+Text)
+\item 
+bool \mbox{\hyperlink{class_c_network_a6487dc24383af3cc9adc7aa94199b971}{Send\+Data}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}Data, unsigned long Size)
+\item 
+bool \mbox{\hyperlink{class_c_network_ad9636a38079916ec660c88092f84ad36}{Send\+String}} (const \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&str)
+\item 
+virtual bool \mbox{\hyperlink{class_c_network_a19cf86a9324374a37d710e3a34e72da9}{Receive\+Msg}} (char end\+\_\+character=\textquotesingle{}\textbackslash{}n\textquotesingle{}, bool Wait\+For\+Start\+Character=false, char start\+\_\+character=\textquotesingle{} \texorpdfstring{$\ast$}{*}\textquotesingle{}, double timeout\+\_\+in\+\_\+seconds=5)
+\item 
+bool \mbox{\hyperlink{class_c_network_a1ebf567f42570a93f29079c14d244e91}{Receive\+Data}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, unsigned long buffer\+\_\+length, unsigned long timeout=5000)
+\item 
+bool \mbox{\hyperlink{class_c_network_a52997f0e0a9fcd43ada48a1b3673f9c3}{Receive\+String}} (\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&out\+Str, double timeout\+\_\+in\+\_\+seconds=5, char end\+Char=\textquotesingle{}\textbackslash{}n\textquotesingle{})
+\item 
+void \mbox{\hyperlink{class_c_network_a55be2d3a1d45549c8199b1a4324996d6}{Debug\+Stop}} ()
+\item 
+void \mbox{\hyperlink{class_c_network_aba707b1e7ba4ce923c90f9fa636f05a6}{Debug\+Start}} (const std\+::string \&Filename)
+\item 
+void \mbox{\hyperlink{class_c_network_abdd54634e4dcfb17515ed74dd3e0b64c}{Flush}} ()
+\item 
+void \mbox{\hyperlink{class_c_network_a6a9367568c0eb9ef88308696d786c08c}{Store\+Last\+Message}} (const std\+::string \&Message)
+\item 
+bool \mbox{\hyperlink{class_c_network_a63cd36d8c60d6a8e5cc962fead4ab36c}{Get\+Message}} (\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&Message, double timeout\+\_\+in\+\_\+seconds=5, int mode=1)
+\item 
+\mbox{\hyperlink{class_c_network_ae4c6f98dd9b44e1547f7eff0a0799dfc}{CNetwork}} ()
+\item 
+virtual \mbox{\hyperlink{class_c_network_a5f8c44eababcef02f4ce7af3592dba37}{\texorpdfstring{$\sim$}{\string~}\+CNetwork}} ()
+\item 
+void \mbox{\hyperlink{class_c_network_ae05676ec152f6b4a5880e51d837ddb80}{Disconnect\+Socket}} ()
+\item 
+bool \mbox{\hyperlink{class_c_network_ad6e6c1704cdd7e80e5521e83d6a02362}{Is\+Connected}} () const
+\item 
+bool \mbox{\hyperlink{class_c_network_a665c20541840dcf938b63284847cc33f}{Reconnect}} (int max\+Retries=3, int timeout\+\_\+s=2, unsigned long delay\+\_\+ms=1000)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_c_network_a4bfd8dd7fae5d4bee6ffd05f5f0a4a29}{m\+\_\+p\+Socket}}
+\item 
+int \mbox{\hyperlink{class_c_network_a225f793bf19b96faf4f8688b2a36c5d1}{m\+\_\+socketfd}}
+\item 
+std\+::string \mbox{\hyperlink{class_c_network_ad78041ee8e9e37742ad515f58d709071}{m\+\_\+host}}
+\item 
+unsigned int \mbox{\hyperlink{class_c_network_a41f6cae3910e566dc07491466c2c5ba7}{m\+\_\+n\+Port}}
+\item 
+std\+::string \mbox{\hyperlink{class_c_network_a6bdcc577661a3b3648063670e08d5f43}{m\+\_\+\+Socket\+Name}}
+\item 
+ofstream \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_c_network_a187987b13ede6e699546871811d354cd}{Debug\+File}}
+\item 
+\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \mbox{\hyperlink{class_c_network_a8db02b78a8f17f1ec7ccdb6ff5a15f7f}{Last\+Message}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_network_ae4c6f98dd9b44e1547f7eff0a0799dfc}\index{CNetwork@{CNetwork}!CNetwork@{CNetwork}}
+\index{CNetwork@{CNetwork}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{CNetwork()}{CNetwork()}}
+{\footnotesize\ttfamily \label{class_c_network_ae4c6f98dd9b44e1547f7eff0a0799dfc} 
+CNetwork\+::\+CNetwork (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a5f8c44eababcef02f4ce7af3592dba37}\index{CNetwork@{CNetwork}!````~CNetwork@{\texorpdfstring{$\sim$}{\string~}CNetwork}}
+\index{````~CNetwork@{\texorpdfstring{$\sim$}{\string~}CNetwork}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CNetwork()}{\string~CNetwork()}}
+{\footnotesize\ttfamily \label{class_c_network_a5f8c44eababcef02f4ce7af3592dba37} 
+CNetwork\+::\texorpdfstring{$\sim$}{\string~}\+CNetwork (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_network_a039dff02b725f746409eaa09a103bce6}\index{CNetwork@{CNetwork}!ConnectSocket@{ConnectSocket}}
+\index{ConnectSocket@{ConnectSocket}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{ConnectSocket()}{ConnectSocket()}}
+{\footnotesize\ttfamily \label{class_c_network_a039dff02b725f746409eaa09a103bce6} 
+bool CNetwork\+::\+Connect\+Socket (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{host}{, }\item[{unsigned int}]{n\+Port}{, }\item[{const std\+::string \&}]{Socket\+Name}{, }\item[{bool}]{reconnect}{ = {\ttfamily false}, }\item[{int}]{timeout\+\_\+s}{ = {\ttfamily 2}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_aba707b1e7ba4ce923c90f9fa636f05a6}\index{CNetwork@{CNetwork}!DebugStart@{DebugStart}}
+\index{DebugStart@{DebugStart}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{DebugStart()}{DebugStart()}}
+{\footnotesize\ttfamily \label{class_c_network_aba707b1e7ba4ce923c90f9fa636f05a6} 
+void CNetwork\+::\+Debug\+Start (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Filename}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a55be2d3a1d45549c8199b1a4324996d6}\index{CNetwork@{CNetwork}!DebugStop@{DebugStop}}
+\index{DebugStop@{DebugStop}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{DebugStop()}{DebugStop()}}
+{\footnotesize\ttfamily \label{class_c_network_a55be2d3a1d45549c8199b1a4324996d6} 
+void CNetwork\+::\+Debug\+Stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_ae05676ec152f6b4a5880e51d837ddb80}\index{CNetwork@{CNetwork}!DisconnectSocket@{DisconnectSocket}}
+\index{DisconnectSocket@{DisconnectSocket}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{DisconnectSocket()}{DisconnectSocket()}}
+{\footnotesize\ttfamily \label{class_c_network_ae05676ec152f6b4a5880e51d837ddb80} 
+void CNetwork\+::\+Disconnect\+Socket (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_abdd54634e4dcfb17515ed74dd3e0b64c}\index{CNetwork@{CNetwork}!Flush@{Flush}}
+\index{Flush@{Flush}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{Flush()}{Flush()}}
+{\footnotesize\ttfamily \label{class_c_network_abdd54634e4dcfb17515ed74dd3e0b64c} 
+void CNetwork\+::\+Flush (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a2d9dc5d77a9db1a996534cb3d3d1f3dd}\index{CNetwork@{CNetwork}!FlushInputBuffer@{FlushInputBuffer}}
+\index{FlushInputBuffer@{FlushInputBuffer}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{FlushInputBuffer()}{FlushInputBuffer()}}
+{\footnotesize\ttfamily \label{class_c_network_a2d9dc5d77a9db1a996534cb3d3d1f3dd} 
+bool CNetwork\+::\+Flush\+Input\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a75d59a0d4c53aa4a0ade70d6aaaca845}\index{CNetwork@{CNetwork}!FlushOutputBuffer@{FlushOutputBuffer}}
+\index{FlushOutputBuffer@{FlushOutputBuffer}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{FlushOutputBuffer()}{FlushOutputBuffer()}}
+{\footnotesize\ttfamily \label{class_c_network_a75d59a0d4c53aa4a0ade70d6aaaca845} 
+bool CNetwork\+::\+Flush\+Output\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a63cd36d8c60d6a8e5cc962fead4ab36c}\index{CNetwork@{CNetwork}!GetMessage@{GetMessage}}
+\index{GetMessage@{GetMessage}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{GetMessage()}{GetMessage()}}
+{\footnotesize\ttfamily \label{class_c_network_a63cd36d8c60d6a8e5cc962fead4ab36c} 
+bool CNetwork\+::\+Get\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&}]{Message}{, }\item[{double}]{timeout\+\_\+in\+\_\+seconds}{ = {\ttfamily 5}, }\item[{int}]{mode}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_ad6e6c1704cdd7e80e5521e83d6a02362}\index{CNetwork@{CNetwork}!IsConnected@{IsConnected}}
+\index{IsConnected@{IsConnected}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{IsConnected()}{IsConnected()}}
+{\footnotesize\ttfamily \label{class_c_network_ad6e6c1704cdd7e80e5521e83d6a02362} 
+bool CNetwork\+::\+Is\+Connected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]\end{DoxyRefDesc}
+\Hypertarget{class_c_network_a1ebf567f42570a93f29079c14d244e91}\index{CNetwork@{CNetwork}!ReceiveData@{ReceiveData}}
+\index{ReceiveData@{ReceiveData}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{ReceiveData()}{ReceiveData()}}
+{\footnotesize\ttfamily \label{class_c_network_a1ebf567f42570a93f29079c14d244e91} 
+bool CNetwork\+::\+Receive\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{unsigned long}]{buffer\+\_\+length}{, }\item[{unsigned long}]{timeout}{ = {\ttfamily 5000}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a19cf86a9324374a37d710e3a34e72da9}\index{CNetwork@{CNetwork}!ReceiveMsg@{ReceiveMsg}}
+\index{ReceiveMsg@{ReceiveMsg}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{ReceiveMsg()}{ReceiveMsg()}}
+{\footnotesize\ttfamily \label{class_c_network_a19cf86a9324374a37d710e3a34e72da9} 
+bool CNetwork\+::\+Receive\+Msg (\begin{DoxyParamCaption}\item[{char}]{end\+\_\+character}{ = {\ttfamily \textquotesingle{}\textbackslash{}n\textquotesingle{}}, }\item[{bool}]{Wait\+For\+Start\+Character}{ = {\ttfamily false}, }\item[{char}]{start\+\_\+character}{ = {\ttfamily \textquotesingle{}\texorpdfstring{$\ast$}{*}\textquotesingle{}}, }\item[{double}]{timeout\+\_\+in\+\_\+seconds}{ = {\ttfamily 5}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\Hypertarget{class_c_network_a52997f0e0a9fcd43ada48a1b3673f9c3}\index{CNetwork@{CNetwork}!ReceiveString@{ReceiveString}}
+\index{ReceiveString@{ReceiveString}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{ReceiveString()}{ReceiveString()}}
+{\footnotesize\ttfamily \label{class_c_network_a52997f0e0a9fcd43ada48a1b3673f9c3} 
+bool CNetwork\+::\+Receive\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&}]{out\+Str}{, }\item[{double}]{timeout\+\_\+in\+\_\+seconds}{ = {\ttfamily 5}, }\item[{char}]{end\+Char}{ = {\ttfamily \textquotesingle{}\textbackslash{}n\textquotesingle{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a665c20541840dcf938b63284847cc33f}\index{CNetwork@{CNetwork}!Reconnect@{Reconnect}}
+\index{Reconnect@{Reconnect}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{Reconnect()}{Reconnect()}}
+{\footnotesize\ttfamily \label{class_c_network_a665c20541840dcf938b63284847cc33f} 
+bool CNetwork\+::\+Reconnect (\begin{DoxyParamCaption}\item[{int}]{max\+Retries}{ = {\ttfamily 3}, }\item[{int}]{timeout\+\_\+s}{ = {\ttfamily 2}, }\item[{unsigned long}]{delay\+\_\+ms}{ = {\ttfamily 1000}}\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000004}{Todo}}]\end{DoxyRefDesc}
+\Hypertarget{class_c_network_a2ddc0a0564d0bf5b3cddf8f1ebb838a2}\index{CNetwork@{CNetwork}!ResetConnection@{ResetConnection}}
+\index{ResetConnection@{ResetConnection}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{ResetConnection()}{ResetConnection()}}
+{\footnotesize\ttfamily \label{class_c_network_a2ddc0a0564d0bf5b3cddf8f1ebb838a2} 
+bool CNetwork\+::\+Reset\+Connection (\begin{DoxyParamCaption}\item[{unsigned long}]{sleep\+\_\+time}{ = {\ttfamily 2000}}\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]\end{DoxyRefDesc}
+\Hypertarget{class_c_network_a6487dc24383af3cc9adc7aa94199b971}\index{CNetwork@{CNetwork}!SendData@{SendData}}
+\index{SendData@{SendData}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{SendData()}{SendData()}}
+{\footnotesize\ttfamily \label{class_c_network_a6487dc24383af3cc9adc7aa94199b971} 
+bool CNetwork\+::\+Send\+Data (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Data}{, }\item[{unsigned long}]{Size}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_aa8f487a58a1d73e21e0af9601f9bfcc4}\index{CNetwork@{CNetwork}!SendMsg@{SendMsg}}
+\index{SendMsg@{SendMsg}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{SendMsg()}{SendMsg()}}
+{\footnotesize\ttfamily \label{class_c_network_aa8f487a58a1d73e21e0af9601f9bfcc4} 
+void CNetwork\+::\+Send\+Msg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&}]{str\+Text}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_ad9636a38079916ec660c88092f84ad36}\index{CNetwork@{CNetwork}!SendString@{SendString}}
+\index{SendString@{SendString}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{SendString()}{SendString()}}
+{\footnotesize\ttfamily \label{class_c_network_ad9636a38079916ec660c88092f84ad36} 
+bool CNetwork\+::\+Send\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} \&}]{str}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_network_a6a9367568c0eb9ef88308696d786c08c}\index{CNetwork@{CNetwork}!StoreLastMessage@{StoreLastMessage}}
+\index{StoreLastMessage@{StoreLastMessage}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{StoreLastMessage()}{StoreLastMessage()}}
+{\footnotesize\ttfamily \label{class_c_network_a6a9367568c0eb9ef88308696d786c08c} 
+void CNetwork\+::\+Store\+Last\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Message}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_network_a187987b13ede6e699546871811d354cd}\index{CNetwork@{CNetwork}!DebugFile@{DebugFile}}
+\index{DebugFile@{DebugFile}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{DebugFile}{DebugFile}}
+{\footnotesize\ttfamily \label{class_c_network_a187987b13ede6e699546871811d354cd} 
+ofstream\texorpdfstring{$\ast$}{*} CNetwork\+::\+Debug\+File}
+
+\Hypertarget{class_c_network_a8db02b78a8f17f1ec7ccdb6ff5a15f7f}\index{CNetwork@{CNetwork}!LastMessage@{LastMessage}}
+\index{LastMessage@{LastMessage}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{LastMessage}{LastMessage}}
+{\footnotesize\ttfamily \label{class_c_network_a8db02b78a8f17f1ec7ccdb6ff5a15f7f} 
+\mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}} CNetwork\+::\+Last\+Message}
+
+\Hypertarget{class_c_network_ad78041ee8e9e37742ad515f58d709071}\index{CNetwork@{CNetwork}!m\_host@{m\_host}}
+\index{m\_host@{m\_host}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{m\_host}{m\_host}}
+{\footnotesize\ttfamily \label{class_c_network_ad78041ee8e9e37742ad515f58d709071} 
+std\+::string CNetwork\+::m\+\_\+host}
+
+\Hypertarget{class_c_network_a41f6cae3910e566dc07491466c2c5ba7}\index{CNetwork@{CNetwork}!m\_nPort@{m\_nPort}}
+\index{m\_nPort@{m\_nPort}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{m\_nPort}{m\_nPort}}
+{\footnotesize\ttfamily \label{class_c_network_a41f6cae3910e566dc07491466c2c5ba7} 
+unsigned int CNetwork\+::m\+\_\+n\+Port}
+
+\Hypertarget{class_c_network_a4bfd8dd7fae5d4bee6ffd05f5f0a4a29}\index{CNetwork@{CNetwork}!m\_pSocket@{m\_pSocket}}
+\index{m\_pSocket@{m\_pSocket}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{m\_pSocket}{m\_pSocket}}
+{\footnotesize\ttfamily \label{class_c_network_a4bfd8dd7fae5d4bee6ffd05f5f0a4a29} 
+int\texorpdfstring{$\ast$}{*} CNetwork\+::m\+\_\+p\+Socket}
+
+\Hypertarget{class_c_network_a225f793bf19b96faf4f8688b2a36c5d1}\index{CNetwork@{CNetwork}!m\_socketfd@{m\_socketfd}}
+\index{m\_socketfd@{m\_socketfd}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{m\_socketfd}{m\_socketfd}}
+{\footnotesize\ttfamily \label{class_c_network_a225f793bf19b96faf4f8688b2a36c5d1} 
+int CNetwork\+::m\+\_\+socketfd}
+
+\Hypertarget{class_c_network_a6bdcc577661a3b3648063670e08d5f43}\index{CNetwork@{CNetwork}!m\_SocketName@{m\_SocketName}}
+\index{m\_SocketName@{m\_SocketName}!CNetwork@{CNetwork}}
+\doxysubsubsection{\texorpdfstring{m\_SocketName}{m\_SocketName}}
+{\footnotesize\ttfamily \label{class_c_network_a6bdcc577661a3b3648063670e08d5f43} 
+std\+::string CNetwork\+::m\+\_\+\+Socket\+Name}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{network_8h}{network.\+h}}\item 
+\mbox{\hyperlink{network_8cpp}{network.\+cpp}}\end{DoxyCompactItemize}

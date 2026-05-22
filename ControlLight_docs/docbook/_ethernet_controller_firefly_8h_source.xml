@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__ethernet_controller_firefly_8h_source" xml:lang="en-US">
+<title>EthernetControllerFirefly.h</title>
+<indexterm><primary>EthernetControllerFirefly.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__network_client_8h">NetworkClient.h</link>&quot;</emphasis>&#32;&#32;<emphasis role="comment">//&#32;Added&#32;by&#32;ClassView</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__ethernet_controller_firefly_8h">EthernetControllerFirefly.h</link>&quot;</emphasis>
+5 <emphasis role="preprocessor">#include&#32;&lt;functional&gt;</emphasis>
+6 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_std_8h">std.h</link>&quot;</emphasis>
+7 
+8 
+9 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+10 
+11 <emphasis role="keyword">typedef</emphasis>&#32;std::function&lt;bool(<emphasis role="keywordtype">void</emphasis>)&gt;&#32;tBoolFunction;
+12 
+13 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_sequencer">CDeviceSequencer</link>;
+14 
+15 <emphasis role="keyword">class&#32;</emphasis>CEthernetControllerFirefly&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_c_network_client">CNetworkClient</link>
+16 {
+17 <emphasis role="keyword">public</emphasis>:
+18 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;SequencerCommandListSize;
+19 &#32;&#32;&#32;&#32;uint32_t*&#32;SequencerCommandList;
+20 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;MyMultiIO;
+21 <emphasis role="keyword">public</emphasis>:
+22 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Connected;
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DebugBufferOn;
+24 &#32;&#32;&#32;&#32;std::ofstream*&#32;DebugBufferFile;
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalTrigger0;
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalTrigger1;
+27 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;PeriodicTriggerPeriod_in_ms;
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;PeriodicTriggerAllowedWait_in_ms;
+29 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalClock0;
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalClock1;
+31 &#32;&#32;&#32;&#32;<emphasis role="comment">//double&#32;BusFrequency;</emphasis>
+32 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;FPGAClockToBusClockRatio;
+33 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;FPGAClockFrequencyInHz;
+34 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;FPGAUseExternalClock;
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;FPGAUseStrobeGenerator;
+36 &#32;&#32;&#32;&#32;<link linkend="_std_8h_1a232395c051c7d6ad1c46b894b66fcc4f">Time</link>&#32;StartTickCounts;
+37 &#32;&#32;&#32;&#32;<emphasis role="comment">//uint32_t*&#32;FPGABuffer;</emphasis>
+38 &#32;&#32;&#32;&#32;<emphasis role="comment">//uint32_t*&#32;FPGAAbsoluteTime;</emphasis>
+39 &#32;&#32;&#32;&#32;<emphasis role="comment">//uint32_t&#32;FPGABufferUsed;</emphasis>
+40 &#32;&#32;&#32;&#32;<emphasis role="comment">//COutput*&#32;myOutput;</emphasis>
+41 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;LastPeriodicTriggerPeriod_in_ms;
+42 <emphasis role="keyword">private</emphasis>:
+43 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;core_option_LED;&#32;
+44 &#32;&#32;&#32;&#32;uint8_t&#32;core_option_SPI_CS;
+45 &#32;&#32;&#32;&#32;uint8_t&#32;core_option_dig_out;&#32;&#32;
+46 &#32;&#32;&#32;&#32;uint8_t&#32;core_option_PL_to_PS;
+47 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SetPeriodicTriggerAtBeginningOfNextSequence;
+48 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;WaitForPeriodicTriggerAtBeginningOfSequence;
+49 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ChangePeriodicTriggerPeriodWhileCycling;
+50 &#32;&#32;&#32;&#32;uint32_t*&#32;previous_command_buffer;
+51 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;previous_command_buffer_length;
+52 &#32;&#32;&#32;&#32;CDeviceSequencer*&#32;MySequencer;
+53 &#32;&#32;&#32;&#32;uint8_t*&#32;previous_command_buffer_ptr;
+54 
+55 &#32;&#32;&#32;&#32;uint8_t*&#32;previous_receive_data_ptr;
+56 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;receive_data_length;
+57 
+58 &#32;&#32;&#32;&#32;uint8_t*&#32;previous_input_buffer_ptr;
+59 
+60 <emphasis role="keyword">private</emphasis>:
+61 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartSPIAnalogInAcquisition(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;analog_in_type,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SPI_CS,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;channel_nr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_datapoints,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms);&#32;&#32;&#32;&#32;
+62 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartXADCAnalogInAcquisition(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;channel_nr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_datapoints,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms);
+63 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartSPIAnalogInAcquisition(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;channel_nr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_datapoints,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms);
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartSPIAnalogInAcquisition_MCP3208(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;analog_in_type,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SPI_CS,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;channel_nr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_datapoints,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms);
+65 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartSPIAnalogInAcquisition_ADS1256(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;analog_in_type,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SPI_CS,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;channel_nr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_datapoints,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms);
+66 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandAnalogInOut(uint8_t&#32;adc_register_address,&#32;uint8_t&#32;adc_write_enable,&#32;uint16_t&#32;adc_programming_out,&#32;uint8_t&#32;dont_execute_now,&#32;uint8_t&#32;only_read_write,&#32;uint32_t&#32;wait_time);
+67 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetCoreOptions();
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandWait(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;Wait_in_FPGA_clock_cycles);
+69 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetPLToPSCommand(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;PLToPSCommand);
+70 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DoTransmitOnlyDifferenceBetweenCommandSequenceIfPossible;
+71 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptNetworkCommand(tBoolFunction&#32;fCommand);
+72 <emphasis role="keyword">public</emphasis>:
+73 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandStop();
+74 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetCoreOption_LED(<emphasis role="keywordtype">bool</emphasis>&#32;a_core_option_LED);
+75 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSwitchBuzzer(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+76 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetCoreOption_SPI_CS(uint8_t&#32;a_core_option_SPI_CS);
+77 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetCoreOption_dig_out(uint8_t&#32;a_core_option_dig_out);
+78 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetCoreOption_PL_to_PS(uint8_t&#32;a_core_option_PL_to_PS);
+79 <emphasis role="keyword">public</emphasis>:&#32;
+80 &#32;&#32;&#32;&#32;CEthernetControllerFirefly(CDeviceSequencer*&#32;_MySequencer);
+81 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;~CEthernetControllerFirefly();
+82 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SendSequenceToFPGA(uint32_t*&#32;buffer,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;DebugFileName&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+83 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddSequencerCommandToSequenceList(uint32_t&#32;high_buffer,&#32;uint32_t&#32;low_buffer);
+84 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;StartAnalogInAcquisition(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;analog_in_type,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SPI_CS,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;channel_nr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_datapoints,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms);
+85 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AddSequencePreamble();
+86 &#32;&#32;&#32;&#32;<emphasis role="comment">//bool&#32;AddData(uint32_t*&#32;BusData,&#32;uint32_t*&#32;Spacing,&#32;/*uint32_t*&#32;AbsoluteTime,*/&#32;unsigned&#32;long&#32;Count);</emphasis>
+87 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;GetAktWaveformPoint(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataPointsWritten,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&amp;running);
+88 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a3ee365be0bf018eb8789a30e3e1d25ba">GetNextCycleNumber</link>(<emphasis role="keywordtype">long</emphasis>&amp;&#32;NextCycleNumber);
+89 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1aace7710bfbc4069e74e5955683650261">ResetCycleNumber</link>();
+90 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CheckReady(<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_s&#32;=&#32;1);
+91 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a2401f1f815f01bc50adeba298242707b">Reset</link>();
+92 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1ae11c2f457429ac307cee5322e091eb7c">WaitTillEndOfSequenceThenGetInputData</link>(uint8_t*&amp;&#32;buffer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;buffer_length,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;EndTimeOfCycle,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_s&#32;=&#32;10);
+93 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandStep(uint32_t&#32;data,&#32;uint32_t&#32;delay);
+94 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddProgramLine(&#32;uint8_t&#32;command,&#32;uint32_t&#32;data,&#32;uint32_t&#32;delay);
+95 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddDelay_in_ns(uint32_t&#32;delay_in_nanoseconds);
+96 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetStrobeOptions(&#32;uint8_t&#32;strobe_choice,&#32;uint8_t&#32;strobe_low_length,&#32;uint8_t&#32;strobe_high_length);
+97 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetTriggerOptions(&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalTrigger0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalTrigger1);
+98 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddExternalTrigger(&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalTrigger0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalTrigger1,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;FPGASoftwareTrigger&#32;);
+99 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;WriteBufferToFile(uint32_t*&#32;buffer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;length,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;FileName);
+100 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_client_1ade76f1386eee005c6be7cfcaa2231e5c">ConnectSocket</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;host,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;port,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;aFPGAClockToBusClockRatio,&#32;<emphasis role="keywordtype">double</emphasis>&#32;aFPGAClockFrequencyInHz,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;aFPGAUseExternalClock,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;aFPGAUseStrobeGenerator,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalTrigger);
+101 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;GetFPGAClockFrequency_in_Hz();
+102 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1af455c591a3648d967149287359b1980f">WaitTillEndOfSequence</link>(<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_s&#32;=&#32;0);<emphasis role="comment">//timeout_in_s&#32;&lt;0.001&#32;means&#32;no&#32;timeout</emphasis>
+103 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Start();
+104 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Stop();
+105 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;CloseConnection();
+106 &#32;&#32;&#32;&#32;<emphasis role="comment">//void&#32;ResetProgramBuffer()&#32;{&#32;FPGABufferUsed&#32;=&#32;0;&#32;}</emphasis>
+107 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1adebc9e720e4b0afda1c4b980fbc11459">SetFrequency</link>(<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+108 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;GetFrequency(<emphasis role="keywordtype">double</emphasis>&amp;&#32;Frequency);
+109 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;GetPeriodicTriggerError(<emphasis role="keywordtype">bool</emphasis>&amp;&#32;Error);
+110 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetExternalTrigger(<emphasis role="keywordtype">bool</emphasis>&#32;aExternalTrigger0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;aExternalTrigger1);
+111 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1aab1dc34f58bff0cb1894e188162798e1">SetPeriodicTrigger_ms</link>(<emphasis role="keywordtype">double</emphasis>&#32;aPeriodicTriggerPeriod_in_ms,&#32;<emphasis role="keywordtype">double</emphasis>&#32;aPeriodicTriggerAllowedWaitTime_in_ms);
+112 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;WaitForPeriodicTrigger(<emphasis role="keywordtype">bool</emphasis>&#32;aWaitForPeriodicTriggerAtBeginningOfSequence);
+113 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SetExternalClock(<emphasis role="keywordtype">bool</emphasis>&#32;ExternalClock0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ExternalClock1);
+114 &#32;&#32;&#32;&#32;
+115 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a4035116c1ec2f0d76f0333815915811f">TransmitI2CPort</link>(uint8_t&#32;I2C_port,&#32;uint8_t&#32;I2C_destination,&#32;uint8_t&#32;I2C_address,&#32;uint16_t&#32;send_length,&#32;uint8_t&#32;*send_data,&#32;uint16_t&#32;receive_length,&#32;uint8_t&#32;*receive_data,&#32;uint32_t&#32;I2C_clock_frequency_in_Hz,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;I2C_success,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;fail_silently);
+116 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a34afd08b785e86b0897f587071ce06ce">SetPSOptions</link>(uint8_t&#32;options);
+117 
+118 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;DebugBuffer(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;filename);
+119 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddSequencerCommandToBuffer(uint32_t*&#32;buffer,&#32;uint32_t&#32;n,&#32;uint32_t&#32;high_buffer,&#32;uint32_t&#32;low_buffer);
+120 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;ClearSequencerCommandList();
+121 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddSequencerCommand(uint32_t&#32;high_word,&#32;uint32_t&#32;low_word);
+122 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a3186ff65e19d503d7e7d346f3179f08e">SwitchDebugMode</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;aFilename);
+123 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SwitchDebugLED(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+124 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;IgnoreTCPIP(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+125 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddMarker(uint8_t&#32;Marker);
+126 
+127 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandTransmitI2C(uint8_t&#32;I2C_port,&#32;uint8_t&#32;I2C_length_out,&#32;uint8_t&#32;I2C_length_in,&#32;uint8_t&#32;*data_out);
+128 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandTransmitSPI(<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;chip_select,&#32;<emphasis role="keyword">const</emphasis>&#32;uint16_t&#32;number_of_bits_out,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;data_out[],&#32;uint8_t&#32;number_of_bits_in,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;start_now,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;wait_for_SPI_ready_active&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;wait_for_SPI_ready_edge_to_active&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SPI_ready_active_level&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;LSB_first&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+129 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandRepeatedOutIn(<emphasis role="keyword">const</emphasis>&#32;uint16_t&#32;number_of_datapoints,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms,&#32;uint8_t&#32;RepeatedOutInCommand,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SPI_restart_wait_on_ready_low&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+130 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandWriteSystemTimeToInputMemory();
+131 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandCalcAD9854FrequencyTuningWord(uint64_t&#32;ftw0,&#32;uint8_t&#32;bit_shift);
+132 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetSPITiming(uint16_t&#32;SPI_delay_CS_low_start_wait,&#32;uint16_t&#32;SPI_delay_write,&#32;uint16_t&#32;SPI_delay_pause_before_read,&#32;uint16_t&#32;SPI_delay_read,&#32;uint16_t&#32;SPI_delay_CS_low_end_wait);
+133 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetSPIMode(uint8_t&#32;SPI_mode);
+134 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetI2CParameters(uint8_t&#32;I2C_0_Destination,&#32;uint8_t&#32;I2C_delay_start_stop&#32;=&#32;60,&#32;uint8_t&#32;I2C_delay_data_setup&#32;=&#32;40,&#32;uint8_t&#32;I2C_delay_clock_high&#32;=&#32;60,&#32;uint8_t&#32;I2C_delay_clock_low&#32;=&#32;150,&#32;uint8_t&#32;I2C_delay_pause_before_read&#32;=&#32;0);
+135 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandWriteInputBuffer(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;input_buf_mem_data,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;write_next_address&#32;=&#32;1,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;input_buf_mem_address&#32;=&#32;0);
+136 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandSetLoopCount(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;loop_count);
+137 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandJumpBackward(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;jump_length,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;unconditional_jump&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_0&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_1&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_PS&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_dig_in&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;uint8_t&#32;dig_in_bit_nr&#32;=&#32;0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;loop_count_greater_zero&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+138 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddCommandJumpForward(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;jump_length,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;unconditional_jump&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_0&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_1&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_PS&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_dig_in&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;uint8_t&#32;dig_in_bit_nr&#32;=&#32;0);
+139 &#32;&#32;&#32;&#32;
+140 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1ae19a6656f8858c7e1dd257a082f0e7d1">TransmitOnlyDifferenceBetweenCommandSequenceIfPossible</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+141 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;MeasureEthernetBandwidth(uint32_t&#32;DataSize&#32;=&#32;1024&#32;*&#32;1024,&#32;<emphasis role="keywordtype">double</emphasis>&#32;MinimumExpected&#32;=&#32;-1);
+142 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OptimizedCommand(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;CommandString);
+143 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptGetAktWaveformPoint(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataPointsWritten,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;running);
+144 
+145 &#32;&#32;&#32;&#32;
+146 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a463fc400c96a62165a8ad021a4e4e1be">StartAssemblingCPUCommandSequence</link>();
+147 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a96f4fe09147715dab0a5676c88827c68">AddCPUCommand</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;command);
+148 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a81ee3246f4cfc5c1fdc2258efbe52044">ExecuteCPUCommandSequence</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;ethernet_check_period_in_ms);
+149 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a58dc2d9a6ce548718b252b32e21bec1f">StopCPUCommandSequence</link>();
+150 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a3ec9723b169bfd734c83bcf482aa9af1">InterruptCPUCommandSequence</link>();
+151 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a081fccbddb0ada74620d1fd7d00d1166">GetCPUCommandErrorMessages</link>();
+152 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a5b441bcff03408e7084755a9c1facaad">PrintCPUCommandErrorMessages</link>();
+153 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a9abaa18240c27eed456020baa85b7984">PrintCPUCommandSequence</link>();
+154 
+155 
+156 <emphasis role="keyword">private</emphasis>:
+157 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ModifySequence(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;differences,&#32;uint32_t&#32;difference_index_table[],&#32;uint32_t&#32;difference_command_table[]);
+158 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptModifySequence(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;differences,&#32;uint32_t&#32;difference_index_table[],&#32;uint32_t&#32;difference_command_table[]);
+159 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1afa973fcda1deebc284c72d91d684a461">SendSequence</link>(uint32_t&#32;DataSize,&#32;uint32_t*&#32;buffer);
+160 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptSendSequence(uint32_t&#32;DataSize,&#32;uint32_t*&#32;buffer);
+161 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptGetNextCycleNumber(<emphasis role="keywordtype">long</emphasis>&amp;&#32;NextCycleNumber);
+162 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptSetFrequency(<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+163 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptGetFrequency(<emphasis role="keywordtype">double</emphasis>&amp;&#32;Frequency);
+164 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptGetPeriodicTriggerError(<emphasis role="keywordtype">bool</emphasis>&amp;&#32;Error);
+165 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptWaitTillEndOfSequence(<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_s);
+166 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptWaitTillEndOfSequenceThenGetInputData(uint8_t*&amp;&#32;buffer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;buffer_length,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;EndTimeOfCycle,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_s);
+167 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptTransmitI2CPort(uint8_t&#32;I2C_port,&#32;uint8_t&#32;I2C_destination,&#32;uint8_t&#32;I2C_address,&#32;uint16_t&#32;send_length,&#32;uint8_t*&#32;send_data,&#32;uint16_t&#32;&amp;receive_length,&#32;uint8_t*&#32;receive_data,&#32;uint32_t&#32;I2C_clock_frequency_in_Hz,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;I2C_success,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;fail_silently);
+168 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AttemptSetPSOptions(uint8_t&#32;options);
+169 };
+</programlisting></section>

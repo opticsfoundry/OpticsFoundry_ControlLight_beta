@@ -1,0 +1,667 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_a_d9959" xml:lang="en-US">
+<title>CAD9959 Class Reference</title>
+<indexterm><primary>CAD9959</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AD9959.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for CAD9959:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_c_a_d9959.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_c_a_d9959_1aa88a117e95fc0f016e15e746bd6559ad">CAD9959</link> (unsigned short aBus, unsigned long aBaseAddress, double aExternalClockFrequency_in_Hz, double aFrequencyMultiplier, bool aAD9958, <link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MyDeviceSequencer)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_a_d9959_1aabac4acc282ef510033395754fe5be69">~CAD9959</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a632fe73af485c771a13de373a187a58f">SetIOUpdate</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a6cda1b0a97ee0d9cdf59fdc5775b48b9">SetReset</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a2ad6f52206e2f7065540779cc032a381">SetPowerDown</link> (bool OnOff, bool write_immediately=true)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1aef55d8c1c03b2ac7c92ea09c9e9fc032">SetSyncIO</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1aab7ef3db386644a0a1ef63abd2afe5e4">SetP0</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a8e61cf3b2b799d02d075068cf780130f">SetP1</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a3b692e47f207299555b43b19382593c6">SetP2</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a8146049ee3c787bb47abdfd96ab1d4b4">SetP3</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a966303ae0c62f2d9f090570e32fd629e">SetSpare2</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a7e4daf662005c1667d8f60a6bff44761">SetSpare1</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1af9f84dade5c6bf10e323cabf7cbb33b7">SetSpare0</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1af6c36e7e306038277f5e0811c25fccff">SetSDIO_3</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a9176a345e8462a80dbf4f11cba5503a6">SetSDIO_2</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a3d1538bef33cea72d9dcd1609cd0c10a">SetSDIO_1</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1ae4fa396b7c230633effe950d703d6d57">Initialise</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1abe0218ccf6f5615758929ae124cbd245">SyncIO</link> (void)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1afa8626eff8c75ddcf4b69820e60f085c">SetQSPIMode</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a17012ee930cc35fc085f47a277b0605c">SetFrequency</link> (uint8_t channel, float frequency)</para>
+
+<para>Set the frequency output on a given channel of the DDS. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1aa5188f193273997d8ec60a4453ba9932">SetAmplitude</link> (uint8_t channel, float amplitude)</para>
+
+<para>Set the amplitude scale factor on a given channel of the DDS. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a53c5d550b3ccb52f832b78eb97816708">SetAttenuation</link> (uint8_t channel, double attenuation)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a09ad557c8c5157d092db31509714366d">SetPhaseOffset</link> (uint8_t channel, float phase)</para>
+
+<para>Set the phase offset on a given channel of the DDS. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a102f89320e04bd0e8e5a077e8e57d34e">SetPowerState</link> (<link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6">E_AD9959_PWR</link> state)</para>
+
+<para>Set the power state of the DDS. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a80bfca1eff0df35cd003214005020196">SetFrequencyCh0</link> (double frequency)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a48a3679897fa1810a4e6d3adc37c7576">SetFrequencyCh1</link> (double frequency)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a10551085f8d95598abbbff89934d4a05">SetFrequencyCh2</link> (double frequency)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1ac5c42a3aa8f228931a855eea5573b30d">SetFrequencyCh3</link> (double frequency)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a7d9a974b6e8245edf36bc9185496930f">SetIntensityCh0</link> (double Intensity)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a5b51906cc8ec22aa0cac9efc1eaaa58d">SetIntensityCh1</link> (double Intensity)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1ad16a0609b912ea10996acb12abff139f">SetIntensityCh2</link> (double Intensity)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a54bfd6a7e90becf416cf4eaeb95719c7">SetIntensityCh3</link> (double Intensity)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a332739a6cfd703a24506a2aaa5d896fd">SetAttenuationCh0</link> (double Attenuation)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a3f714bc713f17105e2aed622bd94eed2">SetAttenuationCh1</link> (double Attenuation)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1ae2bd58423ef4a185a1fb24b06bc10bfe">SetAttenuationCh2</link> (double Attenuation)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1af1314efc3649975cefaa2c989fa13113">SetAttenuationCh3</link> (double Attenuation)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a26bcefc6e2cef1af1c001ead8ab2e594">SetPhaseOffsetCh0</link> (double phase)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a455e48c883554aeacdf7239609508d26">SetPhaseOffsetCh1</link> (double phase)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1abfaa9e1a4ceb2ae8962b6aa8c1d9a2b1">SetPhaseOffsetCh2</link> (double phase)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a0072fd80472ca74125c10e58ffa8894c">SetPhaseOffsetCh3</link> (double phase)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1ab25f2f98571db2f4f9c49b6911ff7069">SelectChannelCh0</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a73e7d3f7a547ed82d12502a56be26343">SelectChannelCh1</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a72a73b72cde3b1a7ede267d3486f04eb">SelectChannelCh2</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1afd33238d7c49eda194586ff9bd4b1bd0">SelectChannelCh3</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a3c259ef86f62dd6e2e61d0e33a04c948">SelectChannelCh0And1</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a08e0b5a7cbb4e0b948fa17442daff68f">SelectChannelCh0To3</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a9c4383fab2e2785944120c437d210eff">SelectChannels</link> (uint8_t channels)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1ab6bf6292ebe4dff107de2f282f4c4964">SetFrequencyTuningWord</link> (uint8_t channel, uint32_t ftw)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a694201198d2489854555310d1f0fc8ec">SetFrequencyTuningWordCh0</link> (uint32_t ftw)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a0d282dd8bb804dca072c7aef488abcc8">SetFrequencyTuningWordCh1</link> (uint32_t ftw)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1afe8cab5d30b53ec6b2ffa4a3a85740a9">SetFrequencyTuningWordCh2</link> (uint32_t ftw)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1af91cb7a3ed64dc32593f219a2410fb84">SetFrequencyTuningWordCh3</link> (uint32_t ftw)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a29dd3504aa4abfab58740e4452b0fc53">SetIOUpdateEnabled</link> (bool _IOUpdateEnabled)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a4bb4da04d1b4010827a5be9397bbc67e">SetWriteChannels</link> (uint8_t channels)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1a213da72767bf7c8b327776f1be08801d">SetWriteChannels</link> (bool channel0, bool channel1, bool channel2, bool channel3)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9959_1abf14c16b323b452ab58b67069ba6c589">MasterReset</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9959_1a40bd9ee35f07c63d5abd8ba99979aa2c">SetRegisterBit</link> (unsigned char RegisterNr, unsigned char BitNr, bool Value, bool GetValue=false, bool DoIOUpdate=true)</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link> (unsigned char RegisterNr, unsigned char LowestBitNr, unsigned char NrBits, uint32_t Value, bool GetValue=false, bool DoIOUpdate=true, bool forceWrite=false)</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_class_c_a_d9959_1a21de8c6bad71977668963d4c89fe846b">SetValueDirect</link> (unsigned char RegisterNr, uint32_t Value, bool GetValue=false, bool DoIOUpdate=true, bool forceWrite=false)</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="_class_c_a_d9959_1a85dab1279bf6c1957e5f8b3e90833159">SetValue</link> (unsigned char RegisterNr, uint32_t Value, bool GetValue=false, bool DoIOUpdate=true, bool forceWrite=false)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_c_multi_write_device_s_p_i">CMultiWriteDeviceSPI</link>        <itemizedlist>
+            <listitem><para>virtual bool <link linkend="_class_c_multi_write_device_s_p_i_1ab460375cc870879096703671fdcf0128">WriteToBus</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1a360cc28c0aff515956cb3268005fc7c6">WriteAllToBus</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_multi_write_device_s_p_i_1a5c404d823894e21c689ae62b5df3527a">CMultiWriteDeviceSPI</link> (unsigned short aBus, unsigned long aBaseAddress, <link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MyDeviceSequencer)</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_multi_write_device_s_p_i_1a6256de4a496a9fa06d923211c698562d">~CMultiWriteDeviceSPI</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1aa838021ef2d4dc7a50b5a7621e767b37">SetSPIPortBits</link> (unsigned char _SPI_CS_bit, unsigned char _SDIO_0_bit, unsigned char _SDIO_1_bit, unsigned char _SDIO_2_bit, unsigned char _SDIO_3_bit, unsigned char _SPI_SCLK_bit)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1abaa235bd3663e29b1ad7d5dbaee9916c">AddToBusBuffer</link> (unsigned short value)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_multi_write_device_s_p_i_1a43d882b4cc30609526e28a08f3028c82">HasSomethingToWriteToBus</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1ab19290c96c86b3e0fc8615afcc5f69a2">SetControlRegister</link> (unsigned char start_bit, unsigned char nr_bits, unsigned short value, bool write_immediately=true)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1a923a74547f2fb577663b494e12bb8790">SetSPIClock</link> (bool clock, bool write_immediately=true)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1a2228e7665e0a4dc7207b7172f964ae1c">SetSPIChipSelect</link> (bool clock)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1a339e7319309cd9044b7fed3662815571">SetSPIDataOut</link> (bool clock)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1a1c9be96f955251f14afc7ee9c6a5d51c">SetSPIFrequencyAndMode</link> (double _SPI_frequency_in_Hz, const uint8_t _SPI_mode)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1a814c07fb2ce56c675466d292ec3a79ec">WriteSPIBitBanged</link> (unsigned int number_of_bits_out, uint64_t data)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_s_p_i_1a49181f0d679dedec2d202164dd6708a6">WriteSPIBitBangedMode0Simple</link> (unsigned int number_of_bits_out, uint64_t data)</para>
+</listitem>
+        </itemizedlist>
+Public Member Functions inherited from <link linkend="_class_c_multi_write_device">CMultiWriteDevice</link>        <itemizedlist>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_1a9e6e257eed6a370a88e7405665bfa390">SwitchForceWritingMode</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_multi_write_device_1a672b5dda62ea952136cc16a7f61544c4">Enable</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_multi_write_device_1a82ab432239bfec0d80828a22185fad00">CMultiWriteDevice</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_multi_write_device_1ac5498dc620e170f43853722305f0b7e7">~CMultiWriteDevice</link> ()</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>double <link linkend="_class_c_a_d9959_1a9e897ce28716f4f30c47def792f643ec">FrequencyMultiplier</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Attributes inherited from <link linkend="_class_c_multi_write_device_s_p_i">CMultiWriteDeviceSPI</link>        <itemizedlist>
+            <listitem><para>unsigned short <link linkend="_class_c_multi_write_device_s_p_i_1adc481f321d25e39cb2baa5f0fba07ab3">ControlRegisterContent</link></para>
+</listitem>
+            <listitem><para><link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * <link linkend="_class_c_multi_write_device_s_p_i_1a571800d5b7ca564f2b7c74159db21bc2">MyDeviceSequencer</link></para>
+</listitem>
+        </itemizedlist>
+Public Attributes inherited from <link linkend="_class_c_multi_write_device">CMultiWriteDevice</link>        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_c_multi_write_device_1a1d423c7b7f1f644b8192a06ff54887b4">ForceWriting</link></para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_multi_write_device_1acdf34f9d3eafb258a49d306e05325fc1">MultiIOAddress</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_multi_write_device_1ad7e1c697dece2c19bea64ad66586e328">Enabled</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_a_d9959_1aa88a117e95fc0f016e15e746bd6559ad"/><section>
+    <title>CAD9959()</title>
+<indexterm><primary>CAD9959</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>CAD9959</secondary></indexterm>
+<para><computeroutput>CAD9959::CAD9959 (unsigned short aBus, unsigned long aBaseAddress, double aExternalClockFrequency_in_Hz, double aFrequencyMultiplier, bool aAD9958, <link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * _MyDeviceSequencer)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1aabac4acc282ef510033395754fe5be69"/><section>
+    <title>~CAD9959()</title>
+<indexterm><primary>~CAD9959</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>~CAD9959</secondary></indexterm>
+<para><computeroutput>CAD9959::~CAD9959 ( )<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_a_d9959_1ae4fa396b7c230633effe950d703d6d57"/><section>
+    <title>Initialise()</title>
+<indexterm><primary>Initialise</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>Initialise</secondary></indexterm>
+<para><computeroutput>void CAD9959::Initialise (void )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1abf14c16b323b452ab58b67069ba6c589"/><section>
+    <title>MasterReset()</title>
+<indexterm><primary>MasterReset</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>MasterReset</secondary></indexterm>
+<para><computeroutput>void CAD9959::MasterReset ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1ab25f2f98571db2f4f9c49b6911ff7069"/><section>
+    <title>SelectChannelCh0()</title>
+<indexterm><primary>SelectChannelCh0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SelectChannelCh0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SelectChannelCh0 ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a3c259ef86f62dd6e2e61d0e33a04c948"/><section>
+    <title>SelectChannelCh0And1()</title>
+<indexterm><primary>SelectChannelCh0And1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SelectChannelCh0And1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SelectChannelCh0And1 ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a08e0b5a7cbb4e0b948fa17442daff68f"/><section>
+    <title>SelectChannelCh0To3()</title>
+<indexterm><primary>SelectChannelCh0To3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SelectChannelCh0To3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SelectChannelCh0To3 ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a73e7d3f7a547ed82d12502a56be26343"/><section>
+    <title>SelectChannelCh1()</title>
+<indexterm><primary>SelectChannelCh1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SelectChannelCh1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SelectChannelCh1 ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a72a73b72cde3b1a7ede267d3486f04eb"/><section>
+    <title>SelectChannelCh2()</title>
+<indexterm><primary>SelectChannelCh2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SelectChannelCh2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SelectChannelCh2 ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1afd33238d7c49eda194586ff9bd4b1bd0"/><section>
+    <title>SelectChannelCh3()</title>
+<indexterm><primary>SelectChannelCh3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SelectChannelCh3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SelectChannelCh3 ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a9c4383fab2e2785944120c437d210eff"/><section>
+    <title>SelectChannels()</title>
+<indexterm><primary>SelectChannels</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SelectChannels</secondary></indexterm>
+<para><computeroutput>void CAD9959::SelectChannels (uint8_t channels)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1aa5188f193273997d8ec60a4453ba9932"/><section>
+    <title>SetAmplitude()</title>
+<indexterm><primary>SetAmplitude</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetAmplitude</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetAmplitude (uint8_t channel, float amplitude)</computeroutput></para><para>
+
+<para>Set the amplitude scale factor on a given channel of the DDS. </para>
+</para>
+
+<para>void <link linkend="_class_c_a_d9959_1aa5188f193273997d8ec60a4453ba9932">SetAmplitude(uint8_t channel, float amplitude)</link> </para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>channel</entry><entry>
+<para>Which channel to output on: 1: channel 0, 2: channel 1, 3: channel 0 and 1. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>amplitude</entry><entry>
+<para>Desired amplitude scale factor (0-100). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_c_a_d9959_1a53c5d550b3ccb52f832b78eb97816708"/><section>
+    <title>SetAttenuation()</title>
+<indexterm><primary>SetAttenuation</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetAttenuation</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetAttenuation (uint8_t channel, double attenuation)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a332739a6cfd703a24506a2aaa5d896fd"/><section>
+    <title>SetAttenuationCh0()</title>
+<indexterm><primary>SetAttenuationCh0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetAttenuationCh0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetAttenuationCh0 (double Attenuation)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a3f714bc713f17105e2aed622bd94eed2"/><section>
+    <title>SetAttenuationCh1()</title>
+<indexterm><primary>SetAttenuationCh1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetAttenuationCh1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetAttenuationCh1 (double Attenuation)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1ae2bd58423ef4a185a1fb24b06bc10bfe"/><section>
+    <title>SetAttenuationCh2()</title>
+<indexterm><primary>SetAttenuationCh2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetAttenuationCh2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetAttenuationCh2 (double Attenuation)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1af1314efc3649975cefaa2c989fa13113"/><section>
+    <title>SetAttenuationCh3()</title>
+<indexterm><primary>SetAttenuationCh3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetAttenuationCh3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetAttenuationCh3 (double Attenuation)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a17012ee930cc35fc085f47a277b0605c"/><section>
+    <title>SetFrequency()</title>
+<indexterm><primary>SetFrequency</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequency</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequency (uint8_t channel, float frequency)</computeroutput></para><para>
+
+<para>Set the frequency output on a given channel of the DDS. </para>
+</para>
+
+<para>void <link linkend="_class_c_a_d9959_1a17012ee930cc35fc085f47a277b0605c">SetFrequency(uint8_t channel, float frequency)</link> </para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>channel</entry><entry>
+<para>Which channel to output on: 1: channel 0, 2: channel 1, 3: channel 0 and 1. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>frequency</entry><entry>
+<para>Desired output frequency in MHz. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_c_a_d9959_1a80bfca1eff0df35cd003214005020196"/><section>
+    <title>SetFrequencyCh0()</title>
+<indexterm><primary>SetFrequencyCh0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyCh0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyCh0 (double frequency)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a48a3679897fa1810a4e6d3adc37c7576"/><section>
+    <title>SetFrequencyCh1()</title>
+<indexterm><primary>SetFrequencyCh1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyCh1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyCh1 (double frequency)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a10551085f8d95598abbbff89934d4a05"/><section>
+    <title>SetFrequencyCh2()</title>
+<indexterm><primary>SetFrequencyCh2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyCh2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyCh2 (double frequency)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1ac5c42a3aa8f228931a855eea5573b30d"/><section>
+    <title>SetFrequencyCh3()</title>
+<indexterm><primary>SetFrequencyCh3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyCh3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyCh3 (double frequency)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1ab6bf6292ebe4dff107de2f282f4c4964"/><section>
+    <title>SetFrequencyTuningWord()</title>
+<indexterm><primary>SetFrequencyTuningWord</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyTuningWord</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyTuningWord (uint8_t channel, uint32_t ftw)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a694201198d2489854555310d1f0fc8ec"/><section>
+    <title>SetFrequencyTuningWordCh0()</title>
+<indexterm><primary>SetFrequencyTuningWordCh0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyTuningWordCh0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyTuningWordCh0 (uint32_t ftw)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a0d282dd8bb804dca072c7aef488abcc8"/><section>
+    <title>SetFrequencyTuningWordCh1()</title>
+<indexterm><primary>SetFrequencyTuningWordCh1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyTuningWordCh1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyTuningWordCh1 (uint32_t ftw)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1afe8cab5d30b53ec6b2ffa4a3a85740a9"/><section>
+    <title>SetFrequencyTuningWordCh2()</title>
+<indexterm><primary>SetFrequencyTuningWordCh2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyTuningWordCh2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyTuningWordCh2 (uint32_t ftw)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1af91cb7a3ed64dc32593f219a2410fb84"/><section>
+    <title>SetFrequencyTuningWordCh3()</title>
+<indexterm><primary>SetFrequencyTuningWordCh3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetFrequencyTuningWordCh3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetFrequencyTuningWordCh3 (uint32_t ftw)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a7d9a974b6e8245edf36bc9185496930f"/><section>
+    <title>SetIntensityCh0()</title>
+<indexterm><primary>SetIntensityCh0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetIntensityCh0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetIntensityCh0 (double Intensity)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a5b51906cc8ec22aa0cac9efc1eaaa58d"/><section>
+    <title>SetIntensityCh1()</title>
+<indexterm><primary>SetIntensityCh1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetIntensityCh1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetIntensityCh1 (double Intensity)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1ad16a0609b912ea10996acb12abff139f"/><section>
+    <title>SetIntensityCh2()</title>
+<indexterm><primary>SetIntensityCh2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetIntensityCh2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetIntensityCh2 (double Intensity)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a54bfd6a7e90becf416cf4eaeb95719c7"/><section>
+    <title>SetIntensityCh3()</title>
+<indexterm><primary>SetIntensityCh3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetIntensityCh3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetIntensityCh3 (double Intensity)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a632fe73af485c771a13de373a187a58f"/><section>
+    <title>SetIOUpdate()</title>
+<indexterm><primary>SetIOUpdate</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetIOUpdate</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetIOUpdate (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a29dd3504aa4abfab58740e4452b0fc53"/><section>
+    <title>SetIOUpdateEnabled()</title>
+<indexterm><primary>SetIOUpdateEnabled</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetIOUpdateEnabled</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetIOUpdateEnabled (bool _IOUpdateEnabled)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1aab7ef3db386644a0a1ef63abd2afe5e4"/><section>
+    <title>SetP0()</title>
+<indexterm><primary>SetP0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetP0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetP0 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a8e61cf3b2b799d02d075068cf780130f"/><section>
+    <title>SetP1()</title>
+<indexterm><primary>SetP1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetP1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetP1 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a3b692e47f207299555b43b19382593c6"/><section>
+    <title>SetP2()</title>
+<indexterm><primary>SetP2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetP2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetP2 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a8146049ee3c787bb47abdfd96ab1d4b4"/><section>
+    <title>SetP3()</title>
+<indexterm><primary>SetP3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetP3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetP3 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a09ad557c8c5157d092db31509714366d"/><section>
+    <title>SetPhaseOffset()</title>
+<indexterm><primary>SetPhaseOffset</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetPhaseOffset</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetPhaseOffset (uint8_t channel, float phase)</computeroutput></para><para>
+
+<para>Set the phase offset on a given channel of the DDS. </para>
+</para>
+
+<para>void DDS_Set_Phase_Offset(uint8_t channel, float phase) </para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>channel</entry><entry>
+<para>Which channel to output on: 1: channel 0, 2: channel 1, 3: channel 0 and 1. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>phase</entry><entry>
+<para>Desired phase offset. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_c_a_d9959_1a26bcefc6e2cef1af1c001ead8ab2e594"/><section>
+    <title>SetPhaseOffsetCh0()</title>
+<indexterm><primary>SetPhaseOffsetCh0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetPhaseOffsetCh0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetPhaseOffsetCh0 (double phase)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a455e48c883554aeacdf7239609508d26"/><section>
+    <title>SetPhaseOffsetCh1()</title>
+<indexterm><primary>SetPhaseOffsetCh1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetPhaseOffsetCh1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetPhaseOffsetCh1 (double phase)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1abfaa9e1a4ceb2ae8962b6aa8c1d9a2b1"/><section>
+    <title>SetPhaseOffsetCh2()</title>
+<indexterm><primary>SetPhaseOffsetCh2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetPhaseOffsetCh2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetPhaseOffsetCh2 (double phase)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a0072fd80472ca74125c10e58ffa8894c"/><section>
+    <title>SetPhaseOffsetCh3()</title>
+<indexterm><primary>SetPhaseOffsetCh3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetPhaseOffsetCh3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetPhaseOffsetCh3 (double phase)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a2ad6f52206e2f7065540779cc032a381"/><section>
+    <title>SetPowerDown()</title>
+<indexterm><primary>SetPowerDown</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetPowerDown</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetPowerDown (bool OnOff, bool write_immediately = <computeroutput>true</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a102f89320e04bd0e8e5a077e8e57d34e"/><section>
+    <title>SetPowerState()</title>
+<indexterm><primary>SetPowerState</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetPowerState</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetPowerState (<link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6">E_AD9959_PWR</link> state)</computeroutput></para><para>
+
+<para>Set the power state of the DDS. </para>
+</para>
+
+<para>void DDS_Set_Power_State(E_AD9959_PWR state) </para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>state</entry><entry>
+<para>Desired power state. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_class_c_a_d9959_1afa8626eff8c75ddcf4b69820e60f085c"/><section>
+    <title>SetQSPIMode()</title>
+<indexterm><primary>SetQSPIMode</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetQSPIMode</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetQSPIMode (bool OnOff)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_multi_write_device_s_p_i_1a9a48eb51234850f01edcaccf79cf9d14">CMultiWriteDeviceSPI</link>.</para>
+</section>
+<anchor xml:id="_class_c_a_d9959_1a40bd9ee35f07c63d5abd8ba99979aa2c"/><section>
+    <title>SetRegisterBit()</title>
+<indexterm><primary>SetRegisterBit</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetRegisterBit</secondary></indexterm>
+<para><computeroutput>bool CAD9959::SetRegisterBit (unsigned char RegisterNr, unsigned char BitNr, bool Value, bool GetValue = <computeroutput>false</computeroutput>
+, bool DoIOUpdate = <computeroutput>true</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0"/><section>
+    <title>SetRegisterBits()</title>
+<indexterm><primary>SetRegisterBits</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetRegisterBits</secondary></indexterm>
+<para><computeroutput>uint32_t CAD9959::SetRegisterBits (unsigned char RegisterNr, unsigned char LowestBitNr, unsigned char NrBits, uint32_t Value, bool GetValue = <computeroutput>false</computeroutput>
+, bool DoIOUpdate = <computeroutput>true</computeroutput>
+, bool forceWrite = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a6cda1b0a97ee0d9cdf59fdc5775b48b9"/><section>
+    <title>SetReset()</title>
+<indexterm><primary>SetReset</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetReset</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetReset (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a3d1538bef33cea72d9dcd1609cd0c10a"/><section>
+    <title>SetSDIO_1()</title>
+<indexterm><primary>SetSDIO_1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetSDIO_1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetSDIO_1 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a9176a345e8462a80dbf4f11cba5503a6"/><section>
+    <title>SetSDIO_2()</title>
+<indexterm><primary>SetSDIO_2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetSDIO_2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetSDIO_2 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1af6c36e7e306038277f5e0811c25fccff"/><section>
+    <title>SetSDIO_3()</title>
+<indexterm><primary>SetSDIO_3</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetSDIO_3</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetSDIO_3 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1af9f84dade5c6bf10e323cabf7cbb33b7"/><section>
+    <title>SetSpare0()</title>
+<indexterm><primary>SetSpare0</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetSpare0</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetSpare0 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a7e4daf662005c1667d8f60a6bff44761"/><section>
+    <title>SetSpare1()</title>
+<indexterm><primary>SetSpare1</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetSpare1</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetSpare1 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a966303ae0c62f2d9f090570e32fd629e"/><section>
+    <title>SetSpare2()</title>
+<indexterm><primary>SetSpare2</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetSpare2</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetSpare2 (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1aef55d8c1c03b2ac7c92ea09c9e9fc032"/><section>
+    <title>SetSyncIO()</title>
+<indexterm><primary>SetSyncIO</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetSyncIO</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetSyncIO (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a85dab1279bf6c1957e5f8b3e90833159"/><section>
+    <title>SetValue()</title>
+<indexterm><primary>SetValue</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetValue</secondary></indexterm>
+<para><computeroutput>uint32_t CAD9959::SetValue (unsigned char RegisterNr, uint32_t Value, bool GetValue = <computeroutput>false</computeroutput>
+, bool DoIOUpdate = <computeroutput>true</computeroutput>
+, bool forceWrite = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a21de8c6bad71977668963d4c89fe846b"/><section>
+    <title>SetValueDirect()</title>
+<indexterm><primary>SetValueDirect</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetValueDirect</secondary></indexterm>
+<para><computeroutput>uint32_t CAD9959::SetValueDirect (unsigned char RegisterNr, uint32_t Value, bool GetValue = <computeroutput>false</computeroutput>
+, bool DoIOUpdate = <computeroutput>true</computeroutput>
+, bool forceWrite = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a213da72767bf7c8b327776f1be08801d"/><section>
+    <title>SetWriteChannels()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>SetWriteChannels</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetWriteChannels</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetWriteChannels (bool channel0, bool channel1, bool channel2, bool channel3)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1a4bb4da04d1b4010827a5be9397bbc67e"/><section>
+    <title>SetWriteChannels()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>SetWriteChannels</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SetWriteChannels</secondary></indexterm>
+<para><computeroutput>void CAD9959::SetWriteChannels (uint8_t channels)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9959_1abe0218ccf6f5615758929ae124cbd245"/><section>
+    <title>SyncIO()</title>
+<indexterm><primary>SyncIO</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>SyncIO</secondary></indexterm>
+<para><computeroutput>void CAD9959::SyncIO (void )</computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_a_d9959_1a9e897ce28716f4f30c47def792f643ec"/><section>
+    <title>FrequencyMultiplier</title>
+<indexterm><primary>FrequencyMultiplier</primary><secondary>CAD9959</secondary></indexterm>
+<indexterm><primary>CAD9959</primary><secondary>FrequencyMultiplier</secondary></indexterm>
+<para><computeroutput>double CAD9959::FrequencyMultiplier</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__a_d9959_8h">AD9959.h</link><link linkend="__a_d9959_8cpp">AD9959.cpp</link></section>
+</section>

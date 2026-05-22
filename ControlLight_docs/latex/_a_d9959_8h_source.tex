@@ -1,0 +1,177 @@
+\doxysection{AD9959.\+h}
+\hypertarget{_a_d9959_8h_source}{}\label{_a_d9959_8h_source}\index{AD9959.h@{AD9959.h}}
+\mbox{\hyperlink{_a_d9959_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_multi_write_device_s_p_i_8h}{MultiWriteDeviceSPI.h}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \textcolor{comment}{//\ Include\ this\ header\ to\ define\ uint8\_t}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a229aec4bb33a5e42368fec853d4a282c}{E\_AD9959\_PWR\_POWERED}},\ }
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a1c5124a87cd37ffbd0d50eaf74c987c1}{E\_AD9959\_PWR\_PARTIAL}},\ }
+\DoxyCodeLine{00015\ \ \ \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6ad0da32910d0ef5c4661945583ed021a3}{E\_AD9959\_PWR\_DOWN}}\ \ \ \ \ }
+\DoxyCodeLine{00016\ \}\ \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}{E\_AD9959\_PWR}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a61cfe8513916df0d575cc1a7e8d8d1f1}{E\_AD9959\_CHANNEL\_ALL}},\ }
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6c65280e6f459c84b3382c7e14a117e0}{E\_AD9959\_CHANNEL\_0}},\ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55ac10215c8ca3ef4486e2f972b8bf1ab50}{E\_AD9959\_CHANNEL\_1}},\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a42a2b3479f328b6288975f0f829f55f3}{E\_AD9959\_CHANNEL\_2}},\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6e09353b72f98a29fe2db5c7a6e47ee0}{E\_AD9959\_CHANNEL\_3}}\ \ \ \ \ }
+\DoxyCodeLine{00028\ \}\ \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55}{E\_AD9959\_CHANNEL}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Pin\ defines\ -\/\ Change\ to\ suit}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ PWR\_DWN\_CTL\_PORT\ \ \ \ \ GPIOA}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ PWR\_DWN\_CTL\_PIN\ \ \ \ \ \ GPIO\_PIN\_1}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ MASTER\_RESET\_PORT\ \ \ \ GPIOA}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ MASTER\_RESET\_PIN\ \ \ \ \ GPIO\_PIN\_1}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ IO\_UPDATE\_PORT\ \ \ \ \ \ \ GPIOA}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ IO\_UPDATE\_PIN\ \ \ \ \ \ \ \ GPIO\_PIN\_1}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ SDIO\_3\_PORT\ \ \ \ \ \ \ \ \ \ GPIOA}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ SDIO\_3\_PIN\ \ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_1}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ CS\_GPIO\_PORT\ \ \ \ \ \ \ \ \ GPIOA}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ CS\_PIN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_1}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_d9959_8h_a66d5c07db323165da4e746e951591962}{SPIBufferLength}}\ =\ 14;}
+\DoxyCodeLine{00043\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959NumberOfRegisters}}\ =\ 92;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_d9959_8h_ac68e8badff67a631e395bbd74036e53c}{AD9959SPIBufferLength}}\ =\ 14;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d9959_aa88a117e95fc0f016e15e746bd6559ad}{CAD9959}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a5c404d823894e21c689ae62b5df3527a}{CMultiWriteDeviceSPI}}}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ uint8\_t\ SPIBuffer[\mbox{\hyperlink{_a_d9959_8h_ac68e8badff67a631e395bbd74036e53c}{AD9959SPIBufferLength}}];}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ BytesToTransmit;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{double}\ ClockFrequency\_in\_Hz;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{double}\ InputClockFrequency\_in\_Hz;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{double}\ MaxFrequency;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}\ FrequencyScale;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ UpdateRegistersModeAutomatic;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ AD9958;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ IOUpdateEnabled;}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ uint32\_t\ AktValueContents[\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959NumberOfRegisters}}];\ \textcolor{comment}{//keeps\ track\ of\ Value,\ contains\ value\ after\ bus\ buffer\ has\ been\ finished\ to\ be\ written\ out}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ WritePrecision[\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959NumberOfRegisters}}];}
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9959_a9e897ce28716f4f30c47def792f643ec}{FrequencyMultiplier}};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{class_c_a_d9959_aa88a117e95fc0f016e15e746bd6559ad}{CAD9959}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ aBus,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ aBaseAddress,\ \textcolor{keywordtype}{double}\ aExternalClockFrequency\_in\_Hz,\ \textcolor{keywordtype}{double}\ aFrequencyMultiplier,\ \textcolor{keywordtype}{bool}\ aAD9958,\ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \_MyDeviceSequencer);}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_a_d9959_aabac4acc282ef510033395754fe5be69}{\string~CAD9959}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a632fe73af485c771a13de373a187a58f}{SetIOUpdate}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a6cda1b0a97ee0d9cdf59fdc5775b48b9}{SetReset}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a2ad6f52206e2f7065540779cc032a381}{SetPowerDown}}(\textcolor{keywordtype}{bool}\ OnOff,\ \textcolor{keywordtype}{bool}\ write\_immediately\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_aef55d8c1c03b2ac7c92ea09c9e9fc032}{SetSyncIO}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_aab7ef3db386644a0a1ef63abd2afe5e4}{SetP0}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a8e61cf3b2b799d02d075068cf780130f}{SetP1}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a3b692e47f207299555b43b19382593c6}{SetP2}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a8146049ee3c787bb47abdfd96ab1d4b4}{SetP3}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a966303ae0c62f2d9f090570e32fd629e}{SetSpare2}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a7e4daf662005c1667d8f60a6bff44761}{SetSpare1}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_af9f84dade5c6bf10e323cabf7cbb33b7}{SetSpare0}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_af6c36e7e306038277f5e0811c25fccff}{SetSDIO\_3}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a9176a345e8462a80dbf4f11cba5503a6}{SetSDIO\_2}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a3d1538bef33cea72d9dcd1609cd0c10a}{SetSDIO\_1}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_ae4fa396b7c230633effe950d703d6d57}{Initialise}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_abe0218ccf6f5615758929ae124cbd245}{SyncIO}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_afa8626eff8c75ddcf4b69820e60f085c}{SetQSPIMode}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ \ \ \ void\ Initialise\_GPIO(void);}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//void\ TestFunctions(void);}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a17012ee930cc35fc085f47a277b0605c}{SetFrequency}}(uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ frequency);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_aa5188f193273997d8ec60a4453ba9932}{SetAmplitude}}(uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ amplitude);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a53c5d550b3ccb52f832b78eb97816708}{SetAttenuation}}(uint8\_t\ channel,\ \textcolor{keywordtype}{double}\ attenuation);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a09ad557c8c5157d092db31509714366d}{SetPhaseOffset}}(uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ phase);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a102f89320e04bd0e8e5a077e8e57d34e}{SetPowerState}}(\mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}{E\_AD9959\_PWR}}\ state);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a80bfca1eff0df35cd003214005020196}{SetFrequencyCh0}}(\textcolor{keywordtype}{double}\ frequency);}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a48a3679897fa1810a4e6d3adc37c7576}{SetFrequencyCh1}}(\textcolor{keywordtype}{double}\ frequency);}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a10551085f8d95598abbbff89934d4a05}{SetFrequencyCh2}}(\textcolor{keywordtype}{double}\ frequency);}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_ac5c42a3aa8f228931a855eea5573b30d}{SetFrequencyCh3}}(\textcolor{keywordtype}{double}\ frequency);}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a7d9a974b6e8245edf36bc9185496930f}{SetIntensityCh0}}(\textcolor{keywordtype}{double}\ Intensity);}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a5b51906cc8ec22aa0cac9efc1eaaa58d}{SetIntensityCh1}}(\textcolor{keywordtype}{double}\ Intensity);}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_ad16a0609b912ea10996acb12abff139f}{SetIntensityCh2}}(\textcolor{keywordtype}{double}\ Intensity);}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a54bfd6a7e90becf416cf4eaeb95719c7}{SetIntensityCh3}}(\textcolor{keywordtype}{double}\ Intensity);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a332739a6cfd703a24506a2aaa5d896fd}{SetAttenuationCh0}}(\textcolor{keywordtype}{double}\ Attenuation);}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a3f714bc713f17105e2aed622bd94eed2}{SetAttenuationCh1}}(\textcolor{keywordtype}{double}\ Attenuation);}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_ae2bd58423ef4a185a1fb24b06bc10bfe}{SetAttenuationCh2}}(\textcolor{keywordtype}{double}\ Attenuation);}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_af1314efc3649975cefaa2c989fa13113}{SetAttenuationCh3}}(\textcolor{keywordtype}{double}\ Attenuation);}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a26bcefc6e2cef1af1c001ead8ab2e594}{SetPhaseOffsetCh0}}(\textcolor{keywordtype}{double}\ phase);}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a455e48c883554aeacdf7239609508d26}{SetPhaseOffsetCh1}}(\textcolor{keywordtype}{double}\ phase);}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_abfaa9e1a4ceb2ae8962b6aa8c1d9a2b1}{SetPhaseOffsetCh2}}(\textcolor{keywordtype}{double}\ phase);}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a0072fd80472ca74125c10e58ffa8894c}{SetPhaseOffsetCh3}}(\textcolor{keywordtype}{double}\ phase);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_ab25f2f98571db2f4f9c49b6911ff7069}{SelectChannelCh0}}()\ \{\ \textcolor{keywordflow}{if}\ (AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 6,\ 2,\ 1);\ \textcolor{keywordflow}{else}\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 4,\ 4,\ 1);\ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a73e7d3f7a547ed82d12502a56be26343}{SelectChannelCh1}}()\ \{\ \textcolor{keywordflow}{if}\ (AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 6,\ 2,\ 2);\ \textcolor{keywordflow}{else}\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 4,\ 4,\ 2);\ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a72a73b72cde3b1a7ede267d3486f04eb}{SelectChannelCh2}}()\ \{\ \textcolor{keywordflow}{if}\ (!AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 4,\ 4,\ 4);\ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_afd33238d7c49eda194586ff9bd4b1bd0}{SelectChannelCh3}}()\ \{\ \textcolor{keywordflow}{if}\ (!AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 4,\ 4,\ 8);\ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a3c259ef86f62dd6e2e61d0e33a04c948}{SelectChannelCh0And1}}()\ \{\ \textcolor{keywordflow}{if}\ (AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 6,\ 2,\ 3);\ \textcolor{keywordflow}{else}\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 4,\ 4,\ 3);\ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a08e0b5a7cbb4e0b948fa17442daff68f}{SelectChannelCh0To3}}()\ \{\ \textcolor{keywordflow}{if}\ (!AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 4,\ 4,\ 0xF);\ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a9c4383fab2e2785944120c437d210eff}{SelectChannels}}(uint8\_t\ channels)\ \{\ \textcolor{keywordflow}{if}\ (AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 6,\ 2,\ 0x3\ \&\ channels);\ \textcolor{keywordflow}{else}\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(0,\ 4,\ 4,\ 0xF\ \&\ channels);\ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//void\ SetFrequencyTuningWord(uint32\_t\ ftw)\ \{\ SetValue(4,\ ftw);\ \}}}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964}{SetFrequencyTuningWord}}(uint8\_t\ channel,\ uint32\_t\ ftw)\ \{\ \textcolor{keywordflow}{if}\ ((AD9958\ \&\&\ (channel\ <\ 2))\ ||\ ((!AD9958)\ \&\&\ (channel\ <\ 4)))\ \{\ \mbox{\hyperlink{class_c_a_d9959_a4bb4da04d1b4010827a5be9397bbc67e}{SetWriteChannels}}(channel);\ \ \mbox{\hyperlink{class_c_a_d9959_a85dab1279bf6c1957e5f8b3e90833159}{SetValue}}(4,\ ftw);\ \}\ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a694201198d2489854555310d1f0fc8ec}{SetFrequencyTuningWordCh0}}(uint32\_t\ ftw)\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964}{SetFrequencyTuningWord}}(1,\ ftw);}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a0d282dd8bb804dca072c7aef488abcc8}{SetFrequencyTuningWordCh1}}(uint32\_t\ ftw)\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964}{SetFrequencyTuningWord}}(2,\ ftw);}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_afe8cab5d30b53ec6b2ffa4a3a85740a9}{SetFrequencyTuningWordCh2}}(uint32\_t\ ftw)\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964}{SetFrequencyTuningWord}}(3,\ ftw);}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_af91cb7a3ed64dc32593f219a2410fb84}{SetFrequencyTuningWordCh3}}(uint32\_t\ ftw)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!AD9958)\ \mbox{\hyperlink{class_c_a_d9959_ab6bf6292ebe4dff107de2f282f4c4964}{SetFrequencyTuningWord}}(4,\ ftw);}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a29dd3504aa4abfab58740e4452b0fc53}{SetIOUpdateEnabled}}(\textcolor{keywordtype}{bool}\ \_IOUpdateEnabled);}
+\DoxyCodeLine{00166\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ IO\_Update\_Toggle();}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{comment}{//void\ Reset(void);}}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{void}\ Disable\_SYNC\_CLK(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFrequency\_SPI(uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ frequency);}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ SetAmplitude\_SPI(uint8\_t\ channel,\ uint32\_t\ amplitude);}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{void}\ SetIntensity\_SPI(uint8\_t\ channel,\ uint32\_t\ intensity);}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPhaseOffset\_SPI(uint8\_t\ channel,\ \textcolor{keywordtype}{float}\ phase);}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPowerDown\_partial\_SPI();}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPowerDown\_full\_SPI();}
+\DoxyCodeLine{00179\ \ \ \ \ uint8\_t\ GetChannelBits(\mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55}{E\_AD9959\_CHANNEL}}\ channel);}
+\DoxyCodeLine{00180\ \ \ \ \ uint32\_t\ calcFTW(\textcolor{keywordtype}{float}\ frequency);}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{float}\ calcFrequency(uint32\_t\ FTW);}
+\DoxyCodeLine{00182\ \ \ \ \ uint32\_t\ calcPOW(\textcolor{keywordtype}{float}\ degrees);}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{void}\ Dev\_Select(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{void}\ Dev\_Deselect(\textcolor{keywordtype}{bool}\ read\ =\ \textcolor{keyword}{false},\ uint8\_t\ number\_of\_bits\_in\ =\ 0);}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ SPI\_Transmit\_Byte(uint8\_t\ \textcolor{keywordtype}{byte});}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{void}\ AssurePulseIsLongerThanSyncClockPeriod();}
+\DoxyCodeLine{00187\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a4bb4da04d1b4010827a5be9397bbc67e}{SetWriteChannels}}(uint8\_t\ channels);}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_a4bb4da04d1b4010827a5be9397bbc67e}{SetWriteChannels}}(\textcolor{keywordtype}{bool}\ channel0,\ \textcolor{keywordtype}{bool}\ channel1,\ \textcolor{keywordtype}{bool}\ channel2,\ \textcolor{keywordtype}{bool}\ channel3);}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//Functions\ for\ CMultiWriteDevice}}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9959_abf14c16b323b452ab58b67069ba6c589}{MasterReset}}();}
+\DoxyCodeLine{00192\ \ \ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//bool\ SetControlBit(unsigned\ char\ RegisterNr,\ unsigned\ char\ BitNr,\ bool\ Value,\ bool\ GetValue);}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9959_a40bd9ee35f07c63d5abd8ba99979aa2c}{SetRegisterBit}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ RegisterNr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ BitNr,\ \textcolor{keywordtype}{bool}\ Value,\ \textcolor{keywordtype}{bool}\ GetValue\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ DoIOUpdate\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00195\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_c_a_d9959_ac2c61070302c969026fc43c676e4f5d0}{SetRegisterBits}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ RegisterNr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ LowestBitNr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ NrBits,\ uint32\_t\ Value,\ \textcolor{keywordtype}{bool}\ GetValue\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ DoIOUpdate\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ forceWrite=\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00196\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_c_a_d9959_a21de8c6bad71977668963d4c89fe846b}{SetValueDirect}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ RegisterNr,\ uint32\_t\ Value,\ \textcolor{keywordtype}{bool}\ GetValue\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ DoIOUpdate\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ forceWrite\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00197\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_c_a_d9959_a85dab1279bf6c1957e5f8b3e90833159}{SetValue}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ RegisterNr,\ uint32\_t\ Value,\ \textcolor{keywordtype}{bool}\ GetValue\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ DoIOUpdate\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ forceWrite\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{//void\ LoadLatches();}}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{comment}{//void\ UpdateRegisters();}}
+\DoxyCodeLine{00200\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__c_device_digital_out_8h_source" xml:lang="en-US">
+<title>CDeviceDigitalOut.h</title>
+<indexterm><primary>CDeviceDigitalOut.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__c_device_8h">CDevice.h</link>&quot;</emphasis>
+4 
+5 
+6 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_digital_out_1a84ce070b44506140fd5e640906c83a89">CDeviceDigitalOut</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link>
+7 {
+8 <emphasis role="keyword">public</emphasis>:
+9 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_c_device_digital_out_1a8ac30fa100da3d647addcca91b3838a1">numberChannels</link>;
+10 &#32;&#32;&#32;&#32;uint16_t&#32;<link linkend="_class_c_device_digital_out_1afeb397d89dd9f687d880cfc8a673b28a">LastValue</link>;
+11 <emphasis role="keyword">public</emphasis>:
+12 &#32;&#32;&#32;&#32;<link linkend="_class_c_device_digital_out_1a84ce070b44506140fd5e640906c83a89">CDeviceDigitalOut</link>(
+13 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;_MySequencer,
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;_MyAddress,
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;_numberChannels
+16 &#32;&#32;&#32;&#32;);
+17 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_device_digital_out_1a33035731d4b351c09046fec60007285b">~CDeviceDigitalOut</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+18 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_digital_out_1a26de6154f58f7bb9a0c78a7355f27370">SetValue</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit);
+19 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;SetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+20 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;GetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+21 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;Configure();</emphasis>
+22 
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_digital_out_1aaf2439fcb1ffaf981aa0b6b8d8fa390a">SetDigitalOutput</link>(uint8_t&#32;BitNr,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff)&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;Data&#32;=&#32;(OnOff)&#32;?&#32;1&#32;:&#32;0;
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_device_digital_out_1a26de6154f58f7bb9a0c78a7355f27370">SetValue</link>(0,&#32;(uint8_t*)&#32;&amp;Data,&#32;1,&#32;BitNr);
+26 &#32;&#32;&#32;&#32;}
+27 };
+</programlisting></section>

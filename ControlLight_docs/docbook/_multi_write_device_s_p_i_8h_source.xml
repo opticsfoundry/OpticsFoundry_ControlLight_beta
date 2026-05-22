@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__multi_write_device_s_p_i_8h_source" xml:lang="en-US">
+<title>MultiWriteDeviceSPI.h</title>
+<indexterm><primary>MultiWriteDeviceSPI.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__multi_write_device_8h">MultiWriteDevice.h</link>&quot;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;cstdint&gt;</emphasis>
+5 
+6 
+7 <emphasis role="comment">//#define&#32;DebugSPI</emphasis>
+8 
+9 <emphasis role="preprocessor">#ifdef&#32;DebugSPI</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+11 <emphasis role="preprocessor">#endif</emphasis>
+12 
+13 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_sequencer">CDeviceSequencer</link>;
+14 
+15 <emphasis role="keyword">class&#32;</emphasis>CMultiIO;
+16 
+17 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__multi_write_device_s_p_i_8h_1a669a765d62b2d28c8657747bfe0fad1e">MultiWriteDeviceSPIMaxBusBuffer</link>&#32;=&#32;1024*128;
+18 
+19 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_multi_write_device_s_p_i_1a5c404d823894e21c689ae62b5df3527a">CMultiWriteDeviceSPI</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_c_multi_write_device_1a82ab432239bfec0d80828a22185fad00">CMultiWriteDevice</link>
+20 {
+21 <emphasis role="keyword">private</emphasis>:
+22 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BaseAddress;
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;Bus;
+24 &#32;&#32;&#32;&#32;<emphasis role="comment">//Ring&#32;buffer&#32;for&#32;bus&#32;writing</emphasis>
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;BusBuffer[<link linkend="__multi_write_device_s_p_i_8h_1a669a765d62b2d28c8657747bfe0fad1e">MultiWriteDeviceSPIMaxBusBuffer</link>];
+26 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BusBufferStart;
+27 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BusBufferEnd;
+28 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;BusBufferLength;
+29 
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SPI_CS_bit;&#32;
+31 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SDIO_0_bit;
+32 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SDIO_1_bit;
+33 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SDIO_2_bit;
+34 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SDIO_3_bit;
+35 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;SPI_SCLK_bit;
+36 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;QSPIMode;
+37 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SPI_CPHA;
+38 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;SPI_CPOL;
+39 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;SPI_frequency_in_Hz;&#32;<emphasis role="comment">//0&#32;means&#32;half&#32;of&#32;parallel&#32;bus&#32;speed</emphasis>
+40 &#32;&#32;&#32;&#32;uint8_t&#32;SPI_mode;
+41 <emphasis role="preprocessor">#ifdef&#32;DebugSPI</emphasis>
+42 &#32;&#32;&#32;&#32;std::ofstream*&#32;DebugFile;
+43 <emphasis role="preprocessor">#endif</emphasis>
+44 <emphasis role="keyword">public</emphasis>:
+45 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1adc481f321d25e39cb2baa5f0fba07ab3">ControlRegisterContent</link>;
+46 &#32;&#32;&#32;&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a571800d5b7ca564f2b7c74159db21bc2">MyDeviceSequencer</link>;
+47 <emphasis role="keyword">public</emphasis>:&#32;&#32;&#32;&#32;&#32;
+48 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1ab460375cc870879096703671fdcf0128">WriteToBus</link>();
+49 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a360cc28c0aff515956cb3268005fc7c6">WriteAllToBus</link>();
+50 &#32;&#32;&#32;&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a5c404d823894e21c689ae62b5df3527a">CMultiWriteDeviceSPI</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;aBus,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;aBaseAddress,&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;_MyDeviceSequencer);
+51 &#32;&#32;&#32;&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a6256de4a496a9fa06d923211c698562d">~CMultiWriteDeviceSPI</link>();
+52 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1aa838021ef2d4dc7a50b5a7621e767b37">SetSPIPortBits</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;_SPI_CS_bit,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;&#32;_SDIO_0_bit,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;_SDIO_1_bit,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;_SDIO_2_bit,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;_SDIO_3_bit,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;_SPI_SCLK_bit);
+53 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1abaa235bd3663e29b1ad7d5dbaee9916c">AddToBusBuffer</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;value);
+54 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a43d882b4cc30609526e28a08f3028c82">HasSomethingToWriteToBus</link>()&#32;{&#32;<emphasis role="comment">//inline&#32;code&#32;for&#32;speed</emphasis>
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!<link linkend="_class_c_multi_write_device_1ad7e1c697dece2c19bea64ad66586e328">Enabled</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(BusBufferLength&#32;==&#32;0)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+58 &#32;&#32;&#32;&#32;}
+59 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1ab19290c96c86b3e0fc8615afcc5f69a2">SetControlRegister</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;start_bit,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;nr_bits,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;value,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;write_immediately&#32;=&#32;<emphasis role="keyword">true</emphasis>);
+60 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a923a74547f2fb577663b494e12bb8790">SetSPIClock</link>(<emphasis role="keywordtype">bool</emphasis>&#32;clock,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;write_immediately&#32;=&#32;<emphasis role="keyword">true</emphasis>);
+61 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a2228e7665e0a4dc7207b7172f964ae1c">SetSPIChipSelect</link>(<emphasis role="keywordtype">bool</emphasis>&#32;clock);
+62 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a339e7319309cd9044b7fed3662815571">SetSPIDataOut</link>(<emphasis role="keywordtype">bool</emphasis>&#32;clock);
+63 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a1c9be96f955251f14afc7ee9c6a5d51c">SetSPIFrequencyAndMode</link>(<emphasis role="keywordtype">double</emphasis>&#32;_SPI_frequency_in_Hz,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;_SPI_mode);
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a814c07fb2ce56c675466d292ec3a79ec">WriteSPIBitBanged</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_bits_out,&#32;uint64_t&#32;data);
+65 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a49181f0d679dedec2d202164dd6708a6">WriteSPIBitBangedMode0Simple</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_of_bits_out,&#32;uint64_t&#32;data);
+66 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a9a48eb51234850f01edcaccf79cf9d14">SetQSPIMode</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+67 <emphasis role="keyword">private</emphasis>:
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AssureMinimumSPIClockPeriodLength();
+69 };
+</programlisting></section>

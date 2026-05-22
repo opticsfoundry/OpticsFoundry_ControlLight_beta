@@ -1,0 +1,109 @@
+\doxysection{Config\+Creator Class Reference}
+\hypertarget{class_config_creator}{}\label{class_config_creator}\index{ConfigCreator@{ConfigCreator}}
+
+
+{\ttfamily \#include $<$Config\+Creator.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_config_creator_a773a61e1453348034a6e3a5d75131932}{Config\+Creator}} (const std\+::string \&filename="{}Control\+Hardware\+Config\+\_\+\+AQu\+RA.\+json"{})
+\item 
+void \mbox{\hyperlink{class_config_creator_abc45d48d95d527a19518ba3f6389fe00}{Register\+Sequencer}} (int Id=0, const std\+::string \&Type="{}Optics\+Foundry\+Sequencer\+V1"{}, const std\+::string \&IP="{}192.\+168.\+0.\+104"{}, int Port=7, bool Master=true, int Start\+Delay=10, int Clock\+Frequencyin\+MHz=100, int Bus\+Frequencyin\+MHz=2, bool Use\+External\+Clock=false, bool Use\+Strobe\+Generator=true, bool \mbox{\hyperlink{_control_a_p_i_8cpp_a345b20fac2d8e0b43b844db9267dda2e}{Use\+Edge\+Triggered\+Latches}}=true, bool Connect=true, bool Debug\+On=false, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt, const std\+::optional$<$ int $>$ \&Rack\+Nr=std\+::nullopt, const std\+::optional$<$ int $>$ \&Slot\+Nr=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_a3ababe453374aa303f2113621dc8af51}{Register\+Analog\+Out\+Board16bit}} (int Sequencer=0, int Start\+Address=24, int Number\+Channels=4, bool Signed=true, double Min\+Voltage=-\/10, double Max\+Voltage=10, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt, const std\+::optional$<$ int $>$ \&Rack\+Nr=std\+::nullopt, const std\+::optional$<$ int $>$ \&Slot\+Nr=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_a756910583cb924e287098669ae387c9c}{Register\+Digital\+Out\+Board}} (int Sequencer=0, int Address=1, int Number\+Channels=16, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt, const std\+::optional$<$ int $>$ \&Rack\+Nr=std\+::nullopt, const std\+::optional$<$ int $>$ \&Slot\+Nr=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_ac3121da8cdec8cd50e489430c1ef9d43}{Register\+Serial\+Port\+Board}} (int Sequencer=0, int Address=1, int Rack\+Nr=0, int Slot\+Nr=0, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_a6ccf8202813b31f9d96849c70fd64a19}{Register\+DDSAD9854\+Board}} (int Version=2, int Sequencer=0, int Address=132, double External\+Clock\+Frequencyin\+MHz=300, int PLLReference\+Multiplier=1, double Frequency\+Multiplier=1, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt, const std\+::optional$<$ int $>$ \&Rack\+Nr=std\+::nullopt, const std\+::optional$<$ int $>$ \&Slot\+Nr=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_a170733f5ec616d895cb9d2cc03baacc7}{Register\+DDSAD9858\+Board}} (int Sequencer=0, int Address=50, double Clock\+Frequencyin\+MHz=1200, double Frequency\+Multiplier=1, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt, const std\+::optional$<$ int $>$ \&Rack\+Nr=std\+::nullopt, const std\+::optional$<$ int $>$ \&Slot\+Nr=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_a7a843e61c17d090b47ac75c952f3a5f7}{Register\+DDSAD9959\+Board}} (int Sequencer=0, int Address=21, double Clock\+Frequencyin\+MHz=300, double Frequency\+Multiplier=1, bool AD9958=false, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt, const std\+::optional$<$ int $>$ \&Rack\+Nr=std\+::nullopt, const std\+::optional$<$ int $>$ \&Slot\+Nr=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_aeb3c9cec8ca52f39df6ff79d4241dc2b}{Register\+Analog\+In\+Board12bit}} (int Sequencer=0, int Address=80, int Number\+Channels=4, double Min\+Voltage=-\/10, double Max\+Voltage=10, const std\+::optional$<$ std\+::string $>$ \&Model=std\+::nullopt, const std\+::optional$<$ std\+::string $>$ \&SN=std\+::nullopt, const std\+::optional$<$ int $>$ \&Rack\+Nr=std\+::nullopt, const std\+::optional$<$ int $>$ \&Slot\+Nr=std\+::nullopt)
+\item 
+void \mbox{\hyperlink{class_config_creator_a9f2b06510391bcd500d9772182f4df30}{Register\+Rack\+Entry}} (const \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&entry)
+\item 
+bool \mbox{\hyperlink{class_config_creator_a0e4a51a96e909514bfe62d0b238ec25c}{Save}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_config_creator_a773a61e1453348034a6e3a5d75131932}\index{ConfigCreator@{ConfigCreator}!ConfigCreator@{ConfigCreator}}
+\index{ConfigCreator@{ConfigCreator}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{ConfigCreator()}{ConfigCreator()}}
+{\footnotesize\ttfamily \label{class_config_creator_a773a61e1453348034a6e3a5d75131932} 
+Config\+Creator\+::\+Config\+Creator (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}ControlHardwareConfig\+\_\+AQuRA.json"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_config_creator_aeb3c9cec8ca52f39df6ff79d4241dc2b}\index{ConfigCreator@{ConfigCreator}!RegisterAnalogInBoard12bit@{RegisterAnalogInBoard12bit}}
+\index{RegisterAnalogInBoard12bit@{RegisterAnalogInBoard12bit}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterAnalogInBoard12bit()}{RegisterAnalogInBoard12bit()}}
+{\footnotesize\ttfamily \label{class_config_creator_aeb3c9cec8ca52f39df6ff79d4241dc2b} 
+void Config\+Creator\+::\+Register\+Analog\+In\+Board12bit (\begin{DoxyParamCaption}\item[{int}]{Sequencer}{ = {\ttfamily 0}, }\item[{int}]{Address}{ = {\ttfamily 80}, }\item[{int}]{Number\+Channels}{ = {\ttfamily 4}, }\item[{double}]{Min\+Voltage}{ = {\ttfamily -\/10}, }\item[{double}]{Max\+Voltage}{ = {\ttfamily 10}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Rack\+Nr}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Slot\+Nr}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_a3ababe453374aa303f2113621dc8af51}\index{ConfigCreator@{ConfigCreator}!RegisterAnalogOutBoard16bit@{RegisterAnalogOutBoard16bit}}
+\index{RegisterAnalogOutBoard16bit@{RegisterAnalogOutBoard16bit}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterAnalogOutBoard16bit()}{RegisterAnalogOutBoard16bit()}}
+{\footnotesize\ttfamily \label{class_config_creator_a3ababe453374aa303f2113621dc8af51} 
+void Config\+Creator\+::\+Register\+Analog\+Out\+Board16bit (\begin{DoxyParamCaption}\item[{int}]{Sequencer}{ = {\ttfamily 0}, }\item[{int}]{Start\+Address}{ = {\ttfamily 24}, }\item[{int}]{Number\+Channels}{ = {\ttfamily 4}, }\item[{bool}]{Signed}{ = {\ttfamily true}, }\item[{double}]{Min\+Voltage}{ = {\ttfamily -\/10}, }\item[{double}]{Max\+Voltage}{ = {\ttfamily 10}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Rack\+Nr}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Slot\+Nr}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_a6ccf8202813b31f9d96849c70fd64a19}\index{ConfigCreator@{ConfigCreator}!RegisterDDSAD9854Board@{RegisterDDSAD9854Board}}
+\index{RegisterDDSAD9854Board@{RegisterDDSAD9854Board}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterDDSAD9854Board()}{RegisterDDSAD9854Board()}}
+{\footnotesize\ttfamily \label{class_config_creator_a6ccf8202813b31f9d96849c70fd64a19} 
+void Config\+Creator\+::\+Register\+DDSAD9854\+Board (\begin{DoxyParamCaption}\item[{int}]{Version}{ = {\ttfamily 2}, }\item[{int}]{Sequencer}{ = {\ttfamily 0}, }\item[{int}]{Address}{ = {\ttfamily 132}, }\item[{double}]{External\+Clock\+Frequencyin\+MHz}{ = {\ttfamily 300}, }\item[{int}]{PLLReference\+Multiplier}{ = {\ttfamily 1}, }\item[{double}]{Frequency\+Multiplier}{ = {\ttfamily 1}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Rack\+Nr}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Slot\+Nr}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_a170733f5ec616d895cb9d2cc03baacc7}\index{ConfigCreator@{ConfigCreator}!RegisterDDSAD9858Board@{RegisterDDSAD9858Board}}
+\index{RegisterDDSAD9858Board@{RegisterDDSAD9858Board}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterDDSAD9858Board()}{RegisterDDSAD9858Board()}}
+{\footnotesize\ttfamily \label{class_config_creator_a170733f5ec616d895cb9d2cc03baacc7} 
+void Config\+Creator\+::\+Register\+DDSAD9858\+Board (\begin{DoxyParamCaption}\item[{int}]{Sequencer}{ = {\ttfamily 0}, }\item[{int}]{Address}{ = {\ttfamily 50}, }\item[{double}]{Clock\+Frequencyin\+MHz}{ = {\ttfamily 1200}, }\item[{double}]{Frequency\+Multiplier}{ = {\ttfamily 1}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Rack\+Nr}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Slot\+Nr}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_a7a843e61c17d090b47ac75c952f3a5f7}\index{ConfigCreator@{ConfigCreator}!RegisterDDSAD9959Board@{RegisterDDSAD9959Board}}
+\index{RegisterDDSAD9959Board@{RegisterDDSAD9959Board}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterDDSAD9959Board()}{RegisterDDSAD9959Board()}}
+{\footnotesize\ttfamily \label{class_config_creator_a7a843e61c17d090b47ac75c952f3a5f7} 
+void Config\+Creator\+::\+Register\+DDSAD9959\+Board (\begin{DoxyParamCaption}\item[{int}]{Sequencer}{ = {\ttfamily 0}, }\item[{int}]{Address}{ = {\ttfamily 21}, }\item[{double}]{Clock\+Frequencyin\+MHz}{ = {\ttfamily 300}, }\item[{double}]{Frequency\+Multiplier}{ = {\ttfamily 1}, }\item[{bool}]{AD9958}{ = {\ttfamily false}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Rack\+Nr}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Slot\+Nr}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_a756910583cb924e287098669ae387c9c}\index{ConfigCreator@{ConfigCreator}!RegisterDigitalOutBoard@{RegisterDigitalOutBoard}}
+\index{RegisterDigitalOutBoard@{RegisterDigitalOutBoard}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterDigitalOutBoard()}{RegisterDigitalOutBoard()}}
+{\footnotesize\ttfamily \label{class_config_creator_a756910583cb924e287098669ae387c9c} 
+void Config\+Creator\+::\+Register\+Digital\+Out\+Board (\begin{DoxyParamCaption}\item[{int}]{Sequencer}{ = {\ttfamily 0}, }\item[{int}]{Address}{ = {\ttfamily 1}, }\item[{int}]{Number\+Channels}{ = {\ttfamily 16}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Rack\+Nr}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Slot\+Nr}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_a9f2b06510391bcd500d9772182f4df30}\index{ConfigCreator@{ConfigCreator}!RegisterRackEntry@{RegisterRackEntry}}
+\index{RegisterRackEntry@{RegisterRackEntry}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterRackEntry()}{RegisterRackEntry()}}
+{\footnotesize\ttfamily \label{class_config_creator_a9f2b06510391bcd500d9772182f4df30} 
+void Config\+Creator\+::\+Register\+Rack\+Entry (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \&}]{entry}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_abc45d48d95d527a19518ba3f6389fe00}\index{ConfigCreator@{ConfigCreator}!RegisterSequencer@{RegisterSequencer}}
+\index{RegisterSequencer@{RegisterSequencer}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterSequencer()}{RegisterSequencer()}}
+{\footnotesize\ttfamily \label{class_config_creator_abc45d48d95d527a19518ba3f6389fe00} 
+void Config\+Creator\+::\+Register\+Sequencer (\begin{DoxyParamCaption}\item[{int}]{Id}{ = {\ttfamily 0}, }\item[{const std\+::string \&}]{Type}{ = {\ttfamily "{}OpticsFoundrySequencerV1"{}}, }\item[{const std\+::string \&}]{IP}{ = {\ttfamily "{}192.168.0.104"{}}, }\item[{int}]{Port}{ = {\ttfamily 7}, }\item[{bool}]{Master}{ = {\ttfamily true}, }\item[{int}]{Start\+Delay}{ = {\ttfamily 10}, }\item[{int}]{Clock\+Frequencyin\+MHz}{ = {\ttfamily 100}, }\item[{int}]{Bus\+Frequencyin\+MHz}{ = {\ttfamily 2}, }\item[{bool}]{Use\+External\+Clock}{ = {\ttfamily false}, }\item[{bool}]{Use\+Strobe\+Generator}{ = {\ttfamily true}, }\item[{bool}]{Use\+Edge\+Triggered\+Latches}{ = {\ttfamily true}, }\item[{bool}]{Connect}{ = {\ttfamily true}, }\item[{bool}]{Debug\+On}{ = {\ttfamily false}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Rack\+Nr}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ int $>$ \&}]{Slot\+Nr}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_ac3121da8cdec8cd50e489430c1ef9d43}\index{ConfigCreator@{ConfigCreator}!RegisterSerialPortBoard@{RegisterSerialPortBoard}}
+\index{RegisterSerialPortBoard@{RegisterSerialPortBoard}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{RegisterSerialPortBoard()}{RegisterSerialPortBoard()}}
+{\footnotesize\ttfamily \label{class_config_creator_ac3121da8cdec8cd50e489430c1ef9d43} 
+void Config\+Creator\+::\+Register\+Serial\+Port\+Board (\begin{DoxyParamCaption}\item[{int}]{Sequencer}{ = {\ttfamily 0}, }\item[{int}]{Address}{ = {\ttfamily 1}, }\item[{int}]{Rack\+Nr}{ = {\ttfamily 0}, }\item[{int}]{Slot\+Nr}{ = {\ttfamily 0}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{Model}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ std\+::string $>$ \&}]{SN}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_config_creator_a0e4a51a96e909514bfe62d0b238ec25c}\index{ConfigCreator@{ConfigCreator}!Save@{Save}}
+\index{Save@{Save}!ConfigCreator@{ConfigCreator}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily \label{class_config_creator_a0e4a51a96e909514bfe62d0b238ec25c} 
+bool Config\+Creator\+::\+Save (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_config_creator_8h}{Config\+Creator.\+h}}\item 
+\mbox{\hyperlink{_config_creator_8cpp}{Config\+Creator.\+cpp}}\end{DoxyCompactItemize}

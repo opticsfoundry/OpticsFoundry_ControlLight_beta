@@ -1,0 +1,248 @@
+\doxysection{AD9959.\+cpp File Reference}
+\hypertarget{_a_d9959_8cpp}{}\label{_a_d9959_8cpp}\index{AD9959.cpp@{AD9959.cpp}}
+{\ttfamily \#include "{}AD9959.\+h"{}}\newline
+{\ttfamily \#include "{}Multi\+Write\+Device.\+h"{}}\newline
+{\ttfamily \#include "{}Control\+API.\+h"{}}\newline
+{\ttfamily \#include "{}CDevice\+Sequencer.\+h"{}}\newline
+{\ttfamily \#include "{}std.\+h"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$format$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_aa811cfff7ed3e366dac57bec585d73ca}{CSR}}~0x00
+\begin{DoxyCompactList}\small\item\em Channel select register 1 Byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_ac3653b62fc8bcbf459d8eb100c2f0d97}{FR1}}~0x01
+\begin{DoxyCompactList}\small\item\em Function register 1 3 Bytes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a56d7ac273db8f1d308e2af386653be55}{CFR}}~0x03
+\begin{DoxyCompactList}\small\item\em Channel Function register 3 Bytes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a761c93c32ede15bf95a6da8bb01c197e}{CFTW0}}~0x04
+\begin{DoxyCompactList}\small\item\em Channel Frequency Tuning Word 4 Bytes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a60692aa1f8e46258cc02429b45d5e1b7}{CPOW}}~0x05
+\begin{DoxyCompactList}\small\item\em Channel Phase Offset Word 2 Bytes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a48dc818c449e45d31cec291bd40e306c}{ACR}}~0x06
+\begin{DoxyCompactList}\small\item\em Amplitude Control Register 3 Bytes. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a7f09cf08ff1599d667113faa04a68f75}{PHASE\+\_\+\+OFF\+\_\+\+BITS}}~16384.\+0
+\begin{DoxyCompactList}\small\item\em 2\texorpdfstring{$^\wedge$}{\string^}14 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a4ba510f21f53f375dd98267c4a644281}{MAX\+\_\+\+DEGREES}}~360.\+0
+\begin{DoxyCompactList}\small\item\em For phase calculation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_af89cc4d665d9dbf6e4fd69f4be20b99d}{TUNEWORD\+\_\+\+BITS}}~4294967296.\+0
+\begin{DoxyCompactList}\small\item\em 2\texorpdfstring{$^\wedge$}{\string^}32 \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a84a5f7cd22a85455fa17496e8d686ba7}{MAN\+\_\+\+AMP}}~0x1000
+\begin{DoxyCompactList}\small\item\em Enable manual amplitude control. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_aeb86b3c64a6f46ef2391d7619e402dea}{PWR\+\_\+\+DWN\+\_\+\+FULL}}~0x2
+\begin{DoxyCompactList}\small\item\em Select full power down mode. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_ac3edf1c18c8444b1e5c6e1d66b1d5a9c}{PWR\+\_\+\+DWN\+\_\+\+PART}}~0x0
+\begin{DoxyCompactList}\small\item\em Select partial power down mode. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_a_d9959_8cpp_a41aecc6c69211cb7e33b2b996664a30d}{SYNC\+\_\+\+DISABLE}}~0x1
+\begin{DoxyCompactList}\small\item\em Disable the SYNC\+\_\+\+CLK signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_a_d9959_8cpp_a278d0d3daa384981d06a835c8a58ca33}{AD9959\+Do\+Nothing}} (bool bit)
+\item 
+void \mbox{\hyperlink{_a_d9959_8cpp_a00e38cc1dc06ea7a283fdc2fd28a2a3d}{AD9959\+Wait\+Nothing}} (double time)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_a_d9959_8cpp_a4b0b116a3f895747a696c03240dd3a1d}{AD9959\+Write\+Read\+SPINothing}} (unsigned int chip\+\_\+select, unsigned int number\+\_\+of\+\_\+bits\+\_\+out, uint64\+\_\+t data\+\_\+high, uint64\+\_\+t data\+\_\+low, unsigned int number\+\_\+of\+\_\+bits\+\_\+in)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_a_d9959_8cpp_a7cf87d3ac1a8182973654e12f98b520a}{AD9959\+Master\+Reset\+Value\+Contents}} \mbox{[}\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959\+Number\+Of\+Registers}}\mbox{]} = \{ 0x\+F0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 \}
+\item 
+unsigned char \mbox{\hyperlink{_a_d9959_8cpp_a8c141341211f8f38ec3d24a5a5711719}{AD9959\+Value\+Length}} \mbox{[}\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959\+Number\+Of\+Registers}}\mbox{]} = \{ 1, 3, 2, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2 \}
+\item 
+unsigned char \mbox{\hyperlink{_a_d9959_8cpp_aff09f9fc0d07347efcf369f6e077235c}{AD9959\+Value\+Base\+Address}} \mbox{[}\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959\+Number\+Of\+Registers}}\mbox{]} = \{ 0x00,0x01,0x02, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19 \}
+\item 
+const unsigned long \mbox{\hyperlink{_a_d9959_8cpp_ae7a2cbfee2e5c7f81156a948ffa0134f}{AD9959\+Value\+Not\+In\+Bus\+Buffer}} = 99999
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_a_d9959_8cpp_ae2b8f7d86064320e9627fdddbdaf5b77}{Control\+Register\+Nr}} = 113
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_a_d9959_8cpp_a48dc818c449e45d31cec291bd40e306c}\index{AD9959.cpp@{AD9959.cpp}!ACR@{ACR}}
+\index{ACR@{ACR}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{ACR}{ACR}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a48dc818c449e45d31cec291bd40e306c} 
+\#define ACR~0x06}
+
+
+
+Amplitude Control Register 3 Bytes. 
+
+\Hypertarget{_a_d9959_8cpp_a56d7ac273db8f1d308e2af386653be55}\index{AD9959.cpp@{AD9959.cpp}!CFR@{CFR}}
+\index{CFR@{CFR}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{CFR}{CFR}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a56d7ac273db8f1d308e2af386653be55} 
+\#define CFR~0x03}
+
+
+
+Channel Function register 3 Bytes. 
+
+\Hypertarget{_a_d9959_8cpp_a761c93c32ede15bf95a6da8bb01c197e}\index{AD9959.cpp@{AD9959.cpp}!CFTW0@{CFTW0}}
+\index{CFTW0@{CFTW0}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{CFTW0}{CFTW0}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a761c93c32ede15bf95a6da8bb01c197e} 
+\#define CFTW0~0x04}
+
+
+
+Channel Frequency Tuning Word 4 Bytes. 
+
+\Hypertarget{_a_d9959_8cpp_a60692aa1f8e46258cc02429b45d5e1b7}\index{AD9959.cpp@{AD9959.cpp}!CPOW@{CPOW}}
+\index{CPOW@{CPOW}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{CPOW}{CPOW}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a60692aa1f8e46258cc02429b45d5e1b7} 
+\#define CPOW~0x05}
+
+
+
+Channel Phase Offset Word 2 Bytes. 
+
+\Hypertarget{_a_d9959_8cpp_aa811cfff7ed3e366dac57bec585d73ca}\index{AD9959.cpp@{AD9959.cpp}!CSR@{CSR}}
+\index{CSR@{CSR}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{CSR}{CSR}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_aa811cfff7ed3e366dac57bec585d73ca} 
+\#define CSR~0x00}
+
+
+
+Channel select register 1 Byte. 
+
+\Hypertarget{_a_d9959_8cpp_ac3653b62fc8bcbf459d8eb100c2f0d97}\index{AD9959.cpp@{AD9959.cpp}!FR1@{FR1}}
+\index{FR1@{FR1}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{FR1}{FR1}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_ac3653b62fc8bcbf459d8eb100c2f0d97} 
+\#define FR1~0x01}
+
+
+
+Function register 1 3 Bytes. 
+
+\Hypertarget{_a_d9959_8cpp_a84a5f7cd22a85455fa17496e8d686ba7}\index{AD9959.cpp@{AD9959.cpp}!MAN\_AMP@{MAN\_AMP}}
+\index{MAN\_AMP@{MAN\_AMP}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{MAN\_AMP}{MAN\_AMP}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a84a5f7cd22a85455fa17496e8d686ba7} 
+\#define MAN\+\_\+\+AMP~0x1000}
+
+
+
+Enable manual amplitude control. 
+
+\Hypertarget{_a_d9959_8cpp_a4ba510f21f53f375dd98267c4a644281}\index{AD9959.cpp@{AD9959.cpp}!MAX\_DEGREES@{MAX\_DEGREES}}
+\index{MAX\_DEGREES@{MAX\_DEGREES}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX\_DEGREES}{MAX\_DEGREES}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a4ba510f21f53f375dd98267c4a644281} 
+\#define MAX\+\_\+\+DEGREES~360.\+0}
+
+
+
+For phase calculation. 
+
+\Hypertarget{_a_d9959_8cpp_a7f09cf08ff1599d667113faa04a68f75}\index{AD9959.cpp@{AD9959.cpp}!PHASE\_OFF\_BITS@{PHASE\_OFF\_BITS}}
+\index{PHASE\_OFF\_BITS@{PHASE\_OFF\_BITS}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{PHASE\_OFF\_BITS}{PHASE\_OFF\_BITS}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a7f09cf08ff1599d667113faa04a68f75} 
+\#define PHASE\+\_\+\+OFF\+\_\+\+BITS~16384.\+0}
+
+
+
+2\texorpdfstring{$^\wedge$}{\string^}14 
+
+\Hypertarget{_a_d9959_8cpp_aeb86b3c64a6f46ef2391d7619e402dea}\index{AD9959.cpp@{AD9959.cpp}!PWR\_DWN\_FULL@{PWR\_DWN\_FULL}}
+\index{PWR\_DWN\_FULL@{PWR\_DWN\_FULL}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{PWR\_DWN\_FULL}{PWR\_DWN\_FULL}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_aeb86b3c64a6f46ef2391d7619e402dea} 
+\#define PWR\+\_\+\+DWN\+\_\+\+FULL~0x2}
+
+
+
+Select full power down mode. 
+
+\Hypertarget{_a_d9959_8cpp_ac3edf1c18c8444b1e5c6e1d66b1d5a9c}\index{AD9959.cpp@{AD9959.cpp}!PWR\_DWN\_PART@{PWR\_DWN\_PART}}
+\index{PWR\_DWN\_PART@{PWR\_DWN\_PART}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{PWR\_DWN\_PART}{PWR\_DWN\_PART}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_ac3edf1c18c8444b1e5c6e1d66b1d5a9c} 
+\#define PWR\+\_\+\+DWN\+\_\+\+PART~0x0}
+
+
+
+Select partial power down mode. 
+
+\Hypertarget{_a_d9959_8cpp_a41aecc6c69211cb7e33b2b996664a30d}\index{AD9959.cpp@{AD9959.cpp}!SYNC\_DISABLE@{SYNC\_DISABLE}}
+\index{SYNC\_DISABLE@{SYNC\_DISABLE}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{SYNC\_DISABLE}{SYNC\_DISABLE}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a41aecc6c69211cb7e33b2b996664a30d} 
+\#define SYNC\+\_\+\+DISABLE~0x1}
+
+
+
+Disable the SYNC\+\_\+\+CLK signal. 
+
+\Hypertarget{_a_d9959_8cpp_af89cc4d665d9dbf6e4fd69f4be20b99d}\index{AD9959.cpp@{AD9959.cpp}!TUNEWORD\_BITS@{TUNEWORD\_BITS}}
+\index{TUNEWORD\_BITS@{TUNEWORD\_BITS}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{TUNEWORD\_BITS}{TUNEWORD\_BITS}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_af89cc4d665d9dbf6e4fd69f4be20b99d} 
+\#define TUNEWORD\+\_\+\+BITS~4294967296.\+0}
+
+
+
+2\texorpdfstring{$^\wedge$}{\string^}32 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_a_d9959_8cpp_a278d0d3daa384981d06a835c8a58ca33}\index{AD9959.cpp@{AD9959.cpp}!AD9959DoNothing@{AD9959DoNothing}}
+\index{AD9959DoNothing@{AD9959DoNothing}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9959DoNothing()}{AD9959DoNothing()}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a278d0d3daa384981d06a835c8a58ca33} 
+void AD9959\+Do\+Nothing (\begin{DoxyParamCaption}\item[{bool}]{bit}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_a_d9959_8cpp_a00e38cc1dc06ea7a283fdc2fd28a2a3d}\index{AD9959.cpp@{AD9959.cpp}!AD9959WaitNothing@{AD9959WaitNothing}}
+\index{AD9959WaitNothing@{AD9959WaitNothing}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9959WaitNothing()}{AD9959WaitNothing()}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a00e38cc1dc06ea7a283fdc2fd28a2a3d} 
+void AD9959\+Wait\+Nothing (\begin{DoxyParamCaption}\item[{double}]{time}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_a_d9959_8cpp_a4b0b116a3f895747a696c03240dd3a1d}\index{AD9959.cpp@{AD9959.cpp}!AD9959WriteReadSPINothing@{AD9959WriteReadSPINothing}}
+\index{AD9959WriteReadSPINothing@{AD9959WriteReadSPINothing}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9959WriteReadSPINothing()}{AD9959WriteReadSPINothing()}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a4b0b116a3f895747a696c03240dd3a1d} 
+uint32\+\_\+t AD9959\+Write\+Read\+SPINothing (\begin{DoxyParamCaption}\item[{unsigned int}]{chip\+\_\+select}{, }\item[{unsigned int}]{number\+\_\+of\+\_\+bits\+\_\+out}{, }\item[{uint64\+\_\+t}]{data\+\_\+high}{, }\item[{uint64\+\_\+t}]{data\+\_\+low}{, }\item[{unsigned int}]{number\+\_\+of\+\_\+bits\+\_\+in}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_a_d9959_8cpp_a7cf87d3ac1a8182973654e12f98b520a}\index{AD9959.cpp@{AD9959.cpp}!AD9959MasterResetValueContents@{AD9959MasterResetValueContents}}
+\index{AD9959MasterResetValueContents@{AD9959MasterResetValueContents}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9959MasterResetValueContents}{AD9959MasterResetValueContents}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a7cf87d3ac1a8182973654e12f98b520a} 
+uint32\+\_\+t AD9959\+Master\+Reset\+Value\+Contents\mbox{[}\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959\+Number\+Of\+Registers}}\mbox{]} = \{ 0x\+F0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 \}}
+
+\Hypertarget{_a_d9959_8cpp_aff09f9fc0d07347efcf369f6e077235c}\index{AD9959.cpp@{AD9959.cpp}!AD9959ValueBaseAddress@{AD9959ValueBaseAddress}}
+\index{AD9959ValueBaseAddress@{AD9959ValueBaseAddress}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9959ValueBaseAddress}{AD9959ValueBaseAddress}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_aff09f9fc0d07347efcf369f6e077235c} 
+unsigned char AD9959\+Value\+Base\+Address\mbox{[}\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959\+Number\+Of\+Registers}}\mbox{]} = \{ 0x00,0x01,0x02, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19 \}}
+
+\Hypertarget{_a_d9959_8cpp_a8c141341211f8f38ec3d24a5a5711719}\index{AD9959.cpp@{AD9959.cpp}!AD9959ValueLength@{AD9959ValueLength}}
+\index{AD9959ValueLength@{AD9959ValueLength}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9959ValueLength}{AD9959ValueLength}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_a8c141341211f8f38ec3d24a5a5711719} 
+unsigned char AD9959\+Value\+Length\mbox{[}\mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959\+Number\+Of\+Registers}}\mbox{]} = \{ 1, 3, 2, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2 \}}
+
+\Hypertarget{_a_d9959_8cpp_ae7a2cbfee2e5c7f81156a948ffa0134f}\index{AD9959.cpp@{AD9959.cpp}!AD9959ValueNotInBusBuffer@{AD9959ValueNotInBusBuffer}}
+\index{AD9959ValueNotInBusBuffer@{AD9959ValueNotInBusBuffer}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9959ValueNotInBusBuffer}{AD9959ValueNotInBusBuffer}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_ae7a2cbfee2e5c7f81156a948ffa0134f} 
+const unsigned long AD9959\+Value\+Not\+In\+Bus\+Buffer = 99999}
+
+\Hypertarget{_a_d9959_8cpp_ae2b8f7d86064320e9627fdddbdaf5b77}\index{AD9959.cpp@{AD9959.cpp}!ControlRegisterNr@{ControlRegisterNr}}
+\index{ControlRegisterNr@{ControlRegisterNr}!AD9959.cpp@{AD9959.cpp}}
+\doxysubsubsection{\texorpdfstring{ControlRegisterNr}{ControlRegisterNr}}
+{\footnotesize\ttfamily \label{_a_d9959_8cpp_ae2b8f7d86064320e9627fdddbdaf5b77} 
+uint8\+\_\+t Control\+Register\+Nr = 113\hspace{0.3cm}{\ttfamily [constexpr]}}
+

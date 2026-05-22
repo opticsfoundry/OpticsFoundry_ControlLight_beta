@@ -1,0 +1,749 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_device_sequencer" xml:lang="en-US">
+<title>CDeviceSequencer Class Reference</title>
+<indexterm><primary>CDeviceSequencer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;CDeviceSequencer.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for CDeviceSequencer:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_c_device_sequencer.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1aa679902977ccb1859873f2394dea74da">IsMaster</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_device_sequencer_1a8f1796b86def5ee2468391729d6ff8f0">CDeviceSequencer</link> (unsigned int _id, std::string _type, std::string _ip, unsigned int _port, bool _master, unsigned int _startDelay, double _clockFrequency, unsigned int _FPGAClockToBusClockRatio, bool _useExternalClock, bool _useStrobeGenerator, bool _useEdgeTriggeredLatches, bool _connect)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_device_sequencer_1af646da917bbb922c7928dcca66add13c">~CDeviceSequencer</link> ()</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_sequencer_1a2d70435889d0dd53b24fe0072c4fbbb7">GetBusFrequency_in_Hz</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a0d47b80a0616eacbf5cdddb7cc4fa992">AdvanceTime</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1afd4f8b3316a3a3d2beabffabfef64875">UseEdgeTriggeredLatches</link> (bool UseEdgeTriggeredLatches)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a94a2b44fccae6822267225ba65a18683">SetFPGAClockToBusClockRatio</link> (const unsigned int _FPGAClockToBusClockRatio, const bool UpdateStrobeDuration)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a081de4aec74b72961b732e32777ae36e">Initialize</link> (unsigned long _PCBufferSize_in_u64)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a10854f6a6ca1deec6752a58848bea582">SwitchDebugMode</link> (bool OnOff, const std::string &amp;FileName)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1aa963f7fadf133d2ebd47dafa8ab53d12">TransmitOnlyDifferenceBetweenCommandSequenceIfPossible</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a75982403171bb9af945ca0529daec267">IsSequencerConnected</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a5a451f8a11a1da169fff225b927c392d">StartAssemblingSequence</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a16a5007a40a488a45577fad53f573c73">StartAssemblingNextSequence</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a22a3aefd7946c8d1a7119668d42b91fc">SendSequence</link> (const std::string &amp;FileName=&quot;&quot;)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1ae12a1e70fc37e10979ff0acccc3ea12a">GetBufferLength</link> (uint32_t &amp;FilledBufferLength, uint32_t &amp;MaxBufferLength)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a1991feaf7cc573121697ccb9b7b9323d">SendStartSequenceCommand</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a16122a420c693e74ab8868fb1d38895f">IsSequenceRunning</link> (bool &amp;running, unsigned long long &amp;DataPointsWritten)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a033f8ba2b0e179998a8e0d6a72ec3279">WaitTillEndOfSequence</link> (double timeout_in_s=0)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a163c503d4c7e4629e84eeb7eadcd9db8">WaitTillEndOfSequenceThenGetInputData</link> (uint8_t *&amp;buffer, unsigned long &amp;buffer_length, unsigned long &amp;EndTimeOfCycle, double timeout_in_s)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1ab352a413fa6d48c9cc03faf57c8cfa32">AddCommandToSequence</link> (const uint32_t &amp;high_word, const uint32_t &amp;low_word)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a9a6701de6951ae59c599bf91edbcf29a">AddBusCommandAndWait</link> (uint32_t data, uint32_t delay)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a9ad684a1cd8866041f8af665851e61fd">AddBusCommandToSequence</link> (const uint32_t &amp;content)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a325e2daaa28615bc44b27db0a4c3f377">SetValue_Sequencer</link> (const unsigned int &amp;Address, const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1ad9d968a730304e75c9e07255dedd003c">SetRegister_Sequencer</link> (const unsigned int &amp;Address, const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1aeca54301a0e2e5b33afb0a5717886092">SetValueSerialDevice_Sequencer</link> (const unsigned int &amp;Address, const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1aca4336ad38174dacb145def7ef35317d">SetRegisterSerialDevice_Sequencer</link> (const unsigned int &amp;Address, const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1acccb21e905a84f6dd954feb4318db086">WriteBusAddressAndDataToBuffer</link> (const uint16_t &amp;MultiIOAddress, const uint16_t &amp;Data)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1ab83a12612bc8d09574a43c356cc8a9df">Wait_ms</link> (double time_in_ms)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_sequencer_1a43d39126fb474e9143569c720af1efea">GetTime_ms</link> ()</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_sequencer_1a07ebfe1673db09c97de7b88ed513fe52">GetTimeDebt_ms</link> ()</para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_device_sequencer_1afabe3875e5174e15237cc26fbaa31c51">GetNextBufferPosition</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a5e4f1fdd9df68041e3063060d9456ab7">SetPeriodicTrigger_ms</link> (double periodicTriggerPeriod_in_ms, double periodicTriggerAllowedWaitTime_in_ms)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1afaae61023ca18a0d0eeaf7876ef1d3e3">GetNextCycleNumber</link> (long &amp;NextCycleNumber)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a2ade2307ab313fb94fc78fa8492942bd">ResetCycleNumber</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a9d17d9e2c1cb2dd77a0d83b17282a3e3">TransmitI2CPort</link> (uint8_t I2C_port, uint8_t I2C_destination, uint8_t I2C_address, uint16_t send_length, uint8_t *send_data, uint16_t receive_length, uint8_t *receive_data, uint32_t I2C_clock_frequency_in_Hz, bool &amp;I2C_success, bool fail_silently)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1af2bcbdaafb702a28f0c9b2825ca0268e">SetPSOptions</link> (uint8_t options)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a90a766b5bc6a6b9989b3f2fab76ca51a">SetSequencerDigitalOut</link> (uint8_t dig_out_pattern)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1ab8d9560a1b28465d8be62634a193dd0d">SetSequencer_PL_to_PS_command</link> (uint8_t PL_to_PS_command)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1aed5df9bfd8a94543e2b623cddc45fa90">SwitchSequencerBuzzer</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a26daea97d364aad1f7d5921381c0747a">StartAssemblingCPUCommandSequence</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1ab932e2174a6bcceff9103a5f2631b7f8">AddCPUCommand</link> (const char *command)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a4fcb9afb9fd28b134d0f965a06295a66">ExecuteCPUCommandSequence</link> (unsigned long ethernet_check_period_in_ms)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a36f0277977d436d29ba425a90a8dd590">StopCPUCommandSequence</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a7cde9dd58268817490f6d4841e4aa955">InterruptCPUCommandSequence</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a3e22b4d9f74ba21347abad69c7d1390a">GetCPUCommandErrorMessages</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a8419d9bf9bdc6ec87bc1d1d8a7a6d574">PrintCPUCommandErrorMessages</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1af4a4b1e1d3e94de047ebe285d3b30264">PrintCPUCommandSequence</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_sequencer_1a0fae9f67b03f5360821e4aee8e0e5f14">SetValue</link> (const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a74e2dbb7730d97a659e26ad3905ddecc">SequencerStartAnalogInAcquisition</link> (const uint8_t &amp;analog_in_type, const uint8_t &amp;SPI_CS, const uint8_t &amp;ChannelNumber, const uint32_t &amp;NumberOfDataPoints, const double &amp;DelayBetweenDataPoints_in_ms)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1af7ed0331caa0c2b1b59d81b70c23545e">SequencerWriteInputMemory</link> (unsigned long input_buf_mem_data, bool write_next_address=1, unsigned long input_buf_mem_address=0)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a22f66dda6b836fe5c7b24ade065888ae">SequencerWriteSystemTimeToInputMemory</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a3c29a3cec7724ade1c4250c5264cd652">SequencerCalcAD9854FrequencyTuningWord</link> (uint64_t ftw0, uint8_t bit_shift)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a1f4dc1ed13ba3cb5d9687f930163ec53">SequencerSwitchDebugLED</link> (unsigned int OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1af45d2dcd8aaa3ddf081c9d88d4d60938">SequencerIgnoreTCPIP</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1ae9c5f92c61a044f962942fcabcbb06c9">SequencerAddMarker</link> (unsigned char marker)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a65193d6c01cceaad58fac3eba624dac0">SequencerSetTimeDebtGuard_in_ms</link> (const double &amp;MaxTimeDebt_in_ms)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1adca3cad0758b3ef7facf3f5b72fbeaa4">SequencerSetLoopCount</link> (unsigned int loop_count)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1ad0e8572ebfa19d6965bffddcc1f01271">SequencerJumpBackward</link> (unsigned int jump_length, bool unconditional_jump=true, bool condition_0=false, bool condition_1=false, bool condition_PS=false, bool condition_dig_in=false, uint8_t dig_in_bit_nr=0, bool loop_count_greater_zero=false)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a82c3a104ca78ce7bfb4d0038eb505d46">SequencerJumpForward</link> (unsigned int jump_length, bool unconditional_jump=true, bool condition_0=false, bool condition_1=false, bool condition_PS=false, bool condition_dig_in=false, uint8_t dig_in_bit_nr=0)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a7eb2a36e95b501347bba9390f3161056">SequencerTransmitI2C</link> (uint8_t I2C_port, uint8_t I2C_length_out, uint8_t I2C_length_in, uint8_t *data_out)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a1d9c89637e2ac5831396acc1b382f934">SequencerTransmitSPI</link> (const uint8_t chip_select, const uint16_t number_of_bits_out, const uint8_t *data_out, const uint8_t number_of_bits_in, const bool start_now)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a1262058d5475f540f530d55d372808a2">SequencerRepeatedOutIn</link> (const uint16_t number_of_datapoints, const double delay_between_datapoints_in_ms, uint8_t RepeatedOutInCommand)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1aae3f61128037b76638970a4782ea320a">SequencerSetSPITiming</link> (uint16_t SPI_delay_CS_low_start_wait, uint16_t SPI_delay_write, uint16_t SPI_delay_pause_before_read, uint16_t SPI_delay_read, uint16_t SPI_delay_CS_low_end_wait)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a8b01a278a5d33ad72c3bf2ab6fe91e07">SequencerSetSPIMode</link> (uint8_t SPI_mode)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a4ad3404fc53e6e1038a780f6b96a19a3">SequencerSetI2CParameters</link> (uint8_t I2C_0_Destination, uint8_t I2C_delay_start_stop, uint8_t I2C_delay_data_setup, uint8_t I2C_delay_clock_high, uint8_t I2C_delay_clock_low, uint8_t I2C_delay_pause_before_read)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1a297c43f0c69b7b7ce7d1ec94e9b48bc2">SequencerSelectRackSlot</link> (uint8_t rack_nr, uint8_t slot_nr)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_sequencer_1aa3147266cc8f9f1c44da1a7faae43a5d">SequencerResetI2CMultiplexer</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_device">CDevice</link> * <link linkend="_class_c_device_sequencer_1a042e1078c71ca62771140acb4b60f7e7">GetParallelBusDevice</link> (const unsigned int &amp;Address)</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_device">CDevice</link> * <link linkend="_class_c_device_sequencer_1ada57fb75303e4b7cf363e9a2e685cac7">GetSerialBusDevice</link> (const unsigned int &amp;Address)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_c_device">CDevice</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link> (<link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MySequencer=nullptr, unsigned long _MyAddress=0, const std::string _MyType=&quot;&quot;)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_device_1aa3ec8544aad768caa0c45b53c8915e0f">~CDevice</link> ()=default</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_1a30356c4a419393fe39c946209c966ab1">NotifyError</link> (const std::string &amp;ErrorMessage, bool dothrow=true)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_1abad094121bde679b4a68858b1a0e1c32">ClearError</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_1acaaa125920dec9e7f9f6b3d6a2225058">ErrorOccured</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1aed9d8c451787c53bf398292a57b20a99">SetRegister</link> (const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a6a8ccd405886c6bb81b886de3aa45c77">SelectRackSlot</link> (const uint8_t &amp;SlotNr)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ab7deca3acfd5322776186b07f597f9ec">ResetI2CMultiplexer</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a157c99b6b8d061e54ab2920a89711e6f">SetVoltage</link> (double Voltage)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a671cf9349a711df3da9e655dc2928a84">SetDigitalOutput</link> (uint8_t BitNr, bool OnOff)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1aaa3e13859985f358428c4d51bafc37d3">SetStartFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1af0ac58636967e468139ea4ec7776b912">SetStopFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ac9f2d8bc4810171cc290332dcf5aea77">SetModulationFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a896e79990b77c5702bcacf217ebd8180">SetPower</link> (double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1abb0dc967e558b1e3218fb00c368e927f">SetAttenuation</link> (double Attenuation)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a266d2caa2f23ebc437e9cb26bf2ec3ad">SetStartFrequencyTuningWord</link> (uint64_t)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a60446e9222919ecb7f7c8f9e7c72ee43">SetStopFrequencyTuningWord</link> (uint64_t)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a5201f16fcc101d6594d33d0463664519">SetFSKMode</link> (uint8_t mode)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a8e233a94cc5c177260a319ae158c3504">SetRampRateClock</link> (int rate)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a7dc7cc4daab1c6e27468d7366a449e85">SetClearACC1</link> (bool)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1aa19bf3d0655119902bac344b8c4c5a2c">SetTriangleBit</link> (bool)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1acef2ccddac12d4203fb363c1b18fdbe9">SetFSKBit</link> (bool)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ae8204d9f4edb81f19af2ceaeee04d65e">SetFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a2f948d164b6177a355b9f47a39d3a758">SetFrequencyTuningWord</link> (uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1acd05aa88ded012804e579a19ada672b5">Reset</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a537b4320f28a041f7c792cd8ee980489">SetFrequency</link> (uint8_t channel, double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a20124b1ebdce4ad278e9441c33a25df6">SetFrequencyTuningWord</link> (uint8_t channel, uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a4972e649a5c5e33b1e2b19d4d977be1b">SetPhase</link> (uint8_t channel, double Phase)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1af08e809e1fe88612656716fef5055256">SetPower</link> (uint8_t channel, double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ad5976661247c2d2a64fe6800be5ae0bc">SetAttenuation</link> (uint8_t channel, double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ae8de0378397c02c4cfe7cfc0cb672cd4">SetIOUpdateEnabled</link> (bool _IOUpdateEnabled)</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>unsigned int <link linkend="_class_c_device_sequencer_1a501dfd73602558e66977641d6296adfc">id</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_c_device_sequencer_1a325e75933aa20ab3f46db3ef1c015bfc">type</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_c_device_sequencer_1ab872c2285452d0aa858d14c14c057faa">ip</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_class_c_device_sequencer_1a0249d89b3c0f35de38e51be006c1c777">port</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a2007872507761fc8ab9941a96d58b455">master</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_class_c_device_sequencer_1a5589062e5cd2525cb7e6567628127365">startDelay</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_sequencer_1ad0b4a49fd334a754d3d3da62b7ee81d8">clockFrequency</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_class_c_device_sequencer_1ad9bf4757308aa2ef99ce7f5e05fe72bf">DefaultFPGAClockToBusClockRatio</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_class_c_device_sequencer_1a97daacafd5c7147b4726fa9817e245c3">FPGAClockToBusClockRatio</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_class_c_device_sequencer_1a577abdf005ddc08b85c6778cbf786d78">CurrentFPGAClockToBusClockRatio</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1ae48a0da4e027ca8607a769630d5bc33d">useExternalClock</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1af7614e368a833c743117573138080ae6">useStrobeGenerator</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_sequencer_1a52584ca67a417eeeb50310541f79bca8">connect</link></para>
+</listitem>
+            <listitem><para>std::unique_ptr&lt; CEthernetControllerFirefly &gt; <link linkend="_class_c_device_sequencer_1ad81b76a05a3bad57f64dfe45e929e734">MyEthernetMultiIOControllerFirefly</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_sequencer_1a83bbee891be3553d10f9220d7a94674e">BusFrequency_in_Hz</link></para>
+</listitem>
+            <listitem><para><link linkend="_class_c_device">CDevice</link> * <link linkend="_class_c_device_sequencer_1a7e74050c18cc7e9e8015f88861b2e454">ParallelBusDeviceList</link> [<link linkend="_class_c_device_sequencer_1a442061907ecaaf27c3a7e9171b597e72">MaxParallelBusDevices</link>]</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_device">CDevice</link> * <link linkend="_class_c_device_sequencer_1acf65ed8d96c6f6c5afce93ced1693a85">SerialBusDeviceList</link> [<link linkend="_class_c_device_sequencer_1a5155e6ccb4538489ff41a271344d6631">MaxSerialBusDevices</link>]</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Attributes inherited from <link linkend="_class_c_device">CDevice</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * <link linkend="_class_c_device_1a381f3a4f11fb87aadc77bcdc4524e33f">MySequencer</link></para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_device_1a7c5003e9b61986c46f6aa9ffd31324f3">MyAddress</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_c_device_1aaa6670dcb90af191c31aef9d88dbdcce">MyType</link></para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Static Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>static const unsigned int <link linkend="_class_c_device_sequencer_1a442061907ecaaf27c3a7e9171b597e72">MaxParallelBusDevices</link> = 8 * 256 + 1</para>
+</listitem>
+            <listitem><para>static const unsigned int <link linkend="_class_c_device_sequencer_1a5155e6ccb4538489ff41a271344d6631">MaxSerialBusDevices</link> = 8</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_device_sequencer_1a8f1796b86def5ee2468391729d6ff8f0"/><section>
+    <title>CDeviceSequencer()</title>
+<indexterm><primary>CDeviceSequencer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<para><computeroutput>CDeviceSequencer::CDeviceSequencer (unsigned int _id, std::string _type, std::string _ip, unsigned int _port, bool _master, unsigned int _startDelay, double _clockFrequency, unsigned int _FPGAClockToBusClockRatio, bool _useExternalClock, bool _useStrobeGenerator, bool _useEdgeTriggeredLatches, bool _connect)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1af646da917bbb922c7928dcca66add13c"/><section>
+    <title>~CDeviceSequencer()</title>
+<indexterm><primary>~CDeviceSequencer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>~CDeviceSequencer</secondary></indexterm>
+<para><computeroutput>CDeviceSequencer::~CDeviceSequencer ( )<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_device_sequencer_1a9a6701de6951ae59c599bf91edbcf29a"/><section>
+    <title>AddBusCommandAndWait()</title>
+<indexterm><primary>AddBusCommandAndWait</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>AddBusCommandAndWait</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::AddBusCommandAndWait (uint32_t data, uint32_t delay)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a9ad684a1cd8866041f8af665851e61fd"/><section>
+    <title>AddBusCommandToSequence()</title>
+<indexterm><primary>AddBusCommandToSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>AddBusCommandToSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::AddBusCommandToSequence (const uint32_t &amp; content)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ab352a413fa6d48c9cc03faf57c8cfa32"/><section>
+    <title>AddCommandToSequence()</title>
+<indexterm><primary>AddCommandToSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>AddCommandToSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::AddCommandToSequence (const uint32_t &amp; high_word, const uint32_t &amp; low_word)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ab932e2174a6bcceff9103a5f2631b7f8"/><section>
+    <title>AddCPUCommand()</title>
+<indexterm><primary>AddCPUCommand</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>AddCPUCommand</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::AddCPUCommand (const char * command)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a0d47b80a0616eacbf5cdddb7cc4fa992"/><section>
+    <title>AdvanceTime()</title>
+<indexterm><primary>AdvanceTime</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>AdvanceTime</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::AdvanceTime ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a4fcb9afb9fd28b134d0f965a06295a66"/><section>
+    <title>ExecuteCPUCommandSequence()</title>
+<indexterm><primary>ExecuteCPUCommandSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>ExecuteCPUCommandSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::ExecuteCPUCommandSequence (unsigned long ethernet_check_period_in_ms)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ae12a1e70fc37e10979ff0acccc3ea12a"/><section>
+    <title>GetBufferLength()</title>
+<indexterm><primary>GetBufferLength</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetBufferLength</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::GetBufferLength (uint32_t &amp; FilledBufferLength, uint32_t &amp; MaxBufferLength)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a2d70435889d0dd53b24fe0072c4fbbb7"/><section>
+    <title>GetBusFrequency_in_Hz()</title>
+<indexterm><primary>GetBusFrequency_in_Hz</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetBusFrequency_in_Hz</secondary></indexterm>
+<para><computeroutput>double CDeviceSequencer::GetBusFrequency_in_Hz ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a3e22b4d9f74ba21347abad69c7d1390a"/><section>
+    <title>GetCPUCommandErrorMessages()</title>
+<indexterm><primary>GetCPUCommandErrorMessages</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetCPUCommandErrorMessages</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::GetCPUCommandErrorMessages ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1afabe3875e5174e15237cc26fbaa31c51"/><section>
+    <title>GetNextBufferPosition()</title>
+<indexterm><primary>GetNextBufferPosition</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetNextBufferPosition</secondary></indexterm>
+<para><computeroutput>unsigned long CDeviceSequencer::GetNextBufferPosition ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1afaae61023ca18a0d0eeaf7876ef1d3e3"/><section>
+    <title>GetNextCycleNumber()</title>
+<indexterm><primary>GetNextCycleNumber</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetNextCycleNumber</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::GetNextCycleNumber (long &amp; NextCycleNumber)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a042e1078c71ca62771140acb4b60f7e7"/><section>
+    <title>GetParallelBusDevice()</title>
+<indexterm><primary>GetParallelBusDevice</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetParallelBusDevice</secondary></indexterm>
+<para><computeroutput><link linkend="_class_c_device">CDevice</link> * CDeviceSequencer::GetParallelBusDevice (const unsigned int &amp; Address)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ada57fb75303e4b7cf363e9a2e685cac7"/><section>
+    <title>GetSerialBusDevice()</title>
+<indexterm><primary>GetSerialBusDevice</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetSerialBusDevice</secondary></indexterm>
+<para><computeroutput><link linkend="_class_c_device">CDevice</link> * CDeviceSequencer::GetSerialBusDevice (const unsigned int &amp; Address)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a43d39126fb474e9143569c720af1efea"/><section>
+    <title>GetTime_ms()</title>
+<indexterm><primary>GetTime_ms</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetTime_ms</secondary></indexterm>
+<para><computeroutput>double CDeviceSequencer::GetTime_ms ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a07ebfe1673db09c97de7b88ed513fe52"/><section>
+    <title>GetTimeDebt_ms()</title>
+<indexterm><primary>GetTimeDebt_ms</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>GetTimeDebt_ms</secondary></indexterm>
+<para><computeroutput>double CDeviceSequencer::GetTimeDebt_ms ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a081de4aec74b72961b732e32777ae36e"/><section>
+    <title>Initialize()</title>
+<indexterm><primary>Initialize</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>Initialize</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::Initialize (unsigned long _PCBufferSize_in_u64)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a7cde9dd58268817490f6d4841e4aa955"/><section>
+    <title>InterruptCPUCommandSequence()</title>
+<indexterm><primary>InterruptCPUCommandSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>InterruptCPUCommandSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::InterruptCPUCommandSequence ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1aa679902977ccb1859873f2394dea74da"/><section>
+    <title>IsMaster()</title>
+<indexterm><primary>IsMaster</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>IsMaster</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::IsMaster ( )<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a75982403171bb9af945ca0529daec267"/><section>
+    <title>IsSequencerConnected()</title>
+<indexterm><primary>IsSequencerConnected</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>IsSequencerConnected</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::IsSequencerConnected ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a16122a420c693e74ab8868fb1d38895f"/><section>
+    <title>IsSequenceRunning()</title>
+<indexterm><primary>IsSequenceRunning</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>IsSequenceRunning</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::IsSequenceRunning (bool &amp; running, unsigned long long &amp; DataPointsWritten)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a8419d9bf9bdc6ec87bc1d1d8a7a6d574"/><section>
+    <title>PrintCPUCommandErrorMessages()</title>
+<indexterm><primary>PrintCPUCommandErrorMessages</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>PrintCPUCommandErrorMessages</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::PrintCPUCommandErrorMessages ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1af4a4b1e1d3e94de047ebe285d3b30264"/><section>
+    <title>PrintCPUCommandSequence()</title>
+<indexterm><primary>PrintCPUCommandSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>PrintCPUCommandSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::PrintCPUCommandSequence ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a2ade2307ab313fb94fc78fa8492942bd"/><section>
+    <title>ResetCycleNumber()</title>
+<indexterm><primary>ResetCycleNumber</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>ResetCycleNumber</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::ResetCycleNumber ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a22a3aefd7946c8d1a7119668d42b91fc"/><section>
+    <title>SendSequence()</title>
+<indexterm><primary>SendSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SendSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SendSequence (const std::string &amp; FileName = <computeroutput>&quot;&quot;</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a1991feaf7cc573121697ccb9b7b9323d"/><section>
+    <title>SendStartSequenceCommand()</title>
+<indexterm><primary>SendStartSequenceCommand</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SendStartSequenceCommand</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SendStartSequenceCommand ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ae9c5f92c61a044f962942fcabcbb06c9"/><section>
+    <title>SequencerAddMarker()</title>
+<indexterm><primary>SequencerAddMarker</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerAddMarker</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerAddMarker (unsigned char marker)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a3c29a3cec7724ade1c4250c5264cd652"/><section>
+    <title>SequencerCalcAD9854FrequencyTuningWord()</title>
+<indexterm><primary>SequencerCalcAD9854FrequencyTuningWord</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerCalcAD9854FrequencyTuningWord</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerCalcAD9854FrequencyTuningWord (uint64_t ftw0, uint8_t bit_shift)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1af45d2dcd8aaa3ddf081c9d88d4d60938"/><section>
+    <title>SequencerIgnoreTCPIP()</title>
+<indexterm><primary>SequencerIgnoreTCPIP</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerIgnoreTCPIP</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerIgnoreTCPIP (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ad0e8572ebfa19d6965bffddcc1f01271"/><section>
+    <title>SequencerJumpBackward()</title>
+<indexterm><primary>SequencerJumpBackward</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerJumpBackward</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerJumpBackward (unsigned int jump_length, bool unconditional_jump = <computeroutput>true</computeroutput>
+, bool condition_0 = <computeroutput>false</computeroutput>
+, bool condition_1 = <computeroutput>false</computeroutput>
+, bool condition_PS = <computeroutput>false</computeroutput>
+, bool condition_dig_in = <computeroutput>false</computeroutput>
+, uint8_t dig_in_bit_nr = <computeroutput>0</computeroutput>
+, bool loop_count_greater_zero = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a82c3a104ca78ce7bfb4d0038eb505d46"/><section>
+    <title>SequencerJumpForward()</title>
+<indexterm><primary>SequencerJumpForward</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerJumpForward</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerJumpForward (unsigned int jump_length, bool unconditional_jump = <computeroutput>true</computeroutput>
+, bool condition_0 = <computeroutput>false</computeroutput>
+, bool condition_1 = <computeroutput>false</computeroutput>
+, bool condition_PS = <computeroutput>false</computeroutput>
+, bool condition_dig_in = <computeroutput>false</computeroutput>
+, uint8_t dig_in_bit_nr = <computeroutput>0</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a1262058d5475f540f530d55d372808a2"/><section>
+    <title>SequencerRepeatedOutIn()</title>
+<indexterm><primary>SequencerRepeatedOutIn</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerRepeatedOutIn</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerRepeatedOutIn (const uint16_t number_of_datapoints, const double delay_between_datapoints_in_ms, uint8_t RepeatedOutInCommand)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1aa3147266cc8f9f1c44da1a7faae43a5d"/><section>
+    <title>SequencerResetI2CMultiplexer()</title>
+<indexterm><primary>SequencerResetI2CMultiplexer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerResetI2CMultiplexer</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerResetI2CMultiplexer ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a297c43f0c69b7b7ce7d1ec94e9b48bc2"/><section>
+    <title>SequencerSelectRackSlot()</title>
+<indexterm><primary>SequencerSelectRackSlot</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerSelectRackSlot</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerSelectRackSlot (uint8_t rack_nr, uint8_t slot_nr)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a4ad3404fc53e6e1038a780f6b96a19a3"/><section>
+    <title>SequencerSetI2CParameters()</title>
+<indexterm><primary>SequencerSetI2CParameters</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerSetI2CParameters</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerSetI2CParameters (uint8_t I2C_0_Destination, uint8_t I2C_delay_start_stop, uint8_t I2C_delay_data_setup, uint8_t I2C_delay_clock_high, uint8_t I2C_delay_clock_low, uint8_t I2C_delay_pause_before_read)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1adca3cad0758b3ef7facf3f5b72fbeaa4"/><section>
+    <title>SequencerSetLoopCount()</title>
+<indexterm><primary>SequencerSetLoopCount</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerSetLoopCount</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerSetLoopCount (unsigned int loop_count)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a8b01a278a5d33ad72c3bf2ab6fe91e07"/><section>
+    <title>SequencerSetSPIMode()</title>
+<indexterm><primary>SequencerSetSPIMode</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerSetSPIMode</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerSetSPIMode (uint8_t SPI_mode)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1aae3f61128037b76638970a4782ea320a"/><section>
+    <title>SequencerSetSPITiming()</title>
+<indexterm><primary>SequencerSetSPITiming</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerSetSPITiming</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerSetSPITiming (uint16_t SPI_delay_CS_low_start_wait, uint16_t SPI_delay_write, uint16_t SPI_delay_pause_before_read, uint16_t SPI_delay_read, uint16_t SPI_delay_CS_low_end_wait)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a65193d6c01cceaad58fac3eba624dac0"/><section>
+    <title>SequencerSetTimeDebtGuard_in_ms()</title>
+<indexterm><primary>SequencerSetTimeDebtGuard_in_ms</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerSetTimeDebtGuard_in_ms</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerSetTimeDebtGuard_in_ms (const double &amp; MaxTimeDebt_in_ms)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a74e2dbb7730d97a659e26ad3905ddecc"/><section>
+    <title>SequencerStartAnalogInAcquisition()</title>
+<indexterm><primary>SequencerStartAnalogInAcquisition</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerStartAnalogInAcquisition</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerStartAnalogInAcquisition (const uint8_t &amp; analog_in_type, const uint8_t &amp; SPI_CS, const uint8_t &amp; ChannelNumber, const uint32_t &amp; NumberOfDataPoints, const double &amp; DelayBetweenDataPoints_in_ms)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a1f4dc1ed13ba3cb5d9687f930163ec53"/><section>
+    <title>SequencerSwitchDebugLED()</title>
+<indexterm><primary>SequencerSwitchDebugLED</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerSwitchDebugLED</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerSwitchDebugLED (unsigned int OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a7eb2a36e95b501347bba9390f3161056"/><section>
+    <title>SequencerTransmitI2C()</title>
+<indexterm><primary>SequencerTransmitI2C</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerTransmitI2C</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerTransmitI2C (uint8_t I2C_port, uint8_t I2C_length_out, uint8_t I2C_length_in, uint8_t * data_out)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a1d9c89637e2ac5831396acc1b382f934"/><section>
+    <title>SequencerTransmitSPI()</title>
+<indexterm><primary>SequencerTransmitSPI</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerTransmitSPI</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerTransmitSPI (const uint8_t chip_select, const uint16_t number_of_bits_out, const uint8_t * data_out, const uint8_t number_of_bits_in, const bool start_now)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1af7ed0331caa0c2b1b59d81b70c23545e"/><section>
+    <title>SequencerWriteInputMemory()</title>
+<indexterm><primary>SequencerWriteInputMemory</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerWriteInputMemory</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerWriteInputMemory (unsigned long input_buf_mem_data, bool write_next_address = <computeroutput>1</computeroutput>
+, unsigned long input_buf_mem_address = <computeroutput>0</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a22f66dda6b836fe5c7b24ade065888ae"/><section>
+    <title>SequencerWriteSystemTimeToInputMemory()</title>
+<indexterm><primary>SequencerWriteSystemTimeToInputMemory</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SequencerWriteSystemTimeToInputMemory</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SequencerWriteSystemTimeToInputMemory ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a94a2b44fccae6822267225ba65a18683"/><section>
+    <title>SetFPGAClockToBusClockRatio()</title>
+<indexterm><primary>SetFPGAClockToBusClockRatio</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetFPGAClockToBusClockRatio</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SetFPGAClockToBusClockRatio (const unsigned int _FPGAClockToBusClockRatio, const bool UpdateStrobeDuration)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a5e4f1fdd9df68041e3063060d9456ab7"/><section>
+    <title>SetPeriodicTrigger_ms()</title>
+<indexterm><primary>SetPeriodicTrigger_ms</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetPeriodicTrigger_ms</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SetPeriodicTrigger_ms (double periodicTriggerPeriod_in_ms, double periodicTriggerAllowedWaitTime_in_ms)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1af2bcbdaafb702a28f0c9b2825ca0268e"/><section>
+    <title>SetPSOptions()</title>
+<indexterm><primary>SetPSOptions</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetPSOptions</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::SetPSOptions (uint8_t options)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ad9d968a730304e75c9e07255dedd003c"/><section>
+    <title>SetRegister_Sequencer()</title>
+<indexterm><primary>SetRegister_Sequencer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetRegister_Sequencer</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::SetRegister_Sequencer (const unsigned int &amp; Address, const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1aca4336ad38174dacb145def7ef35317d"/><section>
+    <title>SetRegisterSerialDevice_Sequencer()</title>
+<indexterm><primary>SetRegisterSerialDevice_Sequencer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetRegisterSerialDevice_Sequencer</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::SetRegisterSerialDevice_Sequencer (const unsigned int &amp; Address, const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ab8d9560a1b28465d8be62634a193dd0d"/><section>
+    <title>SetSequencer_PL_to_PS_command()</title>
+<indexterm><primary>SetSequencer_PL_to_PS_command</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetSequencer_PL_to_PS_command</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SetSequencer_PL_to_PS_command (uint8_t PL_to_PS_command)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a90a766b5bc6a6b9989b3f2fab76ca51a"/><section>
+    <title>SetSequencerDigitalOut()</title>
+<indexterm><primary>SetSequencerDigitalOut</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetSequencerDigitalOut</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SetSequencerDigitalOut (uint8_t dig_out_pattern)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a0fae9f67b03f5360821e4aee8e0e5f14"/><section>
+    <title>SetValue()</title>
+<indexterm><primary>SetValue</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetValue</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::SetValue (const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a8e4c8e7c256a149d08debc49e190b27e">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_sequencer_1a325e2daaa28615bc44b27db0a4c3f377"/><section>
+    <title>SetValue_Sequencer()</title>
+<indexterm><primary>SetValue_Sequencer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetValue_Sequencer</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::SetValue_Sequencer (const unsigned int &amp; Address, const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1aeca54301a0e2e5b33afb0a5717886092"/><section>
+    <title>SetValueSerialDevice_Sequencer()</title>
+<indexterm><primary>SetValueSerialDevice_Sequencer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SetValueSerialDevice_Sequencer</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::SetValueSerialDevice_Sequencer (const unsigned int &amp; Address, const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a26daea97d364aad1f7d5921381c0747a"/><section>
+    <title>StartAssemblingCPUCommandSequence()</title>
+<indexterm><primary>StartAssemblingCPUCommandSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>StartAssemblingCPUCommandSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::StartAssemblingCPUCommandSequence ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a16a5007a40a488a45577fad53f573c73"/><section>
+    <title>StartAssemblingNextSequence()</title>
+<indexterm><primary>StartAssemblingNextSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>StartAssemblingNextSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::StartAssemblingNextSequence ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a5a451f8a11a1da169fff225b927c392d"/><section>
+    <title>StartAssemblingSequence()</title>
+<indexterm><primary>StartAssemblingSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>StartAssemblingSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::StartAssemblingSequence ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a36f0277977d436d29ba425a90a8dd590"/><section>
+    <title>StopCPUCommandSequence()</title>
+<indexterm><primary>StopCPUCommandSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>StopCPUCommandSequence</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::StopCPUCommandSequence ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a10854f6a6ca1deec6752a58848bea582"/><section>
+    <title>SwitchDebugMode()</title>
+<indexterm><primary>SwitchDebugMode</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SwitchDebugMode</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SwitchDebugMode (bool OnOff, const std::string &amp; FileName)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1aed5df9bfd8a94543e2b623cddc45fa90"/><section>
+    <title>SwitchSequencerBuzzer()</title>
+<indexterm><primary>SwitchSequencerBuzzer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SwitchSequencerBuzzer</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::SwitchSequencerBuzzer (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a9d17d9e2c1cb2dd77a0d83b17282a3e3"/><section>
+    <title>TransmitI2CPort()</title>
+<indexterm><primary>TransmitI2CPort</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>TransmitI2CPort</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::TransmitI2CPort (uint8_t I2C_port, uint8_t I2C_destination, uint8_t I2C_address, uint16_t send_length, uint8_t * send_data, uint16_t receive_length, uint8_t * receive_data, uint32_t I2C_clock_frequency_in_Hz, bool &amp; I2C_success, bool fail_silently)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1aa963f7fadf133d2ebd47dafa8ab53d12"/><section>
+    <title>TransmitOnlyDifferenceBetweenCommandSequenceIfPossible()</title>
+<indexterm><primary>TransmitOnlyDifferenceBetweenCommandSequenceIfPossible</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>TransmitOnlyDifferenceBetweenCommandSequenceIfPossible</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::TransmitOnlyDifferenceBetweenCommandSequenceIfPossible (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1afd4f8b3316a3a3d2beabffabfef64875"/><section>
+    <title>UseEdgeTriggeredLatches()</title>
+<indexterm><primary>UseEdgeTriggeredLatches</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>UseEdgeTriggeredLatches</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::UseEdgeTriggeredLatches (bool UseEdgeTriggeredLatches)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ab83a12612bc8d09574a43c356cc8a9df"/><section>
+    <title>Wait_ms()</title>
+<indexterm><primary>Wait_ms</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>Wait_ms</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::Wait_ms (double time_in_ms)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a163c503d4c7e4629e84eeb7eadcd9db8"/><section>
+    <title>WaitTillEndOfSequenceThenGetInputData()</title>
+<indexterm><primary>WaitTillEndOfSequenceThenGetInputData</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>WaitTillEndOfSequenceThenGetInputData</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::WaitTillEndOfSequenceThenGetInputData (uint8_t *&amp; buffer, unsigned long &amp; buffer_length, unsigned long &amp; EndTimeOfCycle, double timeout_in_s)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a033f8ba2b0e179998a8e0d6a72ec3279"/><section>
+    <title>WaitTillEndOfSequence()</title>
+<indexterm><primary>WaitTillEndOfSequence</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>WaitTillEndOfSequence</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::WaitTillEndOfSequence (double timeout_in_s = <computeroutput>0</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1acccb21e905a84f6dd954feb4318db086"/><section>
+    <title>WriteBusAddressAndDataToBuffer()</title>
+<indexterm><primary>WriteBusAddressAndDataToBuffer</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>WriteBusAddressAndDataToBuffer</secondary></indexterm>
+<para><computeroutput>void CDeviceSequencer::WriteBusAddressAndDataToBuffer (const uint16_t &amp; MultiIOAddress, const uint16_t &amp; Data)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_device_sequencer_1a83bbee891be3553d10f9220d7a94674e"/><section>
+    <title>BusFrequency_in_Hz</title>
+<indexterm><primary>BusFrequency_in_Hz</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>BusFrequency_in_Hz</secondary></indexterm>
+<para><computeroutput>double CDeviceSequencer::BusFrequency_in_Hz</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ad0b4a49fd334a754d3d3da62b7ee81d8"/><section>
+    <title>clockFrequency</title>
+<indexterm><primary>clockFrequency</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>clockFrequency</secondary></indexterm>
+<para><computeroutput>double CDeviceSequencer::clockFrequency</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a52584ca67a417eeeb50310541f79bca8"/><section>
+    <title>connect</title>
+<indexterm><primary>connect</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>connect</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::connect</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a577abdf005ddc08b85c6778cbf786d78"/><section>
+    <title>CurrentFPGAClockToBusClockRatio</title>
+<indexterm><primary>CurrentFPGAClockToBusClockRatio</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>CurrentFPGAClockToBusClockRatio</secondary></indexterm>
+<para><computeroutput>unsigned int CDeviceSequencer::CurrentFPGAClockToBusClockRatio</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ad9bf4757308aa2ef99ce7f5e05fe72bf"/><section>
+    <title>DefaultFPGAClockToBusClockRatio</title>
+<indexterm><primary>DefaultFPGAClockToBusClockRatio</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>DefaultFPGAClockToBusClockRatio</secondary></indexterm>
+<para><computeroutput>unsigned int CDeviceSequencer::DefaultFPGAClockToBusClockRatio</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a97daacafd5c7147b4726fa9817e245c3"/><section>
+    <title>FPGAClockToBusClockRatio</title>
+<indexterm><primary>FPGAClockToBusClockRatio</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>FPGAClockToBusClockRatio</secondary></indexterm>
+<para><computeroutput>unsigned int CDeviceSequencer::FPGAClockToBusClockRatio</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a501dfd73602558e66977641d6296adfc"/><section>
+    <title>id</title>
+<indexterm><primary>id</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>id</secondary></indexterm>
+<para><computeroutput>unsigned int CDeviceSequencer::id</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ab872c2285452d0aa858d14c14c057faa"/><section>
+    <title>ip</title>
+<indexterm><primary>ip</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>ip</secondary></indexterm>
+<para><computeroutput>std::string CDeviceSequencer::ip</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a2007872507761fc8ab9941a96d58b455"/><section>
+    <title>master</title>
+<indexterm><primary>master</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>master</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::master</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a442061907ecaaf27c3a7e9171b597e72"/><section>
+    <title>MaxParallelBusDevices</title>
+<indexterm><primary>MaxParallelBusDevices</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>MaxParallelBusDevices</secondary></indexterm>
+<para><computeroutput>const unsigned int CDeviceSequencer::MaxParallelBusDevices = 8 * 256 + 1<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a5155e6ccb4538489ff41a271344d6631"/><section>
+    <title>MaxSerialBusDevices</title>
+<indexterm><primary>MaxSerialBusDevices</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>MaxSerialBusDevices</secondary></indexterm>
+<para><computeroutput>const unsigned int CDeviceSequencer::MaxSerialBusDevices = 8<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ad81b76a05a3bad57f64dfe45e929e734"/><section>
+    <title>MyEthernetMultiIOControllerFirefly</title>
+<indexterm><primary>MyEthernetMultiIOControllerFirefly</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>MyEthernetMultiIOControllerFirefly</secondary></indexterm>
+<para><computeroutput>std::unique_ptr&lt;CEthernetControllerFirefly&gt; CDeviceSequencer::MyEthernetMultiIOControllerFirefly</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a7e74050c18cc7e9e8015f88861b2e454"/><section>
+    <title>ParallelBusDeviceList</title>
+<indexterm><primary>ParallelBusDeviceList</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>ParallelBusDeviceList</secondary></indexterm>
+<para><computeroutput><link linkend="_class_c_device">CDevice</link>* CDeviceSequencer::ParallelBusDeviceList[<link linkend="_class_c_device_sequencer_1a442061907ecaaf27c3a7e9171b597e72">MaxParallelBusDevices</link>]</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a0249d89b3c0f35de38e51be006c1c777"/><section>
+    <title>port</title>
+<indexterm><primary>port</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>port</secondary></indexterm>
+<para><computeroutput>unsigned int CDeviceSequencer::port</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1acf65ed8d96c6f6c5afce93ced1693a85"/><section>
+    <title>SerialBusDeviceList</title>
+<indexterm><primary>SerialBusDeviceList</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>SerialBusDeviceList</secondary></indexterm>
+<para><computeroutput><link linkend="_class_c_device">CDevice</link>* CDeviceSequencer::SerialBusDeviceList[<link linkend="_class_c_device_sequencer_1a5155e6ccb4538489ff41a271344d6631">MaxSerialBusDevices</link>]</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a5589062e5cd2525cb7e6567628127365"/><section>
+    <title>startDelay</title>
+<indexterm><primary>startDelay</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>startDelay</secondary></indexterm>
+<para><computeroutput>unsigned int CDeviceSequencer::startDelay</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1a325e75933aa20ab3f46db3ef1c015bfc"/><section>
+    <title>type</title>
+<indexterm><primary>type</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>type</secondary></indexterm>
+<para><computeroutput>std::string CDeviceSequencer::type</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1ae48a0da4e027ca8607a769630d5bc33d"/><section>
+    <title>useExternalClock</title>
+<indexterm><primary>useExternalClock</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>useExternalClock</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::useExternalClock</computeroutput></para></section>
+<anchor xml:id="_class_c_device_sequencer_1af7614e368a833c743117573138080ae6"/><section>
+    <title>useStrobeGenerator</title>
+<indexterm><primary>useStrobeGenerator</primary><secondary>CDeviceSequencer</secondary></indexterm>
+<indexterm><primary>CDeviceSequencer</primary><secondary>useStrobeGenerator</secondary></indexterm>
+<para><computeroutput>bool CDeviceSequencer::useStrobeGenerator</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__c_device_sequencer_8h">CDeviceSequencer.h</link><link linkend="__c_device_sequencer_8cpp">CDeviceSequencer.cpp</link></section>
+</section>

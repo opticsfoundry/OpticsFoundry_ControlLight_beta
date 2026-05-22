@@ -1,0 +1,51 @@
+\doxysection{CDevice\+Rack.\+h}
+\hypertarget{_c_device_rack_8h_source}{}\label{_c_device_rack_8h_source}\index{CDeviceRack.h@{CDeviceRack.h}}
+\mbox{\hyperlink{_c_device_rack_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_device_8h}{CDevice.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//This\ class\ describes\ the\ whole\ chain\ of\ racks\ to\ which\ one\ sequencer\ is\ connected}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_rack_af6006be46c378fc669fc400cbdc9513d}{CDeviceRack}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{class_c_device_rack_a7ac91345eb8a290493495a647d889306}{LastValue}};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//uint8\_t\ MyRackAddress;}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_c_device_rack_af6006be46c378fc669fc400cbdc9513d}{CDeviceRack}}(}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \_MySequencer\textcolor{comment}{//,}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//unsigned\ int\ \_MyRackAddress\ =\ 0xFE}}
+\DoxyCodeLine{00015\ \ \ \ \ );}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_device_rack_a98262077159859bb778362e8744448af}{\string~CDeviceRack}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ SetValue(unsigned\ int\ SubAddress,\ uint8\_t*\ Data,\ unsigned\ long\ DataLength);}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ GetValue(unsigned\ int\ SubAddress,\ uint8\_t*\ Data,\ unsigned\ long\ DataLength);}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ Configure();}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_rack_a6043ef13d9f7ae598bb814da2e776178}{SetValue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ SetValue(unsigned\ int\ SubAddress,\ uint8\_t*\ Data,\ unsigned\ long\ DataLength);}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ GetValue(unsigned\ int\ SubAddress,\ uint8\_t*\ Data,\ unsigned\ long\ DataLength);}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ Configure();}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_rack_a7f738a5bf918553603adc869bb47bf4a}{SelectRackSlot}}(\textcolor{keyword}{const}\ uint8\_t\&\ RackNr,\ \textcolor{keyword}{const}\ uint8\_t\&\ SlotNr)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//This\ conversion\ will\ need\ to\ be\ adjusted\ to\ each\ type\ of\ backplane\ or\ if\ we\ enable\ slot\ selection\ in\ enchained\ racks}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ uint8\_t\ SlotAddr\ =\ (SlotNr\ <=\ 3)\ ?\ (SlotNr\ +\ 12)\ :\ (SlotNr\ -\/\ 4);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ uint8\_t\ Data\ =\ (SlotAddr\ \&\ 0x0F)\ |\ ((RackNr\ \&\ 0x07)\ <<\ 4);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_rack_a6043ef13d9f7ae598bb814da2e776178}{SetValue}}(0,\ \&Data,\ 7,\ 0);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_rack_ab31de98f93177cf21cc933415682a6c6}{ResetI2CMultiplexer}}()\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Here\ we\ assume\ that\ the\ bus\ uses\ a\ slow\ speed,\ so\ that\ the\ first-\/break-\/then-\/make\ logic\ of\ the\ arbiter\ has\ time\ to\ work.}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//We\ need\ to\ test\ how\ fast\ one\ can\ go\ like\ this.\ As\ the\ delay\ between\ break\ and\ set\ of\ new\ demux\ input\ is\ 20ns,\ and\ the\ remaining\ delay\ is\ monoflop\ controlled,\ it\ should\ be\ fine\ up\ to\ 50MHz.}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ uint8\_t\ Data\ =\ 1;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ success\ =\ \mbox{\hyperlink{class_c_device_rack_a6043ef13d9f7ae598bb814da2e776178}{SetValue}}(0,\ \&Data,\ 1,\ 7);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_device_a381f3a4f11fb87aadc77bcdc4524e33f}{MySequencer}}-\/>Wait\_ms(0.01);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ Data\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ success\ =\ success\ \&\&\ \mbox{\hyperlink{class_c_device_rack_a6043ef13d9f7ae598bb814da2e776178}{SetValue}}(0,\ \&Data,\ 1,\ 7);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_device_a381f3a4f11fb87aadc77bcdc4524e33f}{MySequencer}}-\/>Wait\_ms(0.01);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ success;}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \};}
+
+\end{DoxyCode}

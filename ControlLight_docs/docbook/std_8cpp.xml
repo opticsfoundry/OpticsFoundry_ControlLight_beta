@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_std_8cpp" xml:lang="en-US">
+<title>std.cpp File Reference</title>
+<indexterm><primary>std.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;std.h&quot;<?linebreak?>#include &quot;ControlAPI.h&quot;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>double <link linkend="_std_8cpp_1a46b349cc9aee28852a41762122a7a001">milliSeconds</link> (const <link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link> &amp;d)</para>
+</listitem>
+            <listitem><para>void <link linkend="_std_8cpp_1aae71a8343422fa2968300f2da8cc8cfc">ControlMessageBox</link> (const std::string &amp;text)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_std_8cpp_1aae71a8343422fa2968300f2da8cc8cfc"/><section>
+    <title>ControlMessageBox()</title>
+<indexterm><primary>ControlMessageBox</primary><secondary>std.cpp</secondary></indexterm>
+<indexterm><primary>std.cpp</primary><secondary>ControlMessageBox</secondary></indexterm>
+<para><computeroutput>void ControlMessageBox (const std::string &amp; text)</computeroutput></para></section>
+<anchor xml:id="_std_8cpp_1a46b349cc9aee28852a41762122a7a001"/><section>
+    <title>milliSeconds()</title>
+<indexterm><primary>milliSeconds</primary><secondary>std.cpp</secondary></indexterm>
+<indexterm><primary>std.cpp</primary><secondary>milliSeconds</secondary></indexterm>
+<para><computeroutput>double milliSeconds (const <link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link> &amp; d)</computeroutput></para></section>
+</section>
+</section>

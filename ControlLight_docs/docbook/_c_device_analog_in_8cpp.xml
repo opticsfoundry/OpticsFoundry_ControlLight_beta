@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__c_device_analog_in_8cpp" xml:lang="en-US">
+<title>CDeviceAnalogIn.cpp File Reference</title>
+<indexterm><primary>CDeviceAnalogIn.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;ControlAPI.h&quot;<?linebreak?>#include &quot;CDevice.h&quot;<?linebreak?>#include &quot;CDeviceSequencer.h&quot;<?linebreak?>#include &quot;std.h&quot;<?linebreak?>#include &quot;CDeviceAnalogIn.h&quot;<?linebreak?>#include &lt;format&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?></programlisting></section>

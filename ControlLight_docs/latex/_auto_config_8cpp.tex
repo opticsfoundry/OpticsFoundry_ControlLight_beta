@@ -1,0 +1,184 @@
+\doxysection{Auto\+Config.\+cpp File Reference}
+\hypertarget{_auto_config_8cpp}{}\label{_auto_config_8cpp}\index{AutoConfig.cpp@{AutoConfig.cpp}}
+{\ttfamily \#include "{}Control\+API.\+h"{}}\newline
+{\ttfamily \#include "{}std.\+h"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include "{}Auto\+Config.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_auto_config_8cpp_a2b9c8dfeeabd4e031faad168c65a38d5}{AUTO\+\_\+\+CONFIG\+\_\+\+API\+\_\+\+CALL}}(name, ...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_auto_config_8cpp_a4c3299a0742f71a990ddb55c3c3bacd7}{Reset\+Rack\+I2\+CMultiplexers}} (const uint8\+\_\+t Sequencer\+ID)
+\item 
+bool \mbox{\hyperlink{_auto_config_8cpp_a99e3fa3af53d2988bd6181ee0ce2067d}{Select\+Rack\+I2\+CSlot}} (const uint8\+\_\+t Sequencer\+ID, const uint8\+\_\+t Rack\+Nr, const uint8\+\_\+t Slot\+Nr)
+\item 
+bool \mbox{\hyperlink{_auto_config_8cpp_aad395c51516feb2cb6691e153cdb5df1}{Write\+Config\+EEPROM}} (const uint8\+\_\+t Sequencer\+ID, const uint8\+\_\+t Rack\+Nr, const uint8\+\_\+t Slot\+Nr, const char \texorpdfstring{$\ast$}{*}data, const size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write configuration data to the EEPROM of a rack slot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_auto_config_8cpp_af7ae1d1d4d88b31de333b5dfaf4c733b}{Read\+Config\+EEPROM}} (const uint8\+\_\+t Sequencer\+ID, const uint8\+\_\+t Rack\+Nr, const uint8\+\_\+t Slot\+Nr, char \texorpdfstring{$\ast$}{*}data, size\+\_\+t \&length, bool \&I2\+C\+\_\+success)
+\begin{DoxyCompactList}\small\item\em Read the complete configuration EEPROM of a rack slot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_auto_config_8cpp_a281f7b4a3c83dc4aaba3b2625288e7a0}{Write\+Config\+Address}} (const uint8\+\_\+t Sequencer\+ID, const uint8\+\_\+t Rack\+Nr, const uint8\+\_\+t Slot\+Nr, const uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Write the configuration address byte of a rack slot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_auto_config_8cpp_a6e7fa30abd688cb9b2030233aae40df7}{Read\+Config\+Address}} (const uint8\+\_\+t Sequencer\+ID, const uint8\+\_\+t Rack\+Nr, const uint8\+\_\+t Slot\+Nr, uint8\+\_\+t \&address, bool \&I2\+C\+\_\+success)
+\begin{DoxyCompactList}\small\item\em Read the configuration address byte of a rack slot. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{_auto_config_8cpp_adaba071de1c2264ff86494e12fe40cd2}{Read\+Configuration}} (const std\+::string \&filename)
+\item 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{_auto_config_8cpp_a373a270b5fa5a46935c61759ee121208}{Get\+Auto\+Config\+JSON}} (const std\+::string \&filename)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_auto_config_8cpp_a2b9c8dfeeabd4e031faad168c65a38d5}\index{AutoConfig.cpp@{AutoConfig.cpp}!AUTO\_CONFIG\_API\_CALL@{AUTO\_CONFIG\_API\_CALL}}
+\index{AUTO\_CONFIG\_API\_CALL@{AUTO\_CONFIG\_API\_CALL}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{AUTO\_CONFIG\_API\_CALL}{AUTO\_CONFIG\_API\_CALL}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_a2b9c8dfeeabd4e031faad168c65a38d5} 
+\#define AUTO\+\_\+\+CONFIG\+\_\+\+API\+\_\+\+CALL(\begin{DoxyParamCaption}\item[{}]{name}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CLA\_\#\#name(\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_auto_config_8cpp_a373a270b5fa5a46935c61759ee121208}\index{AutoConfig.cpp@{AutoConfig.cpp}!GetAutoConfigJSON@{GetAutoConfigJSON}}
+\index{GetAutoConfigJSON@{GetAutoConfigJSON}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{GetAutoConfigJSON()}{GetAutoConfigJSON()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_a373a270b5fa5a46935c61759ee121208} 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Get\+Auto\+Config\+JSON (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8cpp_a6e7fa30abd688cb9b2030233aae40df7}\index{AutoConfig.cpp@{AutoConfig.cpp}!ReadConfigAddress@{ReadConfigAddress}}
+\index{ReadConfigAddress@{ReadConfigAddress}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{ReadConfigAddress()}{ReadConfigAddress()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_a6e7fa30abd688cb9b2030233aae40df7} 
+void Read\+Config\+Address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{uint8\+\_\+t \&}]{address}{, }\item[{bool \&}]{I2\+C\+\_\+success}{}\end{DoxyParamCaption})}
+
+
+
+Read the configuration address byte of a rack slot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Sequencer\+ID} & the sequencer to use. \\
+\hline
+{\em Rack\+Nr} & the rack number. \\
+\hline
+{\em Slot\+Nr} & the slot number within the rack. \\
+\hline
+{\em address} & output byte receiving the current address value. \\
+\hline
+{\em I2\+C\+\_\+success} & output flag indicating whether the address read transaction succeeded. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+See return convention above. 
+\end{DoxyReturn}
+\Hypertarget{_auto_config_8cpp_af7ae1d1d4d88b31de333b5dfaf4c733b}\index{AutoConfig.cpp@{AutoConfig.cpp}!ReadConfigEEPROM@{ReadConfigEEPROM}}
+\index{ReadConfigEEPROM@{ReadConfigEEPROM}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{ReadConfigEEPROM()}{ReadConfigEEPROM()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_af7ae1d1d4d88b31de333b5dfaf4c733b} 
+void Read\+Config\+EEPROM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t \&}]{length}{, }\item[{bool \&}]{I2\+C\+\_\+success}{}\end{DoxyParamCaption})}
+
+
+
+Read the complete configuration EEPROM of a rack slot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Sequencer\+ID} & the sequencer to use. \\
+\hline
+{\em Rack\+Nr} & the rack number. \\
+\hline
+{\em Slot\+Nr} & the slot number within the rack. \\
+\hline
+{\em data} & output buffer receiving the EEPROM contents. \\
+\hline
+{\em length} & input\+: available buffer size in bytes, output\+: number of bytes read. \\
+\hline
+{\em I2\+C\+\_\+success} & output flag indicating whether the EEPROM read transaction succeeded. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+See return convention above. 
+\end{DoxyReturn}
+\Hypertarget{_auto_config_8cpp_adaba071de1c2264ff86494e12fe40cd2}\index{AutoConfig.cpp@{AutoConfig.cpp}!ReadConfiguration@{ReadConfiguration}}
+\index{ReadConfiguration@{ReadConfiguration}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{ReadConfiguration()}{ReadConfiguration()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_adaba071de1c2264ff86494e12fe40cd2} 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Read\+Configuration (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8cpp_a4c3299a0742f71a990ddb55c3c3bacd7}\index{AutoConfig.cpp@{AutoConfig.cpp}!ResetRackI2CMultiplexers@{ResetRackI2CMultiplexers}}
+\index{ResetRackI2CMultiplexers@{ResetRackI2CMultiplexers}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{ResetRackI2CMultiplexers()}{ResetRackI2CMultiplexers()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_a4c3299a0742f71a990ddb55c3c3bacd7} 
+void Reset\+Rack\+I2\+CMultiplexers (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{Sequencer\+ID}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8cpp_a99e3fa3af53d2988bd6181ee0ce2067d}\index{AutoConfig.cpp@{AutoConfig.cpp}!SelectRackI2CSlot@{SelectRackI2CSlot}}
+\index{SelectRackI2CSlot@{SelectRackI2CSlot}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{SelectRackI2CSlot()}{SelectRackI2CSlot()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_a99e3fa3af53d2988bd6181ee0ce2067d} 
+bool Select\+Rack\+I2\+CSlot (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{const uint8\+\_\+t}]{Rack\+Nr}{, }\item[{const uint8\+\_\+t}]{Slot\+Nr}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8cpp_a281f7b4a3c83dc4aaba3b2625288e7a0}\index{AutoConfig.cpp@{AutoConfig.cpp}!WriteConfigAddress@{WriteConfigAddress}}
+\index{WriteConfigAddress@{WriteConfigAddress}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{WriteConfigAddress()}{WriteConfigAddress()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_a281f7b4a3c83dc4aaba3b2625288e7a0} 
+void Write\+Config\+Address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})}
+
+
+
+Write the configuration address byte of a rack slot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Sequencer\+ID} & the sequencer to use. \\
+\hline
+{\em Rack\+Nr} & the rack number. \\
+\hline
+{\em Slot\+Nr} & the slot number within the rack. \\
+\hline
+{\em address} & the address byte to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+See return convention above. 
+\end{DoxyReturn}
+\Hypertarget{_auto_config_8cpp_aad395c51516feb2cb6691e153cdb5df1}\index{AutoConfig.cpp@{AutoConfig.cpp}!WriteConfigEEPROM@{WriteConfigEEPROM}}
+\index{WriteConfigEEPROM@{WriteConfigEEPROM}!AutoConfig.cpp@{AutoConfig.cpp}}
+\doxysubsubsection{\texorpdfstring{WriteConfigEEPROM()}{WriteConfigEEPROM()}}
+{\footnotesize\ttfamily \label{_auto_config_8cpp_aad395c51516feb2cb6691e153cdb5df1} 
+bool Write\+Config\+EEPROM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Write configuration data to the EEPROM of a rack slot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Sequencer\+ID} & the sequencer to use. \\
+\hline
+{\em Rack\+Nr} & the rack number. \\
+\hline
+{\em Slot\+Nr} & the slot number within the rack. \\
+\hline
+{\em data} & the configuration payload to write. \\
+\hline
+{\em length} & the payload length in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+See return convention above. 
+\end{DoxyReturn}

@@ -1,0 +1,99 @@
+\doxysection{std.\+h File Reference}
+\hypertarget{std_8h}{}\label{std_8h}\index{std.h@{std.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{std_8h_a919356581583503a63f588aa15005c52}{\+\_\+T}}
+\item 
+\#define \mbox{\hyperlink{std_8h_a810bc029424753d56098fe6c8ccbe024}{STD\+\_\+\+STRING}}
+\item 
+\#define \mbox{\hyperlink{std_8h_a015c9405b3bc44f30ed23fefced52e99}{CString\+To\+Std\+String}}(str)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::chrono\+::high\+\_\+resolution\+\_\+clock \mbox{\hyperlink{std_8h_a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80}{Clock}}
+\item 
+typedef Clock\+::duration \mbox{\hyperlink{std_8h_a299201b5ee8a24fadd5b2df449c47ccf}{Duration}}
+\item 
+typedef std\+::chrono\+::time\+\_\+point$<$ \mbox{\hyperlink{std_8h_a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80}{Clock}} $>$ \mbox{\hyperlink{std_8h_a232395c051c7d6ad1c46b894b66fcc4f}{Time}}
+\item 
+typedef std\+::string \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{std_8h_a46b349cc9aee28852a41762122a7a001}{milli\+Seconds}} (const \mbox{\hyperlink{std_8h_a299201b5ee8a24fadd5b2df449c47ccf}{Duration}} \&d)
+\item 
+void \mbox{\hyperlink{std_8h_aae71a8343422fa2968300f2da8cc8cfc}{Control\+Message\+Box}} (const std\+::string \&text)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{std_8h_a919356581583503a63f588aa15005c52}\index{std.h@{std.h}!\_T@{\_T}}
+\index{\_T@{\_T}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{\_T}{\_T}}
+{\footnotesize\ttfamily \label{std_8h_a919356581583503a63f588aa15005c52} 
+\#define \+\_\+T}
+
+\Hypertarget{std_8h_a015c9405b3bc44f30ed23fefced52e99}\index{std.h@{std.h}!CStringToStdString@{CStringToStdString}}
+\index{CStringToStdString@{CStringToStdString}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{CStringToStdString}{CStringToStdString}}
+{\footnotesize\ttfamily \label{std_8h_a015c9405b3bc44f30ed23fefced52e99} 
+\#define CString\+To\+Std\+String(\begin{DoxyParamCaption}\item[{}]{str}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{str}
+
+\end{DoxyCode}
+\Hypertarget{std_8h_a810bc029424753d56098fe6c8ccbe024}\index{std.h@{std.h}!STD\_STRING@{STD\_STRING}}
+\index{STD\_STRING@{STD\_STRING}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{STD\_STRING}{STD\_STRING}}
+{\footnotesize\ttfamily \label{std_8h_a810bc029424753d56098fe6c8ccbe024} 
+\#define STD\+\_\+\+STRING}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{std_8h_a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80}\index{std.h@{std.h}!Clock@{Clock}}
+\index{Clock@{Clock}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{Clock}{Clock}}
+{\footnotesize\ttfamily \label{std_8h_a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80} 
+typedef std\+::chrono\+::high\+\_\+resolution\+\_\+clock \mbox{\hyperlink{std_8h_a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80}{Clock}}}
+
+\Hypertarget{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}\index{std.h@{std.h}!CString@{CString}}
+\index{CString@{CString}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{CString}{CString}}
+{\footnotesize\ttfamily \label{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e} 
+typedef std\+::string \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}}}
+
+\Hypertarget{std_8h_a299201b5ee8a24fadd5b2df449c47ccf}\index{std.h@{std.h}!Duration@{Duration}}
+\index{Duration@{Duration}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{Duration}{Duration}}
+{\footnotesize\ttfamily \label{std_8h_a299201b5ee8a24fadd5b2df449c47ccf} 
+typedef Clock\+::duration \mbox{\hyperlink{std_8h_a299201b5ee8a24fadd5b2df449c47ccf}{Duration}}}
+
+\Hypertarget{std_8h_a232395c051c7d6ad1c46b894b66fcc4f}\index{std.h@{std.h}!Time@{Time}}
+\index{Time@{Time}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{Time}{Time}}
+{\footnotesize\ttfamily \label{std_8h_a232395c051c7d6ad1c46b894b66fcc4f} 
+typedef std\+::chrono\+::time\+\_\+point$<$\mbox{\hyperlink{std_8h_a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80}{Clock}}$>$ \mbox{\hyperlink{std_8h_a232395c051c7d6ad1c46b894b66fcc4f}{Time}}}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{std_8h_aae71a8343422fa2968300f2da8cc8cfc}\index{std.h@{std.h}!ControlMessageBox@{ControlMessageBox}}
+\index{ControlMessageBox@{ControlMessageBox}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{ControlMessageBox()}{ControlMessageBox()}}
+{\footnotesize\ttfamily \label{std_8h_aae71a8343422fa2968300f2da8cc8cfc} 
+void Control\+Message\+Box (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{std_8h_a46b349cc9aee28852a41762122a7a001}\index{std.h@{std.h}!milliSeconds@{milliSeconds}}
+\index{milliSeconds@{milliSeconds}!std.h@{std.h}}
+\doxysubsubsection{\texorpdfstring{milliSeconds()}{milliSeconds()}}
+{\footnotesize\ttfamily \label{std_8h_a46b349cc9aee28852a41762122a7a001} 
+double milli\+Seconds (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{std_8h_a299201b5ee8a24fadd5b2df449c47ccf}{Duration}} \&}]{d}{}\end{DoxyParamCaption})}
+

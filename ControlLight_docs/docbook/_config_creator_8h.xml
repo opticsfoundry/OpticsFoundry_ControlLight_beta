@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__config_creator_8h" xml:lang="en-US">
+<title>ConfigCreator.h File Reference</title>
+<indexterm><primary>ConfigCreator.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;optional&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &quot;include/json.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_config_creator">ConfigCreator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

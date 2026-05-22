@@ -1,0 +1,483 @@
+\doxysection{CAD9858 Class Reference}
+\hypertarget{class_c_a_d9858}{}\label{class_c_a_d9858}\index{CAD9858@{CAD9858}}
+
+
+{\ttfamily \#include $<$AD9858.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_a_d9858_a5b55ef58ac884d20b361fb207d7f7568}{CAD9858}} (unsigned long a\+Base\+Address, double a\+External\+Clock\+Speed, double a\+Frequency\+Multiplier, \mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}\+\_\+\+My\+Device\+Sequencer)
+\item 
+\mbox{\hyperlink{class_c_a_d9858_a1b287a93aa78dca09944bdabf16f9715}{\texorpdfstring{$\sim$}{\string~}\+CAD9858}} ()
+\item 
+double \mbox{\hyperlink{class_c_a_d9858_ad23d4cfabd47db4b8e73406f1f92afd9}{Set\+Modulation\+Frequency}} (double Modulation\+Frequency, bool Get\+Value=false)
+\item 
+void \mbox{\hyperlink{class_c_a_d9858_af8a9c8199e91a884fca30e65102d489a}{Master\+Reset}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9858_af962cc79731569f2e3770c67cc994f06}{Set\+Update\+Registers\+Mode\+Automatic}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9858_ac73e98249df8ebdb966de15e558c0715}{Set\+Update\+Registers\+Mode\+Manual}} ()
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_aeb4ba9c68261e320c1e946b2dbca4b63}{Set2\+GHz\+Divider\+Disable}} (bool a\+Disable, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a8625d6c53615e437a91650b79c664df7}{Set\+SYNCLKDisable}} (bool a\+Disable, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a4dc395743ac2c1be750a52e30935a2b4}{Set\+Mixer\+Power\+Down}} (bool a\+Power\+Down, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_acabc2b757faf9582ee0ced4513988fbb}{Set\+Phase\+Detect\+Power\+Down}} (bool a\+Power\+Down, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a6a388b4025e94466a8c12256c6c470e5}{Set\+Power\+Down}} (bool a\+Power\+Down, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a8444e38024a21e9e5aaafed7807dc814}{Set\+SDIOInput\+Only}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_af12b9fe4c0c6aec710e545124e68c4f3}{Set\+LSBFirst}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a006ca3231c0c8224499ef6fe7875995c}{Set\+Frequency\+Sweep\+Enable}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a6277c21701358b57832185a867e94eee}{Set\+Enable\+Sine\+Output}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a8a18cca2e11de9fbb1f51c22ffbe9384}{Set\+Charge\+Pump\+Offset}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a485e191c37926ab88d252167efb1d4b1}{Set\+Charge\+Pump\+Polarity}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a4c394f8d30625cb698bfc77acbf84dac}{Set\+Auto\+Clear\+Frequency\+Accumulator}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a3f6cfa6319063bcd02f9de8ddf6131a1}{Set\+Auto\+Clear\+Phase\+Accumulator}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a8a460c352857bd5bfb77cd8d63502fba}{Set\+Load\+Delta\+Frequency\+Timer}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a6b7dfa13be60ebf83eca9a942a9e6f45}{Set\+Clear\+Frequency\+Accumulator}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a87f99df96e64a05b06a88c1a4ba7a523}{Set\+Clear\+Phase\+Accumulator}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a18718ea8f12a55e32fa7b8246ea1cca6}{Set\+Fast\+Lock\+Enable}} (bool a\+Value, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a8ce3306f8471caefb28a95c42fff78f7}{Set\+FTWFor\+Fast\+Lock}} (bool a\+Value, bool Get\+Value=false)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_c_a_d9858_a0b8565f60e58d4ae5e7633a70ddf1e40}{Set\+Phase\+Detector\+Divider\+RatioN}} (uint8\+\_\+t a\+Value, bool Get\+Value=false)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_c_a_d9858_a3e1a48d677af1a94994bf0a1317b7b61}{Set\+Phase\+Detector\+Divider\+RatioM}} (uint8\+\_\+t a\+Value, bool Get\+Value=false)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_c_a_d9858_ae4595d63391732d68105b9345f0e7de0}{Set\+Frequency\+Detect\+Mode\+Charge\+Pump\+Current}} (uint8\+\_\+t a\+Value, bool Get\+Value=false)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_c_a_d9858_ab43815d70c99e066920c94c89bcceb26}{Set\+Final\+Closed\+Loop\+Mode\+Charge\+Pump\+Current}} (uint8\+\_\+t a\+Value, bool Get\+Value=false)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_c_a_d9858_a55f5523942d4fed31db13a182a10b7af}{Set\+Wide\+Closed\+Loop\+Mode\+Charge\+Pump\+Current}} (uint8\+\_\+t a\+Value, bool Get\+Value=false)
+\item 
+int64\+\_\+t \mbox{\hyperlink{class_c_a_d9858_a59afdacbcb2448fcdf98223276d5b413}{Set\+Delta\+Frequency\+Word}} (int64\+\_\+t a\+Delta\+Frequency\+Word, bool Get\+Value=false)
+\item 
+unsigned long \mbox{\hyperlink{class_c_a_d9858_a824ca4beeb66e6fd97f5915765d1aae0}{Set\+Ramp\+Rate\+Word}} (unsigned long a\+Ramp\+Rate\+Word, bool Get\+Value=false)
+\item 
+double \mbox{\hyperlink{class_c_a_d9858_a65740774881d4681d45ebdadce3ebbfc}{Set\+Attenuation}} (double a\+Value, bool Get\+Value=false)
+\item 
+double \mbox{\hyperlink{class_c_a_d9858_a0b1839bde71aaf14f44c360cc449ac87}{Set\+Frequency0}} (double Frequency, bool Get\+Value=false)
+\item 
+double \mbox{\hyperlink{class_c_a_d9858_a08a819a58a1efebd47b1881c48d52f50}{Set\+Frequency1}} (double Frequency, bool Get\+Value=false)
+\item 
+double \mbox{\hyperlink{class_c_a_d9858_a25f86b7ec14c79aed86cc74ec0e94883}{Set\+Frequency2}} (double Frequency, bool Get\+Value=false)
+\item 
+double \mbox{\hyperlink{class_c_a_d9858_a9c79047a7caf95dc6523380c1d8504e2}{Set\+Frequency3}} (double Frequency, bool Get\+Value=false)
+\item 
+int64\+\_\+t \mbox{\hyperlink{class_c_a_d9858_a75680424193966613b727c6d1d9c9bef}{Set\+Frequency\+Tuning\+Word0}} (const uint64\+\_\+t \&Frequency\+Tuning\+Word, bool Get\+Value=false)
+\item 
+int64\+\_\+t \mbox{\hyperlink{class_c_a_d9858_aa2bdca0ecd00b4722857d3cf261a3803}{Set\+Frequency\+Tuning\+Word1}} (const uint64\+\_\+t \&Frequency\+Tuning\+Word, bool Get\+Value=false)
+\item 
+int64\+\_\+t \mbox{\hyperlink{class_c_a_d9858_abdec734960f2e7104d1e5d9ca8083549}{Set\+Frequency\+Tuning\+Word2}} (const uint64\+\_\+t \&Frequency\+Tuning\+Word, bool Get\+Value=false)
+\item 
+int64\+\_\+t \mbox{\hyperlink{class_c_a_d9858_aaf3f21d14632592edcc4f5954e565002}{Set\+Frequency\+Tuning\+Word3}} (const uint64\+\_\+t \&Frequency\+Tuning\+Word, bool Get\+Value=false)
+\item 
+unsigned short \mbox{\hyperlink{class_c_a_d9858_a276564fa5abd92dfec7ac5b73536893f}{Set\+Phase\+Offset\+Word0}} (unsigned short a\+Phase\+Offset\+Word, bool Get\+Value=false)
+\item 
+unsigned short \mbox{\hyperlink{class_c_a_d9858_a9314258070f73cfc8166d821aa05d277}{Set\+Phase\+Offset\+Word1}} (unsigned short a\+Phase\+Offset\+Word, bool Get\+Value=false)
+\item 
+unsigned short \mbox{\hyperlink{class_c_a_d9858_a878f3bc78a35d02c3447be8faba3aaea}{Set\+Phase\+Offset\+Word2}} (unsigned short a\+Phase\+Offset\+Word, bool Get\+Value=false)
+\item 
+unsigned short \mbox{\hyperlink{class_c_a_d9858_a487d9fa0ff114f3e6f95c8ed6c12dc6b}{Set\+Phase\+Offset\+Word3}} (unsigned short a\+Phase\+Offset\+Word, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a47b76f7cfdf9a6326e09a844deb327b8}{Set\+PS0}} (bool a\+PS0, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a37628c1ac9d96e165dc4de9d9bc707ca}{Set\+PS1}} (bool a\+PS1, bool Get\+Value=false)
+\item 
+void \mbox{\hyperlink{class_c_a_d9858_ac3247b8750d735aa14897320189c72ab}{Enable}} (bool On\+Off)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_c_a_d9858_af65c76a5d99e50188c0a1160049b0de9}{Set\+Frequency\+Write\+Precision}} (uint8\+\_\+t Precision, bool Get\+Value=false)
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a7a85926f95ef3be942ca5aab394573d5}{Write\+To\+Bus}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9858_a2b52b1877e8535feea93e6e1039f012b}{Write\+All\+To\+Bus}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_c_a_d9858_a64151c1bcf7e761b106fd742d0663d74}{Has\+Something\+To\+Write\+To\+Bus}} ()
+\item 
+void \mbox{\hyperlink{class_c_a_d9858_af337c38d6e6af24807ded8e48bf25a66}{Frequency\+Ramp}} (double Start\+Frequency, double Stop\+Frequency, double Ramp\+Time)
+\item 
+void \mbox{\hyperlink{class_c_a_d9858_a466034372fd30efd981266820b591477}{Frequency\+Modulation}} (double Start\+Frequency, double Stop\+Frequency, double Modulation\+Frequency)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_c_a_d9858_a36bd3a54691cb740a4f6420c7c8b0a94}{Frequency\+Multiplier}}
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_add2d20978631316318a3bd72a0962d33}{PS0}}
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a17d98069e94939c3fb594d1d88a07280}{PS1}}
+\item 
+bool \mbox{\hyperlink{class_c_a_d9858_a90d289ef0299c95bc007b00e878d6874}{Enabled}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_a_d9858_a5b55ef58ac884d20b361fb207d7f7568}\index{CAD9858@{CAD9858}!CAD9858@{CAD9858}}
+\index{CAD9858@{CAD9858}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{CAD9858()}{CAD9858()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a5b55ef58ac884d20b361fb207d7f7568} 
+CAD9858\+::\+CAD9858 (\begin{DoxyParamCaption}\item[{unsigned long}]{a\+Base\+Address}{, }\item[{double}]{a\+External\+Clock\+Speed}{, }\item[{double}]{a\+Frequency\+Multiplier}{, }\item[{\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+My\+Device\+Sequencer}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a1b287a93aa78dca09944bdabf16f9715}\index{CAD9858@{CAD9858}!````~CAD9858@{\texorpdfstring{$\sim$}{\string~}CAD9858}}
+\index{````~CAD9858@{\texorpdfstring{$\sim$}{\string~}CAD9858}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CAD9858()}{\string~CAD9858()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a1b287a93aa78dca09944bdabf16f9715} 
+CAD9858\+::\texorpdfstring{$\sim$}{\string~}\+CAD9858 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_a_d9858_ac3247b8750d735aa14897320189c72ab}\index{CAD9858@{CAD9858}!Enable@{Enable}}
+\index{Enable@{Enable}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{Enable()}{Enable()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_ac3247b8750d735aa14897320189c72ab} 
+void CAD9858\+::\+Enable (\begin{DoxyParamCaption}\item[{bool}]{On\+Off}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a466034372fd30efd981266820b591477}\index{CAD9858@{CAD9858}!FrequencyModulation@{FrequencyModulation}}
+\index{FrequencyModulation@{FrequencyModulation}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{FrequencyModulation()}{FrequencyModulation()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a466034372fd30efd981266820b591477} 
+void CAD9858\+::\+Frequency\+Modulation (\begin{DoxyParamCaption}\item[{double}]{Start\+Frequency}{, }\item[{double}]{Stop\+Frequency}{, }\item[{double}]{Modulation\+Frequency}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_af337c38d6e6af24807ded8e48bf25a66}\index{CAD9858@{CAD9858}!FrequencyRamp@{FrequencyRamp}}
+\index{FrequencyRamp@{FrequencyRamp}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{FrequencyRamp()}{FrequencyRamp()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_af337c38d6e6af24807ded8e48bf25a66} 
+void CAD9858\+::\+Frequency\+Ramp (\begin{DoxyParamCaption}\item[{double}]{Start\+Frequency}{, }\item[{double}]{Stop\+Frequency}{, }\item[{double}]{Ramp\+Time}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a64151c1bcf7e761b106fd742d0663d74}\index{CAD9858@{CAD9858}!HasSomethingToWriteToBus@{HasSomethingToWriteToBus}}
+\index{HasSomethingToWriteToBus@{HasSomethingToWriteToBus}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{HasSomethingToWriteToBus()}{HasSomethingToWriteToBus()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a64151c1bcf7e761b106fd742d0663d74} 
+virtual bool CAD9858\+::\+Has\+Something\+To\+Write\+To\+Bus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_c_a_d9858_af8a9c8199e91a884fca30e65102d489a}\index{CAD9858@{CAD9858}!MasterReset@{MasterReset}}
+\index{MasterReset@{MasterReset}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{MasterReset()}{MasterReset()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_af8a9c8199e91a884fca30e65102d489a} 
+void CAD9858\+::\+Master\+Reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_aeb4ba9c68261e320c1e946b2dbca4b63}\index{CAD9858@{CAD9858}!Set2GHzDividerDisable@{Set2GHzDividerDisable}}
+\index{Set2GHzDividerDisable@{Set2GHzDividerDisable}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{Set2GHzDividerDisable()}{Set2GHzDividerDisable()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_aeb4ba9c68261e320c1e946b2dbca4b63} 
+bool CAD9858\+::\+Set2\+GHz\+Divider\+Disable (\begin{DoxyParamCaption}\item[{bool}]{a\+Disable}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a65740774881d4681d45ebdadce3ebbfc}\index{CAD9858@{CAD9858}!SetAttenuation@{SetAttenuation}}
+\index{SetAttenuation@{SetAttenuation}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetAttenuation()}{SetAttenuation()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a65740774881d4681d45ebdadce3ebbfc} 
+double CAD9858\+::\+Set\+Attenuation (\begin{DoxyParamCaption}\item[{double}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a4c394f8d30625cb698bfc77acbf84dac}\index{CAD9858@{CAD9858}!SetAutoClearFrequencyAccumulator@{SetAutoClearFrequencyAccumulator}}
+\index{SetAutoClearFrequencyAccumulator@{SetAutoClearFrequencyAccumulator}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetAutoClearFrequencyAccumulator()}{SetAutoClearFrequencyAccumulator()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a4c394f8d30625cb698bfc77acbf84dac} 
+bool CAD9858\+::\+Set\+Auto\+Clear\+Frequency\+Accumulator (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a3f6cfa6319063bcd02f9de8ddf6131a1}\index{CAD9858@{CAD9858}!SetAutoClearPhaseAccumulator@{SetAutoClearPhaseAccumulator}}
+\index{SetAutoClearPhaseAccumulator@{SetAutoClearPhaseAccumulator}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetAutoClearPhaseAccumulator()}{SetAutoClearPhaseAccumulator()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a3f6cfa6319063bcd02f9de8ddf6131a1} 
+bool CAD9858\+::\+Set\+Auto\+Clear\+Phase\+Accumulator (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a8a18cca2e11de9fbb1f51c22ffbe9384}\index{CAD9858@{CAD9858}!SetChargePumpOffset@{SetChargePumpOffset}}
+\index{SetChargePumpOffset@{SetChargePumpOffset}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetChargePumpOffset()}{SetChargePumpOffset()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a8a18cca2e11de9fbb1f51c22ffbe9384} 
+bool CAD9858\+::\+Set\+Charge\+Pump\+Offset (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a485e191c37926ab88d252167efb1d4b1}\index{CAD9858@{CAD9858}!SetChargePumpPolarity@{SetChargePumpPolarity}}
+\index{SetChargePumpPolarity@{SetChargePumpPolarity}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetChargePumpPolarity()}{SetChargePumpPolarity()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a485e191c37926ab88d252167efb1d4b1} 
+bool CAD9858\+::\+Set\+Charge\+Pump\+Polarity (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a6b7dfa13be60ebf83eca9a942a9e6f45}\index{CAD9858@{CAD9858}!SetClearFrequencyAccumulator@{SetClearFrequencyAccumulator}}
+\index{SetClearFrequencyAccumulator@{SetClearFrequencyAccumulator}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetClearFrequencyAccumulator()}{SetClearFrequencyAccumulator()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a6b7dfa13be60ebf83eca9a942a9e6f45} 
+bool CAD9858\+::\+Set\+Clear\+Frequency\+Accumulator (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a87f99df96e64a05b06a88c1a4ba7a523}\index{CAD9858@{CAD9858}!SetClearPhaseAccumulator@{SetClearPhaseAccumulator}}
+\index{SetClearPhaseAccumulator@{SetClearPhaseAccumulator}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetClearPhaseAccumulator()}{SetClearPhaseAccumulator()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a87f99df96e64a05b06a88c1a4ba7a523} 
+bool CAD9858\+::\+Set\+Clear\+Phase\+Accumulator (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a59afdacbcb2448fcdf98223276d5b413}\index{CAD9858@{CAD9858}!SetDeltaFrequencyWord@{SetDeltaFrequencyWord}}
+\index{SetDeltaFrequencyWord@{SetDeltaFrequencyWord}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetDeltaFrequencyWord()}{SetDeltaFrequencyWord()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a59afdacbcb2448fcdf98223276d5b413} 
+int64\+\_\+t CAD9858\+::\+Set\+Delta\+Frequency\+Word (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{a\+Delta\+Frequency\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a6277c21701358b57832185a867e94eee}\index{CAD9858@{CAD9858}!SetEnableSineOutput@{SetEnableSineOutput}}
+\index{SetEnableSineOutput@{SetEnableSineOutput}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetEnableSineOutput()}{SetEnableSineOutput()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a6277c21701358b57832185a867e94eee} 
+bool CAD9858\+::\+Set\+Enable\+Sine\+Output (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a18718ea8f12a55e32fa7b8246ea1cca6}\index{CAD9858@{CAD9858}!SetFastLockEnable@{SetFastLockEnable}}
+\index{SetFastLockEnable@{SetFastLockEnable}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFastLockEnable()}{SetFastLockEnable()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a18718ea8f12a55e32fa7b8246ea1cca6} 
+bool CAD9858\+::\+Set\+Fast\+Lock\+Enable (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_ab43815d70c99e066920c94c89bcceb26}\index{CAD9858@{CAD9858}!SetFinalClosedLoopModeChargePumpCurrent@{SetFinalClosedLoopModeChargePumpCurrent}}
+\index{SetFinalClosedLoopModeChargePumpCurrent@{SetFinalClosedLoopModeChargePumpCurrent}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFinalClosedLoopModeChargePumpCurrent()}{SetFinalClosedLoopModeChargePumpCurrent()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_ab43815d70c99e066920c94c89bcceb26} 
+uint8\+\_\+t CAD9858\+::\+Set\+Final\+Closed\+Loop\+Mode\+Charge\+Pump\+Current (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a0b1839bde71aaf14f44c360cc449ac87}\index{CAD9858@{CAD9858}!SetFrequency0@{SetFrequency0}}
+\index{SetFrequency0@{SetFrequency0}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequency0()}{SetFrequency0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a0b1839bde71aaf14f44c360cc449ac87} 
+double CAD9858\+::\+Set\+Frequency0 (\begin{DoxyParamCaption}\item[{double}]{Frequency}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a08a819a58a1efebd47b1881c48d52f50}\index{CAD9858@{CAD9858}!SetFrequency1@{SetFrequency1}}
+\index{SetFrequency1@{SetFrequency1}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequency1()}{SetFrequency1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a08a819a58a1efebd47b1881c48d52f50} 
+double CAD9858\+::\+Set\+Frequency1 (\begin{DoxyParamCaption}\item[{double}]{Frequency}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a25f86b7ec14c79aed86cc74ec0e94883}\index{CAD9858@{CAD9858}!SetFrequency2@{SetFrequency2}}
+\index{SetFrequency2@{SetFrequency2}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequency2()}{SetFrequency2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a25f86b7ec14c79aed86cc74ec0e94883} 
+double CAD9858\+::\+Set\+Frequency2 (\begin{DoxyParamCaption}\item[{double}]{Frequency}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a9c79047a7caf95dc6523380c1d8504e2}\index{CAD9858@{CAD9858}!SetFrequency3@{SetFrequency3}}
+\index{SetFrequency3@{SetFrequency3}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequency3()}{SetFrequency3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a9c79047a7caf95dc6523380c1d8504e2} 
+double CAD9858\+::\+Set\+Frequency3 (\begin{DoxyParamCaption}\item[{double}]{Frequency}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_ae4595d63391732d68105b9345f0e7de0}\index{CAD9858@{CAD9858}!SetFrequencyDetectModeChargePumpCurrent@{SetFrequencyDetectModeChargePumpCurrent}}
+\index{SetFrequencyDetectModeChargePumpCurrent@{SetFrequencyDetectModeChargePumpCurrent}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyDetectModeChargePumpCurrent()}{SetFrequencyDetectModeChargePumpCurrent()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_ae4595d63391732d68105b9345f0e7de0} 
+uint8\+\_\+t CAD9858\+::\+Set\+Frequency\+Detect\+Mode\+Charge\+Pump\+Current (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a006ca3231c0c8224499ef6fe7875995c}\index{CAD9858@{CAD9858}!SetFrequencySweepEnable@{SetFrequencySweepEnable}}
+\index{SetFrequencySweepEnable@{SetFrequencySweepEnable}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequencySweepEnable()}{SetFrequencySweepEnable()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a006ca3231c0c8224499ef6fe7875995c} 
+bool CAD9858\+::\+Set\+Frequency\+Sweep\+Enable (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a75680424193966613b727c6d1d9c9bef}\index{CAD9858@{CAD9858}!SetFrequencyTuningWord0@{SetFrequencyTuningWord0}}
+\index{SetFrequencyTuningWord0@{SetFrequencyTuningWord0}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWord0()}{SetFrequencyTuningWord0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a75680424193966613b727c6d1d9c9bef} 
+int64\+\_\+t CAD9858\+::\+Set\+Frequency\+Tuning\+Word0 (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{Frequency\+Tuning\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_aa2bdca0ecd00b4722857d3cf261a3803}\index{CAD9858@{CAD9858}!SetFrequencyTuningWord1@{SetFrequencyTuningWord1}}
+\index{SetFrequencyTuningWord1@{SetFrequencyTuningWord1}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWord1()}{SetFrequencyTuningWord1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_aa2bdca0ecd00b4722857d3cf261a3803} 
+int64\+\_\+t CAD9858\+::\+Set\+Frequency\+Tuning\+Word1 (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{Frequency\+Tuning\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_abdec734960f2e7104d1e5d9ca8083549}\index{CAD9858@{CAD9858}!SetFrequencyTuningWord2@{SetFrequencyTuningWord2}}
+\index{SetFrequencyTuningWord2@{SetFrequencyTuningWord2}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWord2()}{SetFrequencyTuningWord2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_abdec734960f2e7104d1e5d9ca8083549} 
+int64\+\_\+t CAD9858\+::\+Set\+Frequency\+Tuning\+Word2 (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{Frequency\+Tuning\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_aaf3f21d14632592edcc4f5954e565002}\index{CAD9858@{CAD9858}!SetFrequencyTuningWord3@{SetFrequencyTuningWord3}}
+\index{SetFrequencyTuningWord3@{SetFrequencyTuningWord3}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWord3()}{SetFrequencyTuningWord3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_aaf3f21d14632592edcc4f5954e565002} 
+int64\+\_\+t CAD9858\+::\+Set\+Frequency\+Tuning\+Word3 (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{Frequency\+Tuning\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_af65c76a5d99e50188c0a1160049b0de9}\index{CAD9858@{CAD9858}!SetFrequencyWritePrecision@{SetFrequencyWritePrecision}}
+\index{SetFrequencyWritePrecision@{SetFrequencyWritePrecision}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyWritePrecision()}{SetFrequencyWritePrecision()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_af65c76a5d99e50188c0a1160049b0de9} 
+uint8\+\_\+t CAD9858\+::\+Set\+Frequency\+Write\+Precision (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Precision}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a8ce3306f8471caefb28a95c42fff78f7}\index{CAD9858@{CAD9858}!SetFTWForFastLock@{SetFTWForFastLock}}
+\index{SetFTWForFastLock@{SetFTWForFastLock}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetFTWForFastLock()}{SetFTWForFastLock()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a8ce3306f8471caefb28a95c42fff78f7} 
+bool CAD9858\+::\+Set\+FTWFor\+Fast\+Lock (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a8a460c352857bd5bfb77cd8d63502fba}\index{CAD9858@{CAD9858}!SetLoadDeltaFrequencyTimer@{SetLoadDeltaFrequencyTimer}}
+\index{SetLoadDeltaFrequencyTimer@{SetLoadDeltaFrequencyTimer}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetLoadDeltaFrequencyTimer()}{SetLoadDeltaFrequencyTimer()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a8a460c352857bd5bfb77cd8d63502fba} 
+bool CAD9858\+::\+Set\+Load\+Delta\+Frequency\+Timer (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_af12b9fe4c0c6aec710e545124e68c4f3}\index{CAD9858@{CAD9858}!SetLSBFirst@{SetLSBFirst}}
+\index{SetLSBFirst@{SetLSBFirst}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetLSBFirst()}{SetLSBFirst()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_af12b9fe4c0c6aec710e545124e68c4f3} 
+bool CAD9858\+::\+Set\+LSBFirst (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a4dc395743ac2c1be750a52e30935a2b4}\index{CAD9858@{CAD9858}!SetMixerPowerDown@{SetMixerPowerDown}}
+\index{SetMixerPowerDown@{SetMixerPowerDown}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetMixerPowerDown()}{SetMixerPowerDown()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a4dc395743ac2c1be750a52e30935a2b4} 
+bool CAD9858\+::\+Set\+Mixer\+Power\+Down (\begin{DoxyParamCaption}\item[{bool}]{a\+Power\+Down}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_ad23d4cfabd47db4b8e73406f1f92afd9}\index{CAD9858@{CAD9858}!SetModulationFrequency@{SetModulationFrequency}}
+\index{SetModulationFrequency@{SetModulationFrequency}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetModulationFrequency()}{SetModulationFrequency()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_ad23d4cfabd47db4b8e73406f1f92afd9} 
+double CAD9858\+::\+Set\+Modulation\+Frequency (\begin{DoxyParamCaption}\item[{double}]{Modulation\+Frequency}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a3e1a48d677af1a94994bf0a1317b7b61}\index{CAD9858@{CAD9858}!SetPhaseDetectorDividerRatioM@{SetPhaseDetectorDividerRatioM}}
+\index{SetPhaseDetectorDividerRatioM@{SetPhaseDetectorDividerRatioM}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPhaseDetectorDividerRatioM()}{SetPhaseDetectorDividerRatioM()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a3e1a48d677af1a94994bf0a1317b7b61} 
+uint8\+\_\+t CAD9858\+::\+Set\+Phase\+Detector\+Divider\+RatioM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a0b8565f60e58d4ae5e7633a70ddf1e40}\index{CAD9858@{CAD9858}!SetPhaseDetectorDividerRatioN@{SetPhaseDetectorDividerRatioN}}
+\index{SetPhaseDetectorDividerRatioN@{SetPhaseDetectorDividerRatioN}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPhaseDetectorDividerRatioN()}{SetPhaseDetectorDividerRatioN()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a0b8565f60e58d4ae5e7633a70ddf1e40} 
+uint8\+\_\+t CAD9858\+::\+Set\+Phase\+Detector\+Divider\+RatioN (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_acabc2b757faf9582ee0ced4513988fbb}\index{CAD9858@{CAD9858}!SetPhaseDetectPowerDown@{SetPhaseDetectPowerDown}}
+\index{SetPhaseDetectPowerDown@{SetPhaseDetectPowerDown}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPhaseDetectPowerDown()}{SetPhaseDetectPowerDown()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_acabc2b757faf9582ee0ced4513988fbb} 
+bool CAD9858\+::\+Set\+Phase\+Detect\+Power\+Down (\begin{DoxyParamCaption}\item[{bool}]{a\+Power\+Down}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a276564fa5abd92dfec7ac5b73536893f}\index{CAD9858@{CAD9858}!SetPhaseOffsetWord0@{SetPhaseOffsetWord0}}
+\index{SetPhaseOffsetWord0@{SetPhaseOffsetWord0}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetWord0()}{SetPhaseOffsetWord0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a276564fa5abd92dfec7ac5b73536893f} 
+unsigned short CAD9858\+::\+Set\+Phase\+Offset\+Word0 (\begin{DoxyParamCaption}\item[{unsigned short}]{a\+Phase\+Offset\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a9314258070f73cfc8166d821aa05d277}\index{CAD9858@{CAD9858}!SetPhaseOffsetWord1@{SetPhaseOffsetWord1}}
+\index{SetPhaseOffsetWord1@{SetPhaseOffsetWord1}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetWord1()}{SetPhaseOffsetWord1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a9314258070f73cfc8166d821aa05d277} 
+unsigned short CAD9858\+::\+Set\+Phase\+Offset\+Word1 (\begin{DoxyParamCaption}\item[{unsigned short}]{a\+Phase\+Offset\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a878f3bc78a35d02c3447be8faba3aaea}\index{CAD9858@{CAD9858}!SetPhaseOffsetWord2@{SetPhaseOffsetWord2}}
+\index{SetPhaseOffsetWord2@{SetPhaseOffsetWord2}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetWord2()}{SetPhaseOffsetWord2()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a878f3bc78a35d02c3447be8faba3aaea} 
+unsigned short CAD9858\+::\+Set\+Phase\+Offset\+Word2 (\begin{DoxyParamCaption}\item[{unsigned short}]{a\+Phase\+Offset\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a487d9fa0ff114f3e6f95c8ed6c12dc6b}\index{CAD9858@{CAD9858}!SetPhaseOffsetWord3@{SetPhaseOffsetWord3}}
+\index{SetPhaseOffsetWord3@{SetPhaseOffsetWord3}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPhaseOffsetWord3()}{SetPhaseOffsetWord3()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a487d9fa0ff114f3e6f95c8ed6c12dc6b} 
+unsigned short CAD9858\+::\+Set\+Phase\+Offset\+Word3 (\begin{DoxyParamCaption}\item[{unsigned short}]{a\+Phase\+Offset\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a6a388b4025e94466a8c12256c6c470e5}\index{CAD9858@{CAD9858}!SetPowerDown@{SetPowerDown}}
+\index{SetPowerDown@{SetPowerDown}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPowerDown()}{SetPowerDown()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a6a388b4025e94466a8c12256c6c470e5} 
+bool CAD9858\+::\+Set\+Power\+Down (\begin{DoxyParamCaption}\item[{bool}]{a\+Power\+Down}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a47b76f7cfdf9a6326e09a844deb327b8}\index{CAD9858@{CAD9858}!SetPS0@{SetPS0}}
+\index{SetPS0@{SetPS0}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPS0()}{SetPS0()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a47b76f7cfdf9a6326e09a844deb327b8} 
+bool CAD9858\+::\+Set\+PS0 (\begin{DoxyParamCaption}\item[{bool}]{a\+PS0}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a37628c1ac9d96e165dc4de9d9bc707ca}\index{CAD9858@{CAD9858}!SetPS1@{SetPS1}}
+\index{SetPS1@{SetPS1}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetPS1()}{SetPS1()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a37628c1ac9d96e165dc4de9d9bc707ca} 
+bool CAD9858\+::\+Set\+PS1 (\begin{DoxyParamCaption}\item[{bool}]{a\+PS1}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a824ca4beeb66e6fd97f5915765d1aae0}\index{CAD9858@{CAD9858}!SetRampRateWord@{SetRampRateWord}}
+\index{SetRampRateWord@{SetRampRateWord}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetRampRateWord()}{SetRampRateWord()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a824ca4beeb66e6fd97f5915765d1aae0} 
+unsigned long CAD9858\+::\+Set\+Ramp\+Rate\+Word (\begin{DoxyParamCaption}\item[{unsigned long}]{a\+Ramp\+Rate\+Word}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a8444e38024a21e9e5aaafed7807dc814}\index{CAD9858@{CAD9858}!SetSDIOInputOnly@{SetSDIOInputOnly}}
+\index{SetSDIOInputOnly@{SetSDIOInputOnly}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetSDIOInputOnly()}{SetSDIOInputOnly()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a8444e38024a21e9e5aaafed7807dc814} 
+bool CAD9858\+::\+Set\+SDIOInput\+Only (\begin{DoxyParamCaption}\item[{bool}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a8625d6c53615e437a91650b79c664df7}\index{CAD9858@{CAD9858}!SetSYNCLKDisable@{SetSYNCLKDisable}}
+\index{SetSYNCLKDisable@{SetSYNCLKDisable}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetSYNCLKDisable()}{SetSYNCLKDisable()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a8625d6c53615e437a91650b79c664df7} 
+bool CAD9858\+::\+Set\+SYNCLKDisable (\begin{DoxyParamCaption}\item[{bool}]{a\+Disable}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_af962cc79731569f2e3770c67cc994f06}\index{CAD9858@{CAD9858}!SetUpdateRegistersModeAutomatic@{SetUpdateRegistersModeAutomatic}}
+\index{SetUpdateRegistersModeAutomatic@{SetUpdateRegistersModeAutomatic}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetUpdateRegistersModeAutomatic()}{SetUpdateRegistersModeAutomatic()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_af962cc79731569f2e3770c67cc994f06} 
+void CAD9858\+::\+Set\+Update\+Registers\+Mode\+Automatic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_ac73e98249df8ebdb966de15e558c0715}\index{CAD9858@{CAD9858}!SetUpdateRegistersModeManual@{SetUpdateRegistersModeManual}}
+\index{SetUpdateRegistersModeManual@{SetUpdateRegistersModeManual}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetUpdateRegistersModeManual()}{SetUpdateRegistersModeManual()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_ac73e98249df8ebdb966de15e558c0715} 
+void CAD9858\+::\+Set\+Update\+Registers\+Mode\+Manual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a55f5523942d4fed31db13a182a10b7af}\index{CAD9858@{CAD9858}!SetWideClosedLoopModeChargePumpCurrent@{SetWideClosedLoopModeChargePumpCurrent}}
+\index{SetWideClosedLoopModeChargePumpCurrent@{SetWideClosedLoopModeChargePumpCurrent}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{SetWideClosedLoopModeChargePumpCurrent()}{SetWideClosedLoopModeChargePumpCurrent()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a55f5523942d4fed31db13a182a10b7af} 
+uint8\+\_\+t CAD9858\+::\+Set\+Wide\+Closed\+Loop\+Mode\+Charge\+Pump\+Current (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{a\+Value}{, }\item[{bool}]{Get\+Value}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a2b52b1877e8535feea93e6e1039f012b}\index{CAD9858@{CAD9858}!WriteAllToBus@{WriteAllToBus}}
+\index{WriteAllToBus@{WriteAllToBus}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{WriteAllToBus()}{WriteAllToBus()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a2b52b1877e8535feea93e6e1039f012b} 
+void CAD9858\+::\+Write\+All\+To\+Bus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_a_d9858_a7a85926f95ef3be942ca5aab394573d5}\index{CAD9858@{CAD9858}!WriteToBus@{WriteToBus}}
+\index{WriteToBus@{WriteToBus}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{WriteToBus()}{WriteToBus()}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a7a85926f95ef3be942ca5aab394573d5} 
+bool CAD9858\+::\+Write\+To\+Bus (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_a_d9858_a90d289ef0299c95bc007b00e878d6874}\index{CAD9858@{CAD9858}!Enabled@{Enabled}}
+\index{Enabled@{Enabled}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{Enabled}{Enabled}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a90d289ef0299c95bc007b00e878d6874} 
+bool CAD9858\+::\+Enabled}
+
+\Hypertarget{class_c_a_d9858_a36bd3a54691cb740a4f6420c7c8b0a94}\index{CAD9858@{CAD9858}!FrequencyMultiplier@{FrequencyMultiplier}}
+\index{FrequencyMultiplier@{FrequencyMultiplier}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{FrequencyMultiplier}{FrequencyMultiplier}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a36bd3a54691cb740a4f6420c7c8b0a94} 
+double CAD9858\+::\+Frequency\+Multiplier}
+
+\Hypertarget{class_c_a_d9858_add2d20978631316318a3bd72a0962d33}\index{CAD9858@{CAD9858}!PS0@{PS0}}
+\index{PS0@{PS0}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{PS0}{PS0}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_add2d20978631316318a3bd72a0962d33} 
+bool CAD9858\+::\+PS0}
+
+\Hypertarget{class_c_a_d9858_a17d98069e94939c3fb594d1d88a07280}\index{CAD9858@{CAD9858}!PS1@{PS1}}
+\index{PS1@{PS1}!CAD9858@{CAD9858}}
+\doxysubsubsection{\texorpdfstring{PS1}{PS1}}
+{\footnotesize\ttfamily \label{class_c_a_d9858_a17d98069e94939c3fb594d1d88a07280} 
+bool CAD9858\+::\+PS1}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_a_d9858_8h}{AD9858.\+h}}\item 
+\mbox{\hyperlink{_a_d9858_8cpp}{AD9858.\+cpp}}\end{DoxyCompactItemize}

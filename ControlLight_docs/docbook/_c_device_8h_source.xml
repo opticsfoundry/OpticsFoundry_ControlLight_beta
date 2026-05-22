@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__c_device_8h_source" xml:lang="en-US">
+<title>CDevice.h</title>
+<indexterm><primary>CDevice.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__control_a_p_i_8h">ControlAPI.h</link>&quot;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+4 
+5 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_sequencer">CDeviceSequencer</link>;
+6 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link>
+7 {
+8 <emphasis role="keyword">public</emphasis>:
+9 &#32;&#32;&#32;&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;<link linkend="_class_c_device_1a381f3a4f11fb87aadc77bcdc4524e33f">MySequencer</link>;
+10 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<link linkend="_class_c_device_1a7c5003e9b61986c46f6aa9ffd31324f3">MyAddress</link>;
+11 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_c_device_1aaa6670dcb90af191c31aef9d88dbdcce">MyType</link>;
+12 <emphasis role="keyword">private</emphasis>:
+13 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_ErrorOccured;
+14 <emphasis role="keyword">public</emphasis>:
+15 &#32;&#32;&#32;&#32;<link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link>(<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;_MySequencer&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;_MyAddress&#32;=&#32;0,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&#32;_MyType&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+16 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_device_1aa3ec8544aad768caa0c45b53c8915e0f">~CDevice</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+17 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_device_1a30356c4a419393fe39c946209c966ab1">NotifyError</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;ErrorMessage,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;dothrow=<emphasis role="keyword">true</emphasis>);
+18 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_device_1abad094121bde679b4a68858b1a0e1c32">ClearError</link>();
+19 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1acaaa125920dec9e7f9f6b3d6a2225058">ErrorOccured</link>()&#32;{&#32;<emphasis role="keywordflow">return</emphasis>&#32;this-&gt;_ErrorOccured;&#32;};
+20 
+21 &#32;&#32;&#32;&#32;<emphasis role="comment">//In&#32;derived&#32;classes,&#32;SetValue&#32;accesses&#32;a&#32;table&#32;of&#32;registers&#32;(or&#32;similar)&#32;with&#32;specific&#32;functions,&#32;converts&#32;data&#32;as&#32;needed&#32;and&#32;translates</emphasis>
+22 &#32;&#32;&#32;&#32;<emphasis role="comment">//the&#32;call&#32;into&#32;an&#32;appropriate&#32;one&#32;of&#32;SetRegisters.</emphasis>
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a8e4c8e7c256a149d08debc49e190b27e">SetValue</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit)&#32;{
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetValue:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+26 &#32;&#32;&#32;&#32;};
+27 
+28 &#32;&#32;&#32;&#32;<emphasis role="comment">//In&#32;derived&#32;classes,&#32;SetRegister&#32;accesses&#32;the&#32;registers&#32;(or&#32;similar)&#32;of&#32;the&#32;specific&#32;device,&#32;and&#32;directly&#32;writes&#32;to&#32;them</emphasis>
+29 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1aed9d8c451787c53bf398292a57b20a99">SetRegister</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit)&#32;{
+30 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetRegister:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_device_1a8e4c8e7c256a149d08debc49e190b27e">SetValue</link>(SubAddress,&#32;Data,&#32;DataLength_in_bit,&#32;StartBit);
+32 &#32;&#32;&#32;&#32;}
+33 
+34 <emphasis role="keyword">public</emphasis>:
+35 &#32;&#32;&#32;&#32;<emphasis role="comment">//the&#32;following&#32;are&#32;convenience&#32;functions,&#32;which&#32;allow&#32;us&#32;to&#32;define&#32;nice&#32;names&#32;to&#32;the&#32;few&#32;most&#32;important&#32;functions</emphasis>
+36 &#32;&#32;&#32;&#32;<emphasis role="comment">//They&#32;are&#32;defined&#32;here,&#32;such&#32;that&#32;we&#32;can&#32;easily&#32;handle&#32;errors&#32;if&#32;the&#32;wrong&#32;device&#32;is&#32;used&#32;for&#32;a&#32;given&#32;function</emphasis>
+37 &#32;&#32;&#32;&#32;
+38 
+39 &#32;&#32;&#32;&#32;<emphasis role="comment">//Rack</emphasis>
+40 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a6a8ccd405886c6bb81b886de3aa45c77">SelectRackSlot</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;SlotNr)&#32;{
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SelectRackSlot:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+43 &#32;&#32;&#32;&#32;}
+44 
+45 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1ab7deca3acfd5322776186b07f597f9ec">ResetI2CMultiplexer</link>()&#32;{
+46 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::ResetI2CMultiplexer:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;
+48 &#32;&#32;&#32;&#32;}
+49 
+50 &#32;&#32;&#32;&#32;<emphasis role="comment">//Analog&#32;output</emphasis>
+51 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a157c99b6b8d061e54ab2920a89711e6f">SetVoltage</link>(<emphasis role="keywordtype">double</emphasis>&#32;Voltage)&#32;{&#32;
+52 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetVoltage:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+53 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;
+54 &#32;&#32;&#32;&#32;}
+55 
+56 &#32;&#32;&#32;&#32;<emphasis role="comment">//Digital&#32;output</emphasis>
+57 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a671cf9349a711df3da9e655dc2928a84">SetDigitalOutput</link>(uint8_t&#32;BitNr,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff)&#32;{
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetDigitalOutput:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+60 &#32;&#32;&#32;&#32;}
+61 
+62 &#32;&#32;&#32;&#32;<emphasis role="comment">//AD9854</emphasis>
+63 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1aaa3e13859985f358428c4d51bafc37d3">SetStartFrequency</link>(<emphasis role="keywordtype">double</emphasis>&#32;Frequency)&#32;{
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetStartFrequency:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+65 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+66 &#32;&#32;&#32;&#32;}
+67 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1af0ac58636967e468139ea4ec7776b912">SetStopFrequency</link>(<emphasis role="keywordtype">double</emphasis>&#32;Frequency)&#32;{
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetStopFrequency:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+69 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+70 &#32;&#32;&#32;&#32;}
+71 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1ac9f2d8bc4810171cc290332dcf5aea77">SetModulationFrequency</link>(<emphasis role="keywordtype">double</emphasis>&#32;Frequency)&#32;{
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetModulationFrequency:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+73 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+74 &#32;&#32;&#32;&#32;}
+75 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a896e79990b77c5702bcacf217ebd8180">SetPower</link>(<emphasis role="keywordtype">double</emphasis>&#32;Power)&#32;{
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetPower:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+78 &#32;&#32;&#32;&#32;}
+79 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1abb0dc967e558b1e3218fb00c368e927f">SetAttenuation</link>(<emphasis role="keywordtype">double</emphasis>&#32;Attenuation)&#32;{
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetAttenuation:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+82 &#32;&#32;&#32;&#32;}
+83 
+84 
+85 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a266d2caa2f23ebc437e9cb26bf2ec3ad">SetStartFrequencyTuningWord</link>(uint64_t)
+86 &#32;&#32;&#32;&#32;{
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetStartFrequencyTuningWord:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+89 &#32;&#32;&#32;&#32;}
+90 
+91 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a60446e9222919ecb7f7c8f9e7c72ee43">SetStopFrequencyTuningWord</link>(uint64_t)
+92 &#32;&#32;&#32;&#32;{
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetStopFrequencyTuningWord:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+95 &#32;&#32;&#32;&#32;}
+96 
+97 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a5201f16fcc101d6594d33d0463664519">SetFSKMode</link>(uint8_t&#32;mode)&#32;{
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetFSKMode:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+99 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+100 &#32;&#32;&#32;&#32;}
+101 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a8e233a94cc5c177260a319ae158c3504">SetRampRateClock</link>(<emphasis role="keywordtype">int</emphasis>&#32;rate)&#32;{
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetRampRateClock:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+104 &#32;&#32;&#32;&#32;}
+105 
+106 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a7dc7cc4daab1c6e27468d7366a449e85">SetClearACC1</link>(<emphasis role="keywordtype">bool</emphasis>)&#32;{
+107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetClearACC1:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+109 &#32;&#32;&#32;&#32;}
+110 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1aa19bf3d0655119902bac344b8c4c5a2c">SetTriangleBit</link>(<emphasis role="keywordtype">bool</emphasis>)&#32;{
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetTriangleBit:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+113 &#32;&#32;&#32;&#32;}
+114 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1acef2ccddac12d4203fb363c1b18fdbe9">SetFSKBit</link>(<emphasis role="keywordtype">bool</emphasis>)&#32;{
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetFSKBit:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+117 &#32;&#32;&#32;&#32;}
+118 
+119 
+120 &#32;&#32;&#32;&#32;<emphasis role="comment">//AD9858</emphasis>
+121 
+122 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1ae8204d9f4edb81f19af2ceaeee04d65e">SetFrequency</link>(<emphasis role="keywordtype">double</emphasis>&#32;Frequency)&#32;{
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetFrequency:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+125 &#32;&#32;&#32;&#32;}
+126 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a2f948d164b6177a355b9f47a39d3a758">SetFrequencyTuningWord</link>(uint64_t&#32;FrequencyTuningWord)&#32;{
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetFrequencyTuningWord:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+129 &#32;&#32;&#32;&#32;}
+130 &#32;&#32;&#32;&#32;<emphasis role="comment">/*virtual&#32;bool&#32;SetPower(double&#32;Power)&#32;{</emphasis>
+131 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AddErrorMessage(&quot;CDevice::SetPower:&#32;abstract&#32;function&#32;called&quot;);</emphasis>
+132 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;false;</emphasis>
+133 <emphasis role="comment">&#32;&#32;&#32;&#32;}*/</emphasis>
+134 &#32;&#32;&#32;&#32;<emphasis role="comment">/*virtual&#32;bool&#32;SetAttenuation(double&#32;Power)&#32;{</emphasis>
+135 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AddErrorMessage(&quot;CDevice::SetAttenuation:&#32;abstract&#32;function&#32;called&quot;);</emphasis>
+136 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;false;</emphasis>
+137 <emphasis role="comment">&#32;&#32;&#32;&#32;}*/</emphasis>
+138 
+139 &#32;&#32;&#32;&#32;<emphasis role="comment">//AD9959</emphasis>
+140 
+141 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1acd05aa88ded012804e579a19ada672b5">Reset</link>()&#32;{
+142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::Reset:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+144 &#32;&#32;&#32;&#32;}
+145 
+146 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a537b4320f28a041f7c792cd8ee980489">SetFrequency</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Frequency)&#32;{
+147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetFrequency:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+149 &#32;&#32;&#32;&#32;}
+150 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a20124b1ebdce4ad278e9441c33a25df6">SetFrequencyTuningWord</link>(uint8_t&#32;channel,&#32;uint64_t&#32;FrequencyTuningWord)&#32;{
+151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetFrequencyTuningWord:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+153 &#32;&#32;&#32;&#32;}
+154 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1a4972e649a5c5e33b1e2b19d4d977be1b">SetPhase</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Phase)&#32;{
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetPhase:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+157 &#32;&#32;&#32;&#32;}
+158 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1af08e809e1fe88612656716fef5055256">SetPower</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Power)&#32;{
+159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetPower:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+161 &#32;&#32;&#32;&#32;}
+162 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1ad5976661247c2d2a64fe6800be5ae0bc">SetAttenuation</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Power)&#32;{
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetAttenuation:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+165 &#32;&#32;&#32;&#32;}
+166 
+167 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_1ae8de0378397c02c4cfe7cfc0cb672cd4">SetIOUpdateEnabled</link>(<emphasis role="keywordtype">bool</emphasis>&#32;_IOUpdateEnabled)&#32;{
+168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="stringliteral">&quot;CDevice::SetIOUpdateEnabled:&#32;abstract&#32;function&#32;called&quot;</emphasis>);
+169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+170 &#32;&#32;&#32;&#32;}
+171 
+172 
+173 
+174 };
+175 
+</programlisting></section>

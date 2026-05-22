@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_network_8h_source" xml:lang="en-US">
+<title>network.h</title>
+<indexterm><primary>network.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 
+2 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+3 
+4 <emphasis role="preprocessor">#ifdef&#32;WIN32</emphasis>
+5 
+6 <emphasis role="preprocessor">#ifdef&#32;_WINSOCKAPI_</emphasis>
+7 <emphasis role="preprocessor">#undef&#32;_WINSOCKAPI_&#32;</emphasis><emphasis role="comment">//&#32;Prevent&#32;inclusion&#32;of&#32;Winsock.h</emphasis>
+8 <emphasis role="preprocessor">#endif</emphasis>
+9 <emphasis role="preprocessor">#include&#32;&lt;WinSock2.h&gt;</emphasis>&#32;&#32;&#32;<emphasis role="comment">//&#32;Include&#32;Winsock2.h&#32;before&#32;other&#32;headers</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;ws2tcpip.h&gt;</emphasis>&#32;<emphasis role="comment">//&#32;Optional:&#32;Include&#32;for&#32;additional&#32;Winsock&#32;functions&#32;like&#32;getaddrinfo</emphasis>
+11 
+12 <emphasis role="comment">//&#32;Ensure&#32;that&#32;the&#32;Winsock&#32;library&#32;is&#32;linked</emphasis>
+13 <emphasis role="comment">//#pragma&#32;comment(lib,&#32;&quot;Ws2_32.lib&quot;)</emphasis>
+14 
+15 <emphasis role="preprocessor">#include&#32;&lt;Windows.h&gt;</emphasis>&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Ensure&#32;Windows.h&#32;is&#32;included&#32;after&#32;Winsock2.h</emphasis>
+16 
+17 <emphasis role="preprocessor">#include&#32;&lt;afxsock.h&gt;</emphasis>
+18 <emphasis role="preprocessor">#include&#32;&lt;afxwin.h&gt;</emphasis>&#32;<emphasis role="comment">//&#32;This&#32;is&#32;a&#32;compatibility&#32;layer&#32;to&#32;define&#32;CString,&#32;and&#32;others</emphasis>
+19 
+20 <emphasis role="preprocessor">#else&#32;</emphasis><emphasis role="comment">//&#32;WIN32</emphasis>
+21 
+22 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_std_8h">std.h</link>&quot;</emphasis>
+23 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+24 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+25 <emphasis role="preprocessor">#include&#32;&lt;errno.h&gt;</emphasis>
+26 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+27 <emphasis role="preprocessor">#include&#32;&lt;sys/types.h&gt;</emphasis>
+28 <emphasis role="preprocessor">#include&#32;&lt;sys/socket.h&gt;</emphasis>
+29 <emphasis role="preprocessor">#include&#32;&lt;netinet/in.h&gt;</emphasis>
+30 <emphasis role="preprocessor">#include&#32;&lt;arpa/inet.h&gt;</emphasis>
+31 <emphasis role="preprocessor">#include&#32;&lt;sys/wait.h&gt;</emphasis>
+32 <emphasis role="preprocessor">#include&#32;&lt;signal.h&gt;</emphasis>
+33 <emphasis role="preprocessor">#include&#32;&lt;netdb.h&gt;</emphasis>
+34 
+35 
+36 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;WIN32</emphasis>
+37 
+38 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+39 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>std;
+40 
+41 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_network_1ae4c6f98dd9b44e1547f7eff0a0799dfc">CNetwork</link>
+42 #ifdef&#32;_WIN32
+43 :&#32;<emphasis role="keyword">public</emphasis>&#32;CObject
+44 <emphasis role="preprocessor">#endif</emphasis>
+45 {
+46 <emphasis role="comment">//&#32;Attributes</emphasis>
+47 <emphasis role="keyword">public</emphasis>:
+48 <emphasis role="preprocessor">#ifdef&#32;_WIN32</emphasis>
+49 &#32;&#32;&#32;&#32;CSocket*&#32;<link linkend="_class_c_network_1a4bfd8dd7fae5d4bee6ffd05f5f0a4a29">m_pSocket</link>;
+50 <emphasis role="preprocessor">#else</emphasis>
+51 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>*&#32;<link linkend="_class_c_network_1a4bfd8dd7fae5d4bee6ffd05f5f0a4a29">m_pSocket</link>;
+52 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_c_network_1a225f793bf19b96faf4f8688b2a36c5d1">m_socketfd</link>;
+53 <emphasis role="preprocessor">#endif</emphasis>
+54 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_c_network_1ad78041ee8e9e37742ad515f58d709071">m_host</link>;
+55 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_c_network_1a41f6cae3910e566dc07491466c2c5ba7">m_nPort</link>;
+56 &#32;&#32;&#32;&#32;std::string&#32;<link linkend="_class_c_network_1a6bdcc577661a3b3648063670e08d5f43">m_SocketName</link>;
+57 <emphasis role="comment">//&#32;Operations</emphasis>
+58 <emphasis role="keyword">public</emphasis>:
+59 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a039dff02b725f746409eaa09a103bce6">ConnectSocket</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;host,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;nPort,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;SocketName,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;reconnect&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timeout_s&#32;=&#32;2);
+60 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a2ddc0a0564d0bf5b3cddf8f1ebb838a2">ResetConnection</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;sleep_time=2000);
+61 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a2d9dc5d77a9db1a996534cb3d3d1f3dd">FlushInputBuffer</link>();
+62 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a75d59a0d4c53aa4a0ade70d6aaaca845">FlushOutputBuffer</link>();
+63 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_1aa8f487a58a1d73e21e0af9601f9bfcc4">SendMsg</link>(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&amp;&#32;strText);
+64 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a6487dc24383af3cc9adc7aa94199b971">SendData</link>(<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;Size);
+65 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1ad9636a38079916ec660c88092f84ad36">SendString</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&amp;&#32;str);&#32;&#32;<emphasis role="comment">//&#32;Helper&#32;for&#32;text-based&#32;protocols</emphasis>
+66 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a19cf86a9324374a37d710e3a34e72da9">ReceiveMsg</link>(<emphasis role="keywordtype">char</emphasis>&#32;end_character&#32;=&#32;<emphasis role="charliteral">&apos;\n&apos;</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;WaitForStartCharacter&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">char</emphasis>&#32;start_character&#32;=&#32;<emphasis role="charliteral">&apos;*&apos;</emphasis>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_seconds&#32;=&#32;5);
+67 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a1ebf567f42570a93f29079c14d244e91">ReceiveData</link>(uint8_t*&#32;buffer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;buffer_length,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;timeout&#32;=&#32;5000);
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a52997f0e0a9fcd43ada48a1b3673f9c3">ReceiveString</link>(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&amp;&#32;outStr,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_seconds&#32;=&#32;5,&#32;<emphasis role="keywordtype">char</emphasis>&#32;endChar&#32;=&#32;<emphasis role="charliteral">&apos;\n&apos;</emphasis>);
+69 <emphasis role="comment">//&#32;Implementation</emphasis>
+70 <emphasis role="keyword">public</emphasis>:
+71 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_1a55be2d3a1d45549c8199b1a4324996d6">DebugStop</link>();
+72 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_1aba707b1e7ba4ce923c90f9fa636f05a6">DebugStart</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;Filename);
+73 &#32;&#32;&#32;&#32;ofstream&#32;*<link linkend="_class_c_network_1a187987b13ede6e699546871811d354cd">DebugFile</link>;
+74 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_1abdd54634e4dcfb17515ed74dd3e0b64c">Flush</link>();
+75 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_1a6a9367568c0eb9ef88308696d786c08c">StoreLastMessage</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;Message);
+76 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a63cd36d8c60d6a8e5cc962fead4ab36c">GetMessage</link>(<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;&amp;Message,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_seconds&#32;=&#32;5,&#32;<emphasis role="keywordtype">int</emphasis>&#32;mode&#32;=&#32;1);
+77 &#32;&#32;&#32;&#32;<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>&#32;<link linkend="_class_c_network_1a8db02b78a8f17f1ec7ccdb6ff5a15f7f">LastMessage</link>;
+78 &#32;&#32;&#32;&#32;<link linkend="_class_c_network_1ae4c6f98dd9b44e1547f7eff0a0799dfc">CNetwork</link>();
+79 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_network_1a5f8c44eababcef02f4ce7af3592dba37">~CNetwork</link>();
+80 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_network_1ae05676ec152f6b4a5880e51d837ddb80">DisconnectSocket</link>();
+81 <emphasis role="keyword">private</emphasis>:
+82 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;WaitForRead(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;timeout_ms);
+83 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;WaitForWrite(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;timeout_ms);
+84 
+85 <emphasis role="keyword">public</emphasis>:
+86 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;New&#32;reconnect/retry&#32;helpers:</emphasis>
+87 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1ad6e6c1704cdd7e80e5521e83d6a02362">IsConnected</link>()&#32;<emphasis role="keyword">const</emphasis>;
+88 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_network_1a665c20541840dcf938b63284847cc33f">Reconnect</link>(<emphasis role="keywordtype">int</emphasis>&#32;maxRetries&#32;=&#32;3,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timeout_s&#32;=2,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;delay_ms&#32;=&#32;1000);
+89 &#32;&#32;&#32;&#32;<emphasis role="comment">//bool&#32;SendDataWithRetry(const&#32;uint8_t*&#32;data,&#32;unsigned&#32;long&#32;size,&#32;int&#32;maxRetries&#32;=&#32;3,&#32;unsigned&#32;long&#32;delay_ms&#32;=&#32;1000);</emphasis>
+90 &#32;&#32;&#32;&#32;<emphasis role="comment">//bool&#32;ReceiveDataWithRetry(uint8_t*&#32;buffer,&#32;unsigned&#32;long&#32;size,&#32;unsigned&#32;long&#32;timeout_ms&#32;=&#32;5000,&#32;int&#32;maxRetries&#32;=&#32;3,&#32;unsigned&#32;long&#32;delay_ms&#32;=&#32;1000);</emphasis>
+91 
+92 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;(Optional)&#32;Track&#32;connection&#32;status</emphasis>
+93 <emphasis role="keyword">private</emphasis>:
+94 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_lastOpFailed&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;<emphasis role="comment">//&#32;for&#32;auto-reconnect,&#32;if&#32;desired</emphasis>
+95 };
+</programlisting></section>

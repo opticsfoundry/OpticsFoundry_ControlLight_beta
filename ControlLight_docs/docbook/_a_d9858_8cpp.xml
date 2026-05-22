@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_d9858_8cpp" xml:lang="en-US">
+<title>AD9858.cpp File Reference</title>
+<indexterm><primary>AD9858.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;AD9858.h&quot;<?linebreak?>#include &quot;CDeviceSequencer.h&quot;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;format&gt;<?linebreak?></programlisting><simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>unsigned long <link linkend="__a_d9858_8cpp_1a85b4d213de6fffcb930aec37cfa773db">AD9858MasterResetValueContents</link> [<link linkend="__a_d9858_8h_1a89debb04b626a7627663f9e047ecad53">AD9858MaxValues</link>] ={0x18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__a_d9858_8cpp_1acd8b2dc0b624c3942a2705b260ad1bc5">AD9858ValueLength</link> [<link linkend="__a_d9858_8h_1a89debb04b626a7627663f9e047ecad53">AD9858MaxValues</link>] = { 1, 1, 1, 1, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 1, 1, 1, 1}</para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="__a_d9858_8cpp_1a8afbf3803c503f406fb42f66737006a3">AD9858ValueBaseAddress</link> [<link linkend="__a_d9858_8h_1a89debb04b626a7627663f9e047ecad53">AD9858MaxValues</link>] = {0x00,0x01,0x02,0x03,0x04,0x08,0x0A,0x0E,0x10,0x14,0x16,0x1A,0x1C,0x20,0x30,0x31,0x32,0x00}</para>
+</listitem>
+            <listitem><para>const unsigned long <link linkend="__a_d9858_8cpp_1abce01e4b7e8361d9d03e9552ac5e30d0">AD9858ValueNotInBusBuffer</link> =99999</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__a_d9858_8cpp_1a85b4d213de6fffcb930aec37cfa773db"/><section>
+    <title>AD9858MasterResetValueContents</title>
+<indexterm><primary>AD9858MasterResetValueContents</primary><secondary>AD9858.cpp</secondary></indexterm>
+<indexterm><primary>AD9858.cpp</primary><secondary>AD9858MasterResetValueContents</secondary></indexterm>
+<para><computeroutput>unsigned long AD9858MasterResetValueContents[<link linkend="__a_d9858_8h_1a89debb04b626a7627663f9e047ecad53">AD9858MaxValues</link>] ={0x18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}</computeroutput></para></section>
+<anchor xml:id="__a_d9858_8cpp_1a8afbf3803c503f406fb42f66737006a3"/><section>
+    <title>AD9858ValueBaseAddress</title>
+<indexterm><primary>AD9858ValueBaseAddress</primary><secondary>AD9858.cpp</secondary></indexterm>
+<indexterm><primary>AD9858.cpp</primary><secondary>AD9858ValueBaseAddress</secondary></indexterm>
+<para><computeroutput>uint8_t AD9858ValueBaseAddress[<link linkend="__a_d9858_8h_1a89debb04b626a7627663f9e047ecad53">AD9858MaxValues</link>] = {0x00,0x01,0x02,0x03,0x04,0x08,0x0A,0x0E,0x10,0x14,0x16,0x1A,0x1C,0x20,0x30,0x31,0x32,0x00}</computeroutput></para></section>
+<anchor xml:id="__a_d9858_8cpp_1acd8b2dc0b624c3942a2705b260ad1bc5"/><section>
+    <title>AD9858ValueLength</title>
+<indexterm><primary>AD9858ValueLength</primary><secondary>AD9858.cpp</secondary></indexterm>
+<indexterm><primary>AD9858.cpp</primary><secondary>AD9858ValueLength</secondary></indexterm>
+<para><computeroutput>uint8_t AD9858ValueLength[<link linkend="__a_d9858_8h_1a89debb04b626a7627663f9e047ecad53">AD9858MaxValues</link>] = { 1, 1, 1, 1, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 1, 1, 1, 1}</computeroutput></para></section>
+<anchor xml:id="__a_d9858_8cpp_1abce01e4b7e8361d9d03e9552ac5e30d0"/><section>
+    <title>AD9858ValueNotInBusBuffer</title>
+<indexterm><primary>AD9858ValueNotInBusBuffer</primary><secondary>AD9858.cpp</secondary></indexterm>
+<indexterm><primary>AD9858.cpp</primary><secondary>AD9858ValueNotInBusBuffer</secondary></indexterm>
+<para><computeroutput>const unsigned long AD9858ValueNotInBusBuffer =99999</computeroutput></para></section>
+</section>
+</section>

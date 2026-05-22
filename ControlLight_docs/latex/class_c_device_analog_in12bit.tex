@@ -1,0 +1,151 @@
+\doxysection{CDevice\+Analog\+In12bit Class Reference}
+\hypertarget{class_c_device_analog_in12bit}{}\label{class_c_device_analog_in12bit}\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+
+
+{\ttfamily \#include $<$CDevice\+Analog\+In.\+h$>$}
+
+Inheritance diagram for CDevice\+Analog\+In12bit\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_device_analog_in12bit}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_device_analog_in12bit_adcab5cd92d1fd5e0872b9c044c8ce553}{CDevice\+Analog\+In12bit}} (\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}\+\_\+\+My\+Sequencer, unsigned int \+\_\+chip\+Select, bool \+\_\+signed\+Value, double \+\_\+min\+Voltage, double \+\_\+max\+Voltage)
+\item 
+virtual \mbox{\hyperlink{class_c_device_analog_in12bit_abc133cd42f064d7fc7b07adc72a1c86c}{\texorpdfstring{$\sim$}{\string~}\+CDevice\+Analog\+In12bit}} ()=default
+\item 
+bool \mbox{\hyperlink{class_c_device_analog_in12bit_afc45da4231e770e88b4964da2315c818}{Set\+Value}} (const unsigned int \&Sub\+Address, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}Data, const unsigned long \&Data\+Length\+\_\+in\+\_\+bit, const uint8\+\_\+t \&Start\+Bit)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_device}{CDevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}} (\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}\+\_\+\+My\+Sequencer=nullptr, unsigned long \+\_\+\+My\+Address=0, const std\+::string \+\_\+\+My\+Type="{}"{})
+\item 
+virtual \mbox{\hyperlink{class_c_device_aa3ec8544aad768caa0c45b53c8915e0f}{\texorpdfstring{$\sim$}{\string~}\+CDevice}} ()=default
+\item 
+void \mbox{\hyperlink{class_c_device_ae264c8d243df334f353bae8efb99c614}{Notify\+Error}} (const std\+::string \&Error\+Message)
+\item 
+void \mbox{\hyperlink{class_c_device_abad094121bde679b4a68858b1a0e1c32}{Clear\+Error}} ()
+\item 
+bool \mbox{\hyperlink{class_c_device_acaaa125920dec9e7f9f6b3d6a2225058}{Error\+Occured}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_aed9d8c451787c53bf398292a57b20a99}{Set\+Register}} (const unsigned int \&Sub\+Address, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}Data, const unsigned long \&Data\+Length\+\_\+in\+\_\+bit, const uint8\+\_\+t \&Start\+Bit)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a157c99b6b8d061e54ab2920a89711e6f}{Set\+Voltage}} (double Voltage)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a671cf9349a711df3da9e655dc2928a84}{Set\+Digital\+Output}} (uint8\+\_\+t Bit\+Nr, bool On\+Off)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_aaa3e13859985f358428c4d51bafc37d3}{Set\+Start\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_af0ac58636967e468139ea4ec7776b912}{Set\+Stop\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_ac9f2d8bc4810171cc290332dcf5aea77}{Set\+Modulation\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a896e79990b77c5702bcacf217ebd8180}{Set\+Power}} (double Power)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_abb0dc967e558b1e3218fb00c368e927f}{Set\+Attenuation}} (double Attenuation)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a266d2caa2f23ebc437e9cb26bf2ec3ad}{Set\+Start\+Frequency\+Tuning\+Word}} (uint64\+\_\+t)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a60446e9222919ecb7f7c8f9e7c72ee43}{Set\+Stop\+Frequency\+Tuning\+Word}} (uint64\+\_\+t)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a5201f16fcc101d6594d33d0463664519}{Set\+FSKMode}} (uint8\+\_\+t mode)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a8e233a94cc5c177260a319ae158c3504}{Set\+Ramp\+Rate\+Clock}} (int rate)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a7dc7cc4daab1c6e27468d7366a449e85}{Set\+Clear\+ACC1}} (bool)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_aa19bf3d0655119902bac344b8c4c5a2c}{Set\+Triangle\+Bit}} (bool)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_acef2ccddac12d4203fb363c1b18fdbe9}{Set\+FSKBit}} (bool)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_ae8204d9f4edb81f19af2ceaeee04d65e}{Set\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a2f948d164b6177a355b9f47a39d3a758}{Set\+Frequency\+Tuning\+Word}} (uint64\+\_\+t Frequency\+Tuning\+Word)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a537b4320f28a041f7c792cd8ee980489}{Set\+Frequency}} (uint8\+\_\+t channel, double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a20124b1ebdce4ad278e9441c33a25df6}{Set\+Frequency\+Tuning\+Word}} (uint8\+\_\+t channel, uint64\+\_\+t Frequency\+Tuning\+Word)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a4972e649a5c5e33b1e2b19d4d977be1b}{Set\+Phase}} (uint8\+\_\+t channel, double Phase)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_af08e809e1fe88612656716fef5055256}{Set\+Power}} (uint8\+\_\+t channel, double Power)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_ad5976661247c2d2a64fe6800be5ae0bc}{Set\+Attenuation}} (uint8\+\_\+t channel, double Power)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_c_device_analog_in12bit_ac129cca94769f9e87b6ccee42daa00b8}{signed\+Value}}
+\item 
+double \mbox{\hyperlink{class_c_device_analog_in12bit_aeeefb664609d6a8a75816f820bc9168f}{min\+Voltage}}
+\item 
+double \mbox{\hyperlink{class_c_device_analog_in12bit_a29a978eac3fb07993337b8e6c520b227}{max\+Voltage}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_c_device}{CDevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_c_device_a381f3a4f11fb87aadc77bcdc4524e33f}{My\+Sequencer}}
+\item 
+unsigned long \mbox{\hyperlink{class_c_device_a7c5003e9b61986c46f6aa9ffd31324f3}{My\+Address}}
+\item 
+std\+::string \mbox{\hyperlink{class_c_device_aaa6670dcb90af191c31aef9d88dbdcce}{My\+Type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_device_analog_in12bit_adcab5cd92d1fd5e0872b9c044c8ce553}\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}!CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}!CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+\doxysubsubsection{\texorpdfstring{CDeviceAnalogIn12bit()}{CDeviceAnalogIn12bit()}}
+{\footnotesize\ttfamily \label{class_c_device_analog_in12bit_adcab5cd92d1fd5e0872b9c044c8ce553} 
+CDevice\+Analog\+In12bit\+::\+CDevice\+Analog\+In12bit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+My\+Sequencer}{, }\item[{unsigned int}]{\+\_\+chip\+Select}{, }\item[{bool}]{\+\_\+signed\+Value}{, }\item[{double}]{\+\_\+min\+Voltage}{, }\item[{double}]{\+\_\+max\+Voltage}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_device_analog_in12bit_abc133cd42f064d7fc7b07adc72a1c86c}\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}!````~CDeviceAnalogIn12bit@{\texorpdfstring{$\sim$}{\string~}CDeviceAnalogIn12bit}}
+\index{````~CDeviceAnalogIn12bit@{\texorpdfstring{$\sim$}{\string~}CDeviceAnalogIn12bit}!CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CDeviceAnalogIn12bit()}{\string~CDeviceAnalogIn12bit()}}
+{\footnotesize\ttfamily \label{class_c_device_analog_in12bit_abc133cd42f064d7fc7b07adc72a1c86c} 
+virtual CDevice\+Analog\+In12bit\+::\texorpdfstring{$\sim$}{\string~}\+CDevice\+Analog\+In12bit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_device_analog_in12bit_afc45da4231e770e88b4964da2315c818}\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}!SetValue@{SetValue}}
+\index{SetValue@{SetValue}!CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+\doxysubsubsection{\texorpdfstring{SetValue()}{SetValue()}}
+{\footnotesize\ttfamily \label{class_c_device_analog_in12bit_afc45da4231e770e88b4964da2315c818} 
+bool CDevice\+Analog\+In12bit\+::\+Set\+Value (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{Sub\+Address}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Data}{, }\item[{const unsigned long \&}]{Data\+Length\+\_\+in\+\_\+bit}{, }\item[{const uint8\+\_\+t \&}]{Start\+Bit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_a8e4c8e7c256a149d08debc49e190b27e}{CDevice}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_device_analog_in12bit_a29a978eac3fb07993337b8e6c520b227}\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}!maxVoltage@{maxVoltage}}
+\index{maxVoltage@{maxVoltage}!CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+\doxysubsubsection{\texorpdfstring{maxVoltage}{maxVoltage}}
+{\footnotesize\ttfamily \label{class_c_device_analog_in12bit_a29a978eac3fb07993337b8e6c520b227} 
+double CDevice\+Analog\+In12bit\+::max\+Voltage}
+
+\Hypertarget{class_c_device_analog_in12bit_aeeefb664609d6a8a75816f820bc9168f}\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}!minVoltage@{minVoltage}}
+\index{minVoltage@{minVoltage}!CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+\doxysubsubsection{\texorpdfstring{minVoltage}{minVoltage}}
+{\footnotesize\ttfamily \label{class_c_device_analog_in12bit_aeeefb664609d6a8a75816f820bc9168f} 
+double CDevice\+Analog\+In12bit\+::min\+Voltage}
+
+\Hypertarget{class_c_device_analog_in12bit_ac129cca94769f9e87b6ccee42daa00b8}\index{CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}!signedValue@{signedValue}}
+\index{signedValue@{signedValue}!CDeviceAnalogIn12bit@{CDeviceAnalogIn12bit}}
+\doxysubsubsection{\texorpdfstring{signedValue}{signedValue}}
+{\footnotesize\ttfamily \label{class_c_device_analog_in12bit_ac129cca94769f9e87b6ccee42daa00b8} 
+bool CDevice\+Analog\+In12bit\+::signed\+Value}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_c_device_analog_in_8h}{CDevice\+Analog\+In.\+h}}\item 
+\mbox{\hyperlink{_c_device_analog_in_8cpp}{CDevice\+Analog\+In.\+cpp}}\end{DoxyCompactItemize}

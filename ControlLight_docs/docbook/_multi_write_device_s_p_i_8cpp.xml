@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__multi_write_device_s_p_i_8cpp" xml:lang="en-US">
+<title>MultiWriteDeviceSPI.cpp File Reference</title>
+<indexterm><primary>MultiWriteDeviceSPI.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;std.h&quot;<?linebreak?>#include &quot;MultiWriteDeviceSPI.h&quot;<?linebreak?>#include &lt;format&gt;<?linebreak?>#include &quot;CDeviceSequencer.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="__multi_write_device_s_p_i_8cpp_1a95704777c5e59facdb61b8a52b97152a">format_binary_64</link> (uint64_t data, unsigned int number_of_bits_out)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__multi_write_device_s_p_i_8cpp_1a95704777c5e59facdb61b8a52b97152a"/><section>
+    <title>format_binary_64()</title>
+<indexterm><primary>format_binary_64</primary><secondary>MultiWriteDeviceSPI.cpp</secondary></indexterm>
+<indexterm><primary>MultiWriteDeviceSPI.cpp</primary><secondary>format_binary_64</secondary></indexterm>
+<para><computeroutput>std::string format_binary_64 (uint64_t data, unsigned int number_of_bits_out)</computeroutput></para></section>
+</section>
+</section>

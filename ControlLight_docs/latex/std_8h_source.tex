@@ -1,0 +1,34 @@
+\doxysection{std.\+h}
+\hypertarget{std_8h_source}{}\label{std_8h_source}\index{std.h@{std.h}}
+\mbox{\hyperlink{std_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ std::chrono::high\_resolution\_clock\ \mbox{\hyperlink{std_8h_a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80}{Clock}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ Clock::duration\ \mbox{\hyperlink{std_8h_a299201b5ee8a24fadd5b2df449c47ccf}{Duration}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ std::chrono::time\_point<Clock>\ \mbox{\hyperlink{std_8h_a232395c051c7d6ad1c46b894b66fcc4f}{Time}};}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{std_8h_a46b349cc9aee28852a41762122a7a001}{milliSeconds}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{std_8h_a299201b5ee8a24fadd5b2df449c47ccf}{Duration}}\&\ d);}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ WIN32}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_T}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ STD\_STRING}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#ifndef\ STD\_STRING}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}CStdString.h"{}}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{typedef}\ CStdString\ \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}};}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifdef\ STD\_STRING}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{typedef}\ std::string\ \mbox{\hyperlink{std_8h_a50e6b493e99e505e0cb7dfa5d8c4b36e}{CString}};}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#define\ CStringToStdString(str)\ str}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \#define\ CStringToStdString(str)\ std::string(str.GetString())}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{std_8h_aae71a8343422fa2968300f2da8cc8cfc}{ControlMessageBox}}(\textcolor{keyword}{const}\ std::string\&\ text);}
+
+\end{DoxyCode}

@@ -1,0 +1,61 @@
+\doxysection{AD9852.\+cpp File Reference}
+\hypertarget{_a_d9852_8cpp}{}\label{_a_d9852_8cpp}\index{AD9852.cpp@{AD9852.cpp}}
+{\ttfamily \#include "{}AD9852.\+h"{}}\newline
+{\ttfamily \#include "{}CDevice\+Sequencer.\+h"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$format$>$}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{_a_d9852_8cpp_ade894fbf6874f7126a3a949080f77644}{AD9852\+Master\+Reset\+Value\+Contents}} \mbox{[}\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852\+Max\+Values}}\mbox{]} = \{ 0 , 0, 0, 0, 0,0x40, 0, 0, 0, 0,0x10,0x64,0x01,0x20, 0, 0, 0 \}
+\item 
+unsigned char \mbox{\hyperlink{_a_d9852_8cpp_aee8e056343cd05274df2de9e3898bbc5}{AD9852\+Value\+Length\+Global}} \mbox{[}\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852\+Max\+Values}}\mbox{]} = \{ 2 , 2, 6, 6, 6, 4, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 \}
+\item 
+unsigned char \mbox{\hyperlink{_a_d9852_8cpp_a80d6cc3542eb4737683a09a1ce175edc}{AD9852\+Value\+Base\+Address\+Global}} \mbox{[}\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852\+Max\+Values}}\mbox{]} = \{ 0x00,0x02,0x04,0x0A,0x10,0x16,0x1A,0x21,0x25,0x26,0x1D,0x1E,0x1F,0x20,0x30,0x31,0x32 \}
+\item 
+const unsigned long \mbox{\hyperlink{_a_d9852_8cpp_af9329ddc49a977da0b5e038ed6f8e4c9}{AD9852\+Value\+Not\+In\+Bus\+Buffer}} = 99999
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_a_d9852_8cpp_aa592773d77686d8f7f7b1c49a0622515}{Bus\+Bit\+Shift}} = 0
+\item 
+constexpr bool \mbox{\hyperlink{_a_d9852_8cpp_ae608804064166baae021c75b4bd3772b}{Force\+Writing}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_a_d9852_8cpp_ade894fbf6874f7126a3a949080f77644}\index{AD9852.cpp@{AD9852.cpp}!AD9852MasterResetValueContents@{AD9852MasterResetValueContents}}
+\index{AD9852MasterResetValueContents@{AD9852MasterResetValueContents}!AD9852.cpp@{AD9852.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9852MasterResetValueContents}{AD9852MasterResetValueContents}}
+{\footnotesize\ttfamily \label{_a_d9852_8cpp_ade894fbf6874f7126a3a949080f77644} 
+unsigned long AD9852\+Master\+Reset\+Value\+Contents\mbox{[}\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852\+Max\+Values}}\mbox{]} = \{ 0 , 0, 0, 0, 0,0x40, 0, 0, 0, 0,0x10,0x64,0x01,0x20, 0, 0, 0 \}}
+
+\Hypertarget{_a_d9852_8cpp_a80d6cc3542eb4737683a09a1ce175edc}\index{AD9852.cpp@{AD9852.cpp}!AD9852ValueBaseAddressGlobal@{AD9852ValueBaseAddressGlobal}}
+\index{AD9852ValueBaseAddressGlobal@{AD9852ValueBaseAddressGlobal}!AD9852.cpp@{AD9852.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9852ValueBaseAddressGlobal}{AD9852ValueBaseAddressGlobal}}
+{\footnotesize\ttfamily \label{_a_d9852_8cpp_a80d6cc3542eb4737683a09a1ce175edc} 
+unsigned char AD9852\+Value\+Base\+Address\+Global\mbox{[}\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852\+Max\+Values}}\mbox{]} = \{ 0x00,0x02,0x04,0x0A,0x10,0x16,0x1A,0x21,0x25,0x26,0x1D,0x1E,0x1F,0x20,0x30,0x31,0x32 \}}
+
+\Hypertarget{_a_d9852_8cpp_aee8e056343cd05274df2de9e3898bbc5}\index{AD9852.cpp@{AD9852.cpp}!AD9852ValueLengthGlobal@{AD9852ValueLengthGlobal}}
+\index{AD9852ValueLengthGlobal@{AD9852ValueLengthGlobal}!AD9852.cpp@{AD9852.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9852ValueLengthGlobal}{AD9852ValueLengthGlobal}}
+{\footnotesize\ttfamily \label{_a_d9852_8cpp_aee8e056343cd05274df2de9e3898bbc5} 
+unsigned char AD9852\+Value\+Length\+Global\mbox{[}\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852\+Max\+Values}}\mbox{]} = \{ 2 , 2, 6, 6, 6, 4, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 \}}
+
+\Hypertarget{_a_d9852_8cpp_af9329ddc49a977da0b5e038ed6f8e4c9}\index{AD9852.cpp@{AD9852.cpp}!AD9852ValueNotInBusBuffer@{AD9852ValueNotInBusBuffer}}
+\index{AD9852ValueNotInBusBuffer@{AD9852ValueNotInBusBuffer}!AD9852.cpp@{AD9852.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9852ValueNotInBusBuffer}{AD9852ValueNotInBusBuffer}}
+{\footnotesize\ttfamily \label{_a_d9852_8cpp_af9329ddc49a977da0b5e038ed6f8e4c9} 
+const unsigned long AD9852\+Value\+Not\+In\+Bus\+Buffer = 99999}
+
+\Hypertarget{_a_d9852_8cpp_aa592773d77686d8f7f7b1c49a0622515}\index{AD9852.cpp@{AD9852.cpp}!BusBitShift@{BusBitShift}}
+\index{BusBitShift@{BusBitShift}!AD9852.cpp@{AD9852.cpp}}
+\doxysubsubsection{\texorpdfstring{BusBitShift}{BusBitShift}}
+{\footnotesize\ttfamily \label{_a_d9852_8cpp_aa592773d77686d8f7f7b1c49a0622515} 
+uint8\+\_\+t Bus\+Bit\+Shift = 0\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_a_d9852_8cpp_ae608804064166baae021c75b4bd3772b}\index{AD9852.cpp@{AD9852.cpp}!ForceWriting@{ForceWriting}}
+\index{ForceWriting@{ForceWriting}!AD9852.cpp@{AD9852.cpp}}
+\doxysubsubsection{\texorpdfstring{ForceWriting}{ForceWriting}}
+{\footnotesize\ttfamily \label{_a_d9852_8cpp_ae608804064166baae021c75b4bd3772b} 
+bool Force\+Writing = false\hspace{0.3cm}{\ttfamily [constexpr]}}
+

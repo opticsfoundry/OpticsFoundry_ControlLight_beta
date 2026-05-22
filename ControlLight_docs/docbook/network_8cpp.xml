@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_network_8cpp" xml:lang="en-US">
+<title>network.cpp File Reference</title>
+<indexterm><primary>network.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;ControlAPI.h&quot;<?linebreak?>#include &quot;network.h&quot;<?linebreak?>#include &quot;std.h&quot;<?linebreak?>#include &lt;cstring&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;fcntl.h&gt;<?linebreak?>#include &lt;sys/ioctl.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_network_8cpp_1aeefbbafa97642defe3ee6c3080b7d66f">BACKLOG</link>&#160;&#160;&#160;50</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_network_8cpp_1a97fb740114509c637bbe37c21d240e35">sigchld_handler</link> (int)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_network_8cpp_1aeefbbafa97642defe3ee6c3080b7d66f"/><section>
+    <title>BACKLOG</title>
+<indexterm><primary>BACKLOG</primary><secondary>network.cpp</secondary></indexterm>
+<indexterm><primary>network.cpp</primary><secondary>BACKLOG</secondary></indexterm>
+<para><computeroutput>#define BACKLOG&#160;&#160;&#160;50</computeroutput></para></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_network_8cpp_1a97fb740114509c637bbe37c21d240e35"/><section>
+    <title>sigchld_handler()</title>
+<indexterm><primary>sigchld_handler</primary><secondary>network.cpp</secondary></indexterm>
+<indexterm><primary>network.cpp</primary><secondary>sigchld_handler</secondary></indexterm>
+<para><computeroutput>void sigchld_handler (int )</computeroutput></para></section>
+</section>
+</section>

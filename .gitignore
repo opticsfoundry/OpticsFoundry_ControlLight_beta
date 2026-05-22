@@ -1,0 +1,159 @@
+# C++ objects and libs
+
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# Qt-es
+
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+Makefile*
+*build-*
+
+# QtCreator
+
+*.autosave
+
+# QtCtreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
+
+# QtCtreator CMake
+CMakeLists.txt.user
+
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+
+# Visual Studio specific files
+.vs/
+*.vcxproj.user
+*.VC.db
+*.VC.opendb
+*.suo
+*.cache
+*.log
+
+# Build folders
+Debug/
+Release/
+x64/
+x86/
+ipch/
+
+# CMake or build system artifacts (if any)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+out/
+**/out/build/
+**/.cmake/
+.ninja_deps
+.ninja_log
+build.ninja
+
+# Backup files
+*.bak
+*.tmp
+*.old
+*.swp
+
+# Object and binary files
+*.obj
+*.o
+*.lib
+*.dll
+*.exe
+*.pdb
+*.idb
+*.pyd
+*.exp
+*.ilk
+
+# Generated data
+*.tlog
+*.lastbuildstate
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Output directories
+ControlLight/out/
+/ControlLight/out/build/x64-debug/.ninja_deps
+/ControlLight/out/build/x64-debug/.ninja_log
+/ControlLight/out/build/x64-debug/ControlLight.ilk
+
+# Qt generated build directories
+.qtc_clangd/
+**/.qtc_clangd/
+**/.qmake.stash
+**/build/

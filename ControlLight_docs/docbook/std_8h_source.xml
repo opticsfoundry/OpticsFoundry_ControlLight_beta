@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_std_8h_source" xml:lang="en-US">
+<title>std.h</title>
+<indexterm><primary>std.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;chrono&gt;</emphasis>
+5 
+6 <emphasis role="keyword">typedef</emphasis>&#32;std::chrono::high_resolution_clock&#32;<link linkend="_std_8h_1a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80">Clock</link>;
+7 <emphasis role="keyword">typedef</emphasis>&#32;Clock::duration&#32;<link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link>;
+8 <emphasis role="keyword">typedef</emphasis>&#32;std::chrono::time_point&lt;Clock&gt;&#32;<link linkend="_std_8h_1a232395c051c7d6ad1c46b894b66fcc4f">Time</link>;
+9 <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_std_8h_1a46b349cc9aee28852a41762122a7a001">milliSeconds</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link>&amp;&#32;d);
+10 
+11 <emphasis role="preprocessor">#ifndef&#32;WIN32</emphasis>
+12 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;_T</emphasis>
+13 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;STD_STRING</emphasis>
+14 
+15 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifndef&#32;STD_STRING</emphasis>
+16 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#include&#32;&quot;CStdString.h&quot;</emphasis>
+17 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;CStdString&#32;<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>;
+18 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+19 <emphasis role="preprocessor">#endif</emphasis>
+20 
+21 <emphasis role="preprocessor">#ifdef&#32;STD_STRING</emphasis>
+22 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;std::string&#32;<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link>;
+23 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;CStringToStdString(str)&#32;str</emphasis>
+24 <emphasis role="preprocessor">#else</emphasis>
+25 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;CStringToStdString(str)&#32;std::string(str.GetString())</emphasis>
+26 <emphasis role="preprocessor">#endif</emphasis>
+27 
+28 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_std_8h_1aae71a8343422fa2968300f2da8cc8cfc">ControlMessageBox</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;text);
+</programlisting></section>

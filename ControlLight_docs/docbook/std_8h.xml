@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_std_8h" xml:lang="en-US">
+<title>std.h File Reference</title>
+<indexterm><primary>std.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;string&gt;<?linebreak?>#include &lt;chrono&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="_std_8h_1a919356581583503a63f588aa15005c52">_T</link></para>
+</listitem>
+            <listitem><para>#define <link linkend="_std_8h_1a810bc029424753d56098fe6c8ccbe024">STD_STRING</link></para>
+</listitem>
+            <listitem><para>#define <link linkend="_std_8h_1a015c9405b3bc44f30ed23fefced52e99">CStringToStdString</link>(str)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef std::chrono::high_resolution_clock <link linkend="_std_8h_1a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80">Clock</link></para>
+</listitem>
+            <listitem><para>typedef Clock::duration <link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link></para>
+</listitem>
+            <listitem><para>typedef std::chrono::time_point&lt; <link linkend="_std_8h_1a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80">Clock</link> &gt; <link linkend="_std_8h_1a232395c051c7d6ad1c46b894b66fcc4f">Time</link></para>
+</listitem>
+            <listitem><para>typedef std::string <link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>double <link linkend="_std_8h_1a46b349cc9aee28852a41762122a7a001">milliSeconds</link> (const <link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link> &amp;d)</para>
+</listitem>
+            <listitem><para>void <link linkend="_std_8h_1aae71a8343422fa2968300f2da8cc8cfc">ControlMessageBox</link> (const std::string &amp;text)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="_std_8h_1a919356581583503a63f588aa15005c52"/><section>
+    <title>_T</title>
+<indexterm><primary>_T</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>_T</secondary></indexterm>
+<para><computeroutput>#define _T</computeroutput></para></section>
+<anchor xml:id="_std_8h_1a015c9405b3bc44f30ed23fefced52e99"/><section>
+    <title>CStringToStdString</title>
+<indexterm><primary>CStringToStdString</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>CStringToStdString</secondary></indexterm>
+<para><computeroutput>#define CStringToStdString( str)</computeroutput></para><emphasis role="strong">Value:</emphasis><programlisting linenumbering="unnumbered">str
+</programlisting></section>
+<anchor xml:id="_std_8h_1a810bc029424753d56098fe6c8ccbe024"/><section>
+    <title>STD_STRING</title>
+<indexterm><primary>STD_STRING</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>STD_STRING</secondary></indexterm>
+<para><computeroutput>#define STD_STRING</computeroutput></para></section>
+</section>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_std_8h_1a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80"/><section>
+    <title>Clock</title>
+<indexterm><primary>Clock</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>Clock</secondary></indexterm>
+<para><computeroutput>typedef std::chrono::high_resolution_clock <link linkend="_std_8h_1a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80">Clock</link></computeroutput></para></section>
+<anchor xml:id="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e"/><section>
+    <title>CString</title>
+<indexterm><primary>CString</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>CString</secondary></indexterm>
+<para><computeroutput>typedef std::string <link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link></computeroutput></para></section>
+<anchor xml:id="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf"/><section>
+    <title>Duration</title>
+<indexterm><primary>Duration</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>Duration</secondary></indexterm>
+<para><computeroutput>typedef Clock::duration <link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link></computeroutput></para></section>
+<anchor xml:id="_std_8h_1a232395c051c7d6ad1c46b894b66fcc4f"/><section>
+    <title>Time</title>
+<indexterm><primary>Time</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>Time</secondary></indexterm>
+<para><computeroutput>typedef std::chrono::time_point&lt;<link linkend="_std_8h_1a0ef8d951d1ca5ab3cfaf7ab4c7a6fd80">Clock</link>&gt; <link linkend="_std_8h_1a232395c051c7d6ad1c46b894b66fcc4f">Time</link></computeroutput></para></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_std_8h_1aae71a8343422fa2968300f2da8cc8cfc"/><section>
+    <title>ControlMessageBox()</title>
+<indexterm><primary>ControlMessageBox</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>ControlMessageBox</secondary></indexterm>
+<para><computeroutput>void ControlMessageBox (const std::string &amp; text)<computeroutput>[extern]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_std_8h_1a46b349cc9aee28852a41762122a7a001"/><section>
+    <title>milliSeconds()</title>
+<indexterm><primary>milliSeconds</primary><secondary>std.h</secondary></indexterm>
+<indexterm><primary>std.h</primary><secondary>milliSeconds</secondary></indexterm>
+<para><computeroutput>double milliSeconds (const <link linkend="_std_8h_1a299201b5ee8a24fadd5b2df449c47ccf">Duration</link> &amp; d)</computeroutput></para></section>
+</section>
+</section>

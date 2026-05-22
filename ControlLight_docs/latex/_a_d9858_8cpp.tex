@@ -1,0 +1,44 @@
+\doxysection{AD9858.\+cpp File Reference}
+\hypertarget{_a_d9858_8cpp}{}\label{_a_d9858_8cpp}\index{AD9858.cpp@{AD9858.cpp}}
+{\ttfamily \#include "{}AD9858.\+h"{}}\newline
+{\ttfamily \#include "{}CDevice\+Sequencer.\+h"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$format$>$}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{_a_d9858_8cpp_a85b4d213de6fffcb930aec37cfa773db}{AD9858\+Master\+Reset\+Value\+Contents}} \mbox{[}\mbox{\hyperlink{_a_d9858_8h_a89debb04b626a7627663f9e047ecad53}{AD9858\+Max\+Values}}\mbox{]} =\{0x18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_a_d9858_8cpp_acd8b2dc0b624c3942a2705b260ad1bc5}{AD9858\+Value\+Length}} \mbox{[}\mbox{\hyperlink{_a_d9858_8h_a89debb04b626a7627663f9e047ecad53}{AD9858\+Max\+Values}}\mbox{]} = \{ 1, 1, 1, 1, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 1, 1, 1, 1\}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_a_d9858_8cpp_a8afbf3803c503f406fb42f66737006a3}{AD9858\+Value\+Base\+Address}} \mbox{[}\mbox{\hyperlink{_a_d9858_8h_a89debb04b626a7627663f9e047ecad53}{AD9858\+Max\+Values}}\mbox{]} = \{0x00,0x01,0x02,0x03,0x04,0x08,0x0A,0x0E,0x10,0x14,0x16,0x1A,0x1C,0x20,0x30,0x31,0x32,0x00\}
+\item 
+const unsigned long \mbox{\hyperlink{_a_d9858_8cpp_abce01e4b7e8361d9d03e9552ac5e30d0}{AD9858\+Value\+Not\+In\+Bus\+Buffer}} =99999
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_a_d9858_8cpp_a85b4d213de6fffcb930aec37cfa773db}\index{AD9858.cpp@{AD9858.cpp}!AD9858MasterResetValueContents@{AD9858MasterResetValueContents}}
+\index{AD9858MasterResetValueContents@{AD9858MasterResetValueContents}!AD9858.cpp@{AD9858.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9858MasterResetValueContents}{AD9858MasterResetValueContents}}
+{\footnotesize\ttfamily \label{_a_d9858_8cpp_a85b4d213de6fffcb930aec37cfa773db} 
+unsigned long AD9858\+Master\+Reset\+Value\+Contents\mbox{[}\mbox{\hyperlink{_a_d9858_8h_a89debb04b626a7627663f9e047ecad53}{AD9858\+Max\+Values}}\mbox{]} =\{0x18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\}}
+
+\Hypertarget{_a_d9858_8cpp_a8afbf3803c503f406fb42f66737006a3}\index{AD9858.cpp@{AD9858.cpp}!AD9858ValueBaseAddress@{AD9858ValueBaseAddress}}
+\index{AD9858ValueBaseAddress@{AD9858ValueBaseAddress}!AD9858.cpp@{AD9858.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9858ValueBaseAddress}{AD9858ValueBaseAddress}}
+{\footnotesize\ttfamily \label{_a_d9858_8cpp_a8afbf3803c503f406fb42f66737006a3} 
+uint8\+\_\+t AD9858\+Value\+Base\+Address\mbox{[}\mbox{\hyperlink{_a_d9858_8h_a89debb04b626a7627663f9e047ecad53}{AD9858\+Max\+Values}}\mbox{]} = \{0x00,0x01,0x02,0x03,0x04,0x08,0x0A,0x0E,0x10,0x14,0x16,0x1A,0x1C,0x20,0x30,0x31,0x32,0x00\}}
+
+\Hypertarget{_a_d9858_8cpp_acd8b2dc0b624c3942a2705b260ad1bc5}\index{AD9858.cpp@{AD9858.cpp}!AD9858ValueLength@{AD9858ValueLength}}
+\index{AD9858ValueLength@{AD9858ValueLength}!AD9858.cpp@{AD9858.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9858ValueLength}{AD9858ValueLength}}
+{\footnotesize\ttfamily \label{_a_d9858_8cpp_acd8b2dc0b624c3942a2705b260ad1bc5} 
+uint8\+\_\+t AD9858\+Value\+Length\mbox{[}\mbox{\hyperlink{_a_d9858_8h_a89debb04b626a7627663f9e047ecad53}{AD9858\+Max\+Values}}\mbox{]} = \{ 1, 1, 1, 1, 4, 2, 4, 2, 4, 2, 4, 2, 4, 2, 1, 1, 1, 1\}}
+
+\Hypertarget{_a_d9858_8cpp_abce01e4b7e8361d9d03e9552ac5e30d0}\index{AD9858.cpp@{AD9858.cpp}!AD9858ValueNotInBusBuffer@{AD9858ValueNotInBusBuffer}}
+\index{AD9858ValueNotInBusBuffer@{AD9858ValueNotInBusBuffer}!AD9858.cpp@{AD9858.cpp}}
+\doxysubsubsection{\texorpdfstring{AD9858ValueNotInBusBuffer}{AD9858ValueNotInBusBuffer}}
+{\footnotesize\ttfamily \label{_a_d9858_8cpp_abce01e4b7e8361d9d03e9552ac5e30d0} 
+const unsigned long AD9858\+Value\+Not\+In\+Bus\+Buffer =99999}
+

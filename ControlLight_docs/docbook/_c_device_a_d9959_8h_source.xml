@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__c_device_a_d9959_8h_source" xml:lang="en-US">
+<title>CDeviceAD9959.h</title>
+<indexterm><primary>CDeviceAD9959.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__c_device_8h">CDevice.h</link>&quot;</emphasis>
+4 
+5 
+6 
+7 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_a_d9959">CAD9959</link>;
+8 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_a_d9959_1a2344f87f354a06d282e9201698c96b1e">CDeviceAD9959</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link>
+9 {
+10 <emphasis role="keyword">public</emphasis>:
+11 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a7d0962f1e73f477931c0e61a3f4536de">externalClockFrequency</link>;
+12 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1ade1c1d99a6a0372c970efe4205ddd915">frequencyMultiplier</link>;
+13 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a5808d7615398901f28a60b2f9449f0bb">AD9958</link>;
+14 
+15 <emphasis role="keyword">public</emphasis>:
+16 &#32;&#32;&#32;&#32;<link linkend="_class_c_device_a_d9959_1a2344f87f354a06d282e9201698c96b1e">CDeviceAD9959</link>(
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;_MySequencer,
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;_MyAddress,
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;_externalClockFrequency,
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;_frequencyMultiplier,
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_AD9958
+22 &#32;&#32;&#32;&#32;);
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a789c7695858610a6bfca974fbbd44583">~CDeviceAD9959</link>();
+24 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a38c7f5f07196c5ca71ef4aa839328672">SetRegister</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit);
+25 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a46d8f4c3a336759c62d7752dc3030859">SetValue</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit);
+26 
+27 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;SetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+28 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;GetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+29 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;Configure();</emphasis>
+30 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a0425a4b692fbfa6dbc1473bfd7b483fe">Reset</link>();
+31 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1ad2d7d983412962ce224f470a678f76b2">SetFrequency</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+32 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a3a49aaf7f9b1abbae04bf7cd9a442e2c">SetFrequencyTuningWord</link>(uint8_t&#32;channel,&#32;uint64_t&#32;FrequencyTuningWord);
+33 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a024925938d2761b3a53f81dfd6fba4c4">SetPhase</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Phase);
+34 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a2517d5781f41ffafba2488f30435c007">SetPower</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Power);
+35 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1aadb0eedf5b550a7db87cef00d187da1e">SetAttenuation</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Power);
+36 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_a_d9959_1a8214bfd8ae42b829825f76143eefa8ba">SetIOUpdateEnabled</link>(<emphasis role="keywordtype">bool</emphasis>&#32;_IOUpdateEnabled);
+37 <emphasis role="keyword">private</emphasis>:
+38 &#32;&#32;&#32;&#32;<link linkend="_class_c_a_d9959">CAD9959</link>*&#32;MyAD9959;
+39 };
+</programlisting></section>

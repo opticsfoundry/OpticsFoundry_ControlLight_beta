@@ -1,0 +1,161 @@
+\doxysection{AD9852.\+h}
+\hypertarget{_a_d9852_8h_source}{}\label{_a_d9852_8h_source}\index{AD9852.h@{AD9852.h}}
+\mbox{\hyperlink{_a_d9852_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852MaxValues}}=17;\ \ \ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_a_d9852_8h_aed907cf7d68a38e06917fb1a0402f70e}{AD9852MaxBusBuffer}}=256;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{_a_d9852_8h_a8ac9ba40421cf23faa24d75f195b24f8}{AD9852ModeSingleTone}}=0;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{_a_d9852_8h_a776bde8a0c1671a5f376ddea1c174f32}{AD9852ModeFrequencyShiftKeying}}=1;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{_a_d9852_8h_afec8e369819228ceb4b02d10c0f2046c}{AD9852ModeRampedFrequencyShiftKeying}}=2;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{_a_d9852_8h_adb23b275b71c793e73eec0520844ca62}{AD9852ModeChirp}}=3;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{_a_d9852_8h_a7f6434208de266dfcc8c5ae8b55e795d}{AD9852ModeBiphaseShiftKeying}}=4;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_a_d9852_a13454c644f3efd795caba8077174790f}{CAD9852}}\ }
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:\ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ SetControlBit(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ RegisterNr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ BitNr,\ \textcolor{keywordtype}{bool}\ Value,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00020\ \ \ \ \ int64\_t\ SetValue(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ ValueNr,\ int64\_t\ Value,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ CalculateModulationFrequencyData(int64\_t*\ DeltaFrequencyWord,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*\ ClockUpdateSteps);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//PhaseAdjustRegister1:\ \ Base:\ 0x00\ Length:\ 2\ Default:\ 0\ \ \ \ \ ValueNr:\ 0\ }}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//PhaseAdjustRegister2:\ \ Base:\ 0x02\ Length:\ 2\ Default:\ 0\ \ \ \ \ ValueNr:\ 1}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//FrequencyTuningWord1:\ \ Base:\ 0x04\ Length:\ 6\ Default:\ 0\ \ \ \ \ ValueNr:\ 2}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//FrequencyTuningWord2:\ \ Base:\ 0x0A\ Length:\ 6\ Default:\ 0\ \ \ \ \ ValueNr:\ 3}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//DeltaFrequencyWord:\ \ \ \ Base:\ 0x10\ Length:\ 6\ Default:\ 0\ \ \ \ \ ValueNr:\ 4}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//UpdateClock:\ \ \ \ \ \ \ \ \ \ \ Base:\ 0x16\ Length:\ 4\ Default:\ 0x40\ \ ValueNr:\ 5}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//RampRateClock:\ \ \ \ \ \ \ \ \ Base:\ 0x1A\ Length:\ 3\ Default:\ 0\ \ \ \ \ ValueNr:\ 6}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//OutputShapeKeyMult:\ \ \ \ Base:\ 0x21\ Length:\ 2\ Default:\ 0\ \ \ \ \ ValueNr:\ 7}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//OutputShapeKeyRampRate:Base:\ 0x25\ Length:\ 1\ Default:\ 0\ \ \ \ \ ValueNr:\ 8}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//ControlDAC:\ \ \ \ \ \ \ \ \ \ \ \ Base:\ 0x26\ Length:\ 2\ Default:\ 0\ \ \ \ \ ValueNr:\ 9}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//ControlRegister0:\ \ \ \ \ \ Base:\ 0x1D\ Length:\ 1\ Default:\ 0x10\ \ ValueNr:\ 10}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//ControlRegister1:\ \ \ \ \ \ Base:\ 0x1E\ Length:\ 1\ Default:\ 0x64\ \ ValueNr:\ 11}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//ControlRegister2:\ \ \ \ \ \ Base:\ 0x1F\ Length:\ 1\ Default:\ 0x01\ \ ValueNr:\ 12}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//ControlRegister3:\ \ \ \ \ \ Base:\ 0x20\ Length:\ 1\ Default:\ 0x20\ \ ValueNr:\ 13}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//UpdateRegisters:\ \ \ \ \ \ \ Base:\ 0x30\ Length:\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ValueNr:\ 14}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//MasterReset:\ \ \ \ \ \ \ \ \ \ \ Base:\ 0x31\ Length:\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ValueNr:\ 15}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//LoadLatches:\ \ \ \ \ \ \ \ \ \ \ Base:\ 0x32\ Length:\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ValueNr:\ 16\ }}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//NoValue:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ValueNr:\ 99}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_c_a_d9852_aaebbf736007baace94bb8853059e6d5d}{SetPhaseAdjustRegister1}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ aPhaseAdjustRegister1,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_c_a_d9852_a6a1fbfee1c3dcc5dc8f80d5e0d465ec6}{SetPhaseAdjustRegister2}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ aPhaseAdjustRegister2,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_af03361386c0c6ef16a8a65bca3c70be0}{SetFrequency1}}(\textcolor{keywordtype}{double}\ aFrequencyTuningWord1,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_af1970b304296d205ce300a422e0e91a1}{SetFrequency2}}(\textcolor{keywordtype}{double}\ aFrequencyTuningWord2,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_a8fc3493fc7af546c4689c49ff1922aa2}{SetFrequency1AsBinary}}(\textcolor{keyword}{const}\ uint64\_t\&\ FrequencyTuningWord,\ \textcolor{keywordtype}{bool}\ GetValue\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_abb1b3b1d0aa79a6b881bcf46e27d53ab}{SetFrequency2AsBinary}}(\textcolor{keyword}{const}\ uint64\_t\&\ FrequencyTuningWord,\ \textcolor{keywordtype}{bool}\ GetValue\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_a2b51e6718b37b0ea1dae8139e3f453ec}{UpdateFrequencyValues}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//void\ SetWaveformFrequenciesDDSAD9852(unsigned\ int\ DDSNumber,\ double\ StartFrequency,\ double\ StopFrequency,\ double\ ModulationFrequency);}}
+\DoxyCodeLine{00049\ \ \ \ \ int64\_t\ \mbox{\hyperlink{class_c_a_d9852_af41e9ef3f6b568c7286b048f0a39b067}{SetDeltaFrequencyWord}}(int64\_t\ aDeltaFrequencyWord,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_c_a_d9852_a1040e7bcc8058afd2aab87a6ddbc0073}{SetUpdateClock}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ aUpdateClock,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_c_a_d9852_a162b237e01c36e43d2bd8d7fe8530916}{SetRampRateClock}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ aRampRateClock,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_c_a_d9852_aeb78904a95e57608ca5d8008e5e6e830}{SetOutputShapeKeyMult}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ aOutputShapeKeyMult,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_c_a_d9852_abb7bcfbeb3f00aaff210fc608b607ac6}{SetOutputShapeKeyRampRate}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ aOutputShapeKeyRampRate,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_c_a_d9852_a1658ac9186a689c0ab6ea52a7d84555f}{SetControlDAC}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ aControlDAC,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a515ea8c19ec9328e682b205bae2b1ae3}{SetComparatorPowerDown}}(\textcolor{keywordtype}{bool}\ aPowerDown,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a6bbf40befa71b7e8d482a655e04ed106}{SetControlDACPowerDown}}(\textcolor{keywordtype}{bool}\ aPowerDown,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a7bf530b604223b8c3ec693746bb5e776}{SetDACPowerDown}}(\textcolor{keywordtype}{bool}\ aPowerDown,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_ad4fb46a9d0532317f81d58d8da5e13b3}{SetDigitalPowerDown}}(\textcolor{keywordtype}{bool}\ aPowerDown,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a2b921498fb3e2deeffd372f5e0cb1e62}{SetPLLRange}}(\textcolor{keywordtype}{bool}\ aPLLRange,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_ac25ba6478f8694cd94fd9cb7cc7a7df5}{SetBypassPLL}}(\textcolor{keywordtype}{bool}\ aByPassPLL,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_c_a_d9852_acf1375282e0ff8987f7d4e793361ab1d}{SetPLLReferenceMultiplier}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ aPLLReferenceMultiplier,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a0d0fe9ac38afa4831e82e0f153563709}{SetClearACC1}}(\textcolor{keywordtype}{bool}\ aClearACC1,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a715063077c6278f9bf07c4f9bbcf82fc}{SetClearACC2}}(\textcolor{keywordtype}{bool}\ aClearACC2,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a0579547fd44be38c25ecdc0270f26b83}{SetTriangle}}(\textcolor{keywordtype}{bool}\ aTriangle,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_c_a_d9852_aace2cbc8f38be6d26435eae958160924}{GetLastFSKMode}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_c_a_d9852_af69ff527fa2cd35a56cd64b235cbc735}{SetMode}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ aMode,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_aa6313bb3937d63e1c9d3142a22e9dccf}{SetModeSingleTone}}(\textcolor{keywordtype}{bool}\ Set,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a19323a602e768bd27a584bd36c0cc9d7}{SetModeFrequencyShiftKeying}}(\textcolor{keywordtype}{bool}\ Set,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a40782e1acfadf998ec14cb86f0c4f2bd}{SetModeRampedFrequencyShiftKeying}}(\textcolor{keywordtype}{bool}\ Set,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a4e117f8ea48803a197314f07229db824}{SetModeModeChirp}}(\textcolor{keywordtype}{bool}\ Set,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a7658520d5e0af04a68506ed326f89fe6}{SetModeBiphaseShiftKeying}}(\textcolor{keywordtype}{bool}\ Set,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a8d367c52187ef2fc981aa99711c33fd2}{SetExternalUpdateClock}}(\textcolor{keywordtype}{bool}\ aExternalUpdateClock,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_ae21cf3de72c486b1b74211e30300e8ca}{SetBypassInverseSinc}}(\textcolor{keywordtype}{bool}\ aBypassInverseSinc,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_aed4783dab24032c6a42bfcb4172f3150}{SetOSKEnable}}(\textcolor{keywordtype}{bool}\ aOSKEnable,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_aac31ce6402f5b01413dacf1e26c8c98d}{SetOSKInternal}}(\textcolor{keywordtype}{bool}\ aOSKInternal,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a9ba213dfde7376c93cadbf5cecf7d5e8}{SetLSBFirst}}(\textcolor{keywordtype}{bool}\ aLSBFirst,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_aa6c7688e2d54ae1f9617743ac4f6f69f}{SetSDOActive}}(\textcolor{keywordtype}{bool}\ aSDOActive,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_ae3f8952b886ea832ab10c62f74512381}{SetShapedKeying}}(\textcolor{keywordtype}{bool}\ aShapedKeying,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});\ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a07d470aea444c82b1b06351ad4e689a9}{SetFSK\_BPSK\_Hold}}(\textcolor{keywordtype}{bool}\ aFSK\_BPSK\_Hold,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_ae10c252c65fd094f3b5dd029a3ec17c1}{ShapedKeying}};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a65aaf729809f53e17a4df780554b713e}{FSK\_BPSK\_Hold}};}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_ad70fa3aa0d4b6e072102a166e692caae}{MasterReset}}();}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_afc36a0e1936aa70e286a8dfec8c696d0}{LoadLatches}}();}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_aee259aecb76ea606268ff65b5753e5ec}{UpdateRegisters}}();}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_a6894db697e1df438440ad776e5436303}{SetUpdateRegistersModeAutomatic}}();}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_a5691de3391e70e1709c333e3bd3aff2c}{SetUpdateRegistersModeManual}}();}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_a7fc2a3b3210d17a2ed64eb7741c7e7bf}{SetModeRampedFrequencyShiftKeyingConfiguration}}();}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a01387f0499899727bd7f2977a02b3ca3}{UpdateRegistersModeAutomatic}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ int64\_t\ \mbox{\hyperlink{class_c_a_d9852_afa71ddccb068c741598b0a41c27abad6}{AktValueContents}}[\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852MaxValues}}];\ \textcolor{comment}{//keeps\ track\ of\ Value,\ contains\ value\ after\ bus\ buffer\ has\ been\ finished\ to\ be\ written\ out}}
+\DoxyCodeLine{00095\ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_a0e71f85ee5618fe5709ad2d1a88e06ae}{ClockSpeed}};}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_aa6f623bcf68359f88b7a5d014e699263}{InputClockSpeed}};}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_ac281de9ac5baf7c3a77ddef4fadad950}{PLLEnabled}};}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_c_a_d9852_a561f1a0264cf6aedc73cb6bfdae36713}{PLLReferenceMultiplier}};}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_a0d99e09dae730782b6129a2250a7d17d}{FrequencyMultiplier}};}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_a07f312edb19ca3689796f4f004512692}{MaxFrequency}};\ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_a2775a40b4f20bc75a8844c22c2207d3a}{FrequencyScale}};}
+\DoxyCodeLine{00103\ \textcolor{keyword}{private}:\ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ ValueInBusBuffer[\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852MaxValues}}];\ \textcolor{comment}{//stores\ Bus\ buffer\ address\ of\ next\ value\ to\ be\ written\ for\ future\ update}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//Ring\ buffer\ for\ bus\ writing}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//stores\ ValueNr\ of\ next\ Value\ to\ be\ written}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ BusBuffer[\mbox{\hyperlink{_a_d9852_8h_aed907cf7d68a38e06917fb1a0402f70e}{AD9852MaxBusBuffer}}];\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ BusBufferStart;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ BusBufferEnd;}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ BusBufferLength;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ int64\_t\ AktValueContentsWritten;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ AktValueNrWritten;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ AktSubAddressWritten;\ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ WritePrecision[\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852MaxValues}}];}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{double}\ RequestedStartFrequency;}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{double}\ RequestedStopFrequency;}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{double}\ RequestedModulationFrequency;}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{double}\ SortedStartFrequency;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{double}\ SortedStopFrequency;}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{double}\ SortedModulationFrequency;}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{double}\ LastStartFrequency;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{double}\ LastStopFrequency;}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{double}\ LastModulationFrequency;}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ LastFSKMode;}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{bool}\ ForceUpdate;}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{bool}\ IndependentUpdate;}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ AD9852ValueLength[\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852MaxValues}}];}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ AD9852ValueBaseAddress[\mbox{\hyperlink{_a_d9852_8h_aee5b08b57ce3017953dd926bd090643f}{AD9852MaxValues}}];}
+\DoxyCodeLine{00131\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_a9e9fb6f7809f178970edbee81e3981ef}{Enable}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a4415f5263e9f014e6443d033355e7596}{Enabled}};}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_c_a_d9852_a81d2fcdffb7135fd1ce34d6cae10e9e0}{SetFrequencyWritePrecision}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ Precision,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});\ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_a51978b869ae9ef4cbf93dfc7bb4c6c31}{InitPLL}}();}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_ab24f0bf8c77121efc9201f435ddb13f0}{WriteToBus}}();}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_aafef9c88fd224b1c281bd29abdabdb72}{WriteAllToBus}}();}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_a_d9852_a0c7ba7b96b12cd8d3186a8f11e5c92f4}{HasSomethingToWriteToBus}}()\ \{\ \textcolor{comment}{//inline\ code\ for\ speed}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_c_a_d9852_a4415f5263e9f014e6443d033355e7596}{Enabled}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((BusBufferLength==0)\ \&\&\ (AktValueNrWritten==99))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00142\ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_c_a_d9852_a0227ccb509332255a5cb6dac8ac340f5}{BaseAddress}};}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_c_a_d9852_a0610c51266c76abef6125e33b6d00ae0}{Bus}};}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{class_c_a_d9852_a13454c644f3efd795caba8077174790f}{CAD9852}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ aBaseAddress,\ \textcolor{keywordtype}{double}\ aExternalClockSpeed,\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ aPLLReferenceMultiplier,\ \textcolor{keywordtype}{double}\ aFrequencyMultiplier,\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \_MyDeviceSequencer,\ \textcolor{keywordtype}{bool}\ aIndependentUpdate);}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_a_d9852_a87fbc8877ea0174673b0f49f5629f3d1}{\string~CAD9852}}();}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_aea4cd0d350a7ee44f8e63198030ab767}{FrequencyRamp}}(\textcolor{keywordtype}{double}\ StartFrequency,\ \textcolor{keywordtype}{double}\ StopFrequency,\ \textcolor{keywordtype}{double}\ RampTime);\ \textcolor{comment}{//Frequencies\ in\ MHz,\ RampTime\ in\ ms}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_a_d9852_af9cb5fc3c27f57ad16fd1e6a5136f9eb}{FrequencyModulation}}(\textcolor{keywordtype}{double}\ StartFrequency,\ \textcolor{keywordtype}{double}\ StopFrequency,\ \textcolor{keywordtype}{double}\ ModulationFrequency);\ \textcolor{comment}{//Frequencies\ in\ MHz}}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_ae86cf45307b16005bec3cf3ef133810f}{SetModulationFrequency}}(\textcolor{keywordtype}{double}\ ModulationFrequency,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_a_d9852_a4da34e6c8b141404fc75c1033b8bfef8}{SetRampTime}}(\textcolor{keywordtype}{double}\ RampTime,\ \textcolor{keywordtype}{bool}\ GetValue=\textcolor{keyword}{false});}
+\DoxyCodeLine{00153\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ MyDeviceSequencer;}
+\DoxyCodeLine{00155\ \};}
+
+\end{DoxyCode}

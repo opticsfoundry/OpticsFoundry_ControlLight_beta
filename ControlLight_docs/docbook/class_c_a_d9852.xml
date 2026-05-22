@@ -1,0 +1,558 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_a_d9852" xml:lang="en-US">
+<title>CAD9852 Class Reference</title>
+<indexterm><primary>CAD9852</primary></indexterm>
+<para>
+<computeroutput>#include &lt;AD9852.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9852_1aaebbf736007baace94bb8853059e6d5d">SetPhaseAdjustRegister1</link> (unsigned short aPhaseAdjustRegister1, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9852_1a6a1fbfee1c3dcc5dc8f80d5e0d465ec6">SetPhaseAdjustRegister2</link> (unsigned short aPhaseAdjustRegister2, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1af03361386c0c6ef16a8a65bca3c70be0">SetFrequency1</link> (double aFrequencyTuningWord1, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1af1970b304296d205ce300a422e0e91a1">SetFrequency2</link> (double aFrequencyTuningWord2, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1a8fc3493fc7af546c4689c49ff1922aa2">SetFrequency1AsBinary</link> (const uint64_t &amp;FrequencyTuningWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1abb1b3b1d0aa79a6b881bcf46e27d53ab">SetFrequency2AsBinary</link> (const uint64_t &amp;FrequencyTuningWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1a2b51e6718b37b0ea1dae8139e3f453ec">UpdateFrequencyValues</link> ()</para>
+</listitem>
+            <listitem><para>int64_t <link linkend="_class_c_a_d9852_1af41e9ef3f6b568c7286b048f0a39b067">SetDeltaFrequencyWord</link> (int64_t aDeltaFrequencyWord, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_a_d9852_1a1040e7bcc8058afd2aab87a6ddbc0073">SetUpdateClock</link> (unsigned long aUpdateClock, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_a_d9852_1a162b237e01c36e43d2bd8d7fe8530916">SetRampRateClock</link> (unsigned long aRampRateClock, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9852_1aeb78904a95e57608ca5d8008e5e6e830">SetOutputShapeKeyMult</link> (unsigned short aOutputShapeKeyMult, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_class_c_a_d9852_1abb7bcfbeb3f00aaff210fc608b607ac6">SetOutputShapeKeyRampRate</link> (unsigned char aOutputShapeKeyRampRate, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9852_1a1658ac9186a689c0ab6ea52a7d84555f">SetControlDAC</link> (unsigned short aControlDAC, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a515ea8c19ec9328e682b205bae2b1ae3">SetComparatorPowerDown</link> (bool aPowerDown, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a6bbf40befa71b7e8d482a655e04ed106">SetControlDACPowerDown</link> (bool aPowerDown, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a7bf530b604223b8c3ec693746bb5e776">SetDACPowerDown</link> (bool aPowerDown, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1ad4fb46a9d0532317f81d58d8da5e13b3">SetDigitalPowerDown</link> (bool aPowerDown, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a2b921498fb3e2deeffd372f5e0cb1e62">SetPLLRange</link> (bool aPLLRange, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1ac25ba6478f8694cd94fd9cb7cc7a7df5">SetBypassPLL</link> (bool aByPassPLL, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_class_c_a_d9852_1acf1375282e0ff8987f7d4e793361ab1d">SetPLLReferenceMultiplier</link> (unsigned char aPLLReferenceMultiplier, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a0d0fe9ac38afa4831e82e0f153563709">SetClearACC1</link> (bool aClearACC1, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a715063077c6278f9bf07c4f9bbcf82fc">SetClearACC2</link> (bool aClearACC2, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a0579547fd44be38c25ecdc0270f26b83">SetTriangle</link> (bool aTriangle, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_class_c_a_d9852_1aace2cbc8f38be6d26435eae958160924">GetLastFSKMode</link> ()</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_class_c_a_d9852_1af69ff527fa2cd35a56cd64b235cbc735">SetMode</link> (unsigned char aMode, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1aa6313bb3937d63e1c9d3142a22e9dccf">SetModeSingleTone</link> (bool Set, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a19323a602e768bd27a584bd36c0cc9d7">SetModeFrequencyShiftKeying</link> (bool Set, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a40782e1acfadf998ec14cb86f0c4f2bd">SetModeRampedFrequencyShiftKeying</link> (bool Set, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a4e117f8ea48803a197314f07229db824">SetModeModeChirp</link> (bool Set, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a7658520d5e0af04a68506ed326f89fe6">SetModeBiphaseShiftKeying</link> (bool Set, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a8d367c52187ef2fc981aa99711c33fd2">SetExternalUpdateClock</link> (bool aExternalUpdateClock, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1ae21cf3de72c486b1b74211e30300e8ca">SetBypassInverseSinc</link> (bool aBypassInverseSinc, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1aed4783dab24032c6a42bfcb4172f3150">SetOSKEnable</link> (bool aOSKEnable, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1aac31ce6402f5b01413dacf1e26c8c98d">SetOSKInternal</link> (bool aOSKInternal, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a9ba213dfde7376c93cadbf5cecf7d5e8">SetLSBFirst</link> (bool aLSBFirst, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1aa6c7688e2d54ae1f9617743ac4f6f69f">SetSDOActive</link> (bool aSDOActive, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1ae3f8952b886ea832ab10c62f74512381">SetShapedKeying</link> (bool aShapedKeying, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a07d470aea444c82b1b06351ad4e689a9">SetFSK_BPSK_Hold</link> (bool aFSK_BPSK_Hold, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1ad70fa3aa0d4b6e072102a166e692caae">MasterReset</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1afc36a0e1936aa70e286a8dfec8c696d0">LoadLatches</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1aee259aecb76ea606268ff65b5753e5ec">UpdateRegisters</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1a6894db697e1df438440ad776e5436303">SetUpdateRegistersModeAutomatic</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1a5691de3391e70e1709c333e3bd3aff2c">SetUpdateRegistersModeManual</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1a7fc2a3b3210d17a2ed64eb7741c7e7bf">SetModeRampedFrequencyShiftKeyingConfiguration</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1a9e9fb6f7809f178970edbee81e3981ef">Enable</link> (bool OnOff)</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_class_c_a_d9852_1a81d2fcdffb7135fd1ce34d6cae10e9e0">SetFrequencyWritePrecision</link> (unsigned char Precision, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1a51978b869ae9ef4cbf93dfc7bb4c6c31">InitPLL</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1ab24f0bf8c77121efc9201f435ddb13f0">WriteToBus</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1aafef9c88fd224b1c281bd29abdabdb72">WriteAllToBus</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_a_d9852_1a0c7ba7b96b12cd8d3186a8f11e5c92f4">HasSomethingToWriteToBus</link> ()</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_a_d9852_1a13454c644f3efd795caba8077174790f">CAD9852</link> (unsigned long aBaseAddress, double aExternalClockSpeed, unsigned char aPLLReferenceMultiplier, double aFrequencyMultiplier, <link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MyDeviceSequencer, bool aIndependentUpdate)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_a_d9852_1a87fbc8877ea0174673b0f49f5629f3d1">~CAD9852</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1aea4cd0d350a7ee44f8e63198030ab767">FrequencyRamp</link> (double StartFrequency, double StopFrequency, double RampTime)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_a_d9852_1af9cb5fc3c27f57ad16fd1e6a5136f9eb">FrequencyModulation</link> (double StartFrequency, double StopFrequency, double ModulationFrequency)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1ae86cf45307b16005bec3cf3ef133810f">SetModulationFrequency</link> (double ModulationFrequency, bool GetValue=false)</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1a4da34e6c8b141404fc75c1033b8bfef8">SetRampTime</link> (double RampTime, bool GetValue=false)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1ae10c252c65fd094f3b5dd029a3ec17c1">ShapedKeying</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a65aaf729809f53e17a4df780554b713e">FSK_BPSK_Hold</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a01387f0499899727bd7f2977a02b3ca3">UpdateRegistersModeAutomatic</link></para>
+</listitem>
+            <listitem><para>int64_t <link linkend="_class_c_a_d9852_1afa71ddccb068c741598b0a41c27abad6">AktValueContents</link> [<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>]</para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1a0e71f85ee5618fe5709ad2d1a88e06ae">ClockSpeed</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1aa6f623bcf68359f88b7a5d014e699263">InputClockSpeed</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1ac281de9ac5baf7c3a77ddef4fadad950">PLLEnabled</link></para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="_class_c_a_d9852_1a561f1a0264cf6aedc73cb6bfdae36713">PLLReferenceMultiplier</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1a0d99e09dae730782b6129a2250a7d17d">FrequencyMultiplier</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1a07f312edb19ca3689796f4f004512692">MaxFrequency</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_a_d9852_1a2775a40b4f20bc75a8844c22c2207d3a">FrequencyScale</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_a_d9852_1a4415f5263e9f014e6443d033355e7596">Enabled</link></para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_a_d9852_1a0227ccb509332255a5cb6dac8ac340f5">BaseAddress</link></para>
+</listitem>
+            <listitem><para>unsigned short <link linkend="_class_c_a_d9852_1a0610c51266c76abef6125e33b6d00ae0">Bus</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_a_d9852_1a13454c644f3efd795caba8077174790f"/><section>
+    <title>CAD9852()</title>
+<indexterm><primary>CAD9852</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>CAD9852</secondary></indexterm>
+<para><computeroutput>CAD9852::CAD9852 (unsigned long aBaseAddress, double aExternalClockSpeed, unsigned char aPLLReferenceMultiplier, double aFrequencyMultiplier, <link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * _MyDeviceSequencer, bool aIndependentUpdate)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a87fbc8877ea0174673b0f49f5629f3d1"/><section>
+    <title>~CAD9852()</title>
+<indexterm><primary>~CAD9852</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>~CAD9852</secondary></indexterm>
+<para><computeroutput>CAD9852::~CAD9852 ( )<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_a_d9852_1a9e9fb6f7809f178970edbee81e3981ef"/><section>
+    <title>Enable()</title>
+<indexterm><primary>Enable</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>Enable</secondary></indexterm>
+<para><computeroutput>void CAD9852::Enable (bool OnOff)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1af9cb5fc3c27f57ad16fd1e6a5136f9eb"/><section>
+    <title>FrequencyModulation()</title>
+<indexterm><primary>FrequencyModulation</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>FrequencyModulation</secondary></indexterm>
+<para><computeroutput>void CAD9852::FrequencyModulation (double StartFrequency, double StopFrequency, double ModulationFrequency)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aea4cd0d350a7ee44f8e63198030ab767"/><section>
+    <title>FrequencyRamp()</title>
+<indexterm><primary>FrequencyRamp</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>FrequencyRamp</secondary></indexterm>
+<para><computeroutput>void CAD9852::FrequencyRamp (double StartFrequency, double StopFrequency, double RampTime)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aace2cbc8f38be6d26435eae958160924"/><section>
+    <title>GetLastFSKMode()</title>
+<indexterm><primary>GetLastFSKMode</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>GetLastFSKMode</secondary></indexterm>
+<para><computeroutput>unsigned char CAD9852::GetLastFSKMode ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a0c7ba7b96b12cd8d3186a8f11e5c92f4"/><section>
+    <title>HasSomethingToWriteToBus()</title>
+<indexterm><primary>HasSomethingToWriteToBus</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>HasSomethingToWriteToBus</secondary></indexterm>
+<para><computeroutput>virtual bool CAD9852::HasSomethingToWriteToBus ( )<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a51978b869ae9ef4cbf93dfc7bb4c6c31"/><section>
+    <title>InitPLL()</title>
+<indexterm><primary>InitPLL</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>InitPLL</secondary></indexterm>
+<para><computeroutput>void CAD9852::InitPLL ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1afc36a0e1936aa70e286a8dfec8c696d0"/><section>
+    <title>LoadLatches()</title>
+<indexterm><primary>LoadLatches</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>LoadLatches</secondary></indexterm>
+<para><computeroutput>void CAD9852::LoadLatches ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ad70fa3aa0d4b6e072102a166e692caae"/><section>
+    <title>MasterReset()</title>
+<indexterm><primary>MasterReset</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>MasterReset</secondary></indexterm>
+<para><computeroutput>void CAD9852::MasterReset ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ae21cf3de72c486b1b74211e30300e8ca"/><section>
+    <title>SetBypassInverseSinc()</title>
+<indexterm><primary>SetBypassInverseSinc</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetBypassInverseSinc</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetBypassInverseSinc (bool aBypassInverseSinc, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ac25ba6478f8694cd94fd9cb7cc7a7df5"/><section>
+    <title>SetBypassPLL()</title>
+<indexterm><primary>SetBypassPLL</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetBypassPLL</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetBypassPLL (bool aByPassPLL, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a0d0fe9ac38afa4831e82e0f153563709"/><section>
+    <title>SetClearACC1()</title>
+<indexterm><primary>SetClearACC1</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetClearACC1</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetClearACC1 (bool aClearACC1, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a715063077c6278f9bf07c4f9bbcf82fc"/><section>
+    <title>SetClearACC2()</title>
+<indexterm><primary>SetClearACC2</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetClearACC2</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetClearACC2 (bool aClearACC2, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a515ea8c19ec9328e682b205bae2b1ae3"/><section>
+    <title>SetComparatorPowerDown()</title>
+<indexterm><primary>SetComparatorPowerDown</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetComparatorPowerDown</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetComparatorPowerDown (bool aPowerDown, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a1658ac9186a689c0ab6ea52a7d84555f"/><section>
+    <title>SetControlDAC()</title>
+<indexterm><primary>SetControlDAC</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetControlDAC</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9852::SetControlDAC (unsigned short aControlDAC, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a6bbf40befa71b7e8d482a655e04ed106"/><section>
+    <title>SetControlDACPowerDown()</title>
+<indexterm><primary>SetControlDACPowerDown</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetControlDACPowerDown</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetControlDACPowerDown (bool aPowerDown, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a7bf530b604223b8c3ec693746bb5e776"/><section>
+    <title>SetDACPowerDown()</title>
+<indexterm><primary>SetDACPowerDown</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetDACPowerDown</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetDACPowerDown (bool aPowerDown, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1af41e9ef3f6b568c7286b048f0a39b067"/><section>
+    <title>SetDeltaFrequencyWord()</title>
+<indexterm><primary>SetDeltaFrequencyWord</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetDeltaFrequencyWord</secondary></indexterm>
+<para><computeroutput>int64_t CAD9852::SetDeltaFrequencyWord (int64_t aDeltaFrequencyWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ad4fb46a9d0532317f81d58d8da5e13b3"/><section>
+    <title>SetDigitalPowerDown()</title>
+<indexterm><primary>SetDigitalPowerDown</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetDigitalPowerDown</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetDigitalPowerDown (bool aPowerDown, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a8d367c52187ef2fc981aa99711c33fd2"/><section>
+    <title>SetExternalUpdateClock()</title>
+<indexterm><primary>SetExternalUpdateClock</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetExternalUpdateClock</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetExternalUpdateClock (bool aExternalUpdateClock, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1af03361386c0c6ef16a8a65bca3c70be0"/><section>
+    <title>SetFrequency1()</title>
+<indexterm><primary>SetFrequency1</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetFrequency1</secondary></indexterm>
+<para><computeroutput>double CAD9852::SetFrequency1 (double aFrequencyTuningWord1, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a8fc3493fc7af546c4689c49ff1922aa2"/><section>
+    <title>SetFrequency1AsBinary()</title>
+<indexterm><primary>SetFrequency1AsBinary</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetFrequency1AsBinary</secondary></indexterm>
+<para><computeroutput>double CAD9852::SetFrequency1AsBinary (const uint64_t &amp; FrequencyTuningWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1af1970b304296d205ce300a422e0e91a1"/><section>
+    <title>SetFrequency2()</title>
+<indexterm><primary>SetFrequency2</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetFrequency2</secondary></indexterm>
+<para><computeroutput>double CAD9852::SetFrequency2 (double aFrequencyTuningWord2, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1abb1b3b1d0aa79a6b881bcf46e27d53ab"/><section>
+    <title>SetFrequency2AsBinary()</title>
+<indexterm><primary>SetFrequency2AsBinary</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetFrequency2AsBinary</secondary></indexterm>
+<para><computeroutput>double CAD9852::SetFrequency2AsBinary (const uint64_t &amp; FrequencyTuningWord, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a81d2fcdffb7135fd1ce34d6cae10e9e0"/><section>
+    <title>SetFrequencyWritePrecision()</title>
+<indexterm><primary>SetFrequencyWritePrecision</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetFrequencyWritePrecision</secondary></indexterm>
+<para><computeroutput>unsigned char CAD9852::SetFrequencyWritePrecision (unsigned char Precision, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a07d470aea444c82b1b06351ad4e689a9"/><section>
+    <title>SetFSK_BPSK_Hold()</title>
+<indexterm><primary>SetFSK_BPSK_Hold</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetFSK_BPSK_Hold</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetFSK_BPSK_Hold (bool aFSK_BPSK_Hold, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a9ba213dfde7376c93cadbf5cecf7d5e8"/><section>
+    <title>SetLSBFirst()</title>
+<indexterm><primary>SetLSBFirst</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetLSBFirst</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetLSBFirst (bool aLSBFirst, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1af69ff527fa2cd35a56cd64b235cbc735"/><section>
+    <title>SetMode()</title>
+<indexterm><primary>SetMode</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetMode</secondary></indexterm>
+<para><computeroutput>unsigned char CAD9852::SetMode (unsigned char aMode, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a7658520d5e0af04a68506ed326f89fe6"/><section>
+    <title>SetModeBiphaseShiftKeying()</title>
+<indexterm><primary>SetModeBiphaseShiftKeying</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetModeBiphaseShiftKeying</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetModeBiphaseShiftKeying (bool Set, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a19323a602e768bd27a584bd36c0cc9d7"/><section>
+    <title>SetModeFrequencyShiftKeying()</title>
+<indexterm><primary>SetModeFrequencyShiftKeying</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetModeFrequencyShiftKeying</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetModeFrequencyShiftKeying (bool Set, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a4e117f8ea48803a197314f07229db824"/><section>
+    <title>SetModeModeChirp()</title>
+<indexterm><primary>SetModeModeChirp</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetModeModeChirp</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetModeModeChirp (bool Set, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a40782e1acfadf998ec14cb86f0c4f2bd"/><section>
+    <title>SetModeRampedFrequencyShiftKeying()</title>
+<indexterm><primary>SetModeRampedFrequencyShiftKeying</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetModeRampedFrequencyShiftKeying</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetModeRampedFrequencyShiftKeying (bool Set, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a7fc2a3b3210d17a2ed64eb7741c7e7bf"/><section>
+    <title>SetModeRampedFrequencyShiftKeyingConfiguration()</title>
+<indexterm><primary>SetModeRampedFrequencyShiftKeyingConfiguration</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetModeRampedFrequencyShiftKeyingConfiguration</secondary></indexterm>
+<para><computeroutput>void CAD9852::SetModeRampedFrequencyShiftKeyingConfiguration ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aa6313bb3937d63e1c9d3142a22e9dccf"/><section>
+    <title>SetModeSingleTone()</title>
+<indexterm><primary>SetModeSingleTone</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetModeSingleTone</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetModeSingleTone (bool Set, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ae86cf45307b16005bec3cf3ef133810f"/><section>
+    <title>SetModulationFrequency()</title>
+<indexterm><primary>SetModulationFrequency</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetModulationFrequency</secondary></indexterm>
+<para><computeroutput>double CAD9852::SetModulationFrequency (double ModulationFrequency, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aed4783dab24032c6a42bfcb4172f3150"/><section>
+    <title>SetOSKEnable()</title>
+<indexterm><primary>SetOSKEnable</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetOSKEnable</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetOSKEnable (bool aOSKEnable, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aac31ce6402f5b01413dacf1e26c8c98d"/><section>
+    <title>SetOSKInternal()</title>
+<indexterm><primary>SetOSKInternal</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetOSKInternal</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetOSKInternal (bool aOSKInternal, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aeb78904a95e57608ca5d8008e5e6e830"/><section>
+    <title>SetOutputShapeKeyMult()</title>
+<indexterm><primary>SetOutputShapeKeyMult</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetOutputShapeKeyMult</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9852::SetOutputShapeKeyMult (unsigned short aOutputShapeKeyMult, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1abb7bcfbeb3f00aaff210fc608b607ac6"/><section>
+    <title>SetOutputShapeKeyRampRate()</title>
+<indexterm><primary>SetOutputShapeKeyRampRate</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetOutputShapeKeyRampRate</secondary></indexterm>
+<para><computeroutput>unsigned char CAD9852::SetOutputShapeKeyRampRate (unsigned char aOutputShapeKeyRampRate, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aaebbf736007baace94bb8853059e6d5d"/><section>
+    <title>SetPhaseAdjustRegister1()</title>
+<indexterm><primary>SetPhaseAdjustRegister1</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetPhaseAdjustRegister1</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9852::SetPhaseAdjustRegister1 (unsigned short aPhaseAdjustRegister1, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a6a1fbfee1c3dcc5dc8f80d5e0d465ec6"/><section>
+    <title>SetPhaseAdjustRegister2()</title>
+<indexterm><primary>SetPhaseAdjustRegister2</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetPhaseAdjustRegister2</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9852::SetPhaseAdjustRegister2 (unsigned short aPhaseAdjustRegister2, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a2b921498fb3e2deeffd372f5e0cb1e62"/><section>
+    <title>SetPLLRange()</title>
+<indexterm><primary>SetPLLRange</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetPLLRange</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetPLLRange (bool aPLLRange, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1acf1375282e0ff8987f7d4e793361ab1d"/><section>
+    <title>SetPLLReferenceMultiplier()</title>
+<indexterm><primary>SetPLLReferenceMultiplier</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetPLLReferenceMultiplier</secondary></indexterm>
+<para><computeroutput>unsigned char CAD9852::SetPLLReferenceMultiplier (unsigned char aPLLReferenceMultiplier, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a162b237e01c36e43d2bd8d7fe8530916"/><section>
+    <title>SetRampRateClock()</title>
+<indexterm><primary>SetRampRateClock</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetRampRateClock</secondary></indexterm>
+<para><computeroutput>unsigned long CAD9852::SetRampRateClock (unsigned long aRampRateClock, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a4da34e6c8b141404fc75c1033b8bfef8"/><section>
+    <title>SetRampTime()</title>
+<indexterm><primary>SetRampTime</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetRampTime</secondary></indexterm>
+<para><computeroutput>double CAD9852::SetRampTime (double RampTime, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aa6c7688e2d54ae1f9617743ac4f6f69f"/><section>
+    <title>SetSDOActive()</title>
+<indexterm><primary>SetSDOActive</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetSDOActive</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetSDOActive (bool aSDOActive, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ae3f8952b886ea832ab10c62f74512381"/><section>
+    <title>SetShapedKeying()</title>
+<indexterm><primary>SetShapedKeying</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetShapedKeying</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetShapedKeying (bool aShapedKeying, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a0579547fd44be38c25ecdc0270f26b83"/><section>
+    <title>SetTriangle()</title>
+<indexterm><primary>SetTriangle</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetTriangle</secondary></indexterm>
+<para><computeroutput>bool CAD9852::SetTriangle (bool aTriangle, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a1040e7bcc8058afd2aab87a6ddbc0073"/><section>
+    <title>SetUpdateClock()</title>
+<indexterm><primary>SetUpdateClock</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetUpdateClock</secondary></indexterm>
+<para><computeroutput>unsigned long CAD9852::SetUpdateClock (unsigned long aUpdateClock, bool GetValue = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a6894db697e1df438440ad776e5436303"/><section>
+    <title>SetUpdateRegistersModeAutomatic()</title>
+<indexterm><primary>SetUpdateRegistersModeAutomatic</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetUpdateRegistersModeAutomatic</secondary></indexterm>
+<para><computeroutput>void CAD9852::SetUpdateRegistersModeAutomatic ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a5691de3391e70e1709c333e3bd3aff2c"/><section>
+    <title>SetUpdateRegistersModeManual()</title>
+<indexterm><primary>SetUpdateRegistersModeManual</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>SetUpdateRegistersModeManual</secondary></indexterm>
+<para><computeroutput>void CAD9852::SetUpdateRegistersModeManual ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a2b51e6718b37b0ea1dae8139e3f453ec"/><section>
+    <title>UpdateFrequencyValues()</title>
+<indexterm><primary>UpdateFrequencyValues</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>UpdateFrequencyValues</secondary></indexterm>
+<para><computeroutput>void CAD9852::UpdateFrequencyValues ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aee259aecb76ea606268ff65b5753e5ec"/><section>
+    <title>UpdateRegisters()</title>
+<indexterm><primary>UpdateRegisters</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>UpdateRegisters</secondary></indexterm>
+<para><computeroutput>void CAD9852::UpdateRegisters ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aafef9c88fd224b1c281bd29abdabdb72"/><section>
+    <title>WriteAllToBus()</title>
+<indexterm><primary>WriteAllToBus</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>WriteAllToBus</secondary></indexterm>
+<para><computeroutput>void CAD9852::WriteAllToBus ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ab24f0bf8c77121efc9201f435ddb13f0"/><section>
+    <title>WriteToBus()</title>
+<indexterm><primary>WriteToBus</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>WriteToBus</secondary></indexterm>
+<para><computeroutput>bool CAD9852::WriteToBus ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_a_d9852_1afa71ddccb068c741598b0a41c27abad6"/><section>
+    <title>AktValueContents</title>
+<indexterm><primary>AktValueContents</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>AktValueContents</secondary></indexterm>
+<para><computeroutput>int64_t CAD9852::AktValueContents[<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>]</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a0227ccb509332255a5cb6dac8ac340f5"/><section>
+    <title>BaseAddress</title>
+<indexterm><primary>BaseAddress</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>BaseAddress</secondary></indexterm>
+<para><computeroutput>unsigned long CAD9852::BaseAddress</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a0610c51266c76abef6125e33b6d00ae0"/><section>
+    <title>Bus</title>
+<indexterm><primary>Bus</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>Bus</secondary></indexterm>
+<para><computeroutput>unsigned short CAD9852::Bus</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a0e71f85ee5618fe5709ad2d1a88e06ae"/><section>
+    <title>ClockSpeed</title>
+<indexterm><primary>ClockSpeed</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>ClockSpeed</secondary></indexterm>
+<para><computeroutput>double CAD9852::ClockSpeed</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a4415f5263e9f014e6443d033355e7596"/><section>
+    <title>Enabled</title>
+<indexterm><primary>Enabled</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>Enabled</secondary></indexterm>
+<para><computeroutput>bool CAD9852::Enabled</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a0d99e09dae730782b6129a2250a7d17d"/><section>
+    <title>FrequencyMultiplier</title>
+<indexterm><primary>FrequencyMultiplier</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>FrequencyMultiplier</secondary></indexterm>
+<para><computeroutput>double CAD9852::FrequencyMultiplier</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a2775a40b4f20bc75a8844c22c2207d3a"/><section>
+    <title>FrequencyScale</title>
+<indexterm><primary>FrequencyScale</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>FrequencyScale</secondary></indexterm>
+<para><computeroutput>double CAD9852::FrequencyScale</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a65aaf729809f53e17a4df780554b713e"/><section>
+    <title>FSK_BPSK_Hold</title>
+<indexterm><primary>FSK_BPSK_Hold</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>FSK_BPSK_Hold</secondary></indexterm>
+<para><computeroutput>bool CAD9852::FSK_BPSK_Hold</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1aa6f623bcf68359f88b7a5d014e699263"/><section>
+    <title>InputClockSpeed</title>
+<indexterm><primary>InputClockSpeed</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>InputClockSpeed</secondary></indexterm>
+<para><computeroutput>double CAD9852::InputClockSpeed</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a07f312edb19ca3689796f4f004512692"/><section>
+    <title>MaxFrequency</title>
+<indexterm><primary>MaxFrequency</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>MaxFrequency</secondary></indexterm>
+<para><computeroutput>double CAD9852::MaxFrequency</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ac281de9ac5baf7c3a77ddef4fadad950"/><section>
+    <title>PLLEnabled</title>
+<indexterm><primary>PLLEnabled</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>PLLEnabled</secondary></indexterm>
+<para><computeroutput>bool CAD9852::PLLEnabled</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a561f1a0264cf6aedc73cb6bfdae36713"/><section>
+    <title>PLLReferenceMultiplier</title>
+<indexterm><primary>PLLReferenceMultiplier</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>PLLReferenceMultiplier</secondary></indexterm>
+<para><computeroutput>unsigned char CAD9852::PLLReferenceMultiplier</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1ae10c252c65fd094f3b5dd029a3ec17c1"/><section>
+    <title>ShapedKeying</title>
+<indexterm><primary>ShapedKeying</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>ShapedKeying</secondary></indexterm>
+<para><computeroutput>bool CAD9852::ShapedKeying</computeroutput></para></section>
+<anchor xml:id="_class_c_a_d9852_1a01387f0499899727bd7f2977a02b3ca3"/><section>
+    <title>UpdateRegistersModeAutomatic</title>
+<indexterm><primary>UpdateRegistersModeAutomatic</primary><secondary>CAD9852</secondary></indexterm>
+<indexterm><primary>CAD9852</primary><secondary>UpdateRegistersModeAutomatic</secondary></indexterm>
+<para><computeroutput>bool CAD9852::UpdateRegistersModeAutomatic</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__a_d9852_8h">AD9852.h</link><link linkend="__a_d9852_8cpp">AD9852.cpp</link></section>
+</section>

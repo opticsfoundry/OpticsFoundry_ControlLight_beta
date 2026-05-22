@@ -1,0 +1,74 @@
+\doxysection{Auto\+Config.\+h File Reference}
+\hypertarget{_auto_config_8h}{}\label{_auto_config_8h}\index{AutoConfig.h@{AutoConfig.h}}
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}include/json.\+hpp"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} = nlohmann\+::json
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_auto_config_8h_a9a2d1d12ab3ed08865b5240475b62f27}{Write\+Config\+EEPROM}} (uint8\+\_\+t Sequencer\+ID, uint8\+\_\+t Rack\+Nr, uint8\+\_\+t Slot\+Nr, const char \texorpdfstring{$\ast$}{*}data, size\+\_\+t length)
+\item 
+void \mbox{\hyperlink{_auto_config_8h_a2faf204872538e44ce9353aa487fb5d1}{Read\+Config\+EEPROM}} (uint8\+\_\+t Sequencer\+ID, uint8\+\_\+t Rack\+Nr, uint8\+\_\+t Slot\+Nr, char \texorpdfstring{$\ast$}{*}data, size\+\_\+t \&length, bool \&I2\+C\+\_\+success)
+\item 
+void \mbox{\hyperlink{_auto_config_8h_aa96955d313627501ed9673d8f60478ab}{Write\+Config\+Address}} (uint8\+\_\+t Sequencer\+ID, uint8\+\_\+t Rack\+Nr, uint8\+\_\+t Slot\+Nr, uint8\+\_\+t address)
+\item 
+void \mbox{\hyperlink{_auto_config_8h_a55e9dce2e231a3a5eba12a96afea67a7}{Read\+Config\+Address}} (uint8\+\_\+t Sequencer\+ID, uint8\+\_\+t Rack\+Nr, uint8\+\_\+t Slot\+Nr, uint8\+\_\+t \&address, bool \&I2\+C\+\_\+success)
+\item 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{_auto_config_8h_a6d951a849e3a3e88aef07d03fae632b2}{Read\+Configuration}} (const std\+::string \&filename="{}"{})
+\item 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{_auto_config_8h_ab0929365aa0b8147fea4bef38b73de7d}{Get\+Auto\+Config\+JSON}} (const std\+::string \&filename="{}"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}\index{AutoConfig.h@{AutoConfig.h}!json@{json}}
+\index{json@{json}!AutoConfig.h@{AutoConfig.h}}
+\doxysubsubsection{\texorpdfstring{json}{json}}
+{\footnotesize\ttfamily \label{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d} 
+using \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} = nlohmann\+::json}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_auto_config_8h_ab0929365aa0b8147fea4bef38b73de7d}\index{AutoConfig.h@{AutoConfig.h}!GetAutoConfigJSON@{GetAutoConfigJSON}}
+\index{GetAutoConfigJSON@{GetAutoConfigJSON}!AutoConfig.h@{AutoConfig.h}}
+\doxysubsubsection{\texorpdfstring{GetAutoConfigJSON()}{GetAutoConfigJSON()}}
+{\footnotesize\ttfamily \label{_auto_config_8h_ab0929365aa0b8147fea4bef38b73de7d} 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Get\+Auto\+Config\+JSON (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8h_a55e9dce2e231a3a5eba12a96afea67a7}\index{AutoConfig.h@{AutoConfig.h}!ReadConfigAddress@{ReadConfigAddress}}
+\index{ReadConfigAddress@{ReadConfigAddress}!AutoConfig.h@{AutoConfig.h}}
+\doxysubsubsection{\texorpdfstring{ReadConfigAddress()}{ReadConfigAddress()}}
+{\footnotesize\ttfamily \label{_auto_config_8h_a55e9dce2e231a3a5eba12a96afea67a7} 
+void Read\+Config\+Address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{uint8\+\_\+t \&}]{address}{, }\item[{bool \&}]{I2\+C\+\_\+success}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8h_a2faf204872538e44ce9353aa487fb5d1}\index{AutoConfig.h@{AutoConfig.h}!ReadConfigEEPROM@{ReadConfigEEPROM}}
+\index{ReadConfigEEPROM@{ReadConfigEEPROM}!AutoConfig.h@{AutoConfig.h}}
+\doxysubsubsection{\texorpdfstring{ReadConfigEEPROM()}{ReadConfigEEPROM()}}
+{\footnotesize\ttfamily \label{_auto_config_8h_a2faf204872538e44ce9353aa487fb5d1} 
+void Read\+Config\+EEPROM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t \&}]{length}{, }\item[{bool \&}]{I2\+C\+\_\+success}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8h_a6d951a849e3a3e88aef07d03fae632b2}\index{AutoConfig.h@{AutoConfig.h}!ReadConfiguration@{ReadConfiguration}}
+\index{ReadConfiguration@{ReadConfiguration}!AutoConfig.h@{AutoConfig.h}}
+\doxysubsubsection{\texorpdfstring{ReadConfiguration()}{ReadConfiguration()}}
+{\footnotesize\ttfamily \label{_auto_config_8h_a6d951a849e3a3e88aef07d03fae632b2} 
+\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Read\+Configuration (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8h_aa96955d313627501ed9673d8f60478ab}\index{AutoConfig.h@{AutoConfig.h}!WriteConfigAddress@{WriteConfigAddress}}
+\index{WriteConfigAddress@{WriteConfigAddress}!AutoConfig.h@{AutoConfig.h}}
+\doxysubsubsection{\texorpdfstring{WriteConfigAddress()}{WriteConfigAddress()}}
+{\footnotesize\ttfamily \label{_auto_config_8h_aa96955d313627501ed9673d8f60478ab} 
+void Write\+Config\+Address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{uint8\+\_\+t}]{address}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_auto_config_8h_a9a2d1d12ab3ed08865b5240475b62f27}\index{AutoConfig.h@{AutoConfig.h}!WriteConfigEEPROM@{WriteConfigEEPROM}}
+\index{WriteConfigEEPROM@{WriteConfigEEPROM}!AutoConfig.h@{AutoConfig.h}}
+\doxysubsubsection{\texorpdfstring{WriteConfigEEPROM()}{WriteConfigEEPROM()}}
+{\footnotesize\ttfamily \label{_auto_config_8h_a9a2d1d12ab3ed08865b5240475b62f27} 
+bool Write\+Config\+EEPROM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Sequencer\+ID}{, }\item[{uint8\+\_\+t}]{Rack\+Nr}{, }\item[{uint8\+\_\+t}]{Slot\+Nr}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+

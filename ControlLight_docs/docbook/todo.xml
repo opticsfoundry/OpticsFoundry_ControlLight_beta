@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_todo" xml:lang="en-US">
+<title>Todo List</title>
+<indexterm><primary>Todo List</primary></indexterm>
+
+<para><variablelist>
+<varlistentry><term>Member <link linkend="_class_c_network_1ad6e6c1704cdd7e80e5521e83d6a02362">CNetwork::IsConnected</link>  () const</term></varlistentry>
+<listitem>
+<para><anchor xml:id="_todo_1_todo000003"/>  </para>
+</listitem>
+<varlistentry><term>Member <link linkend="_class_c_network_1a665c20541840dcf938b63284847cc33f">CNetwork::Reconnect</link>  (int maxRetries=3, int timeout_s=2, unsigned long delay_ms=1000)</term></varlistentry>
+<listitem>
+<para><anchor xml:id="_todo_1_todo000004"/>  </para>
+</listitem>
+<varlistentry><term>Member <link linkend="_class_c_network_1a2ddc0a0564d0bf5b3cddf8f1ebb838a2">CNetwork::ResetConnection</link>  (unsigned long sleep_time=2000)</term></varlistentry>
+<listitem>
+<para><anchor xml:id="_todo_1_todo000002"/> </para>
+</listitem>
+</variablelist>
+</para>
+</section>

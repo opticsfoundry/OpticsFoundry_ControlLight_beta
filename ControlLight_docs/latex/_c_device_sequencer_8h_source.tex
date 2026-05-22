@@ -1,0 +1,171 @@
+\doxysection{CDevice\+Sequencer.\+h}
+\hypertarget{_c_device_sequencer_8h_source}{}\label{_c_device_sequencer_8h_source}\index{CDeviceSequencer.h@{CDeviceSequencer.h}}
+\mbox{\hyperlink{_c_device_sequencer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_device_8h}{CDevice.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }CEthernetControllerFirefly;}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_rack}{CDeviceRack}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_c_device}{CDevice}}*\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_c_device_sequencer_8h_a9686d3f729fa90303f1b892125214256}{ReservedBusAddress}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{class_c_device}{CDevice}}*\textcolor{keyword}{>}(1);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_sequencer_a8f1796b86def5ee2468391729d6ff8f0}{CDeviceSequencer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_a501dfd73602558e66977641d6296adfc}{id}};}
+\DoxyCodeLine{00016\ \ \ \ \ std::string\ \mbox{\hyperlink{class_c_device_sequencer_a325e75933aa20ab3f46db3ef1c015bfc}{type}};}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ \mbox{\hyperlink{class_c_device_sequencer_ab872c2285452d0aa858d14c14c057faa}{ip}};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_a0249d89b3c0f35de38e51be006c1c777}{port}};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a2007872507761fc8ab9941a96d58b455}{master}};}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_aa679902977ccb1859873f2394dea74da}{IsMaster}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_sequencer_a2007872507761fc8ab9941a96d58b455}{master}};\ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_a5589062e5cd2525cb7e6567628127365}{startDelay}};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_sequencer_ad0b4a49fd334a754d3d3da62b7ee81d8}{clockFrequency}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_ad9bf4757308aa2ef99ce7f5e05fe72bf}{DefaultFPGAClockToBusClockRatio}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_a97daacafd5c7147b4726fa9817e245c3}{FPGAClockToBusClockRatio}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_a577abdf005ddc08b85c6778cbf786d78}{CurrentFPGAClockToBusClockRatio}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_ae48a0da4e027ca8607a769630d5bc33d}{useExternalClock}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_af7614e368a833c743117573138080ae6}{useStrobeGenerator}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a52584ca67a417eeeb50310541f79bca8}{connect}};}
+\DoxyCodeLine{00029\ \ \ \ \ std::unique\_ptr<CEthernetControllerFirefly>\ \mbox{\hyperlink{class_c_device_sequencer_ad81b76a05a3bad57f64dfe45e929e734}{MyEthernetMultiIOControllerFirefly}};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_sequencer_a83bbee891be3553d10f9220d7a94674e}{BusFrequency\_in\_Hz}};}
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ PCBufferSize\_in\_u64;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ MaxBuffer\ =\ 2;}
+\DoxyCodeLine{00034\ \ \ \ \ uint8\_t\ currentBuffer;}
+\DoxyCodeLine{00035\ \ \ \ \ uint32\_t*\ Buffer[MaxBuffer];}
+\DoxyCodeLine{00036\ \ \ \ \ uint64\_t\ AbsoluteTime\_in\_ms;}
+\DoxyCodeLine{00037\ \ \ \ \ uint32\_t\ BufferPosition;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{double}\ Delay\_in\_ms;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ TimeDebt\_in\_ms;\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{double}\ MaxTimeDebt\_in\_ms;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}\ CurrentTimeDebt\_in\_ms;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ LastCommandWasSpecialCommand;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ DoUseEdgeTriggeredLatches;}
+\DoxyCodeLine{00044\ \ \ \ \ uint32\_t\ LastBusData;}
+\DoxyCodeLine{00045\ \ \ \ \ std::unique\_ptr<CDeviceRack>\ MyDeviceRack;}
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_a442061907ecaaf27c3a7e9171b597e72}{MaxParallelBusDevices}}\ =\ 8\ *\ 256\ +\ 1;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_device_sequencer_a5155e6ccb4538489ff41a271344d6631}{MaxSerialBusDevices}}\ =\ 8;}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}*\ \mbox{\hyperlink{class_c_device_sequencer_a7e74050c18cc7e9e8015f88861b2e454}{ParallelBusDeviceList}}[\mbox{\hyperlink{class_c_device_sequencer_a442061907ecaaf27c3a7e9171b597e72}{MaxParallelBusDevices}}];}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}*\ \mbox{\hyperlink{class_c_device_sequencer_acf65ed8d96c6f6c5afce93ced1693a85}{SerialBusDeviceList}}[\mbox{\hyperlink{class_c_device_sequencer_a5155e6ccb4538489ff41a271344d6631}{MaxSerialBusDevices}}];}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer_a8f1796b86def5ee2468391729d6ff8f0}{CDeviceSequencer}}(}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_id,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::string\ \_type,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ std::string\ \_ip,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_port,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_master,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_startDelay,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_clockFrequency,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_FPGAClockToBusClockRatio,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_useExternalClock,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_useStrobeGenerator,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_useEdgeTriggeredLatches,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_connect);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_device_sequencer_af646da917bbb922c7928dcca66add13c}{\string~CDeviceSequencer}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_sequencer_a2d70435889d0dd53b24fe0072c4fbbb7}{GetBusFrequency\_in\_Hz}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a0d47b80a0616eacbf5cdddb7cc4fa992}{AdvanceTime}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_afd4f8b3316a3a3d2beabffabfef64875}{UseEdgeTriggeredLatches}}(\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_afd4f8b3316a3a3d2beabffabfef64875}{UseEdgeTriggeredLatches}});}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a94a2b44fccae6822267225ba65a18683}{SetFPGAClockToBusClockRatio}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_FPGAClockToBusClockRatio,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ UpdateStrobeDuration);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_control_a_p_i_8cpp_ad867e66c5ee033c10c2b19bda54ef936}{Initialize}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_PCBufferSize\_in\_u64);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a10854f6a6ca1deec6752a58848bea582}{SwitchDebugMode}}(\textcolor{keywordtype}{bool}\ OnOff,\ \textcolor{keyword}{const}\ std::string\ \&FileName);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_aa963f7fadf133d2ebd47dafa8ab53d12}{TransmitOnlyDifferenceBetweenCommandSequenceIfPossible}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a75982403171bb9af945ca0529daec267}{IsSequencerConnected}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a5a451f8a11a1da169fff225b927c392d}{StartAssemblingSequence}}();}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a16a5007a40a488a45577fad53f573c73}{StartAssemblingNextSequence}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a22a3aefd7946c8d1a7119668d42b91fc}{SendSequence}}(\textcolor{keyword}{const}\ std::string\&\ FileName\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_ae12a1e70fc37e10979ff0acccc3ea12a}{GetBufferLength}}(uint32\_t\&\ FilledBufferLength,\ uint32\_t\&\ MaxBufferLength);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a1991feaf7cc573121697ccb9b7b9323d}{SendStartSequenceCommand}}();}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a16122a420c693e74ab8868fb1d38895f}{IsSequenceRunning}}(\textcolor{keywordtype}{bool}\&\ running,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\&\ DataPointsWritten);}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a033f8ba2b0e179998a8e0d6a72ec3279}{WaitTillEndOfSequence}}(\textcolor{keywordtype}{double}\ timeout\_in\_s\ =\ 0);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a163c503d4c7e4629e84eeb7eadcd9db8}{WaitTillEndOfSequenceThenGetInputData}}(uint8\_t*\&\ buffer,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ buffer\_length,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ EndTimeOfCycle,\ \textcolor{keywordtype}{double}\ timeout\_in\_s);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_ab352a413fa6d48c9cc03faf57c8cfa32}{AddCommandToSequence}}(\textcolor{keyword}{const}\ uint32\_t\&\ high\_word,\ \textcolor{keyword}{const}\ uint32\_t\&\ low\_word);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a9a6701de6951ae59c599bf91edbcf29a}{AddBusCommandAndWait}}(uint32\_t\ data,\ uint32\_t\ delay);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a9ad684a1cd8866041f8af665851e61fd}{AddBusCommandToSequence}}(\textcolor{keyword}{const}\ uint32\_t\&\ content);}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a325e2daaa28615bc44b27db0a4c3f377}{SetValue\_Sequencer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ Address,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_ad9d968a730304e75c9e07255dedd003c}{SetRegister\_Sequencer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ Address,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_aeca54301a0e2e5b33afb0a5717886092}{SetValueSerialDevice\_Sequencer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ Address,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_aca4336ad38174dacb145def7ef35317d}{SetRegisterSerialDevice\_Sequencer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ Address,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_acccb21e905a84f6dd954feb4318db086}{WriteBusAddressAndDataToBuffer}}(\textcolor{keyword}{const}\ uint16\_t\&\ MultiIOAddress,\ \textcolor{keyword}{const}\ uint16\_t\&\ Data)\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ uint32\_t\ content\ =\ MultiIOAddress\ <<\ 16\ |\ Data;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer_a9ad684a1cd8866041f8af665851e61fd}{AddBusCommandToSequence}}(content);}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_ab83a12612bc8d09574a43c356cc8a9df}{Wait\_ms}}(\textcolor{keywordtype}{double}\ time\_in\_ms);}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_sequencer_a43d39126fb474e9143569c720af1efea}{GetTime\_ms}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_sequencer_a07ebfe1673db09c97de7b88ed513fe52}{GetTimeDebt\_ms}}()\ \{\ \textcolor{keywordflow}{return}\ TimeDebt\_in\_ms;\ \};}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_c_device_sequencer_afabe3875e5174e15237cc26fbaa31c51}{GetNextBufferPosition}}()\ \{\ \textcolor{keywordflow}{return}\ BufferPosition;\ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a5e4f1fdd9df68041e3063060d9456ab7}{SetPeriodicTrigger\_ms}}(\textcolor{keywordtype}{double}\ periodicTriggerPeriod\_in\_ms,\ \textcolor{keywordtype}{double}\ periodicTriggerAllowedWaitTime\_in\_ms);}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_afaae61023ca18a0d0eeaf7876ef1d3e3}{GetNextCycleNumber}}(\textcolor{keywordtype}{long}\ \&NextCycleNumber);}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a2ade2307ab313fb94fc78fa8492942bd}{ResetCycleNumber}}();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a9d17d9e2c1cb2dd77a0d83b17282a3e3}{TransmitI2CPort}}(uint8\_t\ I2C\_port,\ uint8\_t\ I2C\_destination,\ uint8\_t\ I2C\_address,\ uint16\_t\ send\_length,\ uint8\_t\ *send\_data,\ uint16\_t\ receive\_length,\ uint8\_t\ *receive\_data,\ uint32\_t\ I2C\_clock\_frequency\_in\_Hz,\ \textcolor{keywordtype}{bool}\&\ I2C\_success,\ \textcolor{keywordtype}{bool}\ fail\_silently);}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_af2bcbdaafb702a28f0c9b2825ca0268e}{SetPSOptions}}(uint8\_t\ options);}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a90a766b5bc6a6b9989b3f2fab76ca51a}{SetSequencerDigitalOut}}(uint8\_t\ dig\_out\_pattern);}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_ab8d9560a1b28465d8be62634a193dd0d}{SetSequencer\_PL\_to\_PS\_command}}(uint8\_t\ PL\_to\_PS\_command);}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_aed5df9bfd8a94543e2b623cddc45fa90}{SwitchSequencerBuzzer}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a26daea97d364aad1f7d5921381c0747a}{StartAssemblingCPUCommandSequence}}();}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_ab932e2174a6bcceff9103a5f2631b7f8}{AddCPUCommand}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ command);}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a4fcb9afb9fd28b134d0f965a06295a66}{ExecuteCPUCommandSequence}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ ethernet\_check\_period\_in\_ms);}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a36f0277977d436d29ba425a90a8dd590}{StopCPUCommandSequence}}();}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a7cde9dd58268817490f6d4841e4aa955}{InterruptCPUCommandSequence}}();}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a3e22b4d9f74ba21347abad69c7d1390a}{GetCPUCommandErrorMessages}}();}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a8419d9bf9bdc6ec87bc1d1d8a7a6d574}{PrintCPUCommandErrorMessages}}();}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_af4a4b1e1d3e94de047ebe285d3b30264}{PrintCPUCommandSequence}}();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//the\ following\ are\ commands\ to\ control\ the\ sequencer\ itself}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_sequencer_a0fae9f67b03f5360821e4aee8e0e5f14}{SetValue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00119\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//the\ following\ commands\ are\ intended\ to\ be\ used\ by\ devices\ connected\ to\ the\ sequencer,\ such\ as\ analog\ input\ cards.}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a74e2dbb7730d97a659e26ad3905ddecc}{SequencerStartAnalogInAcquisition}}(\textcolor{keyword}{const}\ uint8\_t\&\ analog\_in\_type,\ \textcolor{keyword}{const}\ uint8\_t\&\ SPI\_CS,\ \textcolor{keyword}{const}\ uint8\_t\&\ ChannelNumber,\ \textcolor{keyword}{const}\ uint32\_t\&\ NumberOfDataPoints,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ DelayBetweenDataPoints\_in\_ms);}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_af7ed0331caa0c2b1b59d81b70c23545e}{SequencerWriteInputMemory}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ input\_buf\_mem\_data,\ \textcolor{keywordtype}{bool}\ write\_next\_address\ =\ 1,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ input\_buf\_mem\_address\ =\ 0);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a22f66dda6b836fe5c7b24ade065888ae}{SequencerWriteSystemTimeToInputMemory}}();}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a3c29a3cec7724ade1c4250c5264cd652}{SequencerCalcAD9854FrequencyTuningWord}}(uint64\_t\ ftw0,\ uint8\_t\ bit\_shift);}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a1f4dc1ed13ba3cb5d9687f930163ec53}{SequencerSwitchDebugLED}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ OnOff);}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_af45d2dcd8aaa3ddf081c9d88d4d60938}{SequencerIgnoreTCPIP}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_ae9c5f92c61a044f962942fcabcbb06c9}{SequencerAddMarker}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ marker);}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a65193d6c01cceaad58fac3eba624dac0}{SequencerSetTimeDebtGuard\_in\_ms}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ MaxTimeDebt\_in\_ms)\ \{\ this-\/>MaxTimeDebt\_in\_ms\ =\ MaxTimeDebt\_in\_ms;\ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_adca3cad0758b3ef7facf3f5b72fbeaa4}{SequencerSetLoopCount}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ loop\_count);}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_ad0e8572ebfa19d6965bffddcc1f01271}{SequencerJumpBackward}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jump\_length,\ \textcolor{keywordtype}{bool}\ unconditional\_jump\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ condition\_0\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ condition\_1\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ condition\_PS\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ condition\_dig\_in\ =\ \textcolor{keyword}{false},\ uint8\_t\ dig\_in\_bit\_nr\ =\ 0,\ \textcolor{keywordtype}{bool}\ loop\_count\_greater\_zero\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a82c3a104ca78ce7bfb4d0038eb505d46}{SequencerJumpForward}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ jump\_length,\ \textcolor{keywordtype}{bool}\ unconditional\_jump\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ condition\_0\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ condition\_1\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ condition\_PS\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ condition\_dig\_in\ =\ \textcolor{keyword}{false},\ uint8\_t\ dig\_in\_bit\_nr\ =\ 0);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//These\ are\ new\ commands,\ where\ SequencerXYZ\ corresponds\ to\ the\ AddCommandXYZ\ of\ CEthernetControllerFirefly.}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//They\ need\ to\ be\ implemented\ in\ CDeviceSequencer,\ similar\ to\ the\ commands\ above,\ e.g.\ SequencerStartAnalogInAcquisition.}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//After\ that's\ done,\ they\ need\ to\ be\ exposed\ in\ ControlAPI,\ similar\ to\ how\ the\ existing\ SequencerXYZ\ functions\ are\ exposed,\ e.g.\ CLA\_SequencerStartAnalogInAcquisition.}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//Finally\ they\ need\ to\ be\ added\ to\ the\ python\ bindings\ in\ the\ bindings\ folder.}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a7eb2a36e95b501347bba9390f3161056}{SequencerTransmitI2C}}(uint8\_t\ I2C\_port,\ uint8\_t\ I2C\_length\_out,\ uint8\_t\ I2C\_length\_in,\ uint8\_t\ *data\_out);}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a1d9c89637e2ac5831396acc1b382f934}{SequencerTransmitSPI}}(\textcolor{keyword}{const}\ uint8\_t\ chip\_select,\ \textcolor{keyword}{const}\ uint16\_t\ number\_of\_bits\_out,\ \textcolor{keyword}{const}\ uint8\_t\ *data\_out,\ \textcolor{keyword}{const}\ uint8\_t\ number\_of\_bits\_in,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ start\_now);}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a1262058d5475f540f530d55d372808a2}{SequencerRepeatedOutIn}}(\textcolor{keyword}{const}\ uint16\_t\ number\_of\_datapoints,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ delay\_between\_datapoints\_in\_ms,\ uint8\_t\ RepeatedOutInCommand);}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_aae3f61128037b76638970a4782ea320a}{SequencerSetSPITiming}}(uint16\_t\ SPI\_delay\_CS\_low\_start\_wait,\ uint16\_t\ SPI\_delay\_write,\ uint16\_t\ SPI\_delay\_pause\_before\_read,\ uint16\_t\ SPI\_delay\_read,\ uint16\_t\ SPI\_delay\_CS\_low\_end\_wait);}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a8b01a278a5d33ad72c3bf2ab6fe91e07}{SequencerSetSPIMode}}(uint8\_t\ SPI\_mode);}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a4ad3404fc53e6e1038a780f6b96a19a3}{SequencerSetI2CParameters}}(uint8\_t\ I2C\_0\_Destination,\ uint8\_t\ I2C\_delay\_start\_stop,\ uint8\_t\ I2C\_delay\_data\_setup,\ uint8\_t\ I2C\_delay\_clock\_high,\ uint8\_t\ I2C\_delay\_clock\_low,\ uint8\_t\ I2C\_delay\_pause\_before\_read);}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_a297c43f0c69b7b7ce7d1ec94e9b48bc2}{SequencerSelectRackSlot}}(uint8\_t\ rack\_nr,\ uint8\_t\ slot\_nr);}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_device_sequencer_aa3147266cc8f9f1c44da1a7faae43a5d}{SequencerResetI2CMultiplexer}}();}
+\DoxyCodeLine{00147\ \ \ \ \ }
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//the\ following\ functions\ are\ used\ by\ CControlAPI\ to\ find\ the\ desired\ device.\ Used\ for\ convenience\ functions.}}
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}*\ \mbox{\hyperlink{class_c_device_sequencer_a042e1078c71ca62771140acb4b60f7e7}{GetParallelBusDevice}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ Address)\ \{\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ >=\ \mbox{\hyperlink{class_c_device_sequencer_a442061907ecaaf27c3a7e9171b597e72}{MaxParallelBusDevices}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_c_device_sequencer_a7e74050c18cc7e9e8015f88861b2e454}{ParallelBusDeviceList}}[Address]\ ==\ \mbox{\hyperlink{_c_device_sequencer_8h_a9686d3f729fa90303f1b892125214256}{ReservedBusAddress}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_sequencer_a7e74050c18cc7e9e8015f88861b2e454}{ParallelBusDeviceList}}[Address];\ }
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}*\ \mbox{\hyperlink{class_c_device_sequencer_ada57fb75303e4b7cf363e9a2e685cac7}{GetSerialBusDevice}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ Address)\ \{\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Address\ >=\ \mbox{\hyperlink{class_c_device_sequencer_a5155e6ccb4538489ff41a271344d6631}{MaxSerialBusDevices}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_c_device_sequencer_acf65ed8d96c6f6c5afce93ced1693a85}{SerialBusDeviceList}}[Address]\ ==\ \mbox{\hyperlink{_c_device_sequencer_8h_a9686d3f729fa90303f1b892125214256}{ReservedBusAddress}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_device_sequencer_acf65ed8d96c6f6c5afce93ced1693a85}{SerialBusDeviceList}}[Address];\ }
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateClockRatio();}
+\DoxyCodeLine{00165\ \};}
+
+\end{DoxyCode}

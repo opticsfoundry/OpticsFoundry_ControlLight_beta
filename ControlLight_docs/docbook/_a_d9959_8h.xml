@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_d9959_8h" xml:lang="en-US">
+<title>AD9959.h File Reference</title>
+<indexterm><primary>AD9959.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;MultiWriteDeviceSPI.h&quot;<?linebreak?>#include &lt;cstdint&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_c_a_d9959">CAD9959</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1a1a931e36eb2a3a7f5b2b865825a89eb1">PWR_DWN_CTL_PORT</link>&#160;&#160;&#160;GPIOA</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1a5b365a8630fe8154666599435d9ea436">PWR_DWN_CTL_PIN</link>&#160;&#160;&#160;GPIO_PIN_1</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1afe5e3ca1252527d4b81d7af56ca307c3">MASTER_RESET_PORT</link>&#160;&#160;&#160;GPIOA</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1acdd566a19c317ccf5b2b67b7d6c36a58">MASTER_RESET_PIN</link>&#160;&#160;&#160;GPIO_PIN_1</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1af8c3fcef31f93d855617be996919caba">IO_UPDATE_PORT</link>&#160;&#160;&#160;GPIOA</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1acd45d509cdc32242ca6023d1f13e4c0e">IO_UPDATE_PIN</link>&#160;&#160;&#160;GPIO_PIN_1</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1ac7c961b51abd4647549d4723dac238cb">SDIO_3_PORT</link>&#160;&#160;&#160;GPIOA</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1a29939981eaea67fc7bd82bd3e9522109">SDIO_3_PIN</link>&#160;&#160;&#160;GPIO_PIN_1</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1a7ab0d892114e931317d43c50fa82d510">CS_GPIO_PORT</link>&#160;&#160;&#160;GPIOA</para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8h_1abfcf05153ddbd63d5aff5d018867cc19">CS_PIN</link>&#160;&#160;&#160;GPIO_PIN_1</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Enumerations    </title>
+        <itemizedlist>
+            <listitem><para>enum <link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6">E_AD9959_PWR</link> { <link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6a229aec4bb33a5e42368fec853d4a282c">E_AD9959_PWR_POWERED</link>
+, <link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6a1c5124a87cd37ffbd0d50eaf74c987c1">E_AD9959_PWR_PARTIAL</link>
+, <link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6ad0da32910d0ef5c4661945583ed021a3">E_AD9959_PWR_DOWN</link>
+ }</para>
+
+<para>DDS Power modes. </para>
+</listitem>
+            <listitem><para>enum <link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55">E_AD9959_CHANNEL</link> { <?linebreak?><link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a61cfe8513916df0d575cc1a7e8d8d1f1">E_AD9959_CHANNEL_ALL</link>
+, <link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a6c65280e6f459c84b3382c7e14a117e0">E_AD9959_CHANNEL_0</link>
+, <link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55ac10215c8ca3ef4486e2f972b8bf1ab50">E_AD9959_CHANNEL_1</link>
+, <link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a42a2b3479f328b6288975f0f829f55f3">E_AD9959_CHANNEL_2</link>
+, <?linebreak?><link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a6e09353b72f98a29fe2db5c7a6e47ee0">E_AD9959_CHANNEL_3</link>
+ }</para>
+
+<para>DDS Channel. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>const unsigned int <link linkend="__a_d9959_8h_1a66d5c07db323165da4e746e951591962">SPIBufferLength</link> = 14</para>
+</listitem>
+            <listitem><para>constexpr unsigned int <link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link> = 92</para>
+</listitem>
+            <listitem><para>constexpr unsigned int <link linkend="__a_d9959_8h_1ac68e8badff67a631e395bbd74036e53c">AD9959SPIBufferLength</link> = 14</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="__a_d9959_8h_1a7ab0d892114e931317d43c50fa82d510"/><section>
+    <title>CS_GPIO_PORT</title>
+<indexterm><primary>CS_GPIO_PORT</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>CS_GPIO_PORT</secondary></indexterm>
+<para><computeroutput>#define CS_GPIO_PORT&#160;&#160;&#160;GPIOA</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1abfcf05153ddbd63d5aff5d018867cc19"/><section>
+    <title>CS_PIN</title>
+<indexterm><primary>CS_PIN</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>CS_PIN</secondary></indexterm>
+<para><computeroutput>#define CS_PIN&#160;&#160;&#160;GPIO_PIN_1</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1acd45d509cdc32242ca6023d1f13e4c0e"/><section>
+    <title>IO_UPDATE_PIN</title>
+<indexterm><primary>IO_UPDATE_PIN</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>IO_UPDATE_PIN</secondary></indexterm>
+<para><computeroutput>#define IO_UPDATE_PIN&#160;&#160;&#160;GPIO_PIN_1</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1af8c3fcef31f93d855617be996919caba"/><section>
+    <title>IO_UPDATE_PORT</title>
+<indexterm><primary>IO_UPDATE_PORT</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>IO_UPDATE_PORT</secondary></indexterm>
+<para><computeroutput>#define IO_UPDATE_PORT&#160;&#160;&#160;GPIOA</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1acdd566a19c317ccf5b2b67b7d6c36a58"/><section>
+    <title>MASTER_RESET_PIN</title>
+<indexterm><primary>MASTER_RESET_PIN</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>MASTER_RESET_PIN</secondary></indexterm>
+<para><computeroutput>#define MASTER_RESET_PIN&#160;&#160;&#160;GPIO_PIN_1</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1afe5e3ca1252527d4b81d7af56ca307c3"/><section>
+    <title>MASTER_RESET_PORT</title>
+<indexterm><primary>MASTER_RESET_PORT</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>MASTER_RESET_PORT</secondary></indexterm>
+<para><computeroutput>#define MASTER_RESET_PORT&#160;&#160;&#160;GPIOA</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1a5b365a8630fe8154666599435d9ea436"/><section>
+    <title>PWR_DWN_CTL_PIN</title>
+<indexterm><primary>PWR_DWN_CTL_PIN</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>PWR_DWN_CTL_PIN</secondary></indexterm>
+<para><computeroutput>#define PWR_DWN_CTL_PIN&#160;&#160;&#160;GPIO_PIN_1</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1a1a931e36eb2a3a7f5b2b865825a89eb1"/><section>
+    <title>PWR_DWN_CTL_PORT</title>
+<indexterm><primary>PWR_DWN_CTL_PORT</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>PWR_DWN_CTL_PORT</secondary></indexterm>
+<para><computeroutput>#define PWR_DWN_CTL_PORT&#160;&#160;&#160;GPIOA</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1a29939981eaea67fc7bd82bd3e9522109"/><section>
+    <title>SDIO_3_PIN</title>
+<indexterm><primary>SDIO_3_PIN</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>SDIO_3_PIN</secondary></indexterm>
+<para><computeroutput>#define SDIO_3_PIN&#160;&#160;&#160;GPIO_PIN_1</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1ac7c961b51abd4647549d4723dac238cb"/><section>
+    <title>SDIO_3_PORT</title>
+<indexterm><primary>SDIO_3_PORT</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>SDIO_3_PORT</secondary></indexterm>
+<para><computeroutput>#define SDIO_3_PORT&#160;&#160;&#160;GPIOA</computeroutput></para></section>
+</section>
+<section>
+<title>Enumeration Type Documentation</title>
+<anchor xml:id="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55"/><section>
+    <title>E_AD9959_CHANNEL</title>
+<indexterm><primary>E_AD9959_CHANNEL</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_CHANNEL</secondary></indexterm>
+<para><computeroutput>enum <link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55">E_AD9959_CHANNEL</link></computeroutput></para><para>
+
+<para>DDS Channel. </para>
+</para>
+
+<para>typedef enum <link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55">E_AD9959_CHANNEL</link> </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>E_AD9959_CHANNEL_ALL</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_CHANNEL_ALL</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a61cfe8513916df0d575cc1a7e8d8d1f1"/>E_AD9959_CHANNEL_ALL</entry><entry>
+<para>Select both channels </para>
+</entry></row><row><entry><indexterm><primary>E_AD9959_CHANNEL_0</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_CHANNEL_0</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a6c65280e6f459c84b3382c7e14a117e0"/>E_AD9959_CHANNEL_0</entry><entry>
+<para>Select channel 0 only </para>
+</entry></row><row><entry><indexterm><primary>E_AD9959_CHANNEL_1</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_CHANNEL_1</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55ac10215c8ca3ef4486e2f972b8bf1ab50"/>E_AD9959_CHANNEL_1</entry><entry>
+<para>Select channel 1 only </para>
+</entry></row><row><entry><indexterm><primary>E_AD9959_CHANNEL_2</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_CHANNEL_2</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a42a2b3479f328b6288975f0f829f55f3"/>E_AD9959_CHANNEL_2</entry><entry>
+<para>Select channel 2 only </para>
+</entry></row><row><entry><indexterm><primary>E_AD9959_CHANNEL_3</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_CHANNEL_3</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a6e09353b72f98a29fe2db5c7a6e47ee0"/>E_AD9959_CHANNEL_3</entry><entry>
+<para>Select channel 3 only </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+<anchor xml:id="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6"/><section>
+    <title>E_AD9959_PWR</title>
+<indexterm><primary>E_AD9959_PWR</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_PWR</secondary></indexterm>
+<para><computeroutput>enum <link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6">E_AD9959_PWR</link></computeroutput></para><para>
+
+<para>DDS Power modes. </para>
+</para>
+
+<para>typedef enum <link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6">E_AD9959_PWR</link> </para>
+<informaltable frame="all">
+<title>Enumerator</title>
+    <tgroup cols="2" align="left" colsep="1" rowsep="1">
+      <colspec colname='c1'/>
+      <colspec colname='c2'/>
+<tbody>
+<row><entry><indexterm><primary>E_AD9959_PWR_POWERED</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_PWR_POWERED</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6a229aec4bb33a5e42368fec853d4a282c"/>E_AD9959_PWR_POWERED</entry><entry>
+<para>Fully powered </para>
+</entry></row><row><entry><indexterm><primary>E_AD9959_PWR_PARTIAL</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_PWR_PARTIAL</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6a1c5124a87cd37ffbd0d50eaf74c987c1"/>E_AD9959_PWR_PARTIAL</entry><entry>
+<para>Fast recovery - Powers down digital logic and DAC digital logic </para>
+</entry></row><row><entry><indexterm><primary>E_AD9959_PWR_DOWN</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>E_AD9959_PWR_DOWN</secondary></indexterm>
+<anchor xml:id="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6ad0da32910d0ef5c4661945583ed021a3"/>E_AD9959_PWR_DOWN</entry><entry>
+<para>Full power down - Powers down all functions including DAC and PLL </para>
+</entry></row>    </tbody>
+    </tgroup>
+</informaltable>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f"/><section>
+    <title>AD9959NumberOfRegisters</title>
+<indexterm><primary>AD9959NumberOfRegisters</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>AD9959NumberOfRegisters</secondary></indexterm>
+<para><computeroutput>unsigned int AD9959NumberOfRegisters = 92<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1ac68e8badff67a631e395bbd74036e53c"/><section>
+    <title>AD9959SPIBufferLength</title>
+<indexterm><primary>AD9959SPIBufferLength</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>AD9959SPIBufferLength</secondary></indexterm>
+<para><computeroutput>unsigned int AD9959SPIBufferLength = 14<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+<anchor xml:id="__a_d9959_8h_1a66d5c07db323165da4e746e951591962"/><section>
+    <title>SPIBufferLength</title>
+<indexterm><primary>SPIBufferLength</primary><secondary>AD9959.h</secondary></indexterm>
+<indexterm><primary>AD9959.h</primary><secondary>SPIBufferLength</secondary></indexterm>
+<para><computeroutput>const unsigned int SPIBufferLength = 14</computeroutput></para></section>
+</section>
+</section>

@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__control_a_p_i_8h_source" xml:lang="en-US">
+<title>ControlAPI.h</title>
+<indexterm><primary>ControlAPI.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 
+4 
+5 <emphasis role="comment">//#ifndef&#32;USING_DLL</emphasis>
+6 <emphasis role="preprocessor">#ifdef&#32;WIN32</emphasis>
+7 <emphasis role="preprocessor">#define&#32;_AFXDLL</emphasis>
+8 <emphasis role="preprocessor">#include&#32;&lt;afxwin.h&gt;</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;MFC&#32;core&#32;and&#32;standard&#32;components</emphasis>
+9 <emphasis role="preprocessor">#endif</emphasis>
+10 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+11 <emphasis role="comment">//bool&#32;InitializeMFC();</emphasis>
+12 <emphasis role="comment">//#endif</emphasis>
+13 
+14 <emphasis role="preprocessor">#include&#32;&lt;cstdint&gt;</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;for&#32;uint8_t,&#32;uint32_t,&#32;etc.</emphasis>
+15 
+16 <emphasis role="preprocessor">#ifdef&#32;PYTHON_API</emphasis>
+17 <emphasis role="preprocessor">#undef&#32;C_API</emphasis>
+18 <emphasis role="preprocessor">#define&#32;THROW_EXCEPTIONS</emphasis>
+19 <emphasis role="preprocessor">#define&#32;API_CLASS</emphasis>
+20 <emphasis role="preprocessor">#define&#32;BUILDING_DLL</emphasis>
+21 <emphasis role="preprocessor">#endif</emphasis>
+22 
+23 <emphasis role="preprocessor">#ifdef&#32;API_CLASS</emphasis>
+24 <emphasis role="preprocessor">#undef&#32;C_API</emphasis>
+25 <emphasis role="preprocessor">#endif</emphasis>
+26 
+27 <emphasis role="preprocessor">#ifdef&#32;C_API</emphasis>
+28 <emphasis role="preprocessor">#ifdef&#32;__cplusplus</emphasis>
+29 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>&#32;{
+30 <emphasis role="preprocessor">#endif</emphasis>
+31 <emphasis role="preprocessor">#else</emphasis>
+32 <emphasis role="preprocessor">#ifdef&#32;NAMESPACE_CLA</emphasis>
+33 <emphasis role="keyword">namespace&#32;</emphasis>CLA&#32;{&#32;<emphasis role="comment">//optional,&#32;for&#32;C++&#32;APIs,&#32;use&#32;namespace&#32;CLA,&#32;instead&#32;of&#32;preceding&#32;function&#32;names&#32;with&#32;CLA_.</emphasis>
+34 <emphasis role="preprocessor">#endif</emphasis>
+35 <emphasis role="preprocessor">#endif</emphasis>
+36 
+37 <emphasis role="preprocessor">#define&#32;API_EXPORT</emphasis>
+38 <emphasis role="preprocessor">#define&#32;API_EXPORT_CLASS</emphasis>
+39 
+40 
+41 <emphasis role="preprocessor">#ifdef&#32;API_CLASS</emphasis>
+42 
+43 <emphasis role="preprocessor">#define&#32;API_EXPORT</emphasis>
+44 
+45 <emphasis role="preprocessor">#ifdef&#32;BUILDING_DLL</emphasis>
+46 <emphasis role="preprocessor">#ifdef&#32;_WIN32</emphasis>
+47 <emphasis role="preprocessor">#define&#32;API_EXPORT_CLASS&#32;__declspec(dllexport)</emphasis>
+48 <emphasis role="preprocessor">#else</emphasis>
+49 <emphasis role="preprocessor">#define&#32;API_EXPORT_CLASS</emphasis>
+50 <emphasis role="preprocessor">#endif</emphasis>
+51 <emphasis role="preprocessor">#endif</emphasis>
+52 
+53 <emphasis role="preprocessor">#ifdef&#32;USING_DLL&#32;</emphasis>
+54 <emphasis role="preprocessor">#ifdef&#32;_WIN32</emphasis>
+55 <emphasis role="preprocessor">#define&#32;API_EXPORT_CLASS&#32;__declspec(dllimport)</emphasis>
+56 <emphasis role="preprocessor">#else</emphasis>
+57 <emphasis role="preprocessor">#define&#32;API_EXPORT_CLASS</emphasis>
+58 <emphasis role="preprocessor">#endif</emphasis>
+59 <emphasis role="preprocessor">#endif</emphasis>
+60 
+61 <emphasis role="preprocessor">#else</emphasis>
+62 
+63 <emphasis role="preprocessor">#define&#32;API_EXPORT_CLASS</emphasis>
+64 <emphasis role="preprocessor">#ifdef&#32;BUILDING_DLL</emphasis>
+65 <emphasis role="preprocessor">#ifdef&#32;_WIN32</emphasis>
+66 <emphasis role="preprocessor">#define&#32;API_EXPORT&#32;__declspec(dllexport)</emphasis>
+67 <emphasis role="preprocessor">#else</emphasis>
+68 <emphasis role="preprocessor">#define&#32;API_EXPORT</emphasis>
+69 <emphasis role="preprocessor">#endif</emphasis>
+70 <emphasis role="preprocessor">#endif</emphasis>
+71 
+72 <emphasis role="preprocessor">#ifdef&#32;USING_DLL&#32;</emphasis>
+73 <emphasis role="preprocessor">#ifdef&#32;_WIN32</emphasis>
+74 <emphasis role="preprocessor">#define&#32;API_EXPORT&#32;__declspec(dllimport)</emphasis>
+75 <emphasis role="preprocessor">#else</emphasis>
+76 <emphasis role="preprocessor">#define&#32;API_EXPORT</emphasis>
+77 <emphasis role="preprocessor">#endif</emphasis>
+78 <emphasis role="preprocessor">#endif</emphasis>
+79 
+80 <emphasis role="preprocessor">#endif</emphasis>
+81 
+82 
+83 
+84 <emphasis role="preprocessor">#ifdef&#32;THROW_EXCEPTIONS</emphasis>
+85 <emphasis role="preprocessor">#define&#32;ERROR_CODE_TYPE&#32;void</emphasis>
+86 
+87 <emphasis role="preprocessor">#include&#32;&lt;stdexcept&gt;</emphasis>
+88 
+89 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis>CLA_Exception&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;std::runtime_error&#32;{
+90 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">explicit</emphasis>&#32;CLA_Exception(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;message)
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;std::runtime_error(message)&#32;{}
+93 &#32;&#32;&#32;&#32;};
+94 
+95 <emphasis role="preprocessor">#else&#32;</emphasis>
+96 <emphasis role="preprocessor">#define&#32;ERROR_CODE_TYPE&#32;bool</emphasis>
+97 <emphasis role="preprocessor">#endif</emphasis>
+98 
+99 &#32;&#32;&#32;&#32;<emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__control_a_p_i_8h_1ab0e1cf239ac3e235992bc858f58e7ea9">MaxLastError</link>&#32;=&#32;10;
+100 &#32;&#32;&#32;&#32;<emphasis role="keyword">extern</emphasis>&#32;std::string&#32;<link linkend="__control_a_p_i_8cpp_1a7d8ab587f73458e320154369f6a74c01">LastError</link>[<link linkend="__control_a_p_i_8h_1ab0e1cf239ac3e235992bc858f58e7ea9">MaxLastError</link>];
+101 &#32;&#32;&#32;&#32;<emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1aa8c7d164d3b3d02712b59520ac38b9e3">LastErrorIndex</link>;
+102 &#32;&#32;&#32;&#32;<emphasis role="keyword">extern</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a679deb1765f3544a100264eebb793da3">ErrorListWrapAround</link>;
+103 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DisplayErrors&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+104 
+105 &#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8cpp_1a782e77be7b1f71cc6e749d3d6d673cdc">AddErrorMessage</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;error_message,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;dothrow&#32;=&#32;<emphasis role="keyword">true</emphasis>);
+106 
+107 
+108 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#if&#32;!defined(BUILDING_DLL)&#32;&amp;&amp;&#32;defined(USING_DLL)</emphasis>
+109 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#define&#32;API_EXPORT&#32;</emphasis>
+110 
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//InitilizeMFC()&#32;is&#32;needed&#32;when&#32;using&#32;this&#32;code&#32;directly&#32;in&#32;an&#32;exe,&#32;not&#32;through&#32;a&#32;DLL.&#32;</emphasis>
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//If&#32;you&#32;don&apos;t&#32;have&#32;MFC&#32;already&#32;initialized,&#32;you&#32;need&#32;to&#32;call&#32;this&#32;function,&#32;or&#32;a&#32;similar&#32;one&#32;adapted&#32;to&#32;your&#32;purposes.</emphasis>
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//This&#32;is&#32;not&#32;exported&#32;to&#32;the&#32;DLL,&#32;because&#32;it&#32;is&#32;automatically&#32;called&#32;in&#32;the&#32;DLLMain&#32;function&#32;when&#32;the&#32;DLL&#32;is&#32;loaded.</emphasis>
+114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//extern&#32;bool&#32;CLA_InitializeMFC();</emphasis>
+115 
+116 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+117 
+118 
+119 
+120 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#if&#32;defined(BUILDING_DLL)&#32;||&#32;defined(USING_DLL)</emphasis>
+121 
+122 
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+124 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;class&#32;CControlApp&#32;:&#32;public&#32;CObject</emphasis>
+125 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{</emphasis>
+126 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;public:</emphasis>
+127 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CControlApp();</emphasis>
+128 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;virtual&#32;~CControlApp();</emphasis>
+129 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bool&#32;Initialize();</emphasis>
+130 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HINSTANCE&#32;m_hInstance;</emphasis>
+131 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};</emphasis>
+132 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+133 
+134 
+135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//typedef&#32;void*&#32;HControlLightAPI;</emphasis>
+136 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;BUILDING_DLL</emphasis>
+137 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;WIN32</emphasis>
+138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BOOL&#32;APIENTRY&#32;DllMain(HMODULE,&#32;DWORD,&#32;LPVOID);
+139 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+140 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+142 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+143 
+144 
+145 
+146 <emphasis role="preprocessor">#ifdef&#32;API_CLASS</emphasis>
+147 
+148 <emphasis role="preprocessor">#define&#32;CLA_FN(name)&#32;name</emphasis>
+149 <emphasis role="preprocessor">#define&#32;CLA_FNDEF(name)&#32;ControlLight_API::##name</emphasis>
+150 
+151 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="__control_a_p_i_8h_1a1c3cf2d9d1101f8bf1e704b2bae1455a">API_EXPORT_CLASS</link>&#32;ControlLight_API&#32;{
+152 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Created;
+154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ControlLight_API(<emphasis role="keywordtype">bool</emphasis>&#32;InitializeAfx&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;InitializeAfxSocket&#32;=&#32;<emphasis role="keyword">true</emphasis>);
+155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;~ControlLight_API();
+156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IsCreated();
+157 
+158 <emphasis role="preprocessor">#else</emphasis>
+159 <emphasis role="preprocessor">#define&#32;CLA_FN(name)&#32;CLA_##name</emphasis>
+160 <emphasis role="preprocessor">#define&#32;CLA_FNDEF(name)&#32;CLA_##name</emphasis>
+161 <emphasis role="preprocessor">#endif</emphasis>
+162 
+163 
+164 
+165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//API_EXPORT&#32;HControlLightAPI&#32;CLA_GetInstance();</emphasis>
+166 
+167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Call&#32;these&#32;functions&#32;in&#32;roughly&#32;this&#32;order</emphasis>
+177 
+188 
+197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a2d2fa043e1432b195756a9b7476d14b6">Create</link>)(<emphasis role="keywordtype">bool</emphasis>&#32;InitializeAfx,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;InitializeAfxSocket);&#32;<emphasis role="comment">//you&#32;must&#32;call&#32;this&#32;first,&#32;otherwise&#32;the&#32;API&#32;will&#32;not&#32;work</emphasis>
+198 
+203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aa969e43b23ebfb657bee5e58271cfffd">Cleanup</link>)();&#32;<emphasis role="comment">//You&#32;must&#32;call&#32;this&#32;before&#32;leaving&#32;your&#32;program,&#32;otherwise&#32;the&#32;API&#32;can&#32;provoke&#32;errors&#32;because&#32;memory&#32;is&#32;not&#32;freed</emphasis>
+204 
+207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ad0f0f525900c7042af9735df225b5bb4">DidErrorOccur</link>)();
+208 
+211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ae2c09044776f2f9cc07d3be713ed0ecf">GetLastError</link>)();
+212 
+216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a9f8b440cc01917e60b5d4d3e9f274f2d">Configure</link>)(<emphasis role="keywordtype">bool</emphasis>&#32;_DisplayErrors);&#32;<emphasis role="comment">//optional</emphasis>
+217 
+222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aff108a3ec1b9f7b93748f52cf6bc02ee">LoadFromJSONFile</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;filename);
+223 
+227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a0eab6140a4302ffd7677df3aeadb783a">AutoConfigure</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;filename&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+228 
+229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Once&#32;all&#32;devices&#32;have&#32;been&#32;declared,&#32;you&#32;must&#32;initialize&#32;the&#32;system,&#32;otherwise&#32;the&#32;API&#32;will&#32;not&#32;work</emphasis>
+232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ad867e66c5ee033c10c2b19bda54ef936">Initialize</link>)();
+233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Some&#32;optional&#32;commands</emphasis>
+234 
+241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3186ff65e19d503d7e7d346f3179f08e">SwitchDebugMode</link>)(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;FileName);
+242 
+243 
+248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ae19a6656f8858c7e1dd257a082f0e7d1">TransmitOnlyDifferenceBetweenCommandSequenceIfPossible</link>)(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+249 
+252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a8d65f99963c14d7859b47abddc82070f">IsReady</link>)();
+253 
+254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//To&#32;start&#32;a&#32;sequence,&#32;first&#32;call&#32;StartAssemblingSequence,&#32;then&#32;add&#32;all&#32;the&#32;commands&#32;you&#32;want&#32;to&#32;execute&#32;in&#32;the&#32;sequence</emphasis>
+255 
+258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a5f131f6edd5d984d6469eefda7fa2950">StartAssemblingSequence</link>)();
+259 
+262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a22932bc12ce2396bf547ba024b55d701">StartAssemblingNextSequence</link>)();
+263 
+264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//here&#32;are&#32;possible&#32;commands</emphasis>
+276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1abad197bb4342619e8483e132c918a48c">SetRegister</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit&#32;=&#32;0);
+277 
+291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a5f8a2790ef4d7b1539b711a4964a6b10">SetValue</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit&#32;=&#32;0);
+292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a94fc2280ca22d053f9b135338a3d291c">SetValueSerialDevice</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit&#32;=&#32;0);
+302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ab7171666e35ae8e3f4cfeca2c3ed4385">SetRegisterSerialDevice</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit&#32;=&#32;0);
+311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a559c22b0fee213f47cc2bcfac3570138">Wait_ms</link>)(<emphasis role="keywordtype">double</emphasis>&#32;time_in_ms);
+316 
+320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a221429e81929d758713b37ef122e6675">GetTime_ms</link>)(<emphasis role="keywordtype">double</emphasis>&amp;&#32;time_in_ms);
+321 
+324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a76fe243168df8d423031ce1dcc79fa6f">GetNumberOfSequencers</link>)();
+325 
+330 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a21be816bc7405b76d68549abf1837ebd">GetTimeOfSequencer_ms</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;time_in_ms);
+331 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a659cc537a03ff9e172efbfee6b8f29fe">GetTimeDebtOfSequencer_ms</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;time_debt_in_ms);
+337 
+341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a981d94d03ada70be5d4c07326280a774">GetNextBufferPositionOfMasterSequencer</link>)(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;next_buffer_position);
+342 
+347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aab1dc34f58bff0cb1894e188162798e1">SetPeriodicTrigger_ms</link>)(<emphasis role="keywordtype">double</emphasis>&#32;PeriodicTriggerPeriod_in_ms,&#32;<emphasis role="keywordtype">double</emphasis>&#32;PeriodicTriggerAllowedWaitTime_in_ms);
+348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3ee365be0bf018eb8789a30e3e1d25ba">GetNextCycleNumber</link>)(<emphasis role="keywordtype">long</emphasis>&amp;&#32;NextCycleNumber);
+353 
+356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aace7710bfbc4069e74e5955683650261">ResetCycleNumber</link>)();
+357 
+370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a4035116c1ec2f0d76f0333815915811f">TransmitI2CPort</link>)(uint8_t&#32;I2C_port,&#32;uint8_t&#32;I2C_destination,&#32;uint8_t&#32;I2C_address,&#32;uint16_t&#32;send_length,&#32;uint8_t&#32;*send_data,&#32;uint16_t&#32;receive_length,&#32;uint8_t&#32;*receive_data,&#32;uint32_t&#32;I2C_clock_frequency_in_Hz,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;I2C_success,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;fail_silently);
+371 
+375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a34afd08b785e86b0897f587071ce06ce">SetPSOptions</link>)(uint8_t&#32;options);
+376 
+384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__auto_config_8cpp_1aad395c51516feb2cb6691e153cdb5df1">WriteConfigEEPROM</link>)(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;data,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;length);
+385 
+394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__auto_config_8cpp_1af7ae1d1d4d88b31de333b5dfaf4c733b">ReadConfigEEPROM</link>)(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;<emphasis role="keywordtype">char</emphasis>*&#32;data,&#32;<emphasis role="keywordtype">size_t</emphasis>&amp;&#32;length,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&amp;I2C_success);
+395 
+402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__auto_config_8cpp_1a281f7b4a3c83dc4aaba3b2625288e7a0">WriteConfigAddress</link>)(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;uint8_t&#32;address);
+403 
+411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__auto_config_8cpp_1a6e7fa30abd688cb9b2030233aae40df7">ReadConfigAddress</link>)(uint8_t&#32;SequencerID,&#32;uint8_t&#32;RackNr,&#32;uint8_t&#32;SlotNr,&#32;uint8_t&amp;&#32;address,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;I2C_success);
+412 
+416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__auto_config_8cpp_1adaba071de1c2264ff86494e12fe40cd2">ReadConfiguration</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;filename&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+417 
+421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__auto_config_8cpp_1a373a270b5fa5a46935c61759ee121208">GetAutoConfigJSON</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;filename&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+422 
+423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//The&#32;following&#32;functions&#32;enable&#32;you&#32;to&#32;assemble&#32;a&#32;CPU&#32;command&#32;sequence&#32;on&#32;the&#32;master&#32;sequencer,&#32;which&#32;can&#32;then&#32;be&#32;executed&#32;by&#32;the&#32;CPU.</emphasis>
+424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//These&#32;command&#32;sequences&#32;can&#32;start&#32;FPGA&#32;command&#32;sequence,&#32;analyze&#32;acquired&#32;data,&#32;modify&#32;the&#32;FPGA&#32;command&#32;sequence&#32;and&#32;repeat.</emphasis>
+425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//This&#32;enables&#32;for&#32;example:&#32;digital&#32;PIDs,&#32;digital&#32;VCOs,...</emphasis>
+426 
+429 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a463fc400c96a62165a8ad021a4e4e1be">StartAssemblingCPUCommandSequence</link>)();
+430 
+434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a96f4fe09147715dab0a5676c88827c68">AddCPUCommand</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;command);
+435 
+439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a81ee3246f4cfc5c1fdc2258efbe52044">ExecuteCPUCommandSequence</link>)(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;ethernet_check_period_in_ms);
+440 
+443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a58dc2d9a6ce548718b252b32e21bec1f">StopCPUCommandSequence</link>)();
+444 
+447 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3ec9723b169bfd734c83bcf482aa9af1">InterruptCPUCommandSequence</link>)();
+448 
+451 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a081fccbddb0ada74620d1fd7d00d1166">GetCPUCommandErrorMessages</link>)();
+452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a5b441bcff03408e7084755a9c1facaad">PrintCPUCommandErrorMessages</link>)();
+456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+459 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a9abaa18240c27eed456020baa85b7984">PrintCPUCommandSequence</link>)();
+460 
+461 
+462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//the&#32;following&#32;are&#32;convenience&#32;functions,&#32;which&#32;allow&#32;us&#32;to&#32;define&#32;nice&#32;names&#32;to&#32;the&#32;few&#32;most&#32;important&#32;functions</emphasis>
+463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//You&#32;can&#32;add&#32;as&#32;many&#32;convenience&#32;functions&#32;as&#32;you&#32;like.&#32;Make&#32;sure&#32;to&#32;copy&#32;them&#32;also&#32;into&#32;the&#32;list&#32;of&#32;convenience&#32;functions&#32;in&#32;CDevice,&#32;CDevice.h,&#32;to&#32;assure&#32;they&#32;can&#32;always&#32;be&#32;called&#32;in&#32;any&#32;device.</emphasis>
+464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Then&#32;define&#32;them&#32;in&#32;the&#32;device&#32;that&#32;provides&#32;the&#32;function.&#32;In&#32;this&#32;way&#32;we&#32;use&#32;the&#32;inheritance&#32;mechanism&#32;to&#32;automatically&#32;check&#32;if&#32;the&#32;function&#32;is&#32;available&#32;in&#32;the&#32;device&#32;and&#32;)(optionally)&#32;produce&#32;an&#32;error&#32;if&#32;not.</emphasis>
+465 
+466 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Analog&#32;out</emphasis>
+467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convenience&#32;functions&#32;to&#32;easily&#32;access&#32;the&#32;most&#32;important&#32;functions&#32;of&#32;the&#32;devices</emphasis>
+472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Analog&#32;out</emphasis>
+473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a94082ed5fabf2e2f1fdb9ddff5e3f927">SetVoltage</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Voltage);
+474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Digital&#32;out</emphasis>
+481 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aafc22ae54400ca0dac7c5ae2c9a5323e">SetDigitalOutput</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint8_t&#32;BitNr,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+482 
+483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//AD9854</emphasis>
+489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aeaefe9e4f0c4d23e645cdbd5ee32ce0a">SetStartFrequency</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+490 
+496 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ad489aba20c7cdadcc9686fe4a7491e2d">SetStopFrequency</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+497 
+503 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a0949f1333682c8a43913831669155d65">SetModulationFrequency</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+504 
+510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a0bf8ab1ba1ef75a7ffe7a6cf9122b30d">SetPower</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Power);
+511 
+517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3dd0fc517153ec5ba8507c7e799942aa">SetAttenuation</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Attenuation);
+518 
+519 
+525 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ad9dc85e3de6f99bfa5936deb6e34b2c7">SetIOUpdateEnabled</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IOUpdateEnabled);
+526 
+532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a9bd59aedb811a015970e0be2bea8b124">SetStartFrequencyTuningWord</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint64_t&#32;FrequencyTuningWord);
+533 
+539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a644830db2c0da6c7eb0008bff6cd025a">SetStopFrequencyTuningWord</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint64_t&#32;FrequencyTuningWord);
+540 
+546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a04caf38d2f875d81db071c501665bd52">SetFSKMode</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint8_t&#32;mode);
+547 
+553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a45c53df7b4c759187b6d3f5981056a09">SetRampRateClock</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint8_t&#32;rate);
+554 
+560 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1adf175ebeaa66ad48a1d628fc80709d1a">SetClearACC1</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+561 
+567 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ade90a369329eaf77f7f4611f05ca093b">SetTriangleBit</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+568 
+574 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a13fdb690bdb322e5d8d90d0d4cb5ea2d">SetFSKBit</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+575 
+576 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+577 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//AD9858</emphasis>
+583 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1adebc9e720e4b0afda1c4b980fbc11459">SetFrequency</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+584 
+590 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a4deeeed623c85a57469dae267fc009e9">SetFrequencyTuningWord</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint64_t&#32;FrequencyTuningWord);
+591 
+592 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//those&#32;two&#32;functions&#32;have&#32;been&#32;defined&#32;already&#32;in&#32;the&#32;context&#32;of&#32;the&#32;AD9854,&#32;so&#32;we&#32;don&apos;t&#32;need&#32;to&#32;redefine&#32;them&#32;here</emphasis>
+593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//API_EXPORT&#32;ERROR_CODE_TYPE&#32;CLA_FN(SetPower)(const&#32;unsigned&#32;int&amp;&#32;Sequencer,&#32;const&#32;unsigned&#32;int&amp;&#32;Address,&#32;double&#32;Power);//same&#32;as&#32;for&#32;AD9854,&#32;no&#32;need&#32;to&#32;redefine</emphasis>
+594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//API_EXPORT&#32;ERROR_CODE_TYPE&#32;CLA_FN(SetAttenuation)(const&#32;unsigned&#32;int&amp;&#32;Sequencer,&#32;const&#32;unsigned&#32;int&amp;&#32;Address,&#32;double&#32;Power);</emphasis>
+595 
+596 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//AD9959</emphasis>
+597 
+602 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a2401f1f815f01bc50adeba298242707b">Reset</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address);
+603 
+610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a36fa5bbf98b9f2680225d630a3319636">SetFrequencyOfChannel</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Frequency);
+611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+618 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ab864571d668680c9096085c5ed337592">SetFrequencyTuningWordOfChannel</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint8_t&#32;channel,&#32;uint64_t&#32;FrequencyTuningWord);
+619 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+626 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3d8f917be9190e50af5d548416f9fcd7">SetPhaseOfChannel</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Phase);
+627 
+634 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a561caef491d5510871c71610620cd317">SetPowerOfChannel</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Address,&#32;uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;Power);
+635 
+636 
+637 
+638 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+639 
+640 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;once&#32;the&#32;sequence&#32;is&#32;assembled,&#32;we&#32;can&#32;send&#32;it&#32;to&#32;the&#32;FPGA&#32;without&#32;executing&#32;it&#32;&#32;</emphasis>
+644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1afa973fcda1deebc284c72d91d684a461">SendSequence</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;FileName&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+645 
+646 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;once&#32;the&#32;sequence&#32;is&#32;assembled,&#32;then&#32;execute&#32;it&#32;</emphasis>
+651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1afb76ff068e2c4a9b205c615c4b6f49cb">ExecuteSequence</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;FileName&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+652 
+653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;once&#32;the&#32;sequence&#32;is&#32;assembled,&#32;then&#32;execute&#32;it&#32;</emphasis>
+656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a7f98012b71c694ad22df4fd57f79e48d">RepeatSequence</link>)();
+657 
+658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Wait&#32;till&#32;the&#32;sequence&#32;is&#32;finished</emphasis>
+662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1af455c591a3648d967149287359b1980f">WaitTillEndOfSequence</link>)(<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_s&#32;=&#32;0);
+663 
+664 &#32;&#32;&#32;&#32;
+665 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//check&#32;how&#32;far&#32;the&#32;sequence&#32;has&#32;been&#32;executed</emphasis>
+669 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ae827da631cb9135289137a331bc3e3a9">GetSequenceExecutionStatus</link>)(<emphasis role="keywordtype">bool</emphasis>&amp;&#32;running,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataPointsWritten);
+670 
+671 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//Wait&#32;till&#32;the&#32;sequence&#32;is&#32;finished,&#32;and&#32;get&#32;the&#32;data&#32;from&#32;the&#32;input&#32;devices</emphasis>
+677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ae11c2f457429ac307cee5322e091eb7c">WaitTillEndOfSequenceThenGetInputData</link>)(uint8_t*&amp;&#32;buffer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;buffer_length,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;EndTimeOfCycle,&#32;<emphasis role="keywordtype">double</emphasis>&#32;timeout_in_s);
+678 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a6ae5f98b269cf285416e23dbd2928946">SetTimeDebtGuard_in_ms</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;MaxTimeDebt_in_ms);
+683 
+698 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1abc2074b1daacdb7e5da7c917f64ed688">SequencerStartAnalogInAcquisition</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;&amp;analog_in_type,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&#32;&amp;SPI_CS,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;ChannelNumber,&#32;<emphasis role="keyword">const</emphasis>&#32;uint32_t&amp;&#32;NumberOfDataPoints,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;DelayBetweenDataPoints_in_ms);
+699 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1acdff3dba475709add5fd0048e7f4a949">SequencerWriteInputMemory</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;input_buf_mem_data,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;write_next_address&#32;=&#32;1,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;input_buf_mem_address&#32;=&#32;0);
+709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+710 
+773 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3435cb10e7c31ef375bf23872986c9c4">SequencerCalcAD9854FrequencyTuningWord</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint64_t&#32;ftw0,&#32;uint8_t&#32;bit_shift&#32;=&#32;22);
+774 
+775 
+779 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a4984974edc2acf116b3d5921e909b6fd">SequencerWriteSystemTimeToInputMemory</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer);
+780 
+785 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ae7807aa91bd081ff8dd83522fbddff94">SequencerSwitchDebugLED</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;OnOff);
+786 
+790 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a461f485d247a7ee6cecd937defcf1725">SetSequencerDigitalOut</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint8_t&#32;dig_out_pattern);
+791 
+795 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a9f6f8f1c446885d9ab059dec8eae7830">SetSequencer_PL_to_PS_command</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint8_t&#32;PL_to_PS_command);
+796 
+800 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1af7c82fe5aee206b95a5ee9b969427628">SwitchSequencerBuzzer</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+801 
+810 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a72f33e9b346a9b89489678dca5e7908f">SequencerIgnoreTCPIP</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+811 
+815 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a345b20fac2d8e0b43b844db9267dda2e">UseEdgeTriggeredLatches</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a345b20fac2d8e0b43b844db9267dda2e">UseEdgeTriggeredLatches</link>);
+816 
+821 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a5fd6294ae4f463293e5b4ac8ca5f5f29">SequencerAddMarker</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;marker);
+822 
+826 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ad405df08719c34a979d4b158db76a73e">SequencerSetTimeDebtGuard_in_ms</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">double</emphasis>&amp;&#32;MaxTimeDebt_in_ms);
+827 
+831 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a0af05feef38683cc06975ae652cd9204">SequencerSetLoopCount</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;loop_count);
+832 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+843 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aca46df8c0c75992e55684a8a4fc6031e">SequencerJumpBackward</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;jump_length,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;unconditional_jump&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_0&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_1&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_PS&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_dig_in&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;uint8_t&#32;dig_in_bit_nr&#32;=&#32;0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;loop_count_greater_zero&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+844 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+854 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a5c272ba84a658c87677b8605d5b13225">SequencerJumpForward</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;jump_length,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;unconditional_jump&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_0&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_1&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_PS&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;condition_dig_in&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;uint8_t&#32;dig_in_bit_nr&#32;=&#32;0);
+855 
+862 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ae41b712d44b3011ca436b947e44d0352">SequencerTransmitI2C</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint8_t&#32;I2C_port,&#32;uint8_t&#32;I2C_length_out,&#32;uint8_t&#32;I2C_length_in,&#32;uint8_t*&#32;data_out);
+863 
+871 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aed4349d2d1dafbd996e44fa32dee08bb">SequencerTransmitSPI</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint8_t&#32;chip_select,&#32;uint16_t&#32;number_of_bits_out,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;data_out,&#32;uint8_t&#32;number_of_bits_in,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;start_now);
+872 
+879 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1afa9ec8c58f7c57636f0b3a5ed74d502a">SequencerRepeatedOutIn</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint16_t&#32;number_of_datapoints,&#32;<emphasis role="keywordtype">double</emphasis>&#32;delay_between_datapoints_in_ms,&#32;uint8_t&#32;RepeatedOutInCommand);
+880 
+888 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a6dd2fcf7109333fa785b4dc0a5b87ac9">SequencerSetSPITiming</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint16_t&#32;SPI_delay_CS_low_start_wait,&#32;uint16_t&#32;SPI_delay_write,&#32;uint16_t&#32;SPI_delay_pause_before_read,&#32;uint16_t&#32;SPI_delay_read,&#32;uint16_t&#32;SPI_delay_CS_low_end_wait);
+889 
+898 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a4477299102394f0f113db7fe935d92d7">SequencerSetSPIMode</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint8_t&#32;SPI_mode);
+899 
+908 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a6e9a76df6aed263f8857747e325be180">SequencerSetI2CParameters</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint8_t&#32;I2C_0_Destination,&#32;uint8_t&#32;I2C_delay_start_stop,&#32;uint8_t&#32;I2C_delay_data_setup,&#32;uint8_t&#32;I2C_delay_clock_high,&#32;uint8_t&#32;I2C_delay_clock_low,&#32;uint8_t&#32;I2C_delay_pause_before_read);
+909 
+910 
+915 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ad1747f42c8f9245e1ee80bb869e5fb74">SelectRackSlot</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer,&#32;uint8_t&#32;rack_nr,&#32;uint8_t&#32;slot_nr);
+916 
+917 
+920 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3d71340d302ae2de61b498e43d43ad0a">ResetI2CMultiplexer</link>)(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;Sequencer);
+921 
+922 
+923 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//the&#32;following&#32;functions&#32;are&#32;used&#32;to&#32;add&#32;devices&#32;to&#32;the&#32;sequencer.&#32;I&#32;placed&#32;them&#32;here&#32;to&#32;avoid&#32;clutter&#32;above.&#32;They&#32;have&#32;to&#32;be&#32;called&#32;before&#32;Initialize)().&#32;</emphasis>
+938 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a14ad2f1b6a43d864a4f075f7e28fd969">AddDeviceSequencer</link>)(
+939 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;id,
+940 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;type,
+941 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;ip,
+942 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;port,
+943 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;master,
+944 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;startDelay,
+945 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;clockFrequency,
+946 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;FPGAClockToBusClockRatio,
+947 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;useExternalClock,
+948 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;useStrobeGenerator,
+949 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a345b20fac2d8e0b43b844db9267dda2e">UseEdgeTriggeredLatches</link>,
+950 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;connect);
+951 
+960 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a9b9d47663058740484d1b6c772967567">AddDeviceAnalogOut16bit</link>)(
+961 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sequencer,
+962 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;startAddress,
+963 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberChannels,
+964 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;signedValue,
+965 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;minVoltage,
+966 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;maxVoltage);
+967 
+973 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1ac4890589c0e5b5b4cb59d7ccd3f5606c">AddDeviceDigitalOut</link>)(
+974 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sequencer,
+975 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;address,
+976 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberChannels);
+977 
+978 
+987 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1af2e5d254aaad92f36a124ff029994fec">AddDeviceAD9854</link>)(
+988 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sequencer,
+989 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;address,
+990 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;version,
+991 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;externalClockFrequency,
+992 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uint8_t&#32;PLLReferenceMultiplier,
+993 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;frequencyMultiplier);
+994 
+1001 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1acdbe85dfdbc1ba43905be7c1e63334d2">AddDeviceAD9858</link>)(
+1002 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sequencer,
+1003 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;address,
+1004 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;externalClockFrequency,
+1005 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;frequencyMultiplier);
+1006 
+1014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1a3552399b8e41d6717ff639d59c475951">AddDeviceAD9959</link>)(
+1015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sequencer,
+1016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;address,
+1017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;externalClockFrequency,
+1018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;frequencyMultiplier,
+1019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AD9958);
+1020 
+1028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__control_a_p_i_8h_1a5e3652cae8b48c1ad174f0b06bbd06d0">API_EXPORT</link>&#32;<link linkend="__control_a_p_i_8h_1aeb04e3165c1e12a3653ac311ee466995">ERROR_CODE_TYPE</link>&#32;<link linkend="__control_a_p_i_8h_1a508a3fd47b47db49be429d0149e6df38">CLA_FN</link>(<link linkend="__control_a_p_i_8cpp_1aa6f77c364b5e13820a3b84cd7a9e517e">AddDeviceAnalogIn12bit</link>)(
+1029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;sequencer,
+1030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;chipSelect,
+1031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;signedValue,
+1032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;minVoltage,
+1033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;maxVoltage);
+1034 
+1035 
+1036 <emphasis role="preprocessor">#ifdef&#32;API_CLASS</emphasis>
+1037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+1038 
+1039 <emphasis role="preprocessor">#endif</emphasis>
+1040 &#32;&#32;&#32;&#32;
+1041 
+1042 <emphasis role="preprocessor">#ifdef&#32;C_API</emphasis>
+1043 <emphasis role="preprocessor">#ifdef&#32;__cplusplus</emphasis>
+1044 }
+1045 <emphasis role="preprocessor">#endif</emphasis>
+1046 <emphasis role="preprocessor">#else</emphasis>
+1047 <emphasis role="preprocessor">#ifdef&#32;NAMESPACE_CLA</emphasis>
+1048 &#32;&#32;&#32;&#32;}&#32;<emphasis role="comment">//option&#32;namespace&#32;CLA</emphasis>
+1049 <emphasis role="preprocessor">#endif</emphasis>
+1050 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

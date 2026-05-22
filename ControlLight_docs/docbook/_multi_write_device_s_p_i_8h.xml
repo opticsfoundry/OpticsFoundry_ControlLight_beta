@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__multi_write_device_s_p_i_8h" xml:lang="en-US">
+<title>MultiWriteDeviceSPI.h File Reference</title>
+<indexterm><primary>MultiWriteDeviceSPI.h</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;MultiWriteDevice.h&quot;<?linebreak?>#include &lt;cstdint&gt;<?linebreak?></programlisting><simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_c_multi_write_device_s_p_i">CMultiWriteDeviceSPI</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>const unsigned int <link linkend="__multi_write_device_s_p_i_8h_1a669a765d62b2d28c8657747bfe0fad1e">MultiWriteDeviceSPIMaxBusBuffer</link> = 1024*128</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__multi_write_device_s_p_i_8h_1a669a765d62b2d28c8657747bfe0fad1e"/><section>
+    <title>MultiWriteDeviceSPIMaxBusBuffer</title>
+<indexterm><primary>MultiWriteDeviceSPIMaxBusBuffer</primary><secondary>MultiWriteDeviceSPI.h</secondary></indexterm>
+<indexterm><primary>MultiWriteDeviceSPI.h</primary><secondary>MultiWriteDeviceSPIMaxBusBuffer</secondary></indexterm>
+<para><computeroutput>const unsigned int MultiWriteDeviceSPIMaxBusBuffer = 1024*128</computeroutput></para></section>
+</section>
+</section>

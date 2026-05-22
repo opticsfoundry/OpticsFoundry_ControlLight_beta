@@ -1,0 +1,77 @@
+{
+  "ConfigurationName": "AQuRA",
+  "PCSequenceBufferSize": 134217728,
+  "LineFrequency": 50,
+  "Sequencers": [
+    {
+      "Id": 0,
+      "Type": "OpticsFoundrySequencerV1",
+      "IP": "192.168.0.109",
+      "Port": 7,
+      "Master": true,
+      "StartDelay": 10,
+      "ClockFrequency": 100000000,
+      "FPGAClockToBusClockRatio": 50,
+      "UseExternalClock": false,
+      "UseStrobeGenerator": true,
+      "Connect": true
+    }
+  ],
+  "AnalogOutBoards": [
+    {
+      "Sequencer": 0,
+      "StartAddress": 24,
+      "NumberChannels": 4,
+      "Signed": false,
+      "MinVoltage": 0,
+      "MaxVoltage": 10
+    },
+    {
+      "Sequencer": 0,
+      "StartAddress": 552,
+      "NumberChannels": 4,
+      "Signed": true,
+      "MinVoltage": -10,
+      "MaxVoltage": 10
+    }
+  ],
+  "DigitalOutBoards": [
+    {
+      "Sequencer": 0,
+      "Address": 1,
+      "NumberChannels": 16
+    },
+    {
+      "Sequencer": 0,
+      "Address": 2,
+      "NumberChannels": 16
+    }
+  ],
+  "DDSAD9854Boards": [
+    {
+      "Version": 2,
+      "Sequencer": 0,
+      "Address": 232,
+      "ExternalClockFrequency": 300000000,
+      "PLLReferenceMultiplier": 1,
+      "FrequencyMultiplier": 1
+    }
+  ],
+  "DDSAD9858Boards": [
+    {
+      "Sequencer": 0,
+      "Address": 652,
+      "ClockFrequency": 12000000000,
+      "FrequencyMultiplier": 1
+    }
+  ],
+  "AnalogInBoards12bit": [
+    { 
+      "Sequencer": 0,
+      "ChipSelect": 0,
+      "Signed": false,
+      "minVoltage": 0,
+      "maxVoltage": 10
+    }
+  ]
+}

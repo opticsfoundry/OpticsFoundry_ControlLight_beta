@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_network_client" xml:lang="en-US">
+<title>CNetworkClient Class Reference</title>
+<indexterm><primary>CNetworkClient</primary></indexterm>
+<para>
+<computeroutput>#include &lt;NetworkClient.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_c_network_client_1a8910ea6eed68c564400450d5862630e7">DebugStop</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_client_1aa31d2be69c20ce99700174dcd611168d">DebugStart</link> (const std::string &amp;Filename)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_client_1a5818c4d0f1aaa69b2bc491d0cf9dd7ae">StopFastWrite</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_client_1a123998444e8b94e06afa8123e9e0ff85">StartFastWrite</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_client_1a17f3a63ba6ba201dfb151df2321a2779">Flush</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1afbfb4cf24f716bb407ea9c81492d7d43">Ready</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1ade76f1386eee005c6be7cfcaa2231e5c">ConnectSocket</link> (const std::string &amp;host, unsigned int port, const std::string &amp;SocketName)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a1eb667906194cfc5bf02c6bfc0cf1931">ReadDouble</link> (double &amp;Value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a078404ce92a9be5365035b7c2a04a307">ReadBool</link> (bool &amp;Value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a775fc0bec345b23432709469e62eeb4b">ReadInt</link> (int &amp;Value, double timeout_in_seconds=5)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1ae4d8e702728214f13bd25b970248544f">ReadLong</link> (long &amp;Value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a2a50ebd0407f16f71833f1da86df58d0">ReadInt64</link> (unsigned long long &amp;Value)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1ad0e3a1bcb3c054fff461fa8cdbbb98e7">SendCommand</link> (const <link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp;comand)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1afe87778a8f16d9124d8aa8e6bc719aa3">SendData</link> (uint8_t *Data, unsigned long Size, bool SendReady=true)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a45f8d92bbc28c4f6e810c61aa2c69bd0">WriteDouble</link> (double d)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a3f15a752b8819c02939a66e93c85cf05">WriteInteger</link> (long i)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a090cea8ba6a390bef4ba1e6b1d07dc24">WriteBoolean</link> (bool b)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a8192fdd2fd91542acb36d7b55db8850f">WriteString</link> (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> s)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a4bc6c43fd50b859143384f2263e320b9">WriteChar</link> (char c)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1afdb6aa09963fa6c9a14fd8ce2c87e443">Command</link> (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> comand, bool DontWaitForReady=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1a19ac3b738e641c7b4c2e6f69a81c0492">AttemptCommand</link> (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> CommandString, bool DontWaitForReady=false)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1ac843dfb3b55b53870f6ccc0ee4d6cdad">GetCommand</link> (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp;<link linkend="_class_c_network_client_1afdb6aa09963fa6c9a14fd8ce2c87e443">Command</link>, double timeout_in_seconds=5)</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_network_client_1a61cfe49126cdac8b353ed6608e79f178">CNetworkClient</link> (int amode, bool aFastWrite=false)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_network_client_1ae8b3e254e2b1d51d99b1c3960184f2e6">~CNetworkClient</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_client_1a07ea9fe6812253a9c7b91551e0412e1f">Debug</link> (const std::string &amp;filename)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_c_network">CNetwork</link> * <link linkend="_class_c_network_client_1a1410e8c5240e0304ed027391c406b74f">Network</link></para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_client_1abc51ae065d8ddbe4f1a6043b5e3a834d">FastWrite</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_network_client_1a61cfe49126cdac8b353ed6608e79f178"/><section>
+    <title>CNetworkClient()</title>
+<indexterm><primary>CNetworkClient</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>CNetworkClient</secondary></indexterm>
+<para><computeroutput>CNetworkClient::CNetworkClient (int amode, bool aFastWrite = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1ae8b3e254e2b1d51d99b1c3960184f2e6"/><section>
+    <title>~CNetworkClient()</title>
+<indexterm><primary>~CNetworkClient</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>~CNetworkClient</secondary></indexterm>
+<para><computeroutput>CNetworkClient::~CNetworkClient ( )<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_network_client_1a19ac3b738e641c7b4c2e6f69a81c0492"/><section>
+    <title>AttemptCommand()</title>
+<indexterm><primary>AttemptCommand</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>AttemptCommand</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::AttemptCommand (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> CommandString, bool DontWaitForReady = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1afdb6aa09963fa6c9a14fd8ce2c87e443"/><section>
+    <title>Command()</title>
+<indexterm><primary>Command</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>Command</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::Command (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> comand, bool DontWaitForReady = <computeroutput>false</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1ade76f1386eee005c6be7cfcaa2231e5c"/><section>
+    <title>ConnectSocket()</title>
+<indexterm><primary>ConnectSocket</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>ConnectSocket</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::ConnectSocket (const std::string &amp; host, unsigned int port, const std::string &amp; SocketName)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a07ea9fe6812253a9c7b91551e0412e1f"/><section>
+    <title>Debug()</title>
+<indexterm><primary>Debug</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>Debug</secondary></indexterm>
+<para><computeroutput>void CNetworkClient::Debug (const std::string &amp; filename)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1aa31d2be69c20ce99700174dcd611168d"/><section>
+    <title>DebugStart()</title>
+<indexterm><primary>DebugStart</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>DebugStart</secondary></indexterm>
+<para><computeroutput>void CNetworkClient::DebugStart (const std::string &amp; Filename)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a8910ea6eed68c564400450d5862630e7"/><section>
+    <title>DebugStop()</title>
+<indexterm><primary>DebugStop</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>DebugStop</secondary></indexterm>
+<para><computeroutput>void CNetworkClient::DebugStop ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a17f3a63ba6ba201dfb151df2321a2779"/><section>
+    <title>Flush()</title>
+<indexterm><primary>Flush</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>Flush</secondary></indexterm>
+<para><computeroutput>void CNetworkClient::Flush ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1ac843dfb3b55b53870f6ccc0ee4d6cdad"/><section>
+    <title>GetCommand()</title>
+<indexterm><primary>GetCommand</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>GetCommand</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::GetCommand (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp; Command, double timeout_in_seconds = <computeroutput>5</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a078404ce92a9be5365035b7c2a04a307"/><section>
+    <title>ReadBool()</title>
+<indexterm><primary>ReadBool</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>ReadBool</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::ReadBool (bool &amp; Value)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a1eb667906194cfc5bf02c6bfc0cf1931"/><section>
+    <title>ReadDouble()</title>
+<indexterm><primary>ReadDouble</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>ReadDouble</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::ReadDouble (double &amp; Value)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a775fc0bec345b23432709469e62eeb4b"/><section>
+    <title>ReadInt()</title>
+<indexterm><primary>ReadInt</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>ReadInt</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::ReadInt (int &amp; Value, double timeout_in_seconds = <computeroutput>5</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a2a50ebd0407f16f71833f1da86df58d0"/><section>
+    <title>ReadInt64()</title>
+<indexterm><primary>ReadInt64</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>ReadInt64</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::ReadInt64 (unsigned long long &amp; Value)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1ae4d8e702728214f13bd25b970248544f"/><section>
+    <title>ReadLong()</title>
+<indexterm><primary>ReadLong</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>ReadLong</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::ReadLong (long &amp; Value)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1afbfb4cf24f716bb407ea9c81492d7d43"/><section>
+    <title>Ready()</title>
+<indexterm><primary>Ready</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>Ready</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::Ready ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1ad0e3a1bcb3c054fff461fa8cdbbb98e7"/><section>
+    <title>SendCommand()</title>
+<indexterm><primary>SendCommand</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>SendCommand</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::SendCommand (const <link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp; comand)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1afe87778a8f16d9124d8aa8e6bc719aa3"/><section>
+    <title>SendData()</title>
+<indexterm><primary>SendData</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>SendData</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::SendData (uint8_t * Data, unsigned long Size, bool SendReady = <computeroutput>true</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a123998444e8b94e06afa8123e9e0ff85"/><section>
+    <title>StartFastWrite()</title>
+<indexterm><primary>StartFastWrite</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>StartFastWrite</secondary></indexterm>
+<para><computeroutput>void CNetworkClient::StartFastWrite ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a5818c4d0f1aaa69b2bc491d0cf9dd7ae"/><section>
+    <title>StopFastWrite()</title>
+<indexterm><primary>StopFastWrite</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>StopFastWrite</secondary></indexterm>
+<para><computeroutput>void CNetworkClient::StopFastWrite ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a090cea8ba6a390bef4ba1e6b1d07dc24"/><section>
+    <title>WriteBoolean()</title>
+<indexterm><primary>WriteBoolean</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>WriteBoolean</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::WriteBoolean (bool b)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a4bc6c43fd50b859143384f2263e320b9"/><section>
+    <title>WriteChar()</title>
+<indexterm><primary>WriteChar</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>WriteChar</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::WriteChar (char c)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a45f8d92bbc28c4f6e810c61aa2c69bd0"/><section>
+    <title>WriteDouble()</title>
+<indexterm><primary>WriteDouble</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>WriteDouble</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::WriteDouble (double d)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a3f15a752b8819c02939a66e93c85cf05"/><section>
+    <title>WriteInteger()</title>
+<indexterm><primary>WriteInteger</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>WriteInteger</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::WriteInteger (long i)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a8192fdd2fd91542acb36d7b55db8850f"/><section>
+    <title>WriteString()</title>
+<indexterm><primary>WriteString</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>WriteString</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::WriteString (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> s)</computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_network_client_1abc51ae065d8ddbe4f1a6043b5e3a834d"/><section>
+    <title>FastWrite</title>
+<indexterm><primary>FastWrite</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>FastWrite</secondary></indexterm>
+<para><computeroutput>bool CNetworkClient::FastWrite</computeroutput></para></section>
+<anchor xml:id="_class_c_network_client_1a1410e8c5240e0304ed027391c406b74f"/><section>
+    <title>Network</title>
+<indexterm><primary>Network</primary><secondary>CNetworkClient</secondary></indexterm>
+<indexterm><primary>CNetworkClient</primary><secondary>Network</secondary></indexterm>
+<para><computeroutput><link linkend="_class_c_network">CNetwork</link>* CNetworkClient::Network</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__network_client_8h">NetworkClient.h</link><link linkend="__network_client_8cpp">NetworkClient.cpp</link></section>
+</section>

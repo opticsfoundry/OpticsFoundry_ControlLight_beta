@@ -1,0 +1,9 @@
+var searchData=
+[
+  ['time_0',['Time',['../std_8h.html#a232395c051c7d6ad1c46b894b66fcc4f',1,'std.h']]],
+  ['todo_20list_1',['Todo List',['../todo.html',1,'']]],
+  ['transmiti2cport_2',['TransmitI2CPort',['../class_c_device_sequencer.html#a9d17d9e2c1cb2dd77a0d83b17282a3e3',1,'CDeviceSequencer::TransmitI2CPort()'],['../_control_a_p_i_8cpp.html#a4035116c1ec2f0d76f0333815915811f',1,'TransmitI2CPort(uint8_t I2C_port, uint8_t I2C_destination, uint8_t I2C_address, uint16_t send_length, uint8_t *send_data, uint16_t receive_length, uint8_t *receive_data, uint32_t I2C_clock_frequency_in_Hz, bool &amp;I2C_success, bool fail_silently):&#160;ControlAPI.cpp'],['../_control_a_p_i_8h.html#a918956cfb14af716d895b3b094f65e70',1,'TransmitI2CPort(uint8_t I2C_port, uint8_t I2C_destination, uint8_t I2C_address, uint16_t send_length, uint8_t *send_data, uint16_t receive_length, uint8_t *receive_data, uint32_t I2C_clock_frequency_in_Hz, bool &amp;I2C_success, bool fail_silently):&#160;ControlAPI.cpp']]],
+  ['transmitonlydifferencebetweencommandsequenceifpossible_3',['TransmitOnlyDifferenceBetweenCommandSequenceIfPossible',['../class_c_device_sequencer.html#aa963f7fadf133d2ebd47dafa8ab53d12',1,'CDeviceSequencer::TransmitOnlyDifferenceBetweenCommandSequenceIfPossible()'],['../_control_a_p_i_8cpp.html#ae19a6656f8858c7e1dd257a082f0e7d1',1,'TransmitOnlyDifferenceBetweenCommandSequenceIfPossible(bool OnOff):&#160;ControlAPI.cpp'],['../_control_a_p_i_8h.html#a6839d5c4cdac2ef3b62617b6fb2172c1',1,'TransmitOnlyDifferenceBetweenCommandSequenceIfPossible(bool OnOff):&#160;ControlAPI.cpp']]],
+  ['tuneword_5fbits_4',['TUNEWORD_BITS',['../_a_d9959_8cpp.html#af89cc4d665d9dbf6e4fd69f4be20b99d',1,'AD9959.cpp']]],
+  ['type_5',['type',['../class_c_device_sequencer.html#a325e75933aa20ab3f46db3ef1c015bfc',1,'CDeviceSequencer']]]
+];

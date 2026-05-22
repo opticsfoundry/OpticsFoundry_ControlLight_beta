@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_device_analog_in12bit" xml:lang="en-US">
+<title>CDeviceAnalogIn12bit Class Reference</title>
+<indexterm><primary>CDeviceAnalogIn12bit</primary></indexterm>
+<para>
+<computeroutput>#include &lt;CDeviceAnalogIn.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for CDeviceAnalogIn12bit:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_c_device_analog_in12bit.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_analog_in12bit_1adcab5cd92d1fd5e0872b9c044c8ce553">CDeviceAnalogIn12bit</link> (<link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MySequencer, unsigned int _chipSelect, bool _signedValue, double _minVoltage, double _maxVoltage)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_device_analog_in12bit_1abc133cd42f064d7fc7b07adc72a1c86c">~CDeviceAnalogIn12bit</link> ()=default</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_analog_in12bit_1afc45da4231e770e88b4964da2315c818">SetValue</link> (const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_c_device">CDevice</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link> (<link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MySequencer=nullptr, unsigned long _MyAddress=0, const std::string _MyType=&quot;&quot;)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_device_1aa3ec8544aad768caa0c45b53c8915e0f">~CDevice</link> ()=default</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_1ae264c8d243df334f353bae8efb99c614">NotifyError</link> (const std::string &amp;ErrorMessage)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_1abad094121bde679b4a68858b1a0e1c32">ClearError</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_1acaaa125920dec9e7f9f6b3d6a2225058">ErrorOccured</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1aed9d8c451787c53bf398292a57b20a99">SetRegister</link> (const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a157c99b6b8d061e54ab2920a89711e6f">SetVoltage</link> (double Voltage)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a671cf9349a711df3da9e655dc2928a84">SetDigitalOutput</link> (uint8_t BitNr, bool OnOff)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1aaa3e13859985f358428c4d51bafc37d3">SetStartFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1af0ac58636967e468139ea4ec7776b912">SetStopFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ac9f2d8bc4810171cc290332dcf5aea77">SetModulationFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a896e79990b77c5702bcacf217ebd8180">SetPower</link> (double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1abb0dc967e558b1e3218fb00c368e927f">SetAttenuation</link> (double Attenuation)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a266d2caa2f23ebc437e9cb26bf2ec3ad">SetStartFrequencyTuningWord</link> (uint64_t)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a60446e9222919ecb7f7c8f9e7c72ee43">SetStopFrequencyTuningWord</link> (uint64_t)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a5201f16fcc101d6594d33d0463664519">SetFSKMode</link> (uint8_t mode)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a8e233a94cc5c177260a319ae158c3504">SetRampRateClock</link> (int rate)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a7dc7cc4daab1c6e27468d7366a449e85">SetClearACC1</link> (bool)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1aa19bf3d0655119902bac344b8c4c5a2c">SetTriangleBit</link> (bool)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1acef2ccddac12d4203fb363c1b18fdbe9">SetFSKBit</link> (bool)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ae8204d9f4edb81f19af2ceaeee04d65e">SetFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a2f948d164b6177a355b9f47a39d3a758">SetFrequencyTuningWord</link> (uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a537b4320f28a041f7c792cd8ee980489">SetFrequency</link> (uint8_t channel, double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a20124b1ebdce4ad278e9441c33a25df6">SetFrequencyTuningWord</link> (uint8_t channel, uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a4972e649a5c5e33b1e2b19d4d977be1b">SetPhase</link> (uint8_t channel, double Phase)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1af08e809e1fe88612656716fef5055256">SetPower</link> (uint8_t channel, double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ad5976661247c2d2a64fe6800be5ae0bc">SetAttenuation</link> (uint8_t channel, double Power)</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_c_device_analog_in12bit_1ac129cca94769f9e87b6ccee42daa00b8">signedValue</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_analog_in12bit_1aeeefb664609d6a8a75816f820bc9168f">minVoltage</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_analog_in12bit_1a29a978eac3fb07993337b8e6c520b227">maxVoltage</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Attributes inherited from <link linkend="_class_c_device">CDevice</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * <link linkend="_class_c_device_1a381f3a4f11fb87aadc77bcdc4524e33f">MySequencer</link></para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_device_1a7c5003e9b61986c46f6aa9ffd31324f3">MyAddress</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_c_device_1aaa6670dcb90af191c31aef9d88dbdcce">MyType</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_device_analog_in12bit_1adcab5cd92d1fd5e0872b9c044c8ce553"/><section>
+    <title>CDeviceAnalogIn12bit()</title>
+<indexterm><primary>CDeviceAnalogIn12bit</primary><secondary>CDeviceAnalogIn12bit</secondary></indexterm>
+<indexterm><primary>CDeviceAnalogIn12bit</primary><secondary>CDeviceAnalogIn12bit</secondary></indexterm>
+<para><computeroutput>CDeviceAnalogIn12bit::CDeviceAnalogIn12bit (<link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * _MySequencer, unsigned int _chipSelect, bool _signedValue, double _minVoltage, double _maxVoltage)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_analog_in12bit_1abc133cd42f064d7fc7b07adc72a1c86c"/><section>
+    <title>~CDeviceAnalogIn12bit()</title>
+<indexterm><primary>~CDeviceAnalogIn12bit</primary><secondary>CDeviceAnalogIn12bit</secondary></indexterm>
+<indexterm><primary>CDeviceAnalogIn12bit</primary><secondary>~CDeviceAnalogIn12bit</secondary></indexterm>
+<para><computeroutput>virtual CDeviceAnalogIn12bit::~CDeviceAnalogIn12bit ( )<computeroutput>[virtual]</computeroutput>, <computeroutput>[default]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_device_analog_in12bit_1afc45da4231e770e88b4964da2315c818"/><section>
+    <title>SetValue()</title>
+<indexterm><primary>SetValue</primary><secondary>CDeviceAnalogIn12bit</secondary></indexterm>
+<indexterm><primary>CDeviceAnalogIn12bit</primary><secondary>SetValue</secondary></indexterm>
+<para><computeroutput>bool CDeviceAnalogIn12bit::SetValue (const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a8e4c8e7c256a149d08debc49e190b27e">CDevice</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_device_analog_in12bit_1a29a978eac3fb07993337b8e6c520b227"/><section>
+    <title>maxVoltage</title>
+<indexterm><primary>maxVoltage</primary><secondary>CDeviceAnalogIn12bit</secondary></indexterm>
+<indexterm><primary>CDeviceAnalogIn12bit</primary><secondary>maxVoltage</secondary></indexterm>
+<para><computeroutput>double CDeviceAnalogIn12bit::maxVoltage</computeroutput></para></section>
+<anchor xml:id="_class_c_device_analog_in12bit_1aeeefb664609d6a8a75816f820bc9168f"/><section>
+    <title>minVoltage</title>
+<indexterm><primary>minVoltage</primary><secondary>CDeviceAnalogIn12bit</secondary></indexterm>
+<indexterm><primary>CDeviceAnalogIn12bit</primary><secondary>minVoltage</secondary></indexterm>
+<para><computeroutput>double CDeviceAnalogIn12bit::minVoltage</computeroutput></para></section>
+<anchor xml:id="_class_c_device_analog_in12bit_1ac129cca94769f9e87b6ccee42daa00b8"/><section>
+    <title>signedValue</title>
+<indexterm><primary>signedValue</primary><secondary>CDeviceAnalogIn12bit</secondary></indexterm>
+<indexterm><primary>CDeviceAnalogIn12bit</primary><secondary>signedValue</secondary></indexterm>
+<para><computeroutput>bool CDeviceAnalogIn12bit::signedValue</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__c_device_analog_in_8h">CDeviceAnalogIn.h</link><link linkend="__c_device_analog_in_8cpp">CDeviceAnalogIn.cpp</link></section>
+</section>

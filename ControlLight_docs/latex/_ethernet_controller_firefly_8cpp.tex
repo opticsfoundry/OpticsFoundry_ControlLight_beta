@@ -1,0 +1,639 @@
+\doxysection{Ethernet\+Controller\+Firefly.\+cpp File Reference}
+\hypertarget{_ethernet_controller_firefly_8cpp}{}\label{_ethernet_controller_firefly_8cpp}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+{\ttfamily \#include "{}Ethernet\+Controller\+Firefly.\+h"{}}\newline
+{\ttfamily \#include "{}std.\+h"{}}\newline
+{\ttfamily \#include "{}Control\+API.\+h"{}}\newline
+{\ttfamily \#include "{}CDevice\+Sequencer.\+h"{}}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_aa5de9931f0705cba8191d6a47a718450}{clockspeed\+Mhz}}~7.\+68
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_abc776fc85a4ba8f20e51b792ea2e0323}{ADS1256\+\_\+\+RADD\+\_\+\+STATUS}}~0x00
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a43a32b82e840ddc469d87048d50602a5}{ADS1256\+\_\+\+RADD\+\_\+\+MUX}}~0x01
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a091c5c86ddfbf5e883de2020f6370850}{ADS1256\+\_\+\+RADD\+\_\+\+ADCON}}~0x02
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ae0b2327ca383b62dc634b092e07180bc}{ADS1256\+\_\+\+RADD\+\_\+\+DRATE}}~0x03
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a2ac9daf2c4af4a6900457f2ff479b39a}{ADS1256\+\_\+\+RADD\+\_\+\+IO}}~0x04
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a8c5444e8de8aa74e49d8a3f6ae07ebef}{ADS1256\+\_\+\+RADD\+\_\+\+OFC0}}~0x05
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a1c93e3ac2ff3369baa55629e23165f00}{ADS1256\+\_\+\+RADD\+\_\+\+OFC1}}~0x06
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ab5d41015a59b645e6a803593f74943ef}{ADS1256\+\_\+\+RADD\+\_\+\+OFC2}}~0x07
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a2f09cfe49c74b51755d5f9a5ba28d392}{ADS1256\+\_\+\+RADD\+\_\+\+FSC0}}~0x08
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_aec4a2314f5d80b71afc321ee7d5e227b}{ADS1256\+\_\+\+RADD\+\_\+\+FSC1}}~0x09
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a48d2c5d0bdaf1951ef322fc52360d4e1}{ADS1256\+\_\+\+RADD\+\_\+\+FSC2}}~0x0A
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ada9b413dee820aa06d40e78fd4cd0032}{ADS1256\+\_\+\+CMD\+\_\+\+WAKEUP}}~0x00
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a2623ae38a03549e161cbcf8c1d606ed8}{ADS1256\+\_\+\+CMD\+\_\+\+RDATA}}~0x01
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a8c55c14b35e77ac7a4ce89451dfa2d15}{ADS1256\+\_\+\+CMD\+\_\+\+RDATAC}}~0x03
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ae1939b9c2d0cfe747d57a3b1e6b9be14}{ADS1256\+\_\+\+CMD\+\_\+\+SDATAC}}~0x0f
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a19eebfe90ce20122732493d1d8d174ae}{ADS1256\+\_\+\+CMD\+\_\+\+RREG}}~0x10
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_af9b014a44a28bd646c099b14608ce4c4}{ADS1256\+\_\+\+CMD\+\_\+\+WREG}}~0x50
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ab625bddb8ab847667453db7e5274eefa}{ADS1256\+\_\+\+CMD\+\_\+\+SELFCAL}}~0x\+F0
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a52f8d9688fe6a2aedfbb35aabc9aa691}{ADS1256\+\_\+\+CMD\+\_\+\+SELFOCAL}}~0x\+F1
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a64059afd4767afc43f54eab2d1e3749c}{ADS1256\+\_\+\+CMD\+\_\+\+SELFGCAL}}~0x\+F2
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ad77e7c57e13c515e95f0bee5d233574c}{ADS1256\+\_\+\+CMD\+\_\+\+SYSOCAL}}~0x\+F3
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ae7f1f19b2ba7daf01efaa5d42787ca80}{ADS1256\+\_\+\+CMD\+\_\+\+SYSGCAL}}~0x\+F4
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_aa11671860a7f0335bbaa7249273e11e0}{ADS1256\+\_\+\+CMD\+\_\+\+SYNC}}~0x\+FC
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a1fa3451b329bd626a054cc26242cdfcb}{ADS1256\+\_\+\+CMD\+\_\+\+STANDBY}}~0x\+FD
+\item 
+\#define \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_aae90bee3130d55d0b7b9ee2cbf95a55b}{ADS1256\+\_\+\+CMD\+\_\+\+RESET}}~0x\+FE
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ad99f0b817f1a72892ea6ea46f0eeb5be}{reverse\+\_\+byte}} (uint8\+\_\+t b)
+\item 
+void \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a091b904a90ad3f613de6d1db297f1faa}{reverse\+\_\+bits\+\_\+array}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data\+\_\+out, uint8\+\_\+t \texorpdfstring{$\ast$}{*}result, uint8\+\_\+t number\+\_\+of\+\_\+bytes)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a82a74818c48929b37f9ee15bc09eeaca}{Max\+Reconnect\+Attempts}} = 100
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a57c8759f9f214734142d0552c38101a7}{Max\+FPGAProgram\+Length}} = 0x100000
+\item 
+const unsigned long \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ac59104e620232d895bc143503718b004}{Max\+Sequencer\+Command\+List\+Size}} = 1024\texorpdfstring{$\ast$}{*}16
+\item 
+constexpr bool \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a433af214488c76fe16b62ba0d0cd55d8}{Minimize\+Ethernet\+Communication\+Direction\+Changes}} = true
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a0d3349223e822408e04517754fb5ffdb}{CMD\+\_\+\+STOP}} = 0
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a96a1ed84f1dc6b911f0d26ba6a2bef50}{CMD\+\_\+\+STEP}} = 1
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a6ceaa4190900ed1479c12b1926080a45}{CMD\+\_\+\+STEP\+\_\+\+AND\+\_\+\+ENTER\+\_\+\+FAST\+\_\+\+MODE}} = 2
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_adcbfce701ecbdd5ed2de7456b79c6fd7}{CMD\+\_\+\+SET\+\_\+\+OPTIONS}} = 3
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ac5137beaeba66a1c111c5c49a7e43813}{CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+LOW}} = 4
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ab007e75fb442f92a20fcb0f40d64192b}{CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+HIGH}} = 5
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a1ba1a94c5083e29654b51a86407b8914}{CMD\+\_\+\+LATCH\+\_\+\+STATE}} = 6
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a167bb16be84553cfb694bac4ae1f2ebf}{CMD\+\_\+\+RESET\+\_\+\+WAIT\+\_\+\+CYCLES}} = 7
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_aa6a83fae104b1beb597ddd3aeae61e37}{CMD\+\_\+\+LONG\+\_\+\+WAIT}} = 8
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a04a4d1d77c158837c8510efa06667dff}{CMD\+\_\+\+SET\+\_\+\+STROBE\+\_\+\+OPTIONS}} = 9
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_aa7c369e2c0714fb9e3b2e38f5207c162}{CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM}} = 10
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ae388c3553de68a8bc8d84cfd6221db98}{CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+TRIGGER}} = 11
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a31f99da7b004f7916b6aae2daf6f0f9b}{CMD\+\_\+\+SET\+\_\+\+LOOP\+\_\+\+COUNT}} = 12
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a06b489b453a6abee38a7e136d142249b}{CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+FORWARD}} = 13
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a4d62ec27c745a3814e03afd056255fc8}{CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+BACKWARD}} = 14
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a6477103c3958ff9d3aad2b2a00f95f44}{CMD\+\_\+\+I2\+C\+\_\+\+OUT}} = 15
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a95365a10d3be2f2d19190401e508375b}{CMD\+\_\+\+SPI\+\_\+\+OUT\+\_\+\+IN}} = 16
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ac92b0d72e5f294fccdaf994dcc282dfc}{CMD\+\_\+\+INPUT\+\_\+\+REPEATED\+\_\+\+OUT\+\_\+\+IN}} = 17
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a9994ebec50124bdddf199fe52ac041ec}{CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+PERIOD}} = 18
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a86f3b19ae1bf5bfba8b2d31287e88820}{CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+ALLOWED\+\_\+\+WAIT\+\_\+\+TIME}} = 19
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a0779b48fa018ab3c9436c140507695f0}{CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+PERIODIC\+\_\+\+TRIGGER}} = 20
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ae7b0f115f137c21a06d9776deae6c8c4}{CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+WAIT\+\_\+\+CYCLE\+\_\+\+NR}} = 21
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a7e057f71b241d2aa6ec2421e28efc254}{CMD\+\_\+\+DIG\+\_\+\+IN}} = 22
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a1b447b06a5188b4c1ff60b06487a5881}{CMD\+\_\+\+TRIGGER\+\_\+\+SECONDARY\+\_\+\+PL\+\_\+\+PS\+\_\+\+INTERRUPT}} = 23
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a250789ecdebc263724f0d851ec94fd74}{CMD\+\_\+\+ANALOG\+\_\+\+IN\+\_\+\+OUT}} = 24
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_afd61fea5b3458db6872d7223115567c7}{CMD\+\_\+\+PL\+\_\+\+TO\+\_\+\+PS\+\_\+\+COMMAND}} = 25
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a2980bc69c7f6548b2f94cfd1395ea963}{CMD\+\_\+\+LOAD\+\_\+\+COMMAND\+\_\+\+BUFFER}} = 26
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a88f60210ab4b137fe2cfb57a3c0ee13d}{CMD\+\_\+\+SAVE\+\_\+\+CYCLE\+\_\+\+COUNT\+\_\+\+SINCE\+\_\+\+STARTUP\+\_\+\+IN\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM}} = 27
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a33027bd8f874f0bc88efaa916cf390d8}{CMD\+\_\+\+CALC\+\_\+\+AD9854\+\_\+\+FREQUENCY\+\_\+\+TUNING\+\_\+\+WORD}} = 28
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a11eb631d7da50d4735c42536e3ce4910}{CMD\+\_\+\+LOAD\+\_\+\+EXTENDED\+\_\+\+COMMAND}} = 29
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a20dc0cedb7d908e6557972164a2a4362}{Nr\+Commands}} = 30
+\item 
+const std\+::string \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a54077eaaeaacc3574b175eb3d697e588}{Command\+Names}} \mbox{[}\mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a20dc0cedb7d908e6557972164a2a4362}{Nr\+Commands}}\mbox{]} = \{ "{}CMD\+\_\+\+STOP"{}, "{}CMD\+\_\+\+STEP"{}, "{}CMD\+\_\+\+STEP\+\_\+\+AND\+\_\+\+ENTER\+\_\+\+FAST\+\_\+\+MODE"{}, "{}CMD\+\_\+\+SET\+\_\+\+OPTIONS"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+LOW"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+HIGH"{}, "{}CMD\+\_\+\+LATCH\+\_\+\+STATE"{}, "{}CMD\+\_\+\+RESET\+\_\+\+WAIT\+\_\+\+CYCLES"{}, "{}CMD\+\_\+\+LONG\+\_\+\+WAIT"{}, "{}CMD\+\_\+\+SET\+\_\+\+STROBE\+\_\+\+OPTIONS"{}, "{}CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM"{}, "{}CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+TRIGGER"{}, "{}CMD\+\_\+\+SET\+\_\+\+LOOP\+\_\+\+COUNT"{}, "{}CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+FORWARD"{}, "{}CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+BACKWARD"{}, "{}CMD\+\_\+\+I2\+C\+\_\+\+OUT"{}, "{}CMD\+\_\+\+SPI\+\_\+\+OUT\+\_\+\+IN"{}, "{}CMD\+\_\+\+INPUT\+\_\+\+REPEATED\+\_\+\+OUT\+\_\+\+IN"{}, "{}CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+PERIOD"{}, "{}CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+ALLOWED\+\_\+\+WAIT\+\_\+\+TIME"{}, "{}CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+PERIODIC\+\_\+\+TRIGGER"{}, "{}CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+WAIT\+\_\+\+CYCLE\+\_\+\+NR"{}, "{}CMD\+\_\+\+DIG\+\_\+\+IN"{}, "{}CMD\+\_\+\+TRIGGER\+\_\+\+SECONDARY\+\_\+\+PL\+\_\+\+PS\+\_\+\+INTERRUPT"{}, "{}CMD\+\_\+\+ANALOG\+\_\+\+IN\+\_\+\+OUT"{}, "{}CMD\+\_\+\+PL\+\_\+\+TO\+\_\+\+PS\+\_\+\+COMMAND"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+COMMAND\+\_\+\+BUFFER"{}, "{}CMD\+\_\+\+SAVE\+\_\+\+CYCLE\+\_\+\+COUNT\+\_\+\+SINCE\+\_\+\+STARTUP\+\_\+\+IN\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM"{}, "{}CMD\+\_\+\+CALC\+\_\+\+AD9854\+\_\+\+FREQUENCY\+\_\+\+TUNING\+\_\+\+WORD"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+EXTENDED\+\_\+\+COMMAND"{} \}
+\item 
+constexpr bool \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a8cfc5b935e104cb7bf15d162177060cc}{Command\+Uses\+Buffer}} \mbox{[}\mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a20dc0cedb7d908e6557972164a2a4362}{Nr\+Commands}}\mbox{]} = \{ false , false , false , true , false , false , false , false , true , true , true , true , true , true , true , true , true , true , true , true , false , true , true , false , true , true , false , false , true , false \}
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a9201f62e1fd2d788a9b2723a4db0f77f}{EXTENDED\+\_\+\+CMD\+\_\+\+STOP}} = 0
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a60fc2ca532d2f89c45fbc748f7faf128}{EXTENDED\+\_\+\+CMD\+\_\+\+LOAD\+\_\+\+SPI\+\_\+\+TIMING}} = 1
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a73f6ced1c3a567dd582a2db85e961f38}{EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+SPI\+\_\+\+MODE}} = 2
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a328d2911a4eeae776e503a1775c5e3ea}{EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+I2\+C\+\_\+\+PARAMETERS}} = 3
+\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a9b6f7a472abbc266681b442585a53260}{Nr\+Extended\+Commands}} = 4
+\item 
+const std\+::string \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ab46d7ae62e9dbd4105627bc6f32a998d}{Extended\+Command\+Names}} \mbox{[}\mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a9b6f7a472abbc266681b442585a53260}{Nr\+Extended\+Commands}}\mbox{]} = \{ "{}EXTENDED\+\_\+\+CMD\+\_\+\+STOP"{}, "{}EXTENDED\+\_\+\+CMD\+\_\+\+LOAD\+\_\+\+SPI\+\_\+\+TIMING"{}, "{}EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+SPI\+\_\+\+MODE"{}, "{}EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+I2\+C\+\_\+\+PARAMETERS"{} \}
+\item 
+constexpr unsigned int \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a54c3b2781cc21848dec3da3010e1aaea}{PLTo\+PSCommand\+Test}} = 1 $<$$<$ 8
+\item 
+constexpr unsigned int \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_afd71312067c537a5c1d35f70454ead08}{PLTo\+PSCommand\+Ignore\+TCPIP}} = (2$<$$<$8) \texorpdfstring{$\vert$}{|} 1
+\item 
+constexpr unsigned int \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_ae106412c5a47e24fc4db187a1464e341}{PLTo\+PSCommand\+Accept\+TCPIP}} = (2 $<$$<$ 8)
+\item 
+const unsigned int \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a027bdfbbdb746c62d057bd69f0a15b2b}{Bus\+Bit\+Shift}} = 8
+\item 
+const unsigned int \mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a5a07de5a0c45bfa85e50019776b33de9}{Bus\+Sequencer\+Special\+Command}} = 0x7 $<$$<$ \mbox{\hyperlink{_a_d9852_8cpp_aa592773d77686d8f7f7b1c49a0622515}{Bus\+Bit\+Shift}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_ethernet_controller_firefly_8cpp_a2623ae38a03549e161cbcf8c1d606ed8}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_RDATA@{ADS1256\_CMD\_RDATA}}
+\index{ADS1256\_CMD\_RDATA@{ADS1256\_CMD\_RDATA}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_RDATA}{ADS1256\_CMD\_RDATA}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a2623ae38a03549e161cbcf8c1d606ed8} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+RDATA~0x01}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a8c55c14b35e77ac7a4ce89451dfa2d15}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_RDATAC@{ADS1256\_CMD\_RDATAC}}
+\index{ADS1256\_CMD\_RDATAC@{ADS1256\_CMD\_RDATAC}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_RDATAC}{ADS1256\_CMD\_RDATAC}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a8c55c14b35e77ac7a4ce89451dfa2d15} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+RDATAC~0x03}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_aae90bee3130d55d0b7b9ee2cbf95a55b}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_RESET@{ADS1256\_CMD\_RESET}}
+\index{ADS1256\_CMD\_RESET@{ADS1256\_CMD\_RESET}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_RESET}{ADS1256\_CMD\_RESET}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_aae90bee3130d55d0b7b9ee2cbf95a55b} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+RESET~0x\+FE}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a19eebfe90ce20122732493d1d8d174ae}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_RREG@{ADS1256\_CMD\_RREG}}
+\index{ADS1256\_CMD\_RREG@{ADS1256\_CMD\_RREG}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_RREG}{ADS1256\_CMD\_RREG}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a19eebfe90ce20122732493d1d8d174ae} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+RREG~0x10}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ae1939b9c2d0cfe747d57a3b1e6b9be14}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_SDATAC@{ADS1256\_CMD\_SDATAC}}
+\index{ADS1256\_CMD\_SDATAC@{ADS1256\_CMD\_SDATAC}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_SDATAC}{ADS1256\_CMD\_SDATAC}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ae1939b9c2d0cfe747d57a3b1e6b9be14} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+SDATAC~0x0f}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ab625bddb8ab847667453db7e5274eefa}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_SELFCAL@{ADS1256\_CMD\_SELFCAL}}
+\index{ADS1256\_CMD\_SELFCAL@{ADS1256\_CMD\_SELFCAL}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_SELFCAL}{ADS1256\_CMD\_SELFCAL}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ab625bddb8ab847667453db7e5274eefa} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+SELFCAL~0x\+F0}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a64059afd4767afc43f54eab2d1e3749c}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_SELFGCAL@{ADS1256\_CMD\_SELFGCAL}}
+\index{ADS1256\_CMD\_SELFGCAL@{ADS1256\_CMD\_SELFGCAL}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_SELFGCAL}{ADS1256\_CMD\_SELFGCAL}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a64059afd4767afc43f54eab2d1e3749c} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+SELFGCAL~0x\+F2}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a52f8d9688fe6a2aedfbb35aabc9aa691}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_SELFOCAL@{ADS1256\_CMD\_SELFOCAL}}
+\index{ADS1256\_CMD\_SELFOCAL@{ADS1256\_CMD\_SELFOCAL}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_SELFOCAL}{ADS1256\_CMD\_SELFOCAL}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a52f8d9688fe6a2aedfbb35aabc9aa691} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+SELFOCAL~0x\+F1}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a1fa3451b329bd626a054cc26242cdfcb}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_STANDBY@{ADS1256\_CMD\_STANDBY}}
+\index{ADS1256\_CMD\_STANDBY@{ADS1256\_CMD\_STANDBY}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_STANDBY}{ADS1256\_CMD\_STANDBY}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a1fa3451b329bd626a054cc26242cdfcb} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+STANDBY~0x\+FD}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_aa11671860a7f0335bbaa7249273e11e0}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_SYNC@{ADS1256\_CMD\_SYNC}}
+\index{ADS1256\_CMD\_SYNC@{ADS1256\_CMD\_SYNC}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_SYNC}{ADS1256\_CMD\_SYNC}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_aa11671860a7f0335bbaa7249273e11e0} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+SYNC~0x\+FC}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ae7f1f19b2ba7daf01efaa5d42787ca80}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_SYSGCAL@{ADS1256\_CMD\_SYSGCAL}}
+\index{ADS1256\_CMD\_SYSGCAL@{ADS1256\_CMD\_SYSGCAL}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_SYSGCAL}{ADS1256\_CMD\_SYSGCAL}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ae7f1f19b2ba7daf01efaa5d42787ca80} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+SYSGCAL~0x\+F4}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ad77e7c57e13c515e95f0bee5d233574c}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_SYSOCAL@{ADS1256\_CMD\_SYSOCAL}}
+\index{ADS1256\_CMD\_SYSOCAL@{ADS1256\_CMD\_SYSOCAL}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_SYSOCAL}{ADS1256\_CMD\_SYSOCAL}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ad77e7c57e13c515e95f0bee5d233574c} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+SYSOCAL~0x\+F3}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ada9b413dee820aa06d40e78fd4cd0032}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_WAKEUP@{ADS1256\_CMD\_WAKEUP}}
+\index{ADS1256\_CMD\_WAKEUP@{ADS1256\_CMD\_WAKEUP}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_WAKEUP}{ADS1256\_CMD\_WAKEUP}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ada9b413dee820aa06d40e78fd4cd0032} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+WAKEUP~0x00}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_af9b014a44a28bd646c099b14608ce4c4}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_CMD\_WREG@{ADS1256\_CMD\_WREG}}
+\index{ADS1256\_CMD\_WREG@{ADS1256\_CMD\_WREG}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_CMD\_WREG}{ADS1256\_CMD\_WREG}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_af9b014a44a28bd646c099b14608ce4c4} 
+\#define ADS1256\+\_\+\+CMD\+\_\+\+WREG~0x50}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a091c5c86ddfbf5e883de2020f6370850}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_ADCON@{ADS1256\_RADD\_ADCON}}
+\index{ADS1256\_RADD\_ADCON@{ADS1256\_RADD\_ADCON}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_ADCON}{ADS1256\_RADD\_ADCON}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a091c5c86ddfbf5e883de2020f6370850} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+ADCON~0x02}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ae0b2327ca383b62dc634b092e07180bc}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_DRATE@{ADS1256\_RADD\_DRATE}}
+\index{ADS1256\_RADD\_DRATE@{ADS1256\_RADD\_DRATE}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_DRATE}{ADS1256\_RADD\_DRATE}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ae0b2327ca383b62dc634b092e07180bc} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+DRATE~0x03}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a2f09cfe49c74b51755d5f9a5ba28d392}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_FSC0@{ADS1256\_RADD\_FSC0}}
+\index{ADS1256\_RADD\_FSC0@{ADS1256\_RADD\_FSC0}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_FSC0}{ADS1256\_RADD\_FSC0}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a2f09cfe49c74b51755d5f9a5ba28d392} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+FSC0~0x08}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_aec4a2314f5d80b71afc321ee7d5e227b}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_FSC1@{ADS1256\_RADD\_FSC1}}
+\index{ADS1256\_RADD\_FSC1@{ADS1256\_RADD\_FSC1}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_FSC1}{ADS1256\_RADD\_FSC1}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_aec4a2314f5d80b71afc321ee7d5e227b} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+FSC1~0x09}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a48d2c5d0bdaf1951ef322fc52360d4e1}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_FSC2@{ADS1256\_RADD\_FSC2}}
+\index{ADS1256\_RADD\_FSC2@{ADS1256\_RADD\_FSC2}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_FSC2}{ADS1256\_RADD\_FSC2}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a48d2c5d0bdaf1951ef322fc52360d4e1} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+FSC2~0x0A}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a2ac9daf2c4af4a6900457f2ff479b39a}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_IO@{ADS1256\_RADD\_IO}}
+\index{ADS1256\_RADD\_IO@{ADS1256\_RADD\_IO}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_IO}{ADS1256\_RADD\_IO}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a2ac9daf2c4af4a6900457f2ff479b39a} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+IO~0x04}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a43a32b82e840ddc469d87048d50602a5}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_MUX@{ADS1256\_RADD\_MUX}}
+\index{ADS1256\_RADD\_MUX@{ADS1256\_RADD\_MUX}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_MUX}{ADS1256\_RADD\_MUX}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a43a32b82e840ddc469d87048d50602a5} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+MUX~0x01}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a8c5444e8de8aa74e49d8a3f6ae07ebef}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_OFC0@{ADS1256\_RADD\_OFC0}}
+\index{ADS1256\_RADD\_OFC0@{ADS1256\_RADD\_OFC0}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_OFC0}{ADS1256\_RADD\_OFC0}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a8c5444e8de8aa74e49d8a3f6ae07ebef} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+OFC0~0x05}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a1c93e3ac2ff3369baa55629e23165f00}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_OFC1@{ADS1256\_RADD\_OFC1}}
+\index{ADS1256\_RADD\_OFC1@{ADS1256\_RADD\_OFC1}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_OFC1}{ADS1256\_RADD\_OFC1}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a1c93e3ac2ff3369baa55629e23165f00} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+OFC1~0x06}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ab5d41015a59b645e6a803593f74943ef}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_OFC2@{ADS1256\_RADD\_OFC2}}
+\index{ADS1256\_RADD\_OFC2@{ADS1256\_RADD\_OFC2}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_OFC2}{ADS1256\_RADD\_OFC2}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ab5d41015a59b645e6a803593f74943ef} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+OFC2~0x07}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_abc776fc85a4ba8f20e51b792ea2e0323}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ADS1256\_RADD\_STATUS@{ADS1256\_RADD\_STATUS}}
+\index{ADS1256\_RADD\_STATUS@{ADS1256\_RADD\_STATUS}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ADS1256\_RADD\_STATUS}{ADS1256\_RADD\_STATUS}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_abc776fc85a4ba8f20e51b792ea2e0323} 
+\#define ADS1256\+\_\+\+RADD\+\_\+\+STATUS~0x00}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_aa5de9931f0705cba8191d6a47a718450}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!clockspeedMhz@{clockspeedMhz}}
+\index{clockspeedMhz@{clockspeedMhz}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{clockspeedMhz}{clockspeedMhz}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_aa5de9931f0705cba8191d6a47a718450} 
+\#define clockspeed\+Mhz~7.\+68}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_ethernet_controller_firefly_8cpp_a091b904a90ad3f613de6d1db297f1faa}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!reverse\_bits\_array@{reverse\_bits\_array}}
+\index{reverse\_bits\_array@{reverse\_bits\_array}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{reverse\_bits\_array()}{reverse\_bits\_array()}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a091b904a90ad3f613de6d1db297f1faa} 
+void reverse\+\_\+bits\+\_\+array (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data\+\_\+out}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{, }\item[{uint8\+\_\+t}]{number\+\_\+of\+\_\+bytes}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ad99f0b817f1a72892ea6ea46f0eeb5be}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!reverse\_byte@{reverse\_byte}}
+\index{reverse\_byte@{reverse\_byte}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{reverse\_byte()}{reverse\_byte()}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ad99f0b817f1a72892ea6ea46f0eeb5be} 
+uint8\+\_\+t reverse\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{b}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_ethernet_controller_firefly_8cpp_a027bdfbbdb746c62d057bd69f0a15b2b}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!BusBitShift@{BusBitShift}}
+\index{BusBitShift@{BusBitShift}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{BusBitShift}{BusBitShift}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a027bdfbbdb746c62d057bd69f0a15b2b} 
+const unsigned int Bus\+Bit\+Shift = 8}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a5a07de5a0c45bfa85e50019776b33de9}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!BusSequencerSpecialCommand@{BusSequencerSpecialCommand}}
+\index{BusSequencerSpecialCommand@{BusSequencerSpecialCommand}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{BusSequencerSpecialCommand}{BusSequencerSpecialCommand}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a5a07de5a0c45bfa85e50019776b33de9} 
+const unsigned int Bus\+Sequencer\+Special\+Command = 0x7 $<$$<$ \mbox{\hyperlink{_a_d9852_8cpp_aa592773d77686d8f7f7b1c49a0622515}{Bus\+Bit\+Shift}}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a250789ecdebc263724f0d851ec94fd74}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_ANALOG\_IN\_OUT@{CMD\_ANALOG\_IN\_OUT}}
+\index{CMD\_ANALOG\_IN\_OUT@{CMD\_ANALOG\_IN\_OUT}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_ANALOG\_IN\_OUT}{CMD\_ANALOG\_IN\_OUT}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a250789ecdebc263724f0d851ec94fd74} 
+uint8\+\_\+t CMD\+\_\+\+ANALOG\+\_\+\+IN\+\_\+\+OUT = 24\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a33027bd8f874f0bc88efaa916cf390d8}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_CALC\_AD9854\_FREQUENCY\_TUNING\_WORD@{CMD\_CALC\_AD9854\_FREQUENCY\_TUNING\_WORD}}
+\index{CMD\_CALC\_AD9854\_FREQUENCY\_TUNING\_WORD@{CMD\_CALC\_AD9854\_FREQUENCY\_TUNING\_WORD}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_CALC\_AD9854\_FREQUENCY\_TUNING\_WORD}{CMD\_CALC\_AD9854\_FREQUENCY\_TUNING\_WORD}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a33027bd8f874f0bc88efaa916cf390d8} 
+uint8\+\_\+t CMD\+\_\+\+CALC\+\_\+\+AD9854\+\_\+\+FREQUENCY\+\_\+\+TUNING\+\_\+\+WORD = 28\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a4d62ec27c745a3814e03afd056255fc8}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_CONDITIONAL\_JUMP\_BACKWARD@{CMD\_CONDITIONAL\_JUMP\_BACKWARD}}
+\index{CMD\_CONDITIONAL\_JUMP\_BACKWARD@{CMD\_CONDITIONAL\_JUMP\_BACKWARD}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_CONDITIONAL\_JUMP\_BACKWARD}{CMD\_CONDITIONAL\_JUMP\_BACKWARD}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a4d62ec27c745a3814e03afd056255fc8} 
+uint8\+\_\+t CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+BACKWARD = 14\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a06b489b453a6abee38a7e136d142249b}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_CONDITIONAL\_JUMP\_FORWARD@{CMD\_CONDITIONAL\_JUMP\_FORWARD}}
+\index{CMD\_CONDITIONAL\_JUMP\_FORWARD@{CMD\_CONDITIONAL\_JUMP\_FORWARD}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_CONDITIONAL\_JUMP\_FORWARD}{CMD\_CONDITIONAL\_JUMP\_FORWARD}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a06b489b453a6abee38a7e136d142249b} 
+uint8\+\_\+t CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+FORWARD = 13\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a7e057f71b241d2aa6ec2421e28efc254}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_DIG\_IN@{CMD\_DIG\_IN}}
+\index{CMD\_DIG\_IN@{CMD\_DIG\_IN}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_DIG\_IN}{CMD\_DIG\_IN}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a7e057f71b241d2aa6ec2421e28efc254} 
+uint8\+\_\+t CMD\+\_\+\+DIG\+\_\+\+IN = 22\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a6477103c3958ff9d3aad2b2a00f95f44}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_I2C\_OUT@{CMD\_I2C\_OUT}}
+\index{CMD\_I2C\_OUT@{CMD\_I2C\_OUT}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_I2C\_OUT}{CMD\_I2C\_OUT}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a6477103c3958ff9d3aad2b2a00f95f44} 
+uint8\+\_\+t CMD\+\_\+\+I2\+C\+\_\+\+OUT = 15\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ac92b0d72e5f294fccdaf994dcc282dfc}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_INPUT\_REPEATED\_OUT\_IN@{CMD\_INPUT\_REPEATED\_OUT\_IN}}
+\index{CMD\_INPUT\_REPEATED\_OUT\_IN@{CMD\_INPUT\_REPEATED\_OUT\_IN}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_INPUT\_REPEATED\_OUT\_IN}{CMD\_INPUT\_REPEATED\_OUT\_IN}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ac92b0d72e5f294fccdaf994dcc282dfc} 
+uint8\+\_\+t CMD\+\_\+\+INPUT\+\_\+\+REPEATED\+\_\+\+OUT\+\_\+\+IN = 17\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a1ba1a94c5083e29654b51a86407b8914}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_LATCH\_STATE@{CMD\_LATCH\_STATE}}
+\index{CMD\_LATCH\_STATE@{CMD\_LATCH\_STATE}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_LATCH\_STATE}{CMD\_LATCH\_STATE}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a1ba1a94c5083e29654b51a86407b8914} 
+uint8\+\_\+t CMD\+\_\+\+LATCH\+\_\+\+STATE = 6\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a2980bc69c7f6548b2f94cfd1395ea963}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_LOAD\_COMMAND\_BUFFER@{CMD\_LOAD\_COMMAND\_BUFFER}}
+\index{CMD\_LOAD\_COMMAND\_BUFFER@{CMD\_LOAD\_COMMAND\_BUFFER}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_LOAD\_COMMAND\_BUFFER}{CMD\_LOAD\_COMMAND\_BUFFER}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a2980bc69c7f6548b2f94cfd1395ea963} 
+uint8\+\_\+t CMD\+\_\+\+LOAD\+\_\+\+COMMAND\+\_\+\+BUFFER = 26\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a11eb631d7da50d4735c42536e3ce4910}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_LOAD\_EXTENDED\_COMMAND@{CMD\_LOAD\_EXTENDED\_COMMAND}}
+\index{CMD\_LOAD\_EXTENDED\_COMMAND@{CMD\_LOAD\_EXTENDED\_COMMAND}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_LOAD\_EXTENDED\_COMMAND}{CMD\_LOAD\_EXTENDED\_COMMAND}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a11eb631d7da50d4735c42536e3ce4910} 
+uint8\+\_\+t CMD\+\_\+\+LOAD\+\_\+\+EXTENDED\+\_\+\+COMMAND = 29\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ab007e75fb442f92a20fcb0f40d64192b}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_LOAD\_REG\_HIGH@{CMD\_LOAD\_REG\_HIGH}}
+\index{CMD\_LOAD\_REG\_HIGH@{CMD\_LOAD\_REG\_HIGH}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_LOAD\_REG\_HIGH}{CMD\_LOAD\_REG\_HIGH}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ab007e75fb442f92a20fcb0f40d64192b} 
+uint8\+\_\+t CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+HIGH = 5\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ac5137beaeba66a1c111c5c49a7e43813}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_LOAD\_REG\_LOW@{CMD\_LOAD\_REG\_LOW}}
+\index{CMD\_LOAD\_REG\_LOW@{CMD\_LOAD\_REG\_LOW}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_LOAD\_REG\_LOW}{CMD\_LOAD\_REG\_LOW}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ac5137beaeba66a1c111c5c49a7e43813} 
+uint8\+\_\+t CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+LOW = 4\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_aa6a83fae104b1beb597ddd3aeae61e37}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_LONG\_WAIT@{CMD\_LONG\_WAIT}}
+\index{CMD\_LONG\_WAIT@{CMD\_LONG\_WAIT}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_LONG\_WAIT}{CMD\_LONG\_WAIT}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_aa6a83fae104b1beb597ddd3aeae61e37} 
+uint8\+\_\+t CMD\+\_\+\+LONG\+\_\+\+WAIT = 8\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_afd61fea5b3458db6872d7223115567c7}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_PL\_TO\_PS\_COMMAND@{CMD\_PL\_TO\_PS\_COMMAND}}
+\index{CMD\_PL\_TO\_PS\_COMMAND@{CMD\_PL\_TO\_PS\_COMMAND}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_PL\_TO\_PS\_COMMAND}{CMD\_PL\_TO\_PS\_COMMAND}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_afd61fea5b3458db6872d7223115567c7} 
+uint8\+\_\+t CMD\+\_\+\+PL\+\_\+\+TO\+\_\+\+PS\+\_\+\+COMMAND = 25\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a167bb16be84553cfb694bac4ae1f2ebf}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_RESET\_WAIT\_CYCLES@{CMD\_RESET\_WAIT\_CYCLES}}
+\index{CMD\_RESET\_WAIT\_CYCLES@{CMD\_RESET\_WAIT\_CYCLES}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_RESET\_WAIT\_CYCLES}{CMD\_RESET\_WAIT\_CYCLES}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a167bb16be84553cfb694bac4ae1f2ebf} 
+uint8\+\_\+t CMD\+\_\+\+RESET\+\_\+\+WAIT\+\_\+\+CYCLES = 7\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a88f60210ab4b137fe2cfb57a3c0ee13d}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SAVE\_CYCLE\_COUNT\_SINCE\_STARTUP\_IN\_INPUT\_BUF\_MEM@{CMD\_SAVE\_CYCLE\_COUNT\_SINCE\_STARTUP\_IN\_INPUT\_BUF\_MEM}}
+\index{CMD\_SAVE\_CYCLE\_COUNT\_SINCE\_STARTUP\_IN\_INPUT\_BUF\_MEM@{CMD\_SAVE\_CYCLE\_COUNT\_SINCE\_STARTUP\_IN\_INPUT\_BUF\_MEM}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SAVE\_CYCLE\_COUNT\_SINCE\_STARTUP\_IN\_INPUT\_BUF\_MEM}{CMD\_SAVE\_CYCLE\_COUNT\_SINCE\_STARTUP\_IN\_INPUT\_BUF\_MEM}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a88f60210ab4b137fe2cfb57a3c0ee13d} 
+uint8\+\_\+t CMD\+\_\+\+SAVE\+\_\+\+CYCLE\+\_\+\+COUNT\+\_\+\+SINCE\+\_\+\+STARTUP\+\_\+\+IN\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM = 27\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_aa7c369e2c0714fb9e3b2e38f5207c162}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SET\_INPUT\_BUF\_MEM@{CMD\_SET\_INPUT\_BUF\_MEM}}
+\index{CMD\_SET\_INPUT\_BUF\_MEM@{CMD\_SET\_INPUT\_BUF\_MEM}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_INPUT\_BUF\_MEM}{CMD\_SET\_INPUT\_BUF\_MEM}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_aa7c369e2c0714fb9e3b2e38f5207c162} 
+uint8\+\_\+t CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM = 10\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a31f99da7b004f7916b6aae2daf6f0f9b}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SET\_LOOP\_COUNT@{CMD\_SET\_LOOP\_COUNT}}
+\index{CMD\_SET\_LOOP\_COUNT@{CMD\_SET\_LOOP\_COUNT}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_LOOP\_COUNT}{CMD\_SET\_LOOP\_COUNT}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a31f99da7b004f7916b6aae2daf6f0f9b} 
+uint8\+\_\+t CMD\+\_\+\+SET\+\_\+\+LOOP\+\_\+\+COUNT = 12\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_adcbfce701ecbdd5ed2de7456b79c6fd7}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SET\_OPTIONS@{CMD\_SET\_OPTIONS}}
+\index{CMD\_SET\_OPTIONS@{CMD\_SET\_OPTIONS}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_OPTIONS}{CMD\_SET\_OPTIONS}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_adcbfce701ecbdd5ed2de7456b79c6fd7} 
+uint8\+\_\+t CMD\+\_\+\+SET\+\_\+\+OPTIONS = 3\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a86f3b19ae1bf5bfba8b2d31287e88820}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SET\_PERIODIC\_TRIGGER\_ALLOWED\_WAIT\_TIME@{CMD\_SET\_PERIODIC\_TRIGGER\_ALLOWED\_WAIT\_TIME}}
+\index{CMD\_SET\_PERIODIC\_TRIGGER\_ALLOWED\_WAIT\_TIME@{CMD\_SET\_PERIODIC\_TRIGGER\_ALLOWED\_WAIT\_TIME}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_PERIODIC\_TRIGGER\_ALLOWED\_WAIT\_TIME}{CMD\_SET\_PERIODIC\_TRIGGER\_ALLOWED\_WAIT\_TIME}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a86f3b19ae1bf5bfba8b2d31287e88820} 
+uint8\+\_\+t CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+ALLOWED\+\_\+\+WAIT\+\_\+\+TIME = 19\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a9994ebec50124bdddf199fe52ac041ec}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SET\_PERIODIC\_TRIGGER\_PERIOD@{CMD\_SET\_PERIODIC\_TRIGGER\_PERIOD}}
+\index{CMD\_SET\_PERIODIC\_TRIGGER\_PERIOD@{CMD\_SET\_PERIODIC\_TRIGGER\_PERIOD}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_PERIODIC\_TRIGGER\_PERIOD}{CMD\_SET\_PERIODIC\_TRIGGER\_PERIOD}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a9994ebec50124bdddf199fe52ac041ec} 
+uint8\+\_\+t CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+PERIOD = 18\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a04a4d1d77c158837c8510efa06667dff}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SET\_STROBE\_OPTIONS@{CMD\_SET\_STROBE\_OPTIONS}}
+\index{CMD\_SET\_STROBE\_OPTIONS@{CMD\_SET\_STROBE\_OPTIONS}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SET\_STROBE\_OPTIONS}{CMD\_SET\_STROBE\_OPTIONS}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a04a4d1d77c158837c8510efa06667dff} 
+uint8\+\_\+t CMD\+\_\+\+SET\+\_\+\+STROBE\+\_\+\+OPTIONS = 9\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a95365a10d3be2f2d19190401e508375b}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_SPI\_OUT\_IN@{CMD\_SPI\_OUT\_IN}}
+\index{CMD\_SPI\_OUT\_IN@{CMD\_SPI\_OUT\_IN}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_SPI\_OUT\_IN}{CMD\_SPI\_OUT\_IN}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a95365a10d3be2f2d19190401e508375b} 
+uint8\+\_\+t CMD\+\_\+\+SPI\+\_\+\+OUT\+\_\+\+IN = 16\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a96a1ed84f1dc6b911f0d26ba6a2bef50}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_STEP@{CMD\_STEP}}
+\index{CMD\_STEP@{CMD\_STEP}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_STEP}{CMD\_STEP}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a96a1ed84f1dc6b911f0d26ba6a2bef50} 
+uint8\+\_\+t CMD\+\_\+\+STEP = 1\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a6ceaa4190900ed1479c12b1926080a45}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_STEP\_AND\_ENTER\_FAST\_MODE@{CMD\_STEP\_AND\_ENTER\_FAST\_MODE}}
+\index{CMD\_STEP\_AND\_ENTER\_FAST\_MODE@{CMD\_STEP\_AND\_ENTER\_FAST\_MODE}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_STEP\_AND\_ENTER\_FAST\_MODE}{CMD\_STEP\_AND\_ENTER\_FAST\_MODE}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a6ceaa4190900ed1479c12b1926080a45} 
+uint8\+\_\+t CMD\+\_\+\+STEP\+\_\+\+AND\+\_\+\+ENTER\+\_\+\+FAST\+\_\+\+MODE = 2\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a0d3349223e822408e04517754fb5ffdb}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_STOP@{CMD\_STOP}}
+\index{CMD\_STOP@{CMD\_STOP}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_STOP}{CMD\_STOP}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a0d3349223e822408e04517754fb5ffdb} 
+uint8\+\_\+t CMD\+\_\+\+STOP = 0\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a1b447b06a5188b4c1ff60b06487a5881}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_TRIGGER\_SECONDARY\_PL\_PS\_INTERRUPT@{CMD\_TRIGGER\_SECONDARY\_PL\_PS\_INTERRUPT}}
+\index{CMD\_TRIGGER\_SECONDARY\_PL\_PS\_INTERRUPT@{CMD\_TRIGGER\_SECONDARY\_PL\_PS\_INTERRUPT}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_TRIGGER\_SECONDARY\_PL\_PS\_INTERRUPT}{CMD\_TRIGGER\_SECONDARY\_PL\_PS\_INTERRUPT}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a1b447b06a5188b4c1ff60b06487a5881} 
+uint8\+\_\+t CMD\+\_\+\+TRIGGER\+\_\+\+SECONDARY\+\_\+\+PL\+\_\+\+PS\+\_\+\+INTERRUPT = 23\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a0779b48fa018ab3c9436c140507695f0}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_WAIT\_FOR\_PERIODIC\_TRIGGER@{CMD\_WAIT\_FOR\_PERIODIC\_TRIGGER}}
+\index{CMD\_WAIT\_FOR\_PERIODIC\_TRIGGER@{CMD\_WAIT\_FOR\_PERIODIC\_TRIGGER}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_WAIT\_FOR\_PERIODIC\_TRIGGER}{CMD\_WAIT\_FOR\_PERIODIC\_TRIGGER}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a0779b48fa018ab3c9436c140507695f0} 
+uint8\+\_\+t CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+PERIODIC\+\_\+\+TRIGGER = 20\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ae388c3553de68a8bc8d84cfd6221db98}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_WAIT\_FOR\_TRIGGER@{CMD\_WAIT\_FOR\_TRIGGER}}
+\index{CMD\_WAIT\_FOR\_TRIGGER@{CMD\_WAIT\_FOR\_TRIGGER}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_WAIT\_FOR\_TRIGGER}{CMD\_WAIT\_FOR\_TRIGGER}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ae388c3553de68a8bc8d84cfd6221db98} 
+uint8\+\_\+t CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+TRIGGER = 11\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ae7b0f115f137c21a06d9776deae6c8c4}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CMD\_WAIT\_FOR\_WAIT\_CYCLE\_NR@{CMD\_WAIT\_FOR\_WAIT\_CYCLE\_NR}}
+\index{CMD\_WAIT\_FOR\_WAIT\_CYCLE\_NR@{CMD\_WAIT\_FOR\_WAIT\_CYCLE\_NR}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CMD\_WAIT\_FOR\_WAIT\_CYCLE\_NR}{CMD\_WAIT\_FOR\_WAIT\_CYCLE\_NR}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ae7b0f115f137c21a06d9776deae6c8c4} 
+uint8\+\_\+t CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+WAIT\+\_\+\+CYCLE\+\_\+\+NR = 21\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a54077eaaeaacc3574b175eb3d697e588}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CommandNames@{CommandNames}}
+\index{CommandNames@{CommandNames}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CommandNames}{CommandNames}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a54077eaaeaacc3574b175eb3d697e588} 
+const std\+::string Command\+Names\mbox{[}\mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a20dc0cedb7d908e6557972164a2a4362}{Nr\+Commands}}\mbox{]} = \{ "{}CMD\+\_\+\+STOP"{}, "{}CMD\+\_\+\+STEP"{}, "{}CMD\+\_\+\+STEP\+\_\+\+AND\+\_\+\+ENTER\+\_\+\+FAST\+\_\+\+MODE"{}, "{}CMD\+\_\+\+SET\+\_\+\+OPTIONS"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+LOW"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+REG\+\_\+\+HIGH"{}, "{}CMD\+\_\+\+LATCH\+\_\+\+STATE"{}, "{}CMD\+\_\+\+RESET\+\_\+\+WAIT\+\_\+\+CYCLES"{}, "{}CMD\+\_\+\+LONG\+\_\+\+WAIT"{}, "{}CMD\+\_\+\+SET\+\_\+\+STROBE\+\_\+\+OPTIONS"{}, "{}CMD\+\_\+\+SET\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM"{}, "{}CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+TRIGGER"{}, "{}CMD\+\_\+\+SET\+\_\+\+LOOP\+\_\+\+COUNT"{}, "{}CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+FORWARD"{}, "{}CMD\+\_\+\+CONDITIONAL\+\_\+\+JUMP\+\_\+\+BACKWARD"{}, "{}CMD\+\_\+\+I2\+C\+\_\+\+OUT"{}, "{}CMD\+\_\+\+SPI\+\_\+\+OUT\+\_\+\+IN"{}, "{}CMD\+\_\+\+INPUT\+\_\+\+REPEATED\+\_\+\+OUT\+\_\+\+IN"{}, "{}CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+PERIOD"{}, "{}CMD\+\_\+\+SET\+\_\+\+PERIODIC\+\_\+\+TRIGGER\+\_\+\+ALLOWED\+\_\+\+WAIT\+\_\+\+TIME"{}, "{}CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+PERIODIC\+\_\+\+TRIGGER"{}, "{}CMD\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+WAIT\+\_\+\+CYCLE\+\_\+\+NR"{}, "{}CMD\+\_\+\+DIG\+\_\+\+IN"{}, "{}CMD\+\_\+\+TRIGGER\+\_\+\+SECONDARY\+\_\+\+PL\+\_\+\+PS\+\_\+\+INTERRUPT"{}, "{}CMD\+\_\+\+ANALOG\+\_\+\+IN\+\_\+\+OUT"{}, "{}CMD\+\_\+\+PL\+\_\+\+TO\+\_\+\+PS\+\_\+\+COMMAND"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+COMMAND\+\_\+\+BUFFER"{}, "{}CMD\+\_\+\+SAVE\+\_\+\+CYCLE\+\_\+\+COUNT\+\_\+\+SINCE\+\_\+\+STARTUP\+\_\+\+IN\+\_\+\+INPUT\+\_\+\+BUF\+\_\+\+MEM"{}, "{}CMD\+\_\+\+CALC\+\_\+\+AD9854\+\_\+\+FREQUENCY\+\_\+\+TUNING\+\_\+\+WORD"{}, "{}CMD\+\_\+\+LOAD\+\_\+\+EXTENDED\+\_\+\+COMMAND"{} \}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a8cfc5b935e104cb7bf15d162177060cc}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!CommandUsesBuffer@{CommandUsesBuffer}}
+\index{CommandUsesBuffer@{CommandUsesBuffer}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{CommandUsesBuffer}{CommandUsesBuffer}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a8cfc5b935e104cb7bf15d162177060cc} 
+bool Command\+Uses\+Buffer\mbox{[}\mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a20dc0cedb7d908e6557972164a2a4362}{Nr\+Commands}}\mbox{]} = \{ false , false , false , true , false , false , false , false , true , true , true , true , true , true , true , true , true , true , true , true , false , true , true , false , true , true , false , false , true , false \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a60fc2ca532d2f89c45fbc748f7faf128}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!EXTENDED\_CMD\_LOAD\_SPI\_TIMING@{EXTENDED\_CMD\_LOAD\_SPI\_TIMING}}
+\index{EXTENDED\_CMD\_LOAD\_SPI\_TIMING@{EXTENDED\_CMD\_LOAD\_SPI\_TIMING}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{EXTENDED\_CMD\_LOAD\_SPI\_TIMING}{EXTENDED\_CMD\_LOAD\_SPI\_TIMING}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a60fc2ca532d2f89c45fbc748f7faf128} 
+uint8\+\_\+t EXTENDED\+\_\+\+CMD\+\_\+\+LOAD\+\_\+\+SPI\+\_\+\+TIMING = 1\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a328d2911a4eeae776e503a1775c5e3ea}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!EXTENDED\_CMD\_SET\_I2C\_PARAMETERS@{EXTENDED\_CMD\_SET\_I2C\_PARAMETERS}}
+\index{EXTENDED\_CMD\_SET\_I2C\_PARAMETERS@{EXTENDED\_CMD\_SET\_I2C\_PARAMETERS}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{EXTENDED\_CMD\_SET\_I2C\_PARAMETERS}{EXTENDED\_CMD\_SET\_I2C\_PARAMETERS}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a328d2911a4eeae776e503a1775c5e3ea} 
+uint8\+\_\+t EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+I2\+C\+\_\+\+PARAMETERS = 3\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a73f6ced1c3a567dd582a2db85e961f38}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!EXTENDED\_CMD\_SET\_SPI\_MODE@{EXTENDED\_CMD\_SET\_SPI\_MODE}}
+\index{EXTENDED\_CMD\_SET\_SPI\_MODE@{EXTENDED\_CMD\_SET\_SPI\_MODE}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{EXTENDED\_CMD\_SET\_SPI\_MODE}{EXTENDED\_CMD\_SET\_SPI\_MODE}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a73f6ced1c3a567dd582a2db85e961f38} 
+uint8\+\_\+t EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+SPI\+\_\+\+MODE = 2\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a9201f62e1fd2d788a9b2723a4db0f77f}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!EXTENDED\_CMD\_STOP@{EXTENDED\_CMD\_STOP}}
+\index{EXTENDED\_CMD\_STOP@{EXTENDED\_CMD\_STOP}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{EXTENDED\_CMD\_STOP}{EXTENDED\_CMD\_STOP}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a9201f62e1fd2d788a9b2723a4db0f77f} 
+uint8\+\_\+t EXTENDED\+\_\+\+CMD\+\_\+\+STOP = 0\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ab46d7ae62e9dbd4105627bc6f32a998d}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!ExtendedCommandNames@{ExtendedCommandNames}}
+\index{ExtendedCommandNames@{ExtendedCommandNames}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{ExtendedCommandNames}{ExtendedCommandNames}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ab46d7ae62e9dbd4105627bc6f32a998d} 
+const std\+::string Extended\+Command\+Names\mbox{[}\mbox{\hyperlink{_ethernet_controller_firefly_8cpp_a9b6f7a472abbc266681b442585a53260}{Nr\+Extended\+Commands}}\mbox{]} = \{ "{}EXTENDED\+\_\+\+CMD\+\_\+\+STOP"{}, "{}EXTENDED\+\_\+\+CMD\+\_\+\+LOAD\+\_\+\+SPI\+\_\+\+TIMING"{}, "{}EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+SPI\+\_\+\+MODE"{}, "{}EXTENDED\+\_\+\+CMD\+\_\+\+SET\+\_\+\+I2\+C\+\_\+\+PARAMETERS"{} \}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a57c8759f9f214734142d0552c38101a7}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!MaxFPGAProgramLength@{MaxFPGAProgramLength}}
+\index{MaxFPGAProgramLength@{MaxFPGAProgramLength}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{MaxFPGAProgramLength}{MaxFPGAProgramLength}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a57c8759f9f214734142d0552c38101a7} 
+const uint32\+\_\+t Max\+FPGAProgram\+Length = 0x100000}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a82a74818c48929b37f9ee15bc09eeaca}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!MaxReconnectAttempts@{MaxReconnectAttempts}}
+\index{MaxReconnectAttempts@{MaxReconnectAttempts}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{MaxReconnectAttempts}{MaxReconnectAttempts}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a82a74818c48929b37f9ee15bc09eeaca} 
+uint32\+\_\+t Max\+Reconnect\+Attempts = 100\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ac59104e620232d895bc143503718b004}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!MaxSequencerCommandListSize@{MaxSequencerCommandListSize}}
+\index{MaxSequencerCommandListSize@{MaxSequencerCommandListSize}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{MaxSequencerCommandListSize}{MaxSequencerCommandListSize}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ac59104e620232d895bc143503718b004} 
+const unsigned long Max\+Sequencer\+Command\+List\+Size = 1024\texorpdfstring{$\ast$}{*}16}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a433af214488c76fe16b62ba0d0cd55d8}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!MinimizeEthernetCommunicationDirectionChanges@{MinimizeEthernetCommunicationDirectionChanges}}
+\index{MinimizeEthernetCommunicationDirectionChanges@{MinimizeEthernetCommunicationDirectionChanges}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{MinimizeEthernetCommunicationDirectionChanges}{MinimizeEthernetCommunicationDirectionChanges}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a433af214488c76fe16b62ba0d0cd55d8} 
+bool Minimize\+Ethernet\+Communication\+Direction\+Changes = true\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a20dc0cedb7d908e6557972164a2a4362}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!NrCommands@{NrCommands}}
+\index{NrCommands@{NrCommands}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{NrCommands}{NrCommands}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a20dc0cedb7d908e6557972164a2a4362} 
+uint8\+\_\+t Nr\+Commands = 30\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a9b6f7a472abbc266681b442585a53260}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!NrExtendedCommands@{NrExtendedCommands}}
+\index{NrExtendedCommands@{NrExtendedCommands}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{NrExtendedCommands}{NrExtendedCommands}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a9b6f7a472abbc266681b442585a53260} 
+uint8\+\_\+t Nr\+Extended\+Commands = 4\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_ae106412c5a47e24fc4db187a1464e341}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!PLToPSCommandAcceptTCPIP@{PLToPSCommandAcceptTCPIP}}
+\index{PLToPSCommandAcceptTCPIP@{PLToPSCommandAcceptTCPIP}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{PLToPSCommandAcceptTCPIP}{PLToPSCommandAcceptTCPIP}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_ae106412c5a47e24fc4db187a1464e341} 
+unsigned int PLTo\+PSCommand\+Accept\+TCPIP = (2 $<$$<$ 8)\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_afd71312067c537a5c1d35f70454ead08}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!PLToPSCommandIgnoreTCPIP@{PLToPSCommandIgnoreTCPIP}}
+\index{PLToPSCommandIgnoreTCPIP@{PLToPSCommandIgnoreTCPIP}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{PLToPSCommandIgnoreTCPIP}{PLToPSCommandIgnoreTCPIP}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_afd71312067c537a5c1d35f70454ead08} 
+unsigned int PLTo\+PSCommand\+Ignore\+TCPIP = (2$<$$<$8) \texorpdfstring{$\vert$}{|} 1\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_ethernet_controller_firefly_8cpp_a54c3b2781cc21848dec3da3010e1aaea}\index{EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}!PLToPSCommandTest@{PLToPSCommandTest}}
+\index{PLToPSCommandTest@{PLToPSCommandTest}!EthernetControllerFirefly.cpp@{EthernetControllerFirefly.cpp}}
+\doxysubsubsection{\texorpdfstring{PLToPSCommandTest}{PLToPSCommandTest}}
+{\footnotesize\ttfamily \label{_ethernet_controller_firefly_8cpp_a54c3b2781cc21848dec3da3010e1aaea} 
+unsigned int PLTo\+PSCommand\+Test = 1 $<$$<$ 8\hspace{0.3cm}{\ttfamily [constexpr]}}
+

@@ -1,0 +1,85 @@
+\doxysection{Config\+Creator.\+h}
+\hypertarget{_config_creator_8h_source}{}\label{_config_creator_8h_source}\index{ConfigCreator.h@{ConfigCreator.h}}
+\mbox{\hyperlink{_config_creator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}include/json.hpp"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ =\ nlohmann::json;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_config_creator_a773a61e1453348034a6e3a5d75131932}{ConfigCreator}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_config_creator_a773a61e1453348034a6e3a5d75131932}{ConfigCreator}}(\textcolor{keyword}{const}\ std::string\&\ filename\ =\ \textcolor{stringliteral}{"{}ControlHardwareConfig\_AQuRA.json"{}});}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_abc45d48d95d527a19518ba3f6389fe00}{RegisterSequencer}}(\textcolor{keywordtype}{int}\ Id\ =\ 0,\ \textcolor{keyword}{const}\ std::string\&\ Type\ =\ \textcolor{stringliteral}{"{}OpticsFoundrySequencerV1"{}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ IP\ =\ \textcolor{stringliteral}{"{}192.168.0.104"{}},\ \textcolor{keywordtype}{int}\ Port\ =\ 7,\ \textcolor{keywordtype}{bool}\ Master\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ StartDelay\ =\ 10,\ \textcolor{keywordtype}{int}\ ClockFrequencyinMHz\ =\ 100,\ \textcolor{keywordtype}{int}\ BusFrequencyinMHz\ =\ 2,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ UseExternalClock\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ UseStrobeGenerator\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_control_a_p_i_8cpp_a345b20fac2d8e0b43b844db9267dda2e}{UseEdgeTriggeredLatches}}\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ Connect\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ DebugOn\ =\ \textcolor{keyword}{false},\ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_a3ababe453374aa303f2113621dc8af51}{RegisterAnalogOutBoard16bit}}(\textcolor{keywordtype}{int}\ Sequencer\ =\ 0,\ \textcolor{keywordtype}{int}\ StartAddress\ =\ 24,\ \textcolor{keywordtype}{int}\ NumberChannels\ =\ 4,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ Signed\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{double}\ MinVoltage\ =\ -\/10,\ \textcolor{keywordtype}{double}\ MaxVoltage\ =\ 10,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_a756910583cb924e287098669ae387c9c}{RegisterDigitalOutBoard}}(\textcolor{keywordtype}{int}\ Sequencer\ =\ 0,\ \textcolor{keywordtype}{int}\ Address\ =\ 1,\ \textcolor{keywordtype}{int}\ NumberChannels\ =\ 16,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_ac3121da8cdec8cd50e489430c1ef9d43}{RegisterSerialPortBoard}}(\textcolor{keywordtype}{int}\ Sequencer\ =\ 0,\ \textcolor{keywordtype}{int}\ Address\ =\ 1,\ \textcolor{keywordtype}{int}\ RackNr\ =\ 0,\ \textcolor{keywordtype}{int}\ SlotNr\ =\ 0,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_a6ccf8202813b31f9d96849c70fd64a19}{RegisterDDSAD9854Board}}(\textcolor{keywordtype}{int}\ Version\ =\ 2,\ \textcolor{keywordtype}{int}\ Sequencer\ =\ 0,\ \textcolor{keywordtype}{int}\ Address\ =\ 132,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ExternalClockFrequencyinMHz\ =\ 300,\ \textcolor{keywordtype}{int}\ PLLReferenceMultiplier\ =\ 1,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ FrequencyMultiplier\ =\ 1,\ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_a170733f5ec616d895cb9d2cc03baacc7}{RegisterDDSAD9858Board}}(\textcolor{keywordtype}{int}\ Sequencer\ =\ 0,\ \textcolor{keywordtype}{int}\ Address\ =\ 50,\ \textcolor{keywordtype}{double}\ ClockFrequencyinMHz\ =\ 1200,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ FrequencyMultiplier\ =\ 1,\ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_a7a843e61c17d090b47ac75c952f3a5f7}{RegisterDDSAD9959Board}}(\textcolor{keywordtype}{int}\ Sequencer\ =\ 0,\ \textcolor{keywordtype}{int}\ Address\ =\ 21,\ \textcolor{keywordtype}{double}\ ClockFrequencyinMHz\ =\ 300,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ FrequencyMultiplier\ =\ 1,\ \textcolor{keywordtype}{bool}\ AD9958\ =\ \textcolor{keyword}{false},\ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_aeb3c9cec8ca52f39df6ff79d4241dc2b}{RegisterAnalogInBoard12bit}}(\textcolor{keywordtype}{int}\ Sequencer\ =\ 0,\ \textcolor{keywordtype}{int}\ Address\ =\ 80,\ \textcolor{keywordtype}{int}\ NumberChannels\ =\ 4,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ MinVoltage\ =\ -\/10,\ \textcolor{keywordtype}{double}\ MaxVoltage\ =\ 10,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_creator_a9f2b06510391bcd500d9772182f4df30}{RegisterRackEntry}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\&\ entry);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_config_creator_a0e4a51a96e909514bfe62d0b238ec25c}{Save}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00071\ \ \ \ \ std::string\ filename\_;}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ config\_;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ AddOptionalHardwareFields(\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\&\ entry,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ Model\ =\ std::nullopt,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<std::string>\&\ SN\ =\ std::nullopt,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ RackNr\ =\ std::nullopt,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<int>\&\ SlotNr\ =\ std::nullopt);}
+\DoxyCodeLine{00079\ \};}
+
+\end{DoxyCode}

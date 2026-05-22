@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_d9959_8cpp" xml:lang="en-US">
+<title>AD9959.cpp File Reference</title>
+<indexterm><primary>AD9959.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;AD9959.h&quot;<?linebreak?>#include &quot;MultiWriteDevice.h&quot;<?linebreak?>#include &quot;ControlAPI.h&quot;<?linebreak?>#include &quot;CDeviceSequencer.h&quot;<?linebreak?>#include &quot;std.h&quot;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;format&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1aa811cfff7ed3e366dac57bec585d73ca">CSR</link>&#160;&#160;&#160;0x00</para>
+
+<para>Channel select register 1 Byte. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1ac3653b62fc8bcbf459d8eb100c2f0d97">FR1</link>&#160;&#160;&#160;0x01</para>
+
+<para>Function register 1 3 Bytes. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a56d7ac273db8f1d308e2af386653be55">CFR</link>&#160;&#160;&#160;0x03</para>
+
+<para>Channel Function register 3 Bytes. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a761c93c32ede15bf95a6da8bb01c197e">CFTW0</link>&#160;&#160;&#160;0x04</para>
+
+<para>Channel Frequency Tuning Word 4 Bytes. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a60692aa1f8e46258cc02429b45d5e1b7">CPOW</link>&#160;&#160;&#160;0x05</para>
+
+<para>Channel Phase Offset Word 2 Bytes. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a48dc818c449e45d31cec291bd40e306c">ACR</link>&#160;&#160;&#160;0x06</para>
+
+<para>Amplitude Control Register 3 Bytes. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a7f09cf08ff1599d667113faa04a68f75">PHASE_OFF_BITS</link>&#160;&#160;&#160;16384.0</para>
+
+<para>2^14 </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a4ba510f21f53f375dd98267c4a644281">MAX_DEGREES</link>&#160;&#160;&#160;360.0</para>
+
+<para>For phase calculation. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1af89cc4d665d9dbf6e4fd69f4be20b99d">TUNEWORD_BITS</link>&#160;&#160;&#160;4294967296.0</para>
+
+<para>2^32 </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a84a5f7cd22a85455fa17496e8d686ba7">MAN_AMP</link>&#160;&#160;&#160;0x1000</para>
+
+<para>Enable manual amplitude control. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1aeb86b3c64a6f46ef2391d7619e402dea">PWR_DWN_FULL</link>&#160;&#160;&#160;0x2</para>
+
+<para>Select full power down mode. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1ac3edf1c18c8444b1e5c6e1d66b1d5a9c">PWR_DWN_PART</link>&#160;&#160;&#160;0x0</para>
+
+<para>Select partial power down mode. </para>
+</listitem>
+            <listitem><para>#define <link linkend="__a_d9959_8cpp_1a41aecc6c69211cb7e33b2b996664a30d">SYNC_DISABLE</link>&#160;&#160;&#160;0x1</para>
+
+<para>Disable the SYNC_CLK signal. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="__a_d9959_8cpp_1a278d0d3daa384981d06a835c8a58ca33">AD9959DoNothing</link> (bool bit)</para>
+</listitem>
+            <listitem><para>void <link linkend="__a_d9959_8cpp_1a00e38cc1dc06ea7a283fdc2fd28a2a3d">AD9959WaitNothing</link> (double time)</para>
+</listitem>
+            <listitem><para>uint32_t <link linkend="__a_d9959_8cpp_1a4b0b116a3f895747a696c03240dd3a1d">AD9959WriteReadSPINothing</link> (unsigned int chip_select, unsigned int number_of_bits_out, uint64_t data_high, uint64_t data_low, unsigned int number_of_bits_in)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>uint32_t <link linkend="__a_d9959_8cpp_1a7cf87d3ac1a8182973654e12f98b520a">AD9959MasterResetValueContents</link> [<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>] = { 0xF0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="__a_d9959_8cpp_1a8c141341211f8f38ec3d24a5a5711719">AD9959ValueLength</link> [<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>] = { 1, 3, 2, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2 }</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="__a_d9959_8cpp_1aff09f9fc0d07347efcf369f6e077235c">AD9959ValueBaseAddress</link> [<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>] = { 0x00,0x01,0x02, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19 }</para>
+</listitem>
+            <listitem><para>const unsigned long <link linkend="__a_d9959_8cpp_1ae7a2cbfee2e5c7f81156a948ffa0134f">AD9959ValueNotInBusBuffer</link> = 99999</para>
+</listitem>
+            <listitem><para>constexpr uint8_t <link linkend="__a_d9959_8cpp_1ae2b8f7d86064320e9627fdddbdaf5b77">ControlRegisterNr</link> = 113</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="__a_d9959_8cpp_1a48dc818c449e45d31cec291bd40e306c"/><section>
+    <title>ACR</title>
+<indexterm><primary>ACR</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>ACR</secondary></indexterm>
+<para><computeroutput>#define ACR&#160;&#160;&#160;0x06</computeroutput></para><para>
+
+<para>Amplitude Control Register 3 Bytes. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1a56d7ac273db8f1d308e2af386653be55"/><section>
+    <title>CFR</title>
+<indexterm><primary>CFR</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>CFR</secondary></indexterm>
+<para><computeroutput>#define CFR&#160;&#160;&#160;0x03</computeroutput></para><para>
+
+<para>Channel Function register 3 Bytes. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1a761c93c32ede15bf95a6da8bb01c197e"/><section>
+    <title>CFTW0</title>
+<indexterm><primary>CFTW0</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>CFTW0</secondary></indexterm>
+<para><computeroutput>#define CFTW0&#160;&#160;&#160;0x04</computeroutput></para><para>
+
+<para>Channel Frequency Tuning Word 4 Bytes. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1a60692aa1f8e46258cc02429b45d5e1b7"/><section>
+    <title>CPOW</title>
+<indexterm><primary>CPOW</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>CPOW</secondary></indexterm>
+<para><computeroutput>#define CPOW&#160;&#160;&#160;0x05</computeroutput></para><para>
+
+<para>Channel Phase Offset Word 2 Bytes. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1aa811cfff7ed3e366dac57bec585d73ca"/><section>
+    <title>CSR</title>
+<indexterm><primary>CSR</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>CSR</secondary></indexterm>
+<para><computeroutput>#define CSR&#160;&#160;&#160;0x00</computeroutput></para><para>
+
+<para>Channel select register 1 Byte. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1ac3653b62fc8bcbf459d8eb100c2f0d97"/><section>
+    <title>FR1</title>
+<indexterm><primary>FR1</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>FR1</secondary></indexterm>
+<para><computeroutput>#define FR1&#160;&#160;&#160;0x01</computeroutput></para><para>
+
+<para>Function register 1 3 Bytes. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1a84a5f7cd22a85455fa17496e8d686ba7"/><section>
+    <title>MAN_AMP</title>
+<indexterm><primary>MAN_AMP</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>MAN_AMP</secondary></indexterm>
+<para><computeroutput>#define MAN_AMP&#160;&#160;&#160;0x1000</computeroutput></para><para>
+
+<para>Enable manual amplitude control. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1a4ba510f21f53f375dd98267c4a644281"/><section>
+    <title>MAX_DEGREES</title>
+<indexterm><primary>MAX_DEGREES</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>MAX_DEGREES</secondary></indexterm>
+<para><computeroutput>#define MAX_DEGREES&#160;&#160;&#160;360.0</computeroutput></para><para>
+
+<para>For phase calculation. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1a7f09cf08ff1599d667113faa04a68f75"/><section>
+    <title>PHASE_OFF_BITS</title>
+<indexterm><primary>PHASE_OFF_BITS</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>PHASE_OFF_BITS</secondary></indexterm>
+<para><computeroutput>#define PHASE_OFF_BITS&#160;&#160;&#160;16384.0</computeroutput></para><para>
+
+<para>2^14 </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1aeb86b3c64a6f46ef2391d7619e402dea"/><section>
+    <title>PWR_DWN_FULL</title>
+<indexterm><primary>PWR_DWN_FULL</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>PWR_DWN_FULL</secondary></indexterm>
+<para><computeroutput>#define PWR_DWN_FULL&#160;&#160;&#160;0x2</computeroutput></para><para>
+
+<para>Select full power down mode. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1ac3edf1c18c8444b1e5c6e1d66b1d5a9c"/><section>
+    <title>PWR_DWN_PART</title>
+<indexterm><primary>PWR_DWN_PART</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>PWR_DWN_PART</secondary></indexterm>
+<para><computeroutput>#define PWR_DWN_PART&#160;&#160;&#160;0x0</computeroutput></para><para>
+
+<para>Select partial power down mode. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1a41aecc6c69211cb7e33b2b996664a30d"/><section>
+    <title>SYNC_DISABLE</title>
+<indexterm><primary>SYNC_DISABLE</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>SYNC_DISABLE</secondary></indexterm>
+<para><computeroutput>#define SYNC_DISABLE&#160;&#160;&#160;0x1</computeroutput></para><para>
+
+<para>Disable the SYNC_CLK signal. </para>
+</para>
+</section>
+<anchor xml:id="__a_d9959_8cpp_1af89cc4d665d9dbf6e4fd69f4be20b99d"/><section>
+    <title>TUNEWORD_BITS</title>
+<indexterm><primary>TUNEWORD_BITS</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>TUNEWORD_BITS</secondary></indexterm>
+<para><computeroutput>#define TUNEWORD_BITS&#160;&#160;&#160;4294967296.0</computeroutput></para><para>
+
+<para>2^32 </para>
+</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__a_d9959_8cpp_1a278d0d3daa384981d06a835c8a58ca33"/><section>
+    <title>AD9959DoNothing()</title>
+<indexterm><primary>AD9959DoNothing</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>AD9959DoNothing</secondary></indexterm>
+<para><computeroutput>void AD9959DoNothing (bool bit)</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8cpp_1a00e38cc1dc06ea7a283fdc2fd28a2a3d"/><section>
+    <title>AD9959WaitNothing()</title>
+<indexterm><primary>AD9959WaitNothing</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>AD9959WaitNothing</secondary></indexterm>
+<para><computeroutput>void AD9959WaitNothing (double time)</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8cpp_1a4b0b116a3f895747a696c03240dd3a1d"/><section>
+    <title>AD9959WriteReadSPINothing()</title>
+<indexterm><primary>AD9959WriteReadSPINothing</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>AD9959WriteReadSPINothing</secondary></indexterm>
+<para><computeroutput>uint32_t AD9959WriteReadSPINothing (unsigned int chip_select, unsigned int number_of_bits_out, uint64_t data_high, uint64_t data_low, unsigned int number_of_bits_in)</computeroutput></para></section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__a_d9959_8cpp_1a7cf87d3ac1a8182973654e12f98b520a"/><section>
+    <title>AD9959MasterResetValueContents</title>
+<indexterm><primary>AD9959MasterResetValueContents</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>AD9959MasterResetValueContents</secondary></indexterm>
+<para><computeroutput>uint32_t AD9959MasterResetValueContents[<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>] = { 0xF0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x000302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8cpp_1aff09f9fc0d07347efcf369f6e077235c"/><section>
+    <title>AD9959ValueBaseAddress</title>
+<indexterm><primary>AD9959ValueBaseAddress</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>AD9959ValueBaseAddress</secondary></indexterm>
+<para><computeroutput>unsigned char AD9959ValueBaseAddress[<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>] = { 0x00,0x01,0x02, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18, 0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x10,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19 }</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8cpp_1a8c141341211f8f38ec3d24a5a5711719"/><section>
+    <title>AD9959ValueLength</title>
+<indexterm><primary>AD9959ValueLength</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>AD9959ValueLength</secondary></indexterm>
+<para><computeroutput>unsigned char AD9959ValueLength[<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>] = { 1, 3, 2, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 2, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2 }</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8cpp_1ae7a2cbfee2e5c7f81156a948ffa0134f"/><section>
+    <title>AD9959ValueNotInBusBuffer</title>
+<indexterm><primary>AD9959ValueNotInBusBuffer</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>AD9959ValueNotInBusBuffer</secondary></indexterm>
+<para><computeroutput>const unsigned long AD9959ValueNotInBusBuffer = 99999</computeroutput></para></section>
+<anchor xml:id="__a_d9959_8cpp_1ae2b8f7d86064320e9627fdddbdaf5b77"/><section>
+    <title>ControlRegisterNr</title>
+<indexterm><primary>ControlRegisterNr</primary><secondary>AD9959.cpp</secondary></indexterm>
+<indexterm><primary>AD9959.cpp</primary><secondary>ControlRegisterNr</secondary></indexterm>
+<para><computeroutput>uint8_t ControlRegisterNr = 113<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+</section>
+</section>

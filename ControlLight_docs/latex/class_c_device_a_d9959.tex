@@ -1,0 +1,239 @@
+\doxysection{CDevice\+AD9959 Class Reference}
+\hypertarget{class_c_device_a_d9959}{}\label{class_c_device_a_d9959}\index{CDeviceAD9959@{CDeviceAD9959}}
+
+
+{\ttfamily \#include $<$CDevice\+AD9959.\+h$>$}
+
+Inheritance diagram for CDevice\+AD9959\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_device_a_d9959}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_device_a_d9959_a2344f87f354a06d282e9201698c96b1e}{CDevice\+AD9959}} (\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}\+\_\+\+My\+Sequencer, unsigned int \+\_\+\+My\+Address, double \+\_\+external\+Clock\+Frequency, unsigned int \+\_\+frequency\+Multiplier, bool \+\_\+\+AD9958)
+\item 
+virtual \mbox{\hyperlink{class_c_device_a_d9959_a789c7695858610a6bfca974fbbd44583}{\texorpdfstring{$\sim$}{\string~}\+CDevice\+AD9959}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_a38c7f5f07196c5ca71ef4aa839328672}{Set\+Register}} (const unsigned int \&Sub\+Address, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}Data, const unsigned long \&Data\+Length\+\_\+in\+\_\+bit, const uint8\+\_\+t \&Start\+Bit)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_a46d8f4c3a336759c62d7752dc3030859}{Set\+Value}} (const unsigned int \&Sub\+Address, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}Data, const unsigned long \&Data\+Length\+\_\+in\+\_\+bit, const uint8\+\_\+t \&Start\+Bit)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_a0425a4b692fbfa6dbc1473bfd7b483fe}{Reset}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_ad2d7d983412962ce224f470a678f76b2}{Set\+Frequency}} (uint8\+\_\+t channel, double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_a3a49aaf7f9b1abbae04bf7cd9a442e2c}{Set\+Frequency\+Tuning\+Word}} (uint8\+\_\+t channel, uint64\+\_\+t Frequency\+Tuning\+Word)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_a024925938d2761b3a53f81dfd6fba4c4}{Set\+Phase}} (uint8\+\_\+t channel, double Phase)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_a2517d5781f41ffafba2488f30435c007}{Set\+Power}} (uint8\+\_\+t channel, double Power)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_aadb0eedf5b550a7db87cef00d187da1e}{Set\+Attenuation}} (uint8\+\_\+t channel, double Power)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a_d9959_a8214bfd8ae42b829825f76143eefa8ba}{Set\+IOUpdate\+Enabled}} (bool \+\_\+\+IOUpdate\+Enabled)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_device}{CDevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}} (\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}\+\_\+\+My\+Sequencer=nullptr, unsigned long \+\_\+\+My\+Address=0, const std\+::string \+\_\+\+My\+Type="{}"{})
+\item 
+virtual \mbox{\hyperlink{class_c_device_aa3ec8544aad768caa0c45b53c8915e0f}{\texorpdfstring{$\sim$}{\string~}\+CDevice}} ()=default
+\item 
+void \mbox{\hyperlink{class_c_device_a30356c4a419393fe39c946209c966ab1}{Notify\+Error}} (const std\+::string \&Error\+Message, bool dothrow=true)
+\item 
+void \mbox{\hyperlink{class_c_device_abad094121bde679b4a68858b1a0e1c32}{Clear\+Error}} ()
+\item 
+bool \mbox{\hyperlink{class_c_device_acaaa125920dec9e7f9f6b3d6a2225058}{Error\+Occured}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a6a8ccd405886c6bb81b886de3aa45c77}{Select\+Rack\+Slot}} (const uint8\+\_\+t \&Slot\+Nr)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_ab7deca3acfd5322776186b07f597f9ec}{Reset\+I2\+CMultiplexer}} ()
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a157c99b6b8d061e54ab2920a89711e6f}{Set\+Voltage}} (double Voltage)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a671cf9349a711df3da9e655dc2928a84}{Set\+Digital\+Output}} (uint8\+\_\+t Bit\+Nr, bool On\+Off)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_aaa3e13859985f358428c4d51bafc37d3}{Set\+Start\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_af0ac58636967e468139ea4ec7776b912}{Set\+Stop\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_ac9f2d8bc4810171cc290332dcf5aea77}{Set\+Modulation\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a896e79990b77c5702bcacf217ebd8180}{Set\+Power}} (double Power)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_abb0dc967e558b1e3218fb00c368e927f}{Set\+Attenuation}} (double Attenuation)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a266d2caa2f23ebc437e9cb26bf2ec3ad}{Set\+Start\+Frequency\+Tuning\+Word}} (uint64\+\_\+t)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a60446e9222919ecb7f7c8f9e7c72ee43}{Set\+Stop\+Frequency\+Tuning\+Word}} (uint64\+\_\+t)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a5201f16fcc101d6594d33d0463664519}{Set\+FSKMode}} (uint8\+\_\+t mode)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a8e233a94cc5c177260a319ae158c3504}{Set\+Ramp\+Rate\+Clock}} (int rate)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a7dc7cc4daab1c6e27468d7366a449e85}{Set\+Clear\+ACC1}} (bool)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_aa19bf3d0655119902bac344b8c4c5a2c}{Set\+Triangle\+Bit}} (bool)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_acef2ccddac12d4203fb363c1b18fdbe9}{Set\+FSKBit}} (bool)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_ae8204d9f4edb81f19af2ceaeee04d65e}{Set\+Frequency}} (double Frequency)
+\item 
+virtual bool \mbox{\hyperlink{class_c_device_a2f948d164b6177a355b9f47a39d3a758}{Set\+Frequency\+Tuning\+Word}} (uint64\+\_\+t Frequency\+Tuning\+Word)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_c_device_a_d9959_a7d0962f1e73f477931c0e61a3f4536de}{external\+Clock\+Frequency}}
+\item 
+double \mbox{\hyperlink{class_c_device_a_d9959_ade1c1d99a6a0372c970efe4205ddd915}{frequency\+Multiplier}}
+\item 
+bool \mbox{\hyperlink{class_c_device_a_d9959_a5808d7615398901f28a60b2f9449f0bb}{AD9958}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_c_device}{CDevice}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_c_device_a381f3a4f11fb87aadc77bcdc4524e33f}{My\+Sequencer}}
+\item 
+unsigned long \mbox{\hyperlink{class_c_device_a7c5003e9b61986c46f6aa9ffd31324f3}{My\+Address}}
+\item 
+std\+::string \mbox{\hyperlink{class_c_device_aaa6670dcb90af191c31aef9d88dbdcce}{My\+Type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_device_a_d9959_a2344f87f354a06d282e9201698c96b1e}\index{CDeviceAD9959@{CDeviceAD9959}!CDeviceAD9959@{CDeviceAD9959}}
+\index{CDeviceAD9959@{CDeviceAD9959}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{CDeviceAD9959()}{CDeviceAD9959()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a2344f87f354a06d282e9201698c96b1e} 
+CDevice\+AD9959\+::\+CDevice\+AD9959 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_device_sequencer}{CDevice\+Sequencer}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+My\+Sequencer}{, }\item[{unsigned int}]{\+\_\+\+My\+Address}{, }\item[{double}]{\+\_\+external\+Clock\+Frequency}{, }\item[{unsigned int}]{\+\_\+frequency\+Multiplier}{, }\item[{bool}]{\+\_\+\+AD9958}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_c_device_a_d9959_a789c7695858610a6bfca974fbbd44583}\index{CDeviceAD9959@{CDeviceAD9959}!````~CDeviceAD9959@{\texorpdfstring{$\sim$}{\string~}CDeviceAD9959}}
+\index{````~CDeviceAD9959@{\texorpdfstring{$\sim$}{\string~}CDeviceAD9959}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CDeviceAD9959()}{\string~CDeviceAD9959()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a789c7695858610a6bfca974fbbd44583} 
+CDevice\+AD9959\+::\texorpdfstring{$\sim$}{\string~}\+CDevice\+AD9959 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_device_a_d9959_a0425a4b692fbfa6dbc1473bfd7b483fe}\index{CDeviceAD9959@{CDeviceAD9959}!Reset@{Reset}}
+\index{Reset@{Reset}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a0425a4b692fbfa6dbc1473bfd7b483fe} 
+bool CDevice\+AD9959\+::\+Reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_acd05aa88ded012804e579a19ada672b5}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_aadb0eedf5b550a7db87cef00d187da1e}\index{CDeviceAD9959@{CDeviceAD9959}!SetAttenuation@{SetAttenuation}}
+\index{SetAttenuation@{SetAttenuation}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetAttenuation()}{SetAttenuation()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_aadb0eedf5b550a7db87cef00d187da1e} 
+bool CDevice\+AD9959\+::\+Set\+Attenuation (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{double}]{Power}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_ad5976661247c2d2a64fe6800be5ae0bc}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_ad2d7d983412962ce224f470a678f76b2}\index{CDeviceAD9959@{CDeviceAD9959}!SetFrequency@{SetFrequency}}
+\index{SetFrequency@{SetFrequency}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequency()}{SetFrequency()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_ad2d7d983412962ce224f470a678f76b2} 
+bool CDevice\+AD9959\+::\+Set\+Frequency (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{double}]{Frequency}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_a537b4320f28a041f7c792cd8ee980489}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_a3a49aaf7f9b1abbae04bf7cd9a442e2c}\index{CDeviceAD9959@{CDeviceAD9959}!SetFrequencyTuningWord@{SetFrequencyTuningWord}}
+\index{SetFrequencyTuningWord@{SetFrequencyTuningWord}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetFrequencyTuningWord()}{SetFrequencyTuningWord()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a3a49aaf7f9b1abbae04bf7cd9a442e2c} 
+bool CDevice\+AD9959\+::\+Set\+Frequency\+Tuning\+Word (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{uint64\+\_\+t}]{Frequency\+Tuning\+Word}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_a20124b1ebdce4ad278e9441c33a25df6}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_a8214bfd8ae42b829825f76143eefa8ba}\index{CDeviceAD9959@{CDeviceAD9959}!SetIOUpdateEnabled@{SetIOUpdateEnabled}}
+\index{SetIOUpdateEnabled@{SetIOUpdateEnabled}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetIOUpdateEnabled()}{SetIOUpdateEnabled()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a8214bfd8ae42b829825f76143eefa8ba} 
+bool CDevice\+AD9959\+::\+Set\+IOUpdate\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+\+IOUpdate\+Enabled}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_ae8de0378397c02c4cfe7cfc0cb672cd4}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_a024925938d2761b3a53f81dfd6fba4c4}\index{CDeviceAD9959@{CDeviceAD9959}!SetPhase@{SetPhase}}
+\index{SetPhase@{SetPhase}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPhase()}{SetPhase()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a024925938d2761b3a53f81dfd6fba4c4} 
+bool CDevice\+AD9959\+::\+Set\+Phase (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{double}]{Phase}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_a4972e649a5c5e33b1e2b19d4d977be1b}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_a2517d5781f41ffafba2488f30435c007}\index{CDeviceAD9959@{CDeviceAD9959}!SetPower@{SetPower}}
+\index{SetPower@{SetPower}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetPower()}{SetPower()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a2517d5781f41ffafba2488f30435c007} 
+bool CDevice\+AD9959\+::\+Set\+Power (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{, }\item[{double}]{Power}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_af08e809e1fe88612656716fef5055256}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_a38c7f5f07196c5ca71ef4aa839328672}\index{CDeviceAD9959@{CDeviceAD9959}!SetRegister@{SetRegister}}
+\index{SetRegister@{SetRegister}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetRegister()}{SetRegister()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a38c7f5f07196c5ca71ef4aa839328672} 
+bool CDevice\+AD9959\+::\+Set\+Register (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{Sub\+Address}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Data}{, }\item[{const unsigned long \&}]{Data\+Length\+\_\+in\+\_\+bit}{, }\item[{const uint8\+\_\+t \&}]{Start\+Bit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_aed9d8c451787c53bf398292a57b20a99}{CDevice}}.
+
+\Hypertarget{class_c_device_a_d9959_a46d8f4c3a336759c62d7752dc3030859}\index{CDeviceAD9959@{CDeviceAD9959}!SetValue@{SetValue}}
+\index{SetValue@{SetValue}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{SetValue()}{SetValue()}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a46d8f4c3a336759c62d7752dc3030859} 
+bool CDevice\+AD9959\+::\+Set\+Value (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{Sub\+Address}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{Data}{, }\item[{const unsigned long \&}]{Data\+Length\+\_\+in\+\_\+bit}{, }\item[{const uint8\+\_\+t \&}]{Start\+Bit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_device_a8e4c8e7c256a149d08debc49e190b27e}{CDevice}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_device_a_d9959_a5808d7615398901f28a60b2f9449f0bb}\index{CDeviceAD9959@{CDeviceAD9959}!AD9958@{AD9958}}
+\index{AD9958@{AD9958}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{AD9958}{AD9958}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a5808d7615398901f28a60b2f9449f0bb} 
+bool CDevice\+AD9959\+::\+AD9958}
+
+\Hypertarget{class_c_device_a_d9959_a7d0962f1e73f477931c0e61a3f4536de}\index{CDeviceAD9959@{CDeviceAD9959}!externalClockFrequency@{externalClockFrequency}}
+\index{externalClockFrequency@{externalClockFrequency}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{externalClockFrequency}{externalClockFrequency}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_a7d0962f1e73f477931c0e61a3f4536de} 
+double CDevice\+AD9959\+::external\+Clock\+Frequency}
+
+\Hypertarget{class_c_device_a_d9959_ade1c1d99a6a0372c970efe4205ddd915}\index{CDeviceAD9959@{CDeviceAD9959}!frequencyMultiplier@{frequencyMultiplier}}
+\index{frequencyMultiplier@{frequencyMultiplier}!CDeviceAD9959@{CDeviceAD9959}}
+\doxysubsubsection{\texorpdfstring{frequencyMultiplier}{frequencyMultiplier}}
+{\footnotesize\ttfamily \label{class_c_device_a_d9959_ade1c1d99a6a0372c970efe4205ddd915} 
+double CDevice\+AD9959\+::frequency\+Multiplier}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_c_device_a_d9959_8h}{CDevice\+AD9959.\+h}}\item 
+\mbox{\hyperlink{_c_device_a_d9959_8cpp}{CDevice\+AD9959.\+cpp}}\end{DoxyCompactItemize}

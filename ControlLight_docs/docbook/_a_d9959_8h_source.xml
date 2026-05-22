@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_d9959_8h_source" xml:lang="en-US">
+<title>AD9959.h</title>
+<indexterm><primary>AD9959.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__multi_write_device_s_p_i_8h">MultiWriteDeviceSPI.h</link>&quot;</emphasis>
+3 <emphasis role="preprocessor">#include&#32;&lt;cstdint&gt;</emphasis>&#32;<emphasis role="comment">//&#32;Include&#32;this&#32;header&#32;to&#32;define&#32;uint8_t</emphasis>
+4 
+5 
+6 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_sequencer">CDeviceSequencer</link>;
+7 
+11 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+12 {
+13 &#32;&#32;<link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6a229aec4bb33a5e42368fec853d4a282c">E_AD9959_PWR_POWERED</link>,&#32;
+14 &#32;&#32;<link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6a1c5124a87cd37ffbd0d50eaf74c987c1">E_AD9959_PWR_PARTIAL</link>,&#32;
+15 &#32;&#32;<link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6ad0da32910d0ef5c4661945583ed021a3">E_AD9959_PWR_DOWN</link>&#32;&#32;&#32;&#32;&#32;
+16 }&#32;<link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6">E_AD9959_PWR</link>;
+17 
+21 <emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">enum</emphasis>
+22 {
+23 &#32;&#32;<link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a61cfe8513916df0d575cc1a7e8d8d1f1">E_AD9959_CHANNEL_ALL</link>,&#32;
+24 &#32;&#32;<link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a6c65280e6f459c84b3382c7e14a117e0">E_AD9959_CHANNEL_0</link>,&#32;&#32;&#32;&#32;
+25 &#32;&#32;<link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55ac10215c8ca3ef4486e2f972b8bf1ab50">E_AD9959_CHANNEL_1</link>,&#32;&#32;&#32;&#32;&#32;
+26 &#32;&#32;<link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a42a2b3479f328b6288975f0f829f55f3">E_AD9959_CHANNEL_2</link>,&#32;&#32;&#32;&#32;&#32;
+27 &#32;&#32;<link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55a6e09353b72f98a29fe2db5c7a6e47ee0">E_AD9959_CHANNEL_3</link>&#32;&#32;&#32;&#32;&#32;
+28 }&#32;<link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55">E_AD9959_CHANNEL</link>;
+29 
+30 <emphasis role="comment">//&#32;Pin&#32;defines&#32;-&#32;Change&#32;to&#32;suit</emphasis>
+31 <emphasis role="preprocessor">#define&#32;PWR_DWN_CTL_PORT&#32;&#32;&#32;&#32;&#32;GPIOA</emphasis>
+32 <emphasis role="preprocessor">#define&#32;PWR_DWN_CTL_PIN&#32;&#32;&#32;&#32;&#32;&#32;GPIO_PIN_1</emphasis>
+33 <emphasis role="preprocessor">#define&#32;MASTER_RESET_PORT&#32;&#32;&#32;&#32;GPIOA</emphasis>
+34 <emphasis role="preprocessor">#define&#32;MASTER_RESET_PIN&#32;&#32;&#32;&#32;&#32;GPIO_PIN_1</emphasis>
+35 <emphasis role="preprocessor">#define&#32;IO_UPDATE_PORT&#32;&#32;&#32;&#32;&#32;&#32;&#32;GPIOA</emphasis>
+36 <emphasis role="preprocessor">#define&#32;IO_UPDATE_PIN&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GPIO_PIN_1</emphasis>
+37 <emphasis role="preprocessor">#define&#32;SDIO_3_PORT&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GPIOA</emphasis>
+38 <emphasis role="preprocessor">#define&#32;SDIO_3_PIN&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GPIO_PIN_1</emphasis>
+39 <emphasis role="preprocessor">#define&#32;CS_GPIO_PORT&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GPIOA</emphasis>
+40 <emphasis role="preprocessor">#define&#32;CS_PIN&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GPIO_PIN_1</emphasis>
+41 
+42 <emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__a_d9959_8h_1a66d5c07db323165da4e746e951591962">SPIBufferLength</link>&#32;=&#32;14;
+43 <emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>&#32;=&#32;92;
+44 
+45 <emphasis role="keyword">constexpr</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__a_d9959_8h_1ac68e8badff67a631e395bbd74036e53c">AD9959SPIBufferLength</link>&#32;=&#32;14;
+46 
+47 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_a_d9959_1aa88a117e95fc0f016e15e746bd6559ad">CAD9959</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_c_multi_write_device_s_p_i_1a5c404d823894e21c689ae62b5df3527a">CMultiWriteDeviceSPI</link>
+48 {
+49 <emphasis role="keyword">private</emphasis>:
+50 &#32;&#32;&#32;&#32;uint8_t&#32;SPIBuffer[<link linkend="__a_d9959_8h_1ac68e8badff67a631e395bbd74036e53c">AD9959SPIBufferLength</link>];
+51 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;BytesToTransmit;
+52 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ClockFrequency_in_Hz;
+53 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;InputClockFrequency_in_Hz;
+54 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;MaxFrequency;
+55 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;FrequencyScale;
+56 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UpdateRegistersModeAutomatic;
+57 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AD9958;
+58 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;IOUpdateEnabled;
+59 &#32;&#32;&#32;&#32;
+60 &#32;&#32;&#32;&#32;uint32_t&#32;AktValueContents[<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>];&#32;<emphasis role="comment">//keeps&#32;track&#32;of&#32;Value,&#32;contains&#32;value&#32;after&#32;bus&#32;buffer&#32;has&#32;been&#32;finished&#32;to&#32;be&#32;written&#32;out</emphasis>
+61 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;WritePrecision[<link linkend="__a_d9959_8h_1a387b88152d0188930d36aef467e9fb9f">AD9959NumberOfRegisters</link>];
+62 <emphasis role="keyword">public</emphasis>:
+63 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_c_a_d9959_1a9e897ce28716f4f30c47def792f643ec">FrequencyMultiplier</link>;
+64 
+65 <emphasis role="keyword">public</emphasis>:
+66 &#32;&#32;&#32;&#32;<link linkend="_class_c_a_d9959_1aa88a117e95fc0f016e15e746bd6559ad">CAD9959</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">short</emphasis>&#32;aBus,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;aBaseAddress,&#32;<emphasis role="keywordtype">double</emphasis>&#32;aExternalClockFrequency_in_Hz,&#32;<emphasis role="keywordtype">double</emphasis>&#32;aFrequencyMultiplier,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;aAD9958,&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;_MyDeviceSequencer);
+67 &#32;&#32;&#32;&#32;
+68 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_a_d9959_1aabac4acc282ef510033395754fe5be69">~CAD9959</link>();
+69 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a632fe73af485c771a13de373a187a58f">SetIOUpdate</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+70 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a6cda1b0a97ee0d9cdf59fdc5775b48b9">SetReset</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+71 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a2ad6f52206e2f7065540779cc032a381">SetPowerDown</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;write_immediately&#32;=&#32;<emphasis role="keyword">true</emphasis>);
+72 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1aef55d8c1c03b2ac7c92ea09c9e9fc032">SetSyncIO</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+73 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1aab7ef3db386644a0a1ef63abd2afe5e4">SetP0</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+74 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a8e61cf3b2b799d02d075068cf780130f">SetP1</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+75 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a3b692e47f207299555b43b19382593c6">SetP2</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+76 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a8146049ee3c787bb47abdfd96ab1d4b4">SetP3</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+77 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a966303ae0c62f2d9f090570e32fd629e">SetSpare2</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+78 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a7e4daf662005c1667d8f60a6bff44761">SetSpare1</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+79 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1af9f84dade5c6bf10e323cabf7cbb33b7">SetSpare0</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+80 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1af6c36e7e306038277f5e0811c25fccff">SetSDIO_3</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+81 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a9176a345e8462a80dbf4f11cba5503a6">SetSDIO_2</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+82 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a3d1538bef33cea72d9dcd1609cd0c10a">SetSDIO_1</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+83 
+84 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1ae4fa396b7c230633effe950d703d6d57">Initialise</link>(<emphasis role="keywordtype">void</emphasis>);
+85 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1abe0218ccf6f5615758929ae124cbd245">SyncIO</link>(<emphasis role="keywordtype">void</emphasis>);
+86 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1afa8626eff8c75ddcf4b69820e60f085c">SetQSPIMode</link>(<emphasis role="keywordtype">bool</emphasis>&#32;OnOff);
+87 <emphasis role="comment">//&#32;&#32;&#32;&#32;void&#32;Initialise_GPIO(void);</emphasis>
+88 &#32;&#32;&#32;&#32;<emphasis role="comment">//void&#32;TestFunctions(void);</emphasis>
+89 
+96 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a17012ee930cc35fc085f47a277b0605c">SetFrequency</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">float</emphasis>&#32;frequency);
+97 
+98 
+105 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1aa5188f193273997d8ec60a4453ba9932">SetAmplitude</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">float</emphasis>&#32;amplitude);
+106 
+107 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a53c5d550b3ccb52f832b78eb97816708">SetAttenuation</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">double</emphasis>&#32;attenuation);
+108 
+115 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a09ad557c8c5157d092db31509714366d">SetPhaseOffset</link>(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">float</emphasis>&#32;phase);
+116 
+122 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a102f89320e04bd0e8e5a077e8e57d34e">SetPowerState</link>(<link linkend="__a_d9959_8h_1a15b7d0c292192542a3f120604c38a2b6">E_AD9959_PWR</link>&#32;state);
+123 
+124 
+125 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a80bfca1eff0df35cd003214005020196">SetFrequencyCh0</link>(<emphasis role="keywordtype">double</emphasis>&#32;frequency);
+126 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a48a3679897fa1810a4e6d3adc37c7576">SetFrequencyCh1</link>(<emphasis role="keywordtype">double</emphasis>&#32;frequency);
+127 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a10551085f8d95598abbbff89934d4a05">SetFrequencyCh2</link>(<emphasis role="keywordtype">double</emphasis>&#32;frequency);
+128 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1ac5c42a3aa8f228931a855eea5573b30d">SetFrequencyCh3</link>(<emphasis role="keywordtype">double</emphasis>&#32;frequency);
+129 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a7d9a974b6e8245edf36bc9185496930f">SetIntensityCh0</link>(<emphasis role="keywordtype">double</emphasis>&#32;Intensity);
+130 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a5b51906cc8ec22aa0cac9efc1eaaa58d">SetIntensityCh1</link>(<emphasis role="keywordtype">double</emphasis>&#32;Intensity);
+131 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1ad16a0609b912ea10996acb12abff139f">SetIntensityCh2</link>(<emphasis role="keywordtype">double</emphasis>&#32;Intensity);
+132 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a54bfd6a7e90becf416cf4eaeb95719c7">SetIntensityCh3</link>(<emphasis role="keywordtype">double</emphasis>&#32;Intensity);
+133 
+134 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a332739a6cfd703a24506a2aaa5d896fd">SetAttenuationCh0</link>(<emphasis role="keywordtype">double</emphasis>&#32;Attenuation);
+135 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a3f714bc713f17105e2aed622bd94eed2">SetAttenuationCh1</link>(<emphasis role="keywordtype">double</emphasis>&#32;Attenuation);
+136 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1ae2bd58423ef4a185a1fb24b06bc10bfe">SetAttenuationCh2</link>(<emphasis role="keywordtype">double</emphasis>&#32;Attenuation);
+137 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1af1314efc3649975cefaa2c989fa13113">SetAttenuationCh3</link>(<emphasis role="keywordtype">double</emphasis>&#32;Attenuation);
+138 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a26bcefc6e2cef1af1c001ead8ab2e594">SetPhaseOffsetCh0</link>(<emphasis role="keywordtype">double</emphasis>&#32;phase);
+139 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a455e48c883554aeacdf7239609508d26">SetPhaseOffsetCh1</link>(<emphasis role="keywordtype">double</emphasis>&#32;phase);
+140 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1abfaa9e1a4ceb2ae8962b6aa8c1d9a2b1">SetPhaseOffsetCh2</link>(<emphasis role="keywordtype">double</emphasis>&#32;phase);
+141 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a0072fd80472ca74125c10e58ffa8894c">SetPhaseOffsetCh3</link>(<emphasis role="keywordtype">double</emphasis>&#32;phase);
+142 
+143 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1ab25f2f98571db2f4f9c49b6911ff7069">SelectChannelCh0</link>()&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;(AD9958)&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;6,&#32;2,&#32;1);&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;4,&#32;4,&#32;1);&#32;}
+144 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a73e7d3f7a547ed82d12502a56be26343">SelectChannelCh1</link>()&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;(AD9958)&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;6,&#32;2,&#32;2);&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;4,&#32;4,&#32;2);&#32;}
+145 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a72a73b72cde3b1a7ede267d3486f04eb">SelectChannelCh2</link>()&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!AD9958)&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;4,&#32;4,&#32;4);&#32;}
+146 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1afd33238d7c49eda194586ff9bd4b1bd0">SelectChannelCh3</link>()&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!AD9958)&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;4,&#32;4,&#32;8);&#32;}
+147 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a3c259ef86f62dd6e2e61d0e33a04c948">SelectChannelCh0And1</link>()&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;(AD9958)&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;6,&#32;2,&#32;3);&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;4,&#32;4,&#32;3);&#32;}
+148 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a08e0b5a7cbb4e0b948fa17442daff68f">SelectChannelCh0To3</link>()&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!AD9958)&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;4,&#32;4,&#32;0xF);&#32;}
+149 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a9c4383fab2e2785944120c437d210eff">SelectChannels</link>(uint8_t&#32;channels)&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;(AD9958)&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;6,&#32;2,&#32;0x3&#32;&amp;&#32;channels);&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(0,&#32;4,&#32;4,&#32;0xF&#32;&amp;&#32;channels);&#32;}
+150 
+151 &#32;&#32;&#32;&#32;<emphasis role="comment">//void&#32;SetFrequencyTuningWord(uint32_t&#32;ftw)&#32;{&#32;SetValue(4,&#32;ftw);&#32;}</emphasis>
+152 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1ab6bf6292ebe4dff107de2f282f4c4964">SetFrequencyTuningWord</link>(uint8_t&#32;channel,&#32;uint32_t&#32;ftw)&#32;{&#32;<emphasis role="keywordflow">if</emphasis>&#32;((AD9958&#32;&amp;&amp;&#32;(channel&#32;&lt;&#32;2))&#32;||&#32;((!AD9958)&#32;&amp;&amp;&#32;(channel&#32;&lt;&#32;4)))&#32;{&#32;<link linkend="_class_c_a_d9959_1a4bb4da04d1b4010827a5be9397bbc67e">SetWriteChannels</link>(channel);&#32;&#32;<link linkend="_class_c_a_d9959_1a85dab1279bf6c1957e5f8b3e90833159">SetValue</link>(4,&#32;ftw);&#32;}&#32;}
+153 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a694201198d2489854555310d1f0fc8ec">SetFrequencyTuningWordCh0</link>(uint32_t&#32;ftw)&#32;{
+154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_a_d9959_1ab6bf6292ebe4dff107de2f282f4c4964">SetFrequencyTuningWord</link>(1,&#32;ftw);
+155 &#32;&#32;&#32;&#32;}
+156 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a0d282dd8bb804dca072c7aef488abcc8">SetFrequencyTuningWordCh1</link>(uint32_t&#32;ftw)&#32;{
+157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_a_d9959_1ab6bf6292ebe4dff107de2f282f4c4964">SetFrequencyTuningWord</link>(2,&#32;ftw);
+158 &#32;&#32;&#32;&#32;}
+159 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1afe8cab5d30b53ec6b2ffa4a3a85740a9">SetFrequencyTuningWordCh2</link>(uint32_t&#32;ftw)&#32;{
+160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!AD9958)&#32;<link linkend="_class_c_a_d9959_1ab6bf6292ebe4dff107de2f282f4c4964">SetFrequencyTuningWord</link>(3,&#32;ftw);
+161 &#32;&#32;&#32;&#32;}
+162 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1af91cb7a3ed64dc32593f219a2410fb84">SetFrequencyTuningWordCh3</link>(uint32_t&#32;ftw)&#32;{
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(!AD9958)&#32;<link linkend="_class_c_a_d9959_1ab6bf6292ebe4dff107de2f282f4c4964">SetFrequencyTuningWord</link>(4,&#32;ftw);
+164 &#32;&#32;&#32;&#32;}
+165 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a29dd3504aa4abfab58740e4452b0fc53">SetIOUpdateEnabled</link>(<emphasis role="keywordtype">bool</emphasis>&#32;_IOUpdateEnabled);
+166 <emphasis role="keyword">private</emphasis>:
+167 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;IO_Update_Toggle();
+168 &#32;&#32;&#32;&#32;<emphasis role="comment">//void&#32;Reset(void);</emphasis>
+169 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Disable_SYNC_CLK(<emphasis role="keywordtype">void</emphasis>);
+170 
+171 
+172 
+173 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetFrequency_SPI(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">float</emphasis>&#32;frequency);
+174 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetAmplitude_SPI(uint8_t&#32;channel,&#32;uint32_t&#32;amplitude);
+175 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetIntensity_SPI(uint8_t&#32;channel,&#32;uint32_t&#32;intensity);
+176 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetPhaseOffset_SPI(uint8_t&#32;channel,&#32;<emphasis role="keywordtype">float</emphasis>&#32;phase);
+177 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetPowerDown_partial_SPI();
+178 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SetPowerDown_full_SPI();
+179 &#32;&#32;&#32;&#32;uint8_t&#32;GetChannelBits(<link linkend="__a_d9959_8h_1a718d6d9917e27d01323431e10ef11e55">E_AD9959_CHANNEL</link>&#32;channel);
+180 &#32;&#32;&#32;&#32;uint32_t&#32;calcFTW(<emphasis role="keywordtype">float</emphasis>&#32;frequency);
+181 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;calcFrequency(uint32_t&#32;FTW);
+182 &#32;&#32;&#32;&#32;uint32_t&#32;calcPOW(<emphasis role="keywordtype">float</emphasis>&#32;degrees);
+183 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Dev_Select(<emphasis role="keywordtype">void</emphasis>);
+184 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;Dev_Deselect(<emphasis role="keywordtype">bool</emphasis>&#32;read&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;uint8_t&#32;number_of_bits_in&#32;=&#32;0);
+185 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;SPI_Transmit_Byte(uint8_t&#32;<emphasis role="keywordtype">byte</emphasis>);
+186 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;AssurePulseIsLongerThanSyncClockPeriod();
+187 <emphasis role="keyword">public</emphasis>:
+188 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a4bb4da04d1b4010827a5be9397bbc67e">SetWriteChannels</link>(uint8_t&#32;channels);
+189 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1a4bb4da04d1b4010827a5be9397bbc67e">SetWriteChannels</link>(<emphasis role="keywordtype">bool</emphasis>&#32;channel0,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;channel1,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;channel2,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;channel3);
+190 &#32;&#32;&#32;&#32;<emphasis role="comment">//Functions&#32;for&#32;CMultiWriteDevice</emphasis>
+191 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_c_a_d9959_1abf14c16b323b452ab58b67069ba6c589">MasterReset</link>();
+192 &#32;&#32;&#32;&#32;
+193 &#32;&#32;&#32;&#32;<emphasis role="comment">//bool&#32;SetControlBit(unsigned&#32;char&#32;RegisterNr,&#32;unsigned&#32;char&#32;BitNr,&#32;bool&#32;Value,&#32;bool&#32;GetValue);</emphasis>
+194 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_a_d9959_1a40bd9ee35f07c63d5abd8ba99979aa2c">SetRegisterBit</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;RegisterNr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;BitNr,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Value,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;GetValue&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DoIOUpdate&#32;=&#32;<emphasis role="keyword">true</emphasis>);
+195 &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_c_a_d9959_1ac2c61070302c969026fc43c676e4f5d0">SetRegisterBits</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;RegisterNr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;LowestBitNr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;NrBits,&#32;uint32_t&#32;Value,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;GetValue&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DoIOUpdate&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;forceWrite=&#32;<emphasis role="keyword">false</emphasis>);
+196 &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_c_a_d9959_1a21de8c6bad71977668963d4c89fe846b">SetValueDirect</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;RegisterNr,&#32;uint32_t&#32;Value,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;GetValue&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DoIOUpdate&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;forceWrite&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+197 &#32;&#32;&#32;&#32;uint32_t&#32;<link linkend="_class_c_a_d9959_1a85dab1279bf6c1957e5f8b3e90833159">SetValue</link>(<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>&#32;RegisterNr,&#32;uint32_t&#32;Value,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;GetValue&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DoIOUpdate&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;forceWrite&#32;=&#32;<emphasis role="keyword">false</emphasis>);
+198 &#32;&#32;&#32;&#32;<emphasis role="comment">//void&#32;LoadLatches();</emphasis>
+199 &#32;&#32;&#32;&#32;<emphasis role="comment">//void&#32;UpdateRegisters();</emphasis>
+200 };
+</programlisting></section>

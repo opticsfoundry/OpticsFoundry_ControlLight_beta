@@ -1,0 +1,201 @@
+\doxysection{AD9959.\+h File Reference}
+\hypertarget{_a_d9959_8h}{}\label{_a_d9959_8h}\index{AD9959.h@{AD9959.h}}
+{\ttfamily \#include "{}Multi\+Write\+Device\+SPI.\+h"{}}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_c_a_d9959}{CAD9959}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_a1a931e36eb2a3a7f5b2b865825a89eb1}{PWR\+\_\+\+DWN\+\_\+\+CTL\+\_\+\+PORT}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_a5b365a8630fe8154666599435d9ea436}{PWR\+\_\+\+DWN\+\_\+\+CTL\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+1
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_afe5e3ca1252527d4b81d7af56ca307c3}{MASTER\+\_\+\+RESET\+\_\+\+PORT}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_acdd566a19c317ccf5b2b67b7d6c36a58}{MASTER\+\_\+\+RESET\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+1
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_af8c3fcef31f93d855617be996919caba}{IO\+\_\+\+UPDATE\+\_\+\+PORT}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_acd45d509cdc32242ca6023d1f13e4c0e}{IO\+\_\+\+UPDATE\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+1
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_ac7c961b51abd4647549d4723dac238cb}{SDIO\+\_\+3\+\_\+\+PORT}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_a29939981eaea67fc7bd82bd3e9522109}{SDIO\+\_\+3\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+1
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_a7ab0d892114e931317d43c50fa82d510}{CS\+\_\+\+GPIO\+\_\+\+PORT}}~GPIOA
+\item 
+\#define \mbox{\hyperlink{_a_d9959_8h_abfcf05153ddbd63d5aff5d018867cc19}{CS\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}{E\+\_\+\+AD9959\+\_\+\+PWR}} \{ \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a229aec4bb33a5e42368fec853d4a282c}{E\+\_\+\+AD9959\+\_\+\+PWR\+\_\+\+POWERED}}
+, \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a1c5124a87cd37ffbd0d50eaf74c987c1}{E\+\_\+\+AD9959\+\_\+\+PWR\+\_\+\+PARTIAL}}
+, \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6ad0da32910d0ef5c4661945583ed021a3}{E\+\_\+\+AD9959\+\_\+\+PWR\+\_\+\+DOWN}}
+ \}
+\begin{DoxyCompactList}\small\item\em DDS Power modes. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55}{E\+\_\+\+AD9959\+\_\+\+CHANNEL}} \{ \newline
+\mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a61cfe8513916df0d575cc1a7e8d8d1f1}{E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+\+ALL}}
+, \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6c65280e6f459c84b3382c7e14a117e0}{E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+0}}
+, \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55ac10215c8ca3ef4486e2f972b8bf1ab50}{E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+1}}
+, \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a42a2b3479f328b6288975f0f829f55f3}{E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+2}}
+, \newline
+\mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6e09353b72f98a29fe2db5c7a6e47ee0}{E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+3}}
+ \}
+\begin{DoxyCompactList}\small\item\em DDS Channel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \mbox{\hyperlink{_a_d9959_8h_a66d5c07db323165da4e746e951591962}{SPIBuffer\+Length}} = 14
+\item 
+constexpr unsigned int \mbox{\hyperlink{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}{AD9959\+Number\+Of\+Registers}} = 92
+\item 
+constexpr unsigned int \mbox{\hyperlink{_a_d9959_8h_ac68e8badff67a631e395bbd74036e53c}{AD9959\+SPIBuffer\+Length}} = 14
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_a_d9959_8h_a7ab0d892114e931317d43c50fa82d510}\index{AD9959.h@{AD9959.h}!CS\_GPIO\_PORT@{CS\_GPIO\_PORT}}
+\index{CS\_GPIO\_PORT@{CS\_GPIO\_PORT}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{CS\_GPIO\_PORT}{CS\_GPIO\_PORT}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a7ab0d892114e931317d43c50fa82d510} 
+\#define CS\+\_\+\+GPIO\+\_\+\+PORT~GPIOA}
+
+\Hypertarget{_a_d9959_8h_abfcf05153ddbd63d5aff5d018867cc19}\index{AD9959.h@{AD9959.h}!CS\_PIN@{CS\_PIN}}
+\index{CS\_PIN@{CS\_PIN}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{CS\_PIN}{CS\_PIN}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_abfcf05153ddbd63d5aff5d018867cc19} 
+\#define CS\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+1}
+
+\Hypertarget{_a_d9959_8h_acd45d509cdc32242ca6023d1f13e4c0e}\index{AD9959.h@{AD9959.h}!IO\_UPDATE\_PIN@{IO\_UPDATE\_PIN}}
+\index{IO\_UPDATE\_PIN@{IO\_UPDATE\_PIN}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{IO\_UPDATE\_PIN}{IO\_UPDATE\_PIN}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_acd45d509cdc32242ca6023d1f13e4c0e} 
+\#define IO\+\_\+\+UPDATE\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+1}
+
+\Hypertarget{_a_d9959_8h_af8c3fcef31f93d855617be996919caba}\index{AD9959.h@{AD9959.h}!IO\_UPDATE\_PORT@{IO\_UPDATE\_PORT}}
+\index{IO\_UPDATE\_PORT@{IO\_UPDATE\_PORT}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{IO\_UPDATE\_PORT}{IO\_UPDATE\_PORT}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_af8c3fcef31f93d855617be996919caba} 
+\#define IO\+\_\+\+UPDATE\+\_\+\+PORT~GPIOA}
+
+\Hypertarget{_a_d9959_8h_acdd566a19c317ccf5b2b67b7d6c36a58}\index{AD9959.h@{AD9959.h}!MASTER\_RESET\_PIN@{MASTER\_RESET\_PIN}}
+\index{MASTER\_RESET\_PIN@{MASTER\_RESET\_PIN}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{MASTER\_RESET\_PIN}{MASTER\_RESET\_PIN}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_acdd566a19c317ccf5b2b67b7d6c36a58} 
+\#define MASTER\+\_\+\+RESET\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+1}
+
+\Hypertarget{_a_d9959_8h_afe5e3ca1252527d4b81d7af56ca307c3}\index{AD9959.h@{AD9959.h}!MASTER\_RESET\_PORT@{MASTER\_RESET\_PORT}}
+\index{MASTER\_RESET\_PORT@{MASTER\_RESET\_PORT}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{MASTER\_RESET\_PORT}{MASTER\_RESET\_PORT}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_afe5e3ca1252527d4b81d7af56ca307c3} 
+\#define MASTER\+\_\+\+RESET\+\_\+\+PORT~GPIOA}
+
+\Hypertarget{_a_d9959_8h_a5b365a8630fe8154666599435d9ea436}\index{AD9959.h@{AD9959.h}!PWR\_DWN\_CTL\_PIN@{PWR\_DWN\_CTL\_PIN}}
+\index{PWR\_DWN\_CTL\_PIN@{PWR\_DWN\_CTL\_PIN}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{PWR\_DWN\_CTL\_PIN}{PWR\_DWN\_CTL\_PIN}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a5b365a8630fe8154666599435d9ea436} 
+\#define PWR\+\_\+\+DWN\+\_\+\+CTL\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+1}
+
+\Hypertarget{_a_d9959_8h_a1a931e36eb2a3a7f5b2b865825a89eb1}\index{AD9959.h@{AD9959.h}!PWR\_DWN\_CTL\_PORT@{PWR\_DWN\_CTL\_PORT}}
+\index{PWR\_DWN\_CTL\_PORT@{PWR\_DWN\_CTL\_PORT}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{PWR\_DWN\_CTL\_PORT}{PWR\_DWN\_CTL\_PORT}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a1a931e36eb2a3a7f5b2b865825a89eb1} 
+\#define PWR\+\_\+\+DWN\+\_\+\+CTL\+\_\+\+PORT~GPIOA}
+
+\Hypertarget{_a_d9959_8h_a29939981eaea67fc7bd82bd3e9522109}\index{AD9959.h@{AD9959.h}!SDIO\_3\_PIN@{SDIO\_3\_PIN}}
+\index{SDIO\_3\_PIN@{SDIO\_3\_PIN}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{SDIO\_3\_PIN}{SDIO\_3\_PIN}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a29939981eaea67fc7bd82bd3e9522109} 
+\#define SDIO\+\_\+3\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+1}
+
+\Hypertarget{_a_d9959_8h_ac7c961b51abd4647549d4723dac238cb}\index{AD9959.h@{AD9959.h}!SDIO\_3\_PORT@{SDIO\_3\_PORT}}
+\index{SDIO\_3\_PORT@{SDIO\_3\_PORT}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{SDIO\_3\_PORT}{SDIO\_3\_PORT}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_ac7c961b51abd4647549d4723dac238cb} 
+\#define SDIO\+\_\+3\+\_\+\+PORT~GPIOA}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55}\index{AD9959.h@{AD9959.h}!E\_AD9959\_CHANNEL@{E\_AD9959\_CHANNEL}}
+\index{E\_AD9959\_CHANNEL@{E\_AD9959\_CHANNEL}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{E\_AD9959\_CHANNEL}{E\_AD9959\_CHANNEL}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55} 
+enum \mbox{\hyperlink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55}{E\+\_\+\+AD9959\+\_\+\+CHANNEL}}}
+
+
+
+DDS Channel. 
+
+typedef enum \doxylink{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55}{E\+\_\+\+AD9959\+\_\+\+CHANNEL} \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_CHANNEL\_ALL@{E\_AD9959\_CHANNEL\_ALL}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_CHANNEL\_ALL@{E\_AD9959\_CHANNEL\_ALL}}}\Hypertarget{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a61cfe8513916df0d575cc1a7e8d8d1f1}\label{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a61cfe8513916df0d575cc1a7e8d8d1f1} 
+E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+\+ALL&Select both channels \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_CHANNEL\_0@{E\_AD9959\_CHANNEL\_0}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_CHANNEL\_0@{E\_AD9959\_CHANNEL\_0}}}\Hypertarget{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6c65280e6f459c84b3382c7e14a117e0}\label{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6c65280e6f459c84b3382c7e14a117e0} 
+E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+0&Select channel 0 only \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_CHANNEL\_1@{E\_AD9959\_CHANNEL\_1}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_CHANNEL\_1@{E\_AD9959\_CHANNEL\_1}}}\Hypertarget{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55ac10215c8ca3ef4486e2f972b8bf1ab50}\label{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55ac10215c8ca3ef4486e2f972b8bf1ab50} 
+E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+1&Select channel 1 only \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_CHANNEL\_2@{E\_AD9959\_CHANNEL\_2}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_CHANNEL\_2@{E\_AD9959\_CHANNEL\_2}}}\Hypertarget{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a42a2b3479f328b6288975f0f829f55f3}\label{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a42a2b3479f328b6288975f0f829f55f3} 
+E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+2&Select channel 2 only \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_CHANNEL\_3@{E\_AD9959\_CHANNEL\_3}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_CHANNEL\_3@{E\_AD9959\_CHANNEL\_3}}}\Hypertarget{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6e09353b72f98a29fe2db5c7a6e47ee0}\label{_a_d9959_8h_a718d6d9917e27d01323431e10ef11e55a6e09353b72f98a29fe2db5c7a6e47ee0} 
+E\+\_\+\+AD9959\+\_\+\+CHANNEL\+\_\+3&Select channel 3 only \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}\index{AD9959.h@{AD9959.h}!E\_AD9959\_PWR@{E\_AD9959\_PWR}}
+\index{E\_AD9959\_PWR@{E\_AD9959\_PWR}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{E\_AD9959\_PWR}{E\_AD9959\_PWR}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6} 
+enum \mbox{\hyperlink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}{E\+\_\+\+AD9959\+\_\+\+PWR}}}
+
+
+
+DDS Power modes. 
+
+typedef enum \doxylink{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6}{E\+\_\+\+AD9959\+\_\+\+PWR} \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_PWR\_POWERED@{E\_AD9959\_PWR\_POWERED}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_PWR\_POWERED@{E\_AD9959\_PWR\_POWERED}}}\Hypertarget{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a229aec4bb33a5e42368fec853d4a282c}\label{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a229aec4bb33a5e42368fec853d4a282c} 
+E\+\_\+\+AD9959\+\_\+\+PWR\+\_\+\+POWERED&Fully powered \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_PWR\_PARTIAL@{E\_AD9959\_PWR\_PARTIAL}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_PWR\_PARTIAL@{E\_AD9959\_PWR\_PARTIAL}}}\Hypertarget{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a1c5124a87cd37ffbd0d50eaf74c987c1}\label{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6a1c5124a87cd37ffbd0d50eaf74c987c1} 
+E\+\_\+\+AD9959\+\_\+\+PWR\+\_\+\+PARTIAL&Fast recovery -\/ Powers down digital logic and DAC digital logic \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_AD9959\_PWR\_DOWN@{E\_AD9959\_PWR\_DOWN}!AD9959.h@{AD9959.h}}\index{AD9959.h@{AD9959.h}!E\_AD9959\_PWR\_DOWN@{E\_AD9959\_PWR\_DOWN}}}\Hypertarget{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6ad0da32910d0ef5c4661945583ed021a3}\label{_a_d9959_8h_a15b7d0c292192542a3f120604c38a2b6ad0da32910d0ef5c4661945583ed021a3} 
+E\+\_\+\+AD9959\+\_\+\+PWR\+\_\+\+DOWN&Full power down -\/ Powers down all functions including DAC and PLL \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f}\index{AD9959.h@{AD9959.h}!AD9959NumberOfRegisters@{AD9959NumberOfRegisters}}
+\index{AD9959NumberOfRegisters@{AD9959NumberOfRegisters}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{AD9959NumberOfRegisters}{AD9959NumberOfRegisters}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a387b88152d0188930d36aef467e9fb9f} 
+unsigned int AD9959\+Number\+Of\+Registers = 92\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_a_d9959_8h_ac68e8badff67a631e395bbd74036e53c}\index{AD9959.h@{AD9959.h}!AD9959SPIBufferLength@{AD9959SPIBufferLength}}
+\index{AD9959SPIBufferLength@{AD9959SPIBufferLength}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{AD9959SPIBufferLength}{AD9959SPIBufferLength}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_ac68e8badff67a631e395bbd74036e53c} 
+unsigned int AD9959\+SPIBuffer\+Length = 14\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{_a_d9959_8h_a66d5c07db323165da4e746e951591962}\index{AD9959.h@{AD9959.h}!SPIBufferLength@{SPIBufferLength}}
+\index{SPIBufferLength@{SPIBufferLength}!AD9959.h@{AD9959.h}}
+\doxysubsubsection{\texorpdfstring{SPIBufferLength}{SPIBufferLength}}
+{\footnotesize\ttfamily \label{_a_d9959_8h_a66d5c07db323165da4e746e951591962} 
+const unsigned int SPIBuffer\+Length = 14}
+

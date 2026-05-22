@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__c_device_analog_out_8h_source" xml:lang="en-US">
+<title>CDeviceAnalogOut.h</title>
+<indexterm><primary>CDeviceAnalogOut.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__c_device_8h">CDevice.h</link>&quot;</emphasis>
+4 
+5 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_c_device_analog_out_1a695307191b7f157d1143780acf6fc7e0">CDeviceAnalogOut</link>&#32;:<emphasis role="keyword">public</emphasis>&#32;<link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link>
+6 {
+7 <emphasis role="keyword">public</emphasis>:
+8 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_analog_out_1a05dee8010a2fbf954c438c22a01e9bc6">signedValue</link>;
+9 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_c_device_analog_out_1a2fe9411fc1e80b3b83ecfdd03ffd1348">minVoltage</link>;
+10 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_c_device_analog_out_1a4d941520c3ef458a906f788f76c8b617">maxVoltage</link>;
+11 &#32;&#32;&#32;&#32;uint16_t&#32;<link linkend="_class_c_device_analog_out_1a36ca152328b0d97fcc504158065c8ef9">LastValue</link>;
+12 <emphasis role="keyword">public</emphasis>:
+13 &#32;&#32;&#32;&#32;<link linkend="_class_c_device_analog_out_1a695307191b7f157d1143780acf6fc7e0">CDeviceAnalogOut</link>(
+14 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_device_sequencer">CDeviceSequencer</link>*&#32;_MySequencer,
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;_MyAddress,
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;_signedValue,
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;_minVoltage,
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;_maxVoltage);
+19 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<link linkend="_class_c_device_analog_out_1a955a2cb90ff8b8df7ec739b038ca18f3">~CDeviceAnalogOut</link>()&#32;=&#32;<emphasis role="keywordflow">default</emphasis>;
+20 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_analog_out_1ac54b73743d0fca56fcf4ebdc8e987d99">SetValue</link>(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;SubAddress,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t*&#32;Data,&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&amp;&#32;DataLength_in_bit,&#32;<emphasis role="keyword">const</emphasis>&#32;uint8_t&amp;&#32;StartBit);&#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;SetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+21 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;GetValue(unsigned&#32;int&#32;SubAddress,&#32;uint8_t*&#32;Data,&#32;unsigned&#32;long&#32;DataLength);</emphasis>
+22 &#32;&#32;&#32;&#32;<emphasis role="comment">//virtual&#32;bool&#32;Configure();</emphasis>
+23 &#32;&#32;&#32;&#32;<emphasis role="keyword">virtual</emphasis>&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_c_device_analog_out_1a026c988d95e8edc2bd26937c9c3c21c0">SetVoltage</link>(<emphasis role="keywordtype">double</emphasis>&#32;Voltage);
+24 };
+</programlisting></section>

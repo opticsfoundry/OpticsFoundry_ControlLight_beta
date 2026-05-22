@@ -1,0 +1,36 @@
+\doxysection{CDevice\+Analog\+In.\+h}
+\hypertarget{_c_device_analog_in_8h_source}{}\label{_c_device_analog_in_8h_source}\index{CDeviceAnalogIn.h@{CDeviceAnalogIn.h}}
+\mbox{\hyperlink{_c_device_analog_in_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_c_device_8h}{CDevice.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_analog_in_abdc6156f460806109865ed3853d2ac0c}{CDeviceAnalogIn}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_device_ab2a002fb6c828f07e8aebcd7dbf2cd00}{CDevice}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_analog_in_aab940dd723722bfdee3f8274fc10a883}{signedValue}};}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_analog_in_a7dbb27d7aae03cc49ec8b13e0df84738}{minVoltage}};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_device_analog_in_a7ae4b62e1f1f833e08d3ffaa963afdc7}{maxVoltage}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ uint8\_t\ AnalogInType;}
+\DoxyCodeLine{00014\ \ \ \ \ uint8\_t\ SPI\_CS;}
+\DoxyCodeLine{00015\ \ \ \ \ uint8\_t\ ChannelNumber;}
+\DoxyCodeLine{00016\ \ \ \ \ uint32\_t\ NumberOfDataPoints;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{double}\ DelayBetweenDataPoints\_in\_ms;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_c_device_analog_in_abdc6156f460806109865ed3853d2ac0c}{CDeviceAnalogIn}}(}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \_MySequencer,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_chipSelect,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_signedValue,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_minVoltage,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_maxVoltage}
+\DoxyCodeLine{00025\ \ \ \ \ );}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_device_analog_in_a8c7a8945493262124a779a11515cddfe}{\string~CDeviceAnalogIn}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_device_analog_in_a1d85180fcdf32ab2c9411bfd8b838779}{SetValue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ SubAddress,\ \textcolor{keyword}{const}\ uint8\_t*\ Data,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\&\ DataLength\_in\_bit,\ \textcolor{keyword}{const}\ uint8\_t\&\ StartBit);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ GetValue(unsigned\ int\ SubAddress,\ uint8\_t*\ Data,\ unsigned\ long\ DataLength);}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//virtual\ bool\ Configure();}}
+\DoxyCodeLine{00030\ \};}
+
+\end{DoxyCode}

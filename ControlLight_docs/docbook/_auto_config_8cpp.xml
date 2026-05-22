@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__auto_config_8cpp" xml:lang="en-US">
+<title>AutoConfig.cpp File Reference</title>
+<indexterm><primary>AutoConfig.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;ControlAPI.h&quot;<?linebreak?>#include &quot;std.h&quot;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;cstring&gt;<?linebreak?>#include &lt;cstdio&gt;<?linebreak?>#include &lt;cctype&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;iomanip&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &quot;AutoConfig.h&quot;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="__auto_config_8cpp_1a2b9c8dfeeabd4e031faad168c65a38d5">AUTO_CONFIG_API_CALL</link>(name, ...)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="__auto_config_8cpp_1a4c3299a0742f71a990ddb55c3c3bacd7">ResetRackI2CMultiplexers</link> (const uint8_t SequencerID)</para>
+</listitem>
+            <listitem><para>bool <link linkend="__auto_config_8cpp_1a99e3fa3af53d2988bd6181ee0ce2067d">SelectRackI2CSlot</link> (const uint8_t SequencerID, const uint8_t RackNr, const uint8_t SlotNr)</para>
+</listitem>
+            <listitem><para>bool <link linkend="__auto_config_8cpp_1aad395c51516feb2cb6691e153cdb5df1">WriteConfigEEPROM</link> (const uint8_t SequencerID, const uint8_t RackNr, const uint8_t SlotNr, const char *data, const size_t length)</para>
+
+<para>Write configuration data to the EEPROM of a rack slot. </para>
+</listitem>
+            <listitem><para>void <link linkend="__auto_config_8cpp_1af7ae1d1d4d88b31de333b5dfaf4c733b">ReadConfigEEPROM</link> (const uint8_t SequencerID, const uint8_t RackNr, const uint8_t SlotNr, char *data, size_t &amp;length, bool &amp;I2C_success)</para>
+
+<para>Read the complete configuration EEPROM of a rack slot. </para>
+</listitem>
+            <listitem><para>void <link linkend="__auto_config_8cpp_1a281f7b4a3c83dc4aaba3b2625288e7a0">WriteConfigAddress</link> (const uint8_t SequencerID, const uint8_t RackNr, const uint8_t SlotNr, const uint8_t address)</para>
+
+<para>Write the configuration address byte of a rack slot. </para>
+</listitem>
+            <listitem><para>void <link linkend="__auto_config_8cpp_1a6e7fa30abd688cb9b2030233aae40df7">ReadConfigAddress</link> (const uint8_t SequencerID, const uint8_t RackNr, const uint8_t SlotNr, uint8_t &amp;address, bool &amp;I2C_success)</para>
+
+<para>Read the configuration address byte of a rack slot. </para>
+</listitem>
+            <listitem><para><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> <link linkend="__auto_config_8cpp_1adaba071de1c2264ff86494e12fe40cd2">ReadConfiguration</link> (const std::string &amp;filename)</para>
+</listitem>
+            <listitem><para><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> <link linkend="__auto_config_8cpp_1a373a270b5fa5a46935c61759ee121208">GetAutoConfigJSON</link> (const std::string &amp;filename)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="__auto_config_8cpp_1a2b9c8dfeeabd4e031faad168c65a38d5"/><section>
+    <title>AUTO_CONFIG_API_CALL</title>
+<indexterm><primary>AUTO_CONFIG_API_CALL</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>AUTO_CONFIG_API_CALL</secondary></indexterm>
+<para><computeroutput>#define AUTO_CONFIG_API_CALL( name,  ...)</computeroutput></para><emphasis role="strong">Value:</emphasis><programlisting linenumbering="unnumbered">CLA_##name(__VA_ARGS__)
+</programlisting></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__auto_config_8cpp_1a373a270b5fa5a46935c61759ee121208"/><section>
+    <title>GetAutoConfigJSON()</title>
+<indexterm><primary>GetAutoConfigJSON</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>GetAutoConfigJSON</secondary></indexterm>
+<para><computeroutput><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> GetAutoConfigJSON (const std::string &amp; filename)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8cpp_1a6e7fa30abd688cb9b2030233aae40df7"/><section>
+    <title>ReadConfigAddress()</title>
+<indexterm><primary>ReadConfigAddress</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>ReadConfigAddress</secondary></indexterm>
+<para><computeroutput>void ReadConfigAddress (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t &amp; address, bool &amp; I2C_success)</computeroutput></para><para>
+
+<para>Read the configuration address byte of a rack slot. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>SequencerID</entry><entry>
+<para>the sequencer to use. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>RackNr</entry><entry>
+<para>the rack number. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>SlotNr</entry><entry>
+<para>the slot number within the rack. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>address</entry><entry>
+<para>output byte receiving the current address value. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>I2C_success</entry><entry>
+<para>output flag indicating whether the address read transaction succeeded. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>See return convention above. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="__auto_config_8cpp_1af7ae1d1d4d88b31de333b5dfaf4c733b"/><section>
+    <title>ReadConfigEEPROM()</title>
+<indexterm><primary>ReadConfigEEPROM</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>ReadConfigEEPROM</secondary></indexterm>
+<para><computeroutput>void ReadConfigEEPROM (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, char * data, size_t &amp; length, bool &amp; I2C_success)</computeroutput></para><para>
+
+<para>Read the complete configuration EEPROM of a rack slot. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>SequencerID</entry><entry>
+<para>the sequencer to use. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>RackNr</entry><entry>
+<para>the rack number. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>SlotNr</entry><entry>
+<para>the slot number within the rack. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>data</entry><entry>
+<para>output buffer receiving the EEPROM contents. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>length</entry><entry>
+<para>input: available buffer size in bytes, output: number of bytes read. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>I2C_success</entry><entry>
+<para>output flag indicating whether the EEPROM read transaction succeeded. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>See return convention above. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="__auto_config_8cpp_1adaba071de1c2264ff86494e12fe40cd2"/><section>
+    <title>ReadConfiguration()</title>
+<indexterm><primary>ReadConfiguration</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>ReadConfiguration</secondary></indexterm>
+<para><computeroutput><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> ReadConfiguration (const std::string &amp; filename)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8cpp_1a4c3299a0742f71a990ddb55c3c3bacd7"/><section>
+    <title>ResetRackI2CMultiplexers()</title>
+<indexterm><primary>ResetRackI2CMultiplexers</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>ResetRackI2CMultiplexers</secondary></indexterm>
+<para><computeroutput>void ResetRackI2CMultiplexers (const uint8_t SequencerID)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8cpp_1a99e3fa3af53d2988bd6181ee0ce2067d"/><section>
+    <title>SelectRackI2CSlot()</title>
+<indexterm><primary>SelectRackI2CSlot</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>SelectRackI2CSlot</secondary></indexterm>
+<para><computeroutput>bool SelectRackI2CSlot (const uint8_t SequencerID, const uint8_t RackNr, const uint8_t SlotNr)</computeroutput></para></section>
+<anchor xml:id="__auto_config_8cpp_1a281f7b4a3c83dc4aaba3b2625288e7a0"/><section>
+    <title>WriteConfigAddress()</title>
+<indexterm><primary>WriteConfigAddress</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>WriteConfigAddress</secondary></indexterm>
+<para><computeroutput>void WriteConfigAddress (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t address)</computeroutput></para><para>
+
+<para>Write the configuration address byte of a rack slot. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>SequencerID</entry><entry>
+<para>the sequencer to use. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>RackNr</entry><entry>
+<para>the rack number. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>SlotNr</entry><entry>
+<para>the slot number within the rack. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>address</entry><entry>
+<para>the address byte to write. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>See return convention above. </para>
+</formalpara>
+</para>
+</section>
+<anchor xml:id="__auto_config_8cpp_1aad395c51516feb2cb6691e153cdb5df1"/><section>
+    <title>WriteConfigEEPROM()</title>
+<indexterm><primary>WriteConfigEEPROM</primary><secondary>AutoConfig.cpp</secondary></indexterm>
+<indexterm><primary>AutoConfig.cpp</primary><secondary>WriteConfigEEPROM</secondary></indexterm>
+<para><computeroutput>bool WriteConfigEEPROM (uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, const char * data, size_t length)</computeroutput></para><para>
+
+<para>Write configuration data to the EEPROM of a rack slot. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>SequencerID</entry><entry>
+<para>the sequencer to use. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>RackNr</entry><entry>
+<para>the rack number. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>SlotNr</entry><entry>
+<para>the slot number within the rack. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>data</entry><entry>
+<para>the configuration payload to write. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>length</entry><entry>
+<para>the payload length in bytes. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>See return convention above. </para>
+</formalpara>
+</para>
+</section>
+</section>
+</section>

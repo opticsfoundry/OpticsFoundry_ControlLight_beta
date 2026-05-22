@@ -1,0 +1,75 @@
+\doxysection{Multi\+Write\+Device\+SPI.\+h}
+\hypertarget{_multi_write_device_s_p_i_8h_source}{}\label{_multi_write_device_s_p_i_8h_source}\index{MultiWriteDeviceSPI.h@{MultiWriteDeviceSPI.h}}
+\mbox{\hyperlink{_multi_write_device_s_p_i_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_multi_write_device_8h}{MultiWriteDevice.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\#define\ DebugSPI}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifdef\ DebugSPI}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }CMultiIO;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_multi_write_device_s_p_i_8h_a669a765d62b2d28c8657747bfe0fad1e}{MultiWriteDeviceSPIMaxBusBuffer}}\ =\ 1024*128;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_multi_write_device_s_p_i_a5c404d823894e21c689ae62b5df3527a}{CMultiWriteDeviceSPI}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_multi_write_device_a82ab432239bfec0d80828a22185fad00}{CMultiWriteDevice}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ BaseAddress;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ Bus;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//Ring\ buffer\ for\ bus\ writing}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ BusBuffer[\mbox{\hyperlink{_multi_write_device_s_p_i_8h_a669a765d62b2d28c8657747bfe0fad1e}{MultiWriteDeviceSPIMaxBusBuffer}}];}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ BusBufferStart;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ BusBufferEnd;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ BusBufferLength;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ SPI\_CS\_bit;\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ SDIO\_0\_bit;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ SDIO\_1\_bit;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ SDIO\_2\_bit;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ SDIO\_3\_bit;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ SPI\_SCLK\_bit;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ QSPIMode;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ SPI\_CPHA;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ SPI\_CPOL;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ SPI\_frequency\_in\_Hz;\ \textcolor{comment}{//0\ means\ half\ of\ parallel\ bus\ speed}}
+\DoxyCodeLine{00040\ \ \ \ \ uint8\_t\ SPI\_mode;}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#ifdef\ DebugSPI}}
+\DoxyCodeLine{00042\ \ \ \ \ std::ofstream*\ DebugFile;}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_adc481f321d25e39cb2baa5f0fba07ab3}{ControlRegisterContent}};}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a571800d5b7ca564f2b7c74159db21bc2}{MyDeviceSequencer}};}
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_ab460375cc870879096703671fdcf0128}{WriteToBus}}();}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a360cc28c0aff515956cb3268005fc7c6}{WriteAllToBus}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a5c404d823894e21c689ae62b5df3527a}{CMultiWriteDeviceSPI}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ aBus,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ aBaseAddress,\ \mbox{\hyperlink{class_c_device_sequencer}{CDeviceSequencer}}*\ \_MyDeviceSequencer);}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a6256de4a496a9fa06d923211c698562d}{\string~CMultiWriteDeviceSPI}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_aa838021ef2d4dc7a50b5a7621e767b37}{SetSPIPortBits}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \_SPI\_CS\_bit,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \ \_SDIO\_0\_bit,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \_SDIO\_1\_bit,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \_SDIO\_2\_bit,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \_SDIO\_3\_bit,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \_SPI\_SCLK\_bit);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_abaa235bd3663e29b1ad7d5dbaee9916c}{AddToBusBuffer}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ value);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a43d882b4cc30609526e28a08f3028c82}{HasSomethingToWriteToBus}}()\ \{\ \textcolor{comment}{//inline\ code\ for\ speed}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_c_multi_write_device_ad7e1c697dece2c19bea64ad66586e328}{Enabled}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (BusBufferLength\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_ab19290c96c86b3e0fc8615afcc5f69a2}{SetControlRegister}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ start\_bit,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ nr\_bits,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ value,\ \textcolor{keywordtype}{bool}\ write\_immediately\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a923a74547f2fb577663b494e12bb8790}{SetSPIClock}}(\textcolor{keywordtype}{bool}\ clock,\ \textcolor{keywordtype}{bool}\ write\_immediately\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a2228e7665e0a4dc7207b7172f964ae1c}{SetSPIChipSelect}}(\textcolor{keywordtype}{bool}\ clock);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a339e7319309cd9044b7fed3662815571}{SetSPIDataOut}}(\textcolor{keywordtype}{bool}\ clock);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a1c9be96f955251f14afc7ee9c6a5d51c}{SetSPIFrequencyAndMode}}(\textcolor{keywordtype}{double}\ \_SPI\_frequency\_in\_Hz,\ \textcolor{keyword}{const}\ uint8\_t\ \_SPI\_mode);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a814c07fb2ce56c675466d292ec3a79ec}{WriteSPIBitBanged}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ number\_of\_bits\_out,\ uint64\_t\ data);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a49181f0d679dedec2d202164dd6708a6}{WriteSPIBitBangedMode0Simple}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ number\_of\_bits\_out,\ uint64\_t\ data);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_multi_write_device_s_p_i_a9a48eb51234850f01edcaccf79cf9d14}{SetQSPIMode}}(\textcolor{keywordtype}{bool}\ OnOff);}
+\DoxyCodeLine{00067\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ AssureMinimumSPIClockPeriodLength();}
+\DoxyCodeLine{00069\ \};}
+
+\end{DoxyCode}

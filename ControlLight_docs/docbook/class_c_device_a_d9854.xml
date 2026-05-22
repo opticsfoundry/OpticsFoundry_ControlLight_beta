@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_device_a_d9854" xml:lang="en-US">
+<title>CDeviceAD9854 Class Reference</title>
+<indexterm><primary>CDeviceAD9854</primary></indexterm>
+<para>
+<computeroutput>#include &lt;CDeviceAD9854.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for CDeviceAD9854:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_c_device_a_d9854.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_a_d9854_1abc010cd2ebc813342f3b2841359ffa05">CDeviceAD9854</link> (<link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MySequencer, unsigned int _MyAddress, unsigned int _version, double _externalClockFrequency, uint8_t _PLLReferenceMultiplier, unsigned int _frequencyMultiplier)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_device_a_d9854_1acf7ef26e9d6d655da52893520ee65b93">~CDeviceAD9854</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a2e2d32ec666c785ddf8ecf9962b366f2">SetRegister</link> (const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a6a486d971ed8e87633cbac5291e834fd">SetValue</link> (const unsigned int &amp;SubAddress, const uint8_t *Data, const unsigned long &amp;DataLength_in_bit, const uint8_t &amp;StartBit)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a9d102d525c331198cf68b78d8b69f297">SetStartFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a53d1ac27ad6e64af0bdab3e586d22dc5">SetFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1af1aff8058cbbfa061f30690d420922d8">SetStopFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a3fc237f74981f10dc7ed6f95278b09a2">SetModulationFrequency</link> (double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a6bec165b0d33afb0a69495e352cebed6">SetPower</link> (double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a0e566a1dd62b569a33453ae510b6b535">SetAttenuation</link> (double Attenuation)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a1ddc0c088147217265fab0f325691974">SetStartFrequencyTuningWord</link> (uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a57503f88d774e045e5c62908db090064">SetFrequencyTuningWord</link> (uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a020aa5ecd59b007d61e29cc6b1fcafcf">SetStopFrequencyTuningWord</link> (uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1afe58c6ea0820f76719973e369d2cb6bd">SetFSKMode</link> (uint8_t mode)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a46ac3d7dc78ecccd50d5d6ae53830ebd">SetRampRateClock</link> (uint8_t rate)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a74876915cce75d3f542eada2014bf135">SetClearACC1</link> (bool on)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a14a9110548d8bbeb9fa3626e4f3de660">SetTriangleBit</link> (bool on)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_a_d9854_1a64b7f527b237884d53aeb663b2a71572">SetFSKBit</link> (bool on)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Member Functions inherited from <link linkend="_class_c_device">CDevice</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_1ab2a002fb6c828f07e8aebcd7dbf2cd00">CDevice</link> (<link linkend="_class_c_device_sequencer">CDeviceSequencer</link> *_MySequencer=nullptr, unsigned long _MyAddress=0, const std::string _MyType=&quot;&quot;)</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_device_1aa3ec8544aad768caa0c45b53c8915e0f">~CDevice</link> ()=default</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_1a30356c4a419393fe39c946209c966ab1">NotifyError</link> (const std::string &amp;ErrorMessage, bool dothrow=true)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_device_1abad094121bde679b4a68858b1a0e1c32">ClearError</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_device_1acaaa125920dec9e7f9f6b3d6a2225058">ErrorOccured</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a6a8ccd405886c6bb81b886de3aa45c77">SelectRackSlot</link> (const uint8_t &amp;SlotNr)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ab7deca3acfd5322776186b07f597f9ec">ResetI2CMultiplexer</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a157c99b6b8d061e54ab2920a89711e6f">SetVoltage</link> (double Voltage)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a671cf9349a711df3da9e655dc2928a84">SetDigitalOutput</link> (uint8_t BitNr, bool OnOff)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a8e233a94cc5c177260a319ae158c3504">SetRampRateClock</link> (int rate)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1acd05aa88ded012804e579a19ada672b5">Reset</link> ()</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a537b4320f28a041f7c792cd8ee980489">SetFrequency</link> (uint8_t channel, double Frequency)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a20124b1ebdce4ad278e9441c33a25df6">SetFrequencyTuningWord</link> (uint8_t channel, uint64_t FrequencyTuningWord)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1a4972e649a5c5e33b1e2b19d4d977be1b">SetPhase</link> (uint8_t channel, double Phase)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1af08e809e1fe88612656716fef5055256">SetPower</link> (uint8_t channel, double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ad5976661247c2d2a64fe6800be5ae0bc">SetAttenuation</link> (uint8_t channel, double Power)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_device_1ae8de0378397c02c4cfe7cfc0cb672cd4">SetIOUpdateEnabled</link> (bool _IOUpdateEnabled)</para>
+</listitem>
+        </itemizedlist>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>double <link linkend="_class_c_device_a_d9854_1a8424566ecdaa45fd4d35422eb24e7062">externalClockFrequency</link></para>
+</listitem>
+            <listitem><para>uint8_t <link linkend="_class_c_device_a_d9854_1a4c2fd4cb285758fe8cc2fe1cfa7e2f36">PLLReferenceMultiplier</link></para>
+</listitem>
+            <listitem><para>double <link linkend="_class_c_device_a_d9854_1ad96a6ab42bd98dea2f6b66f747281c95">frequencyMultiplier</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_class_c_device_a_d9854_1af0f6a8d59800277f375d24420c9b7ab4">version</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Public Attributes inherited from <link linkend="_class_c_device">CDevice</link>        <itemizedlist>
+            <listitem><para><link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * <link linkend="_class_c_device_1a381f3a4f11fb87aadc77bcdc4524e33f">MySequencer</link></para>
+</listitem>
+            <listitem><para>unsigned long <link linkend="_class_c_device_1a7c5003e9b61986c46f6aa9ffd31324f3">MyAddress</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_c_device_1aaa6670dcb90af191c31aef9d88dbdcce">MyType</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_device_a_d9854_1abc010cd2ebc813342f3b2841359ffa05"/><section>
+    <title>CDeviceAD9854()</title>
+<indexterm><primary>CDeviceAD9854</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<para><computeroutput>CDeviceAD9854::CDeviceAD9854 (<link linkend="_class_c_device_sequencer">CDeviceSequencer</link> * _MySequencer, unsigned int _MyAddress, unsigned int _version, double _externalClockFrequency, uint8_t _PLLReferenceMultiplier, unsigned int _frequencyMultiplier)</computeroutput></para></section>
+<anchor xml:id="_class_c_device_a_d9854_1acf7ef26e9d6d655da52893520ee65b93"/><section>
+    <title>~CDeviceAD9854()</title>
+<indexterm><primary>~CDeviceAD9854</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>~CDeviceAD9854</secondary></indexterm>
+<para><computeroutput>CDeviceAD9854::~CDeviceAD9854 ( )<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_device_a_d9854_1a0e566a1dd62b569a33453ae510b6b535"/><section>
+    <title>SetAttenuation()</title>
+<indexterm><primary>SetAttenuation</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetAttenuation</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetAttenuation (double Attenuation)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1abb0dc967e558b1e3218fb00c368e927f">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a74876915cce75d3f542eada2014bf135"/><section>
+    <title>SetClearACC1()</title>
+<indexterm><primary>SetClearACC1</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetClearACC1</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetClearACC1 (bool on)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a7dc7cc4daab1c6e27468d7366a449e85">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a53d1ac27ad6e64af0bdab3e586d22dc5"/><section>
+    <title>SetFrequency()</title>
+<indexterm><primary>SetFrequency</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetFrequency</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetFrequency (double Frequency)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1ae8204d9f4edb81f19af2ceaeee04d65e">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a57503f88d774e045e5c62908db090064"/><section>
+    <title>SetFrequencyTuningWord()</title>
+<indexterm><primary>SetFrequencyTuningWord</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetFrequencyTuningWord</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetFrequencyTuningWord (uint64_t FrequencyTuningWord)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a2f948d164b6177a355b9f47a39d3a758">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a64b7f527b237884d53aeb663b2a71572"/><section>
+    <title>SetFSKBit()</title>
+<indexterm><primary>SetFSKBit</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetFSKBit</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetFSKBit (bool on)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1acef2ccddac12d4203fb363c1b18fdbe9">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1afe58c6ea0820f76719973e369d2cb6bd"/><section>
+    <title>SetFSKMode()</title>
+<indexterm><primary>SetFSKMode</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetFSKMode</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetFSKMode (uint8_t mode)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a5201f16fcc101d6594d33d0463664519">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a3fc237f74981f10dc7ed6f95278b09a2"/><section>
+    <title>SetModulationFrequency()</title>
+<indexterm><primary>SetModulationFrequency</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetModulationFrequency</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetModulationFrequency (double Frequency)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1ac9f2d8bc4810171cc290332dcf5aea77">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a6bec165b0d33afb0a69495e352cebed6"/><section>
+    <title>SetPower()</title>
+<indexterm><primary>SetPower</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetPower</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetPower (double Power)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a896e79990b77c5702bcacf217ebd8180">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a46ac3d7dc78ecccd50d5d6ae53830ebd"/><section>
+    <title>SetRampRateClock()</title>
+<indexterm><primary>SetRampRateClock</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetRampRateClock</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetRampRateClock (uint8_t rate)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_device_a_d9854_1a2e2d32ec666c785ddf8ecf9962b366f2"/><section>
+    <title>SetRegister()</title>
+<indexterm><primary>SetRegister</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetRegister</secondary></indexterm>
+<para><computeroutput>bool CDeviceAD9854::SetRegister (const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1aed9d8c451787c53bf398292a57b20a99">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a9d102d525c331198cf68b78d8b69f297"/><section>
+    <title>SetStartFrequency()</title>
+<indexterm><primary>SetStartFrequency</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetStartFrequency</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetStartFrequency (double Frequency)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1aaa3e13859985f358428c4d51bafc37d3">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a1ddc0c088147217265fab0f325691974"/><section>
+    <title>SetStartFrequencyTuningWord()</title>
+<indexterm><primary>SetStartFrequencyTuningWord</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetStartFrequencyTuningWord</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetStartFrequencyTuningWord (uint64_t FrequencyTuningWord)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a266d2caa2f23ebc437e9cb26bf2ec3ad">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1af1aff8058cbbfa061f30690d420922d8"/><section>
+    <title>SetStopFrequency()</title>
+<indexterm><primary>SetStopFrequency</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetStopFrequency</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetStopFrequency (double Frequency)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1af0ac58636967e468139ea4ec7776b912">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a020aa5ecd59b007d61e29cc6b1fcafcf"/><section>
+    <title>SetStopFrequencyTuningWord()</title>
+<indexterm><primary>SetStopFrequencyTuningWord</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetStopFrequencyTuningWord</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetStopFrequencyTuningWord (uint64_t FrequencyTuningWord)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a60446e9222919ecb7f7c8f9e7c72ee43">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a14a9110548d8bbeb9fa3626e4f3de660"/><section>
+    <title>SetTriangleBit()</title>
+<indexterm><primary>SetTriangleBit</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetTriangleBit</secondary></indexterm>
+<para><computeroutput>virtual bool CDeviceAD9854::SetTriangleBit (bool on)<computeroutput>[inline]</computeroutput>, <computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1aa19bf3d0655119902bac344b8c4c5a2c">CDevice</link>.</para>
+</section>
+<anchor xml:id="_class_c_device_a_d9854_1a6a486d971ed8e87633cbac5291e834fd"/><section>
+    <title>SetValue()</title>
+<indexterm><primary>SetValue</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>SetValue</secondary></indexterm>
+<para><computeroutput>bool CDeviceAD9854::SetValue (const unsigned int &amp; SubAddress, const uint8_t * Data, const unsigned long &amp; DataLength_in_bit, const uint8_t &amp; StartBit)<computeroutput>[virtual]</computeroutput></computeroutput></para><para>
+Reimplemented from <link linkend="_class_c_device_1a8e4c8e7c256a149d08debc49e190b27e">CDevice</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_device_a_d9854_1a8424566ecdaa45fd4d35422eb24e7062"/><section>
+    <title>externalClockFrequency</title>
+<indexterm><primary>externalClockFrequency</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>externalClockFrequency</secondary></indexterm>
+<para><computeroutput>double CDeviceAD9854::externalClockFrequency</computeroutput></para></section>
+<anchor xml:id="_class_c_device_a_d9854_1ad96a6ab42bd98dea2f6b66f747281c95"/><section>
+    <title>frequencyMultiplier</title>
+<indexterm><primary>frequencyMultiplier</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>frequencyMultiplier</secondary></indexterm>
+<para><computeroutput>double CDeviceAD9854::frequencyMultiplier</computeroutput></para></section>
+<anchor xml:id="_class_c_device_a_d9854_1a4c2fd4cb285758fe8cc2fe1cfa7e2f36"/><section>
+    <title>PLLReferenceMultiplier</title>
+<indexterm><primary>PLLReferenceMultiplier</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>PLLReferenceMultiplier</secondary></indexterm>
+<para><computeroutput>uint8_t CDeviceAD9854::PLLReferenceMultiplier</computeroutput></para></section>
+<anchor xml:id="_class_c_device_a_d9854_1af0f6a8d59800277f375d24420c9b7ab4"/><section>
+    <title>version</title>
+<indexterm><primary>version</primary><secondary>CDeviceAD9854</secondary></indexterm>
+<indexterm><primary>CDeviceAD9854</primary><secondary>version</secondary></indexterm>
+<para><computeroutput>unsigned int CDeviceAD9854::version</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__c_device_a_d9854_8h">CDeviceAD9854.h</link><link linkend="__c_device_a_d9854_8cpp">CDeviceAD9854.cpp</link></section>
+</section>

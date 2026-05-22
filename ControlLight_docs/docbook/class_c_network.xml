@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_c_network" xml:lang="en-US">
+<title>CNetwork Class Reference</title>
+<indexterm><primary>CNetwork</primary></indexterm>
+<para>
+<computeroutput>#include &lt;network.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_class_c_network_1a039dff02b725f746409eaa09a103bce6">ConnectSocket</link> (const std::string &amp;host, unsigned int nPort, const std::string &amp;SocketName, bool reconnect=false, int timeout_s=2)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a2ddc0a0564d0bf5b3cddf8f1ebb838a2">ResetConnection</link> (unsigned long sleep_time=2000)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a2d9dc5d77a9db1a996534cb3d3d1f3dd">FlushInputBuffer</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a75d59a0d4c53aa4a0ade70d6aaaca845">FlushOutputBuffer</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_1aa8f487a58a1d73e21e0af9601f9bfcc4">SendMsg</link> (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp;strText)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a6487dc24383af3cc9adc7aa94199b971">SendData</link> (const uint8_t *Data, unsigned long Size)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1ad9636a38079916ec660c88092f84ad36">SendString</link> (const <link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp;str)</para>
+</listitem>
+            <listitem><para>virtual bool <link linkend="_class_c_network_1a19cf86a9324374a37d710e3a34e72da9">ReceiveMsg</link> (char end_character=&apos;\n&apos;, bool WaitForStartCharacter=false, char start_character=&apos; *&apos;, double timeout_in_seconds=5)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a1ebf567f42570a93f29079c14d244e91">ReceiveData</link> (uint8_t *buffer, unsigned long buffer_length, unsigned long timeout=5000)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a52997f0e0a9fcd43ada48a1b3673f9c3">ReceiveString</link> (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp;outStr, double timeout_in_seconds=5, char endChar=&apos;\n&apos;)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_1a55be2d3a1d45549c8199b1a4324996d6">DebugStop</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_1aba707b1e7ba4ce923c90f9fa636f05a6">DebugStart</link> (const std::string &amp;Filename)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_1abdd54634e4dcfb17515ed74dd3e0b64c">Flush</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_1a6a9367568c0eb9ef88308696d786c08c">StoreLastMessage</link> (const std::string &amp;Message)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a63cd36d8c60d6a8e5cc962fead4ab36c">GetMessage</link> (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp;Message, double timeout_in_seconds=5, int mode=1)</para>
+</listitem>
+            <listitem><para><link linkend="_class_c_network_1ae4c6f98dd9b44e1547f7eff0a0799dfc">CNetwork</link> ()</para>
+</listitem>
+            <listitem><para>virtual <link linkend="_class_c_network_1a5f8c44eababcef02f4ce7af3592dba37">~CNetwork</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_c_network_1ae05676ec152f6b4a5880e51d837ddb80">DisconnectSocket</link> ()</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1ad6e6c1704cdd7e80e5521e83d6a02362">IsConnected</link> () const</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_c_network_1a665c20541840dcf938b63284847cc33f">Reconnect</link> (int maxRetries=3, int timeout_s=2, unsigned long delay_ms=1000)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>int * <link linkend="_class_c_network_1a4bfd8dd7fae5d4bee6ffd05f5f0a4a29">m_pSocket</link></para>
+</listitem>
+            <listitem><para>int <link linkend="_class_c_network_1a225f793bf19b96faf4f8688b2a36c5d1">m_socketfd</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_c_network_1ad78041ee8e9e37742ad515f58d709071">m_host</link></para>
+</listitem>
+            <listitem><para>unsigned int <link linkend="_class_c_network_1a41f6cae3910e566dc07491466c2c5ba7">m_nPort</link></para>
+</listitem>
+            <listitem><para>std::string <link linkend="_class_c_network_1a6bdcc577661a3b3648063670e08d5f43">m_SocketName</link></para>
+</listitem>
+            <listitem><para>ofstream * <link linkend="_class_c_network_1a187987b13ede6e699546871811d354cd">DebugFile</link></para>
+</listitem>
+            <listitem><para><link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> <link linkend="_class_c_network_1a8db02b78a8f17f1ec7ccdb6ff5a15f7f">LastMessage</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_c_network_1ae4c6f98dd9b44e1547f7eff0a0799dfc"/><section>
+    <title>CNetwork()</title>
+<indexterm><primary>CNetwork</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>CNetwork</secondary></indexterm>
+<para><computeroutput>CNetwork::CNetwork ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a5f8c44eababcef02f4ce7af3592dba37"/><section>
+    <title>~CNetwork()</title>
+<indexterm><primary>~CNetwork</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>~CNetwork</secondary></indexterm>
+<para><computeroutput>CNetwork::~CNetwork ( )<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_c_network_1a039dff02b725f746409eaa09a103bce6"/><section>
+    <title>ConnectSocket()</title>
+<indexterm><primary>ConnectSocket</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>ConnectSocket</secondary></indexterm>
+<para><computeroutput>bool CNetwork::ConnectSocket (const std::string &amp; host, unsigned int nPort, const std::string &amp; SocketName, bool reconnect = <computeroutput>false</computeroutput>
+, int timeout_s = <computeroutput>2</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1aba707b1e7ba4ce923c90f9fa636f05a6"/><section>
+    <title>DebugStart()</title>
+<indexterm><primary>DebugStart</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>DebugStart</secondary></indexterm>
+<para><computeroutput>void CNetwork::DebugStart (const std::string &amp; Filename)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a55be2d3a1d45549c8199b1a4324996d6"/><section>
+    <title>DebugStop()</title>
+<indexterm><primary>DebugStop</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>DebugStop</secondary></indexterm>
+<para><computeroutput>void CNetwork::DebugStop ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1ae05676ec152f6b4a5880e51d837ddb80"/><section>
+    <title>DisconnectSocket()</title>
+<indexterm><primary>DisconnectSocket</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>DisconnectSocket</secondary></indexterm>
+<para><computeroutput>void CNetwork::DisconnectSocket ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1abdd54634e4dcfb17515ed74dd3e0b64c"/><section>
+    <title>Flush()</title>
+<indexterm><primary>Flush</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>Flush</secondary></indexterm>
+<para><computeroutput>void CNetwork::Flush ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a2d9dc5d77a9db1a996534cb3d3d1f3dd"/><section>
+    <title>FlushInputBuffer()</title>
+<indexterm><primary>FlushInputBuffer</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>FlushInputBuffer</secondary></indexterm>
+<para><computeroutput>bool CNetwork::FlushInputBuffer ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a75d59a0d4c53aa4a0ade70d6aaaca845"/><section>
+    <title>FlushOutputBuffer()</title>
+<indexterm><primary>FlushOutputBuffer</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>FlushOutputBuffer</secondary></indexterm>
+<para><computeroutput>bool CNetwork::FlushOutputBuffer ( )</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a63cd36d8c60d6a8e5cc962fead4ab36c"/><section>
+    <title>GetMessage()</title>
+<indexterm><primary>GetMessage</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>GetMessage</secondary></indexterm>
+<para><computeroutput>bool CNetwork::GetMessage (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp; Message, double timeout_in_seconds = <computeroutput>5</computeroutput>
+, int mode = <computeroutput>1</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1ad6e6c1704cdd7e80e5521e83d6a02362"/><section>
+    <title>IsConnected()</title>
+<indexterm><primary>IsConnected</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>IsConnected</secondary></indexterm>
+<para><computeroutput>bool CNetwork::IsConnected ( ) const</computeroutput></para>
+<para><para><link linkend="_todo_1_todo000003">Todo</link> </para></para>
+</section>
+<anchor xml:id="_class_c_network_1a1ebf567f42570a93f29079c14d244e91"/><section>
+    <title>ReceiveData()</title>
+<indexterm><primary>ReceiveData</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>ReceiveData</secondary></indexterm>
+<para><computeroutput>bool CNetwork::ReceiveData (uint8_t * buffer, unsigned long buffer_length, unsigned long timeout = <computeroutput>5000</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a19cf86a9324374a37d710e3a34e72da9"/><section>
+    <title>ReceiveMsg()</title>
+<indexterm><primary>ReceiveMsg</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>ReceiveMsg</secondary></indexterm>
+<para><computeroutput>bool CNetwork::ReceiveMsg (char end_character = <computeroutput>&apos;\n&apos;</computeroutput>
+, bool WaitForStartCharacter = <computeroutput>false</computeroutput>
+, char start_character = <computeroutput>&apos;*&apos;</computeroutput>
+, double timeout_in_seconds = <computeroutput>5</computeroutput>
+)<computeroutput>[virtual]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a52997f0e0a9fcd43ada48a1b3673f9c3"/><section>
+    <title>ReceiveString()</title>
+<indexterm><primary>ReceiveString</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>ReceiveString</secondary></indexterm>
+<para><computeroutput>bool CNetwork::ReceiveString (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp; outStr, double timeout_in_seconds = <computeroutput>5</computeroutput>
+, char endChar = <computeroutput>&apos;\n&apos;</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a665c20541840dcf938b63284847cc33f"/><section>
+    <title>Reconnect()</title>
+<indexterm><primary>Reconnect</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>Reconnect</secondary></indexterm>
+<para><computeroutput>bool CNetwork::Reconnect (int maxRetries = <computeroutput>3</computeroutput>
+, int timeout_s = <computeroutput>2</computeroutput>
+, unsigned long delay_ms = <computeroutput>1000</computeroutput>
+)</computeroutput></para>
+<para><para><link linkend="_todo_1_todo000004">Todo</link> </para></para>
+</section>
+<anchor xml:id="_class_c_network_1a2ddc0a0564d0bf5b3cddf8f1ebb838a2"/><section>
+    <title>ResetConnection()</title>
+<indexterm><primary>ResetConnection</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>ResetConnection</secondary></indexterm>
+<para><computeroutput>bool CNetwork::ResetConnection (unsigned long sleep_time = <computeroutput>2000</computeroutput>
+)</computeroutput></para>
+<para><para><link linkend="_todo_1_todo000002">Todo</link> </para></para>
+</section>
+<anchor xml:id="_class_c_network_1a6487dc24383af3cc9adc7aa94199b971"/><section>
+    <title>SendData()</title>
+<indexterm><primary>SendData</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>SendData</secondary></indexterm>
+<para><computeroutput>bool CNetwork::SendData (const uint8_t * Data, unsigned long Size)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1aa8f487a58a1d73e21e0af9601f9bfcc4"/><section>
+    <title>SendMsg()</title>
+<indexterm><primary>SendMsg</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>SendMsg</secondary></indexterm>
+<para><computeroutput>void CNetwork::SendMsg (<link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp; strText)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1ad9636a38079916ec660c88092f84ad36"/><section>
+    <title>SendString()</title>
+<indexterm><primary>SendString</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>SendString</secondary></indexterm>
+<para><computeroutput>bool CNetwork::SendString (const <link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> &amp; str)</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a6a9367568c0eb9ef88308696d786c08c"/><section>
+    <title>StoreLastMessage()</title>
+<indexterm><primary>StoreLastMessage</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>StoreLastMessage</secondary></indexterm>
+<para><computeroutput>void CNetwork::StoreLastMessage (const std::string &amp; Message)</computeroutput></para></section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_class_c_network_1a187987b13ede6e699546871811d354cd"/><section>
+    <title>DebugFile</title>
+<indexterm><primary>DebugFile</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>DebugFile</secondary></indexterm>
+<para><computeroutput>ofstream* CNetwork::DebugFile</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a8db02b78a8f17f1ec7ccdb6ff5a15f7f"/><section>
+    <title>LastMessage</title>
+<indexterm><primary>LastMessage</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>LastMessage</secondary></indexterm>
+<para><computeroutput><link linkend="_std_8h_1a50e6b493e99e505e0cb7dfa5d8c4b36e">CString</link> CNetwork::LastMessage</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1ad78041ee8e9e37742ad515f58d709071"/><section>
+    <title>m_host</title>
+<indexterm><primary>m_host</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>m_host</secondary></indexterm>
+<para><computeroutput>std::string CNetwork::m_host</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a41f6cae3910e566dc07491466c2c5ba7"/><section>
+    <title>m_nPort</title>
+<indexterm><primary>m_nPort</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>m_nPort</secondary></indexterm>
+<para><computeroutput>unsigned int CNetwork::m_nPort</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a4bfd8dd7fae5d4bee6ffd05f5f0a4a29"/><section>
+    <title>m_pSocket</title>
+<indexterm><primary>m_pSocket</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>m_pSocket</secondary></indexterm>
+<para><computeroutput>int* CNetwork::m_pSocket</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a225f793bf19b96faf4f8688b2a36c5d1"/><section>
+    <title>m_socketfd</title>
+<indexterm><primary>m_socketfd</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>m_socketfd</secondary></indexterm>
+<para><computeroutput>int CNetwork::m_socketfd</computeroutput></para></section>
+<anchor xml:id="_class_c_network_1a6bdcc577661a3b3648063670e08d5f43"/><section>
+    <title>m_SocketName</title>
+<indexterm><primary>m_SocketName</primary><secondary>CNetwork</secondary></indexterm>
+<indexterm><primary>CNetwork</primary><secondary>m_SocketName</secondary></indexterm>
+<para><computeroutput>std::string CNetwork::m_SocketName</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="_network_8h">network.h</link><link linkend="_network_8cpp">network.cpp</link></section>
+</section>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_d9852_8cpp" xml:lang="en-US">
+<title>AD9852.cpp File Reference</title>
+<indexterm><primary>AD9852.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;AD9852.h&quot;<?linebreak?>#include &quot;CDeviceSequencer.h&quot;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;format&gt;<?linebreak?></programlisting><simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>unsigned long <link linkend="__a_d9852_8cpp_1ade894fbf6874f7126a3a949080f77644">AD9852MasterResetValueContents</link> [<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>] = { 0 , 0, 0, 0, 0,0x40, 0, 0, 0, 0,0x10,0x64,0x01,0x20, 0, 0, 0 }</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="__a_d9852_8cpp_1aee8e056343cd05274df2de9e3898bbc5">AD9852ValueLengthGlobal</link> [<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>] = { 2 , 2, 6, 6, 6, 4, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 }</para>
+</listitem>
+            <listitem><para>unsigned char <link linkend="__a_d9852_8cpp_1a80d6cc3542eb4737683a09a1ce175edc">AD9852ValueBaseAddressGlobal</link> [<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>] = { 0x00,0x02,0x04,0x0A,0x10,0x16,0x1A,0x21,0x25,0x26,0x1D,0x1E,0x1F,0x20,0x30,0x31,0x32 }</para>
+</listitem>
+            <listitem><para>const unsigned long <link linkend="__a_d9852_8cpp_1af9329ddc49a977da0b5e038ed6f8e4c9">AD9852ValueNotInBusBuffer</link> = 99999</para>
+</listitem>
+            <listitem><para>constexpr uint8_t <link linkend="__a_d9852_8cpp_1aa592773d77686d8f7f7b1c49a0622515">BusBitShift</link> = 0</para>
+</listitem>
+            <listitem><para>constexpr bool <link linkend="__a_d9852_8cpp_1ae608804064166baae021c75b4bd3772b">ForceWriting</link> = false</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__a_d9852_8cpp_1ade894fbf6874f7126a3a949080f77644"/><section>
+    <title>AD9852MasterResetValueContents</title>
+<indexterm><primary>AD9852MasterResetValueContents</primary><secondary>AD9852.cpp</secondary></indexterm>
+<indexterm><primary>AD9852.cpp</primary><secondary>AD9852MasterResetValueContents</secondary></indexterm>
+<para><computeroutput>unsigned long AD9852MasterResetValueContents[<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>] = { 0 , 0, 0, 0, 0,0x40, 0, 0, 0, 0,0x10,0x64,0x01,0x20, 0, 0, 0 }</computeroutput></para></section>
+<anchor xml:id="__a_d9852_8cpp_1a80d6cc3542eb4737683a09a1ce175edc"/><section>
+    <title>AD9852ValueBaseAddressGlobal</title>
+<indexterm><primary>AD9852ValueBaseAddressGlobal</primary><secondary>AD9852.cpp</secondary></indexterm>
+<indexterm><primary>AD9852.cpp</primary><secondary>AD9852ValueBaseAddressGlobal</secondary></indexterm>
+<para><computeroutput>unsigned char AD9852ValueBaseAddressGlobal[<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>] = { 0x00,0x02,0x04,0x0A,0x10,0x16,0x1A,0x21,0x25,0x26,0x1D,0x1E,0x1F,0x20,0x30,0x31,0x32 }</computeroutput></para></section>
+<anchor xml:id="__a_d9852_8cpp_1aee8e056343cd05274df2de9e3898bbc5"/><section>
+    <title>AD9852ValueLengthGlobal</title>
+<indexterm><primary>AD9852ValueLengthGlobal</primary><secondary>AD9852.cpp</secondary></indexterm>
+<indexterm><primary>AD9852.cpp</primary><secondary>AD9852ValueLengthGlobal</secondary></indexterm>
+<para><computeroutput>unsigned char AD9852ValueLengthGlobal[<link linkend="__a_d9852_8h_1aee5b08b57ce3017953dd926bd090643f">AD9852MaxValues</link>] = { 2 , 2, 6, 6, 6, 4, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1 }</computeroutput></para></section>
+<anchor xml:id="__a_d9852_8cpp_1af9329ddc49a977da0b5e038ed6f8e4c9"/><section>
+    <title>AD9852ValueNotInBusBuffer</title>
+<indexterm><primary>AD9852ValueNotInBusBuffer</primary><secondary>AD9852.cpp</secondary></indexterm>
+<indexterm><primary>AD9852.cpp</primary><secondary>AD9852ValueNotInBusBuffer</secondary></indexterm>
+<para><computeroutput>const unsigned long AD9852ValueNotInBusBuffer = 99999</computeroutput></para></section>
+<anchor xml:id="__a_d9852_8cpp_1aa592773d77686d8f7f7b1c49a0622515"/><section>
+    <title>BusBitShift</title>
+<indexterm><primary>BusBitShift</primary><secondary>AD9852.cpp</secondary></indexterm>
+<indexterm><primary>AD9852.cpp</primary><secondary>BusBitShift</secondary></indexterm>
+<para><computeroutput>uint8_t BusBitShift = 0<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+<anchor xml:id="__a_d9852_8cpp_1ae608804064166baae021c75b4bd3772b"/><section>
+    <title>ForceWriting</title>
+<indexterm><primary>ForceWriting</primary><secondary>AD9852.cpp</secondary></indexterm>
+<indexterm><primary>AD9852.cpp</primary><secondary>ForceWriting</secondary></indexterm>
+<para><computeroutput>bool ForceWriting = false<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+</section>
+</section>

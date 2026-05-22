@@ -1,0 +1,106 @@
+{
+  "ConfigurationName": "Test",
+  "PCSequenceBufferSize": 134217728,
+  "LineFrequency": 50,
+  "Sequencers": [
+    {
+      "Id": 0,
+      "Type": "OpticsFoundrySequencerV1",
+      "IP": "192.168.0.112",
+      "Port": 57978,
+      "Master": true,
+      "StartDelay": 10,
+      "ClockFrequency": 100000000,
+      "FPGAClockToBusClockRatio": 50,
+      "UseExternalClock": false,
+      "UseStrobeGenerator": true,
+      "UseEdgeTriggeredLatches": true,
+      "Connect": true
+    }
+  ],
+  "AnalogOutBoards16bit": [
+    {
+      "Sequencer": 0,
+      "StartAddress": 5,
+      "NumberChannels": 4,
+      "Signed": true,
+      "MinVoltage": -10,
+      "MaxVoltage": 10
+    },
+    {
+      "Sequencer": 0,
+      "StartAddress": 28,
+      "NumberChannels": 4,
+      "Signed": true,
+      "MinVoltage": -10,
+      "MaxVoltage": 10
+    }
+  ],
+  "DigitalOutBoards": [
+    {
+      "Sequencer": 0,
+      "Address": 1,
+      "NumberChannels": 16
+    },
+    {
+      "Sequencer": 0,
+      "Address": 2,
+      "NumberChannels": 16
+    }
+  ],
+  "SerialPortBoards": [
+    {
+      "Sequencer": 0,
+      "Address": 251,
+      "RackNr": 0,
+      "SlotNr": 1
+    }
+  ],
+  "DDSAD9854Boards": [
+    {
+      "Version": 2,
+      "Sequencer": 0,
+      "Address": 128,
+      "ExternalClockFrequencyinMHz": 10,
+      "PLLReferenceMultiplier": 20,
+      "FrequencyMultiplier": 1
+    },
+    {
+      "Version": 2,
+      "Sequencer": 0,
+      "Address": 132,
+      "ExternalClockFrequencyinMHz": 10,
+      "PLLReferenceMultiplier": 20,
+      "FrequencyMultiplier": 1
+    }
+  ],
+  "DDSAD9858Boards": [
+    {
+      "Sequencer": 0,
+      "Address": 52,
+      "ClockFrequencyinMHz": 1200,
+      "FrequencyMultiplier": 1
+    },
+    {
+      "Sequencer": 0,
+      "Address": 56,
+      "ClockFrequencyinMHz": 1200,
+      "FrequencyMultiplier": 1
+    }
+  ],
+  "DDSAD9959Boards": [
+    {
+      "Sequencer": 0,
+      "Address": 3,
+      "ClockFrequencyinMHz": 500,
+      "FrequencyMultiplier": 1
+    },
+    {
+      "Sequencer": 0,
+      "Address": 4,
+      "ClockFrequencyinMHz": 500,
+      "FrequencyMultiplier": 1
+    }
+  ],
+  "AnalogInBoards12bit": []
+}

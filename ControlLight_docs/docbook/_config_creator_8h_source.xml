@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__config_creator_8h_source" xml:lang="en-US">
+<title>ConfigCreator.h</title>
+<indexterm><primary>ConfigCreator.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+2 
+3 <emphasis role="preprocessor">#include&#32;&lt;optional&gt;</emphasis>
+4 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+5 
+6 <emphasis role="preprocessor">#include&#32;&quot;include/json.hpp&quot;</emphasis>
+7 
+8 <emphasis role="keyword">using&#32;</emphasis><link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link>&#32;=&#32;nlohmann::json;
+9 
+10 <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_config_creator_1a773a61e1453348034a6e3a5d75131932">ConfigCreator</link>&#32;{
+11 <emphasis role="keyword">public</emphasis>:
+12 &#32;&#32;&#32;&#32;<emphasis role="keyword">explicit</emphasis>&#32;<link linkend="_class_config_creator_1a773a61e1453348034a6e3a5d75131932">ConfigCreator</link>(<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;filename&#32;=&#32;<emphasis role="stringliteral">&quot;ControlHardwareConfig_AQuRA.json&quot;</emphasis>);
+13 
+14 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1abc45d48d95d527a19518ba3f6389fe00">RegisterSequencer</link>(<emphasis role="keywordtype">int</emphasis>&#32;Id&#32;=&#32;0,&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;Type&#32;=&#32;<emphasis role="stringliteral">&quot;OpticsFoundrySequencerV1&quot;</emphasis>,
+15 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::string&amp;&#32;IP&#32;=&#32;<emphasis role="stringliteral">&quot;192.168.0.104&quot;</emphasis>,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Port&#32;=&#32;7,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Master&#32;=&#32;<emphasis role="keyword">true</emphasis>,
+16 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;StartDelay&#32;=&#32;10,&#32;<emphasis role="keywordtype">int</emphasis>&#32;ClockFrequencyinMHz&#32;=&#32;100,&#32;<emphasis role="keywordtype">int</emphasis>&#32;BusFrequencyinMHz&#32;=&#32;2,
+17 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseExternalClock&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;UseStrobeGenerator&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__control_a_p_i_8cpp_1a345b20fac2d8e0b43b844db9267dda2e">UseEdgeTriggeredLatches</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Connect&#32;=&#32;<emphasis role="keyword">true</emphasis>,
+18 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;DebugOn&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+19 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+21 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+22 
+23 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1a3ababe453374aa303f2113621dc8af51">RegisterAnalogOutBoard16bit</link>(<emphasis role="keywordtype">int</emphasis>&#32;Sequencer&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;StartAddress&#32;=&#32;24,&#32;<emphasis role="keywordtype">int</emphasis>&#32;NumberChannels&#32;=&#32;4,
+24 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;Signed&#32;=&#32;<emphasis role="keyword">true</emphasis>,&#32;<emphasis role="keywordtype">double</emphasis>&#32;MinVoltage&#32;=&#32;-10,&#32;<emphasis role="keywordtype">double</emphasis>&#32;MaxVoltage&#32;=&#32;10,
+25 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+27 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+28 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+29 
+30 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1a756910583cb924e287098669ae387c9c">RegisterDigitalOutBoard</link>(<emphasis role="keywordtype">int</emphasis>&#32;Sequencer&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Address&#32;=&#32;1,&#32;<emphasis role="keywordtype">int</emphasis>&#32;NumberChannels&#32;=&#32;16,
+31 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+33 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+34 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+35 
+36 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1ac3121da8cdec8cd50e489430c1ef9d43">RegisterSerialPortBoard</link>(<emphasis role="keywordtype">int</emphasis>&#32;Sequencer&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Address&#32;=&#32;1,&#32;<emphasis role="keywordtype">int</emphasis>&#32;RackNr&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;SlotNr&#32;=&#32;0,
+37 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt);
+39 
+40 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1a6ccf8202813b31f9d96849c70fd64a19">RegisterDDSAD9854Board</link>(<emphasis role="keywordtype">int</emphasis>&#32;Version&#32;=&#32;2,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Sequencer&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Address&#32;=&#32;132,
+41 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ExternalClockFrequencyinMHz&#32;=&#32;300,&#32;<emphasis role="keywordtype">int</emphasis>&#32;PLLReferenceMultiplier&#32;=&#32;1,
+42 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;FrequencyMultiplier&#32;=&#32;1,&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+43 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+46 
+47 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1a170733f5ec616d895cb9d2cc03baacc7">RegisterDDSAD9858Board</link>(<emphasis role="keywordtype">int</emphasis>&#32;Sequencer&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Address&#32;=&#32;50,&#32;<emphasis role="keywordtype">double</emphasis>&#32;ClockFrequencyinMHz&#32;=&#32;1200,
+48 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;FrequencyMultiplier&#32;=&#32;1,&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+49 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+50 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+51 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+52 
+53 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1a7a843e61c17d090b47ac75c952f3a5f7">RegisterDDSAD9959Board</link>(<emphasis role="keywordtype">int</emphasis>&#32;Sequencer&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Address&#32;=&#32;21,&#32;<emphasis role="keywordtype">double</emphasis>&#32;ClockFrequencyinMHz&#32;=&#32;300,
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;FrequencyMultiplier&#32;=&#32;1,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;AD9958&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+58 
+59 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1aeb3c9cec8ca52f39df6ff79d4241dc2b">RegisterAnalogInBoard12bit</link>(<emphasis role="keywordtype">int</emphasis>&#32;Sequencer&#32;=&#32;0,&#32;<emphasis role="keywordtype">int</emphasis>&#32;Address&#32;=&#32;80,&#32;<emphasis role="keywordtype">int</emphasis>&#32;NumberChannels&#32;=&#32;4,
+60 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;MinVoltage&#32;=&#32;-10,&#32;<emphasis role="keywordtype">double</emphasis>&#32;MaxVoltage&#32;=&#32;10,
+61 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+62 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+64 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+65 
+66 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_config_creator_1a9f2b06510391bcd500d9772182f4df30">RegisterRackEntry</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link>&amp;&#32;entry);
+67 
+68 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_config_creator_1a0e4a51a96e909514bfe62d0b238ec25c">Save</link>()&#32;<emphasis role="keyword">const</emphasis>;
+69 
+70 <emphasis role="keyword">private</emphasis>:
+71 &#32;&#32;&#32;&#32;std::string&#32;filename_;
+72 &#32;&#32;&#32;&#32;<link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link>&#32;config_;
+73 
+74 &#32;&#32;&#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;AddOptionalHardwareFields(<link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link>&amp;&#32;entry,
+75 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;Model&#32;=&#32;std::nullopt,
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;std::string&gt;&amp;&#32;SN&#32;=&#32;std::nullopt,
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;RackNr&#32;=&#32;std::nullopt,
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;std::optional&lt;int&gt;&amp;&#32;SlotNr&#32;=&#32;std::nullopt);
+79 };
+</programlisting></section>

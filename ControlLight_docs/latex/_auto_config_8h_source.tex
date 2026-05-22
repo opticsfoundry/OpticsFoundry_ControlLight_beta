@@ -1,0 +1,27 @@
+\doxysection{Auto\+Config.\+h}
+\hypertarget{_auto_config_8h_source}{}\label{_auto_config_8h_source}\index{AutoConfig.h@{AutoConfig.h}}
+\mbox{\hyperlink{_auto_config_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}include/json.hpp"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ =\ nlohmann::json;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifdef\ API\_CLASS}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }ControlLight\_API;}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ SetAutoConfigAPI(ControlLight\_API*\ api);}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_auto_config_8h_a9a2d1d12ab3ed08865b5240475b62f27}{WriteConfigEEPROM}}(uint8\_t\ SequencerID,\ uint8\_t\ RackNr,\ uint8\_t\ SlotNr,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_auto_config_8h_a2faf204872538e44ce9353aa487fb5d1}{ReadConfigEEPROM}}(uint8\_t\ SequencerID,\ uint8\_t\ RackNr,\ uint8\_t\ SlotNr,\ \textcolor{keywordtype}{char}*\ data,\ \textcolor{keywordtype}{size\_t}\&\ length,\ \textcolor{keywordtype}{bool}\&\ I2C\_success);}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_auto_config_8h_aa96955d313627501ed9673d8f60478ab}{WriteConfigAddress}}(uint8\_t\ SequencerID,\ uint8\_t\ RackNr,\ uint8\_t\ SlotNr,\ uint8\_t\ address);}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_auto_config_8h_a55e9dce2e231a3a5eba12a96afea67a7}{ReadConfigAddress}}(uint8\_t\ SequencerID,\ uint8\_t\ RackNr,\ uint8\_t\ SlotNr,\ uint8\_t\&\ address,\ \textcolor{keywordtype}{bool}\&\ I2C\_success);}
+\DoxyCodeLine{00020\ \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{_auto_config_8h_a6d951a849e3a3e88aef07d03fae632b2}{ReadConfiguration}}(\textcolor{keyword}{const}\ std::string\&\ filename\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00021\ \mbox{\hyperlink{_auto_config_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json}}\ \mbox{\hyperlink{_auto_config_8h_ab0929365aa0b8147fea4bef38b73de7d}{GetAutoConfigJSON}}(\textcolor{keyword}{const}\ std::string\&\ filename\ =\ \textcolor{stringliteral}{"{}"{}});}
+
+\end{DoxyCode}

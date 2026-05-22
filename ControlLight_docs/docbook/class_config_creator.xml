@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_config_creator" xml:lang="en-US">
+<title>ConfigCreator Class Reference</title>
+<indexterm><primary>ConfigCreator</primary></indexterm>
+<para>
+<computeroutput>#include &lt;ConfigCreator.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_config_creator_1a773a61e1453348034a6e3a5d75131932">ConfigCreator</link> (const std::string &amp;filename=&quot;ControlHardwareConfig_AQuRA.json&quot;)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1abc45d48d95d527a19518ba3f6389fe00">RegisterSequencer</link> (int Id=0, const std::string &amp;Type=&quot;OpticsFoundrySequencerV1&quot;, const std::string &amp;IP=&quot;192.168.0.104&quot;, int Port=7, bool Master=true, int StartDelay=10, int ClockFrequencyinMHz=100, int BusFrequencyinMHz=2, bool UseExternalClock=false, bool UseStrobeGenerator=true, bool <link linkend="__control_a_p_i_8cpp_1a345b20fac2d8e0b43b844db9267dda2e">UseEdgeTriggeredLatches</link>=true, bool Connect=true, bool DebugOn=false, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt, const std::optional&lt; int &gt; &amp;RackNr=std::nullopt, const std::optional&lt; int &gt; &amp;SlotNr=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1a3ababe453374aa303f2113621dc8af51">RegisterAnalogOutBoard16bit</link> (int Sequencer=0, int StartAddress=24, int NumberChannels=4, bool Signed=true, double MinVoltage=-10, double MaxVoltage=10, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt, const std::optional&lt; int &gt; &amp;RackNr=std::nullopt, const std::optional&lt; int &gt; &amp;SlotNr=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1a756910583cb924e287098669ae387c9c">RegisterDigitalOutBoard</link> (int Sequencer=0, int Address=1, int NumberChannels=16, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt, const std::optional&lt; int &gt; &amp;RackNr=std::nullopt, const std::optional&lt; int &gt; &amp;SlotNr=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1ac3121da8cdec8cd50e489430c1ef9d43">RegisterSerialPortBoard</link> (int Sequencer=0, int Address=1, int RackNr=0, int SlotNr=0, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1a6ccf8202813b31f9d96849c70fd64a19">RegisterDDSAD9854Board</link> (int Version=2, int Sequencer=0, int Address=132, double ExternalClockFrequencyinMHz=300, int PLLReferenceMultiplier=1, double FrequencyMultiplier=1, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt, const std::optional&lt; int &gt; &amp;RackNr=std::nullopt, const std::optional&lt; int &gt; &amp;SlotNr=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1a170733f5ec616d895cb9d2cc03baacc7">RegisterDDSAD9858Board</link> (int Sequencer=0, int Address=50, double ClockFrequencyinMHz=1200, double FrequencyMultiplier=1, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt, const std::optional&lt; int &gt; &amp;RackNr=std::nullopt, const std::optional&lt; int &gt; &amp;SlotNr=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1a7a843e61c17d090b47ac75c952f3a5f7">RegisterDDSAD9959Board</link> (int Sequencer=0, int Address=21, double ClockFrequencyinMHz=300, double FrequencyMultiplier=1, bool AD9958=false, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt, const std::optional&lt; int &gt; &amp;RackNr=std::nullopt, const std::optional&lt; int &gt; &amp;SlotNr=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1aeb3c9cec8ca52f39df6ff79d4241dc2b">RegisterAnalogInBoard12bit</link> (int Sequencer=0, int Address=80, int NumberChannels=4, double MinVoltage=-10, double MaxVoltage=10, const std::optional&lt; std::string &gt; &amp;Model=std::nullopt, const std::optional&lt; std::string &gt; &amp;SN=std::nullopt, const std::optional&lt; int &gt; &amp;RackNr=std::nullopt, const std::optional&lt; int &gt; &amp;SlotNr=std::nullopt)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_config_creator_1a9f2b06510391bcd500d9772182f4df30">RegisterRackEntry</link> (const <link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> &amp;entry)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_config_creator_1a0e4a51a96e909514bfe62d0b238ec25c">Save</link> () const</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_config_creator_1a773a61e1453348034a6e3a5d75131932"/><section>
+    <title>ConfigCreator()</title>
+<indexterm><primary>ConfigCreator</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>ConfigCreator</secondary></indexterm>
+<para><computeroutput>ConfigCreator::ConfigCreator (const std::string &amp; filename = <computeroutput>&quot;ControlHardwareConfig_AQuRA.json&quot;</computeroutput>
+)<computeroutput>[explicit]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_config_creator_1aeb3c9cec8ca52f39df6ff79d4241dc2b"/><section>
+    <title>RegisterAnalogInBoard12bit()</title>
+<indexterm><primary>RegisterAnalogInBoard12bit</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterAnalogInBoard12bit</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterAnalogInBoard12bit (int Sequencer = <computeroutput>0</computeroutput>
+, int Address = <computeroutput>80</computeroutput>
+, int NumberChannels = <computeroutput>4</computeroutput>
+, double MinVoltage = <computeroutput>-10</computeroutput>
+, double MaxVoltage = <computeroutput>10</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; RackNr = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; SlotNr = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1a3ababe453374aa303f2113621dc8af51"/><section>
+    <title>RegisterAnalogOutBoard16bit()</title>
+<indexterm><primary>RegisterAnalogOutBoard16bit</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterAnalogOutBoard16bit</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterAnalogOutBoard16bit (int Sequencer = <computeroutput>0</computeroutput>
+, int StartAddress = <computeroutput>24</computeroutput>
+, int NumberChannels = <computeroutput>4</computeroutput>
+, bool Signed = <computeroutput>true</computeroutput>
+, double MinVoltage = <computeroutput>-10</computeroutput>
+, double MaxVoltage = <computeroutput>10</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; RackNr = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; SlotNr = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1a6ccf8202813b31f9d96849c70fd64a19"/><section>
+    <title>RegisterDDSAD9854Board()</title>
+<indexterm><primary>RegisterDDSAD9854Board</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterDDSAD9854Board</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterDDSAD9854Board (int Version = <computeroutput>2</computeroutput>
+, int Sequencer = <computeroutput>0</computeroutput>
+, int Address = <computeroutput>132</computeroutput>
+, double ExternalClockFrequencyinMHz = <computeroutput>300</computeroutput>
+, int PLLReferenceMultiplier = <computeroutput>1</computeroutput>
+, double FrequencyMultiplier = <computeroutput>1</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; RackNr = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; SlotNr = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1a170733f5ec616d895cb9d2cc03baacc7"/><section>
+    <title>RegisterDDSAD9858Board()</title>
+<indexterm><primary>RegisterDDSAD9858Board</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterDDSAD9858Board</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterDDSAD9858Board (int Sequencer = <computeroutput>0</computeroutput>
+, int Address = <computeroutput>50</computeroutput>
+, double ClockFrequencyinMHz = <computeroutput>1200</computeroutput>
+, double FrequencyMultiplier = <computeroutput>1</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; RackNr = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; SlotNr = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1a7a843e61c17d090b47ac75c952f3a5f7"/><section>
+    <title>RegisterDDSAD9959Board()</title>
+<indexterm><primary>RegisterDDSAD9959Board</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterDDSAD9959Board</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterDDSAD9959Board (int Sequencer = <computeroutput>0</computeroutput>
+, int Address = <computeroutput>21</computeroutput>
+, double ClockFrequencyinMHz = <computeroutput>300</computeroutput>
+, double FrequencyMultiplier = <computeroutput>1</computeroutput>
+, bool AD9958 = <computeroutput>false</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; RackNr = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; SlotNr = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1a756910583cb924e287098669ae387c9c"/><section>
+    <title>RegisterDigitalOutBoard()</title>
+<indexterm><primary>RegisterDigitalOutBoard</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterDigitalOutBoard</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterDigitalOutBoard (int Sequencer = <computeroutput>0</computeroutput>
+, int Address = <computeroutput>1</computeroutput>
+, int NumberChannels = <computeroutput>16</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; RackNr = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; SlotNr = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1a9f2b06510391bcd500d9772182f4df30"/><section>
+    <title>RegisterRackEntry()</title>
+<indexterm><primary>RegisterRackEntry</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterRackEntry</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterRackEntry (const <link linkend="__auto_config_8h_1ab701e3ac61a85b337ec5c1abaad6742d">json</link> &amp; entry)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1abc45d48d95d527a19518ba3f6389fe00"/><section>
+    <title>RegisterSequencer()</title>
+<indexterm><primary>RegisterSequencer</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterSequencer</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterSequencer (int Id = <computeroutput>0</computeroutput>
+, const std::string &amp; Type = <computeroutput>&quot;OpticsFoundrySequencerV1&quot;</computeroutput>
+, const std::string &amp; IP = <computeroutput>&quot;192.168.0.104&quot;</computeroutput>
+, int Port = <computeroutput>7</computeroutput>
+, bool Master = <computeroutput>true</computeroutput>
+, int StartDelay = <computeroutput>10</computeroutput>
+, int ClockFrequencyinMHz = <computeroutput>100</computeroutput>
+, int BusFrequencyinMHz = <computeroutput>2</computeroutput>
+, bool UseExternalClock = <computeroutput>false</computeroutput>
+, bool UseStrobeGenerator = <computeroutput>true</computeroutput>
+, bool UseEdgeTriggeredLatches = <computeroutput>true</computeroutput>
+, bool Connect = <computeroutput>true</computeroutput>
+, bool DebugOn = <computeroutput>false</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; RackNr = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; int &gt; &amp; SlotNr = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1ac3121da8cdec8cd50e489430c1ef9d43"/><section>
+    <title>RegisterSerialPortBoard()</title>
+<indexterm><primary>RegisterSerialPortBoard</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>RegisterSerialPortBoard</secondary></indexterm>
+<para><computeroutput>void ConfigCreator::RegisterSerialPortBoard (int Sequencer = <computeroutput>0</computeroutput>
+, int Address = <computeroutput>1</computeroutput>
+, int RackNr = <computeroutput>0</computeroutput>
+, int SlotNr = <computeroutput>0</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; Model = <computeroutput>std::nullopt</computeroutput>
+, const std::optional&lt; std::string &gt; &amp; SN = <computeroutput>std::nullopt</computeroutput>
+)</computeroutput></para></section>
+<anchor xml:id="_class_config_creator_1a0e4a51a96e909514bfe62d0b238ec25c"/><section>
+    <title>Save()</title>
+<indexterm><primary>Save</primary><secondary>ConfigCreator</secondary></indexterm>
+<indexterm><primary>ConfigCreator</primary><secondary>Save</secondary></indexterm>
+<para><computeroutput>bool ConfigCreator::Save ( ) const</computeroutput></para></section>
+<para>
+The documentation for this class was generated from the following files:</para>
+<link linkend="__config_creator_8h">ConfigCreator.h</link><link linkend="__config_creator_8cpp">ConfigCreator.cpp</link></section>
+</section>

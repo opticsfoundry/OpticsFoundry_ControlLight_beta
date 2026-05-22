@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__control_light_8cpp" xml:lang="en-US">
+<title>ControlLight.cpp File Reference</title>
+<indexterm><primary>ControlLight.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;ControlAPI.h&quot;<?linebreak?>#include &quot;std.h&quot;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;iomanip&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;cstdio&gt;<?linebreak?>#include &lt;bitset&gt;<?linebreak?>#include &lt;sys/select.h&gt;<?linebreak?>#include &lt;termios.h&gt;<?linebreak?>#include &lt;unistd.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="__control_light_8cpp_1a43240116a3ee05efa3e7000195f748d5">ConfigFileName</link>&#160;&#160;&#160;&quot;./ControlHardwareConfig.json&quot;</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="__control_light_8cpp_1a7502cf6561f1336025fe79aad8018e51">ConsoleKeyPressed</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="__control_light_8cpp_1a43240116a3ee05efa3e7000195f748d5"/><section>
+    <title>ConfigFileName</title>
+<indexterm><primary>ConfigFileName</primary><secondary>ControlLight.cpp</secondary></indexterm>
+<indexterm><primary>ControlLight.cpp</primary><secondary>ConfigFileName</secondary></indexterm>
+<para><computeroutput>#define ConfigFileName&#160;&#160;&#160;&quot;./ControlHardwareConfig.json&quot;</computeroutput></para></section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="__control_light_8cpp_1a7502cf6561f1336025fe79aad8018e51"/><section>
+    <title>ConsoleKeyPressed()</title>
+<indexterm><primary>ConsoleKeyPressed</primary><secondary>ControlLight.cpp</secondary></indexterm>
+<indexterm><primary>ControlLight.cpp</primary><secondary>ConsoleKeyPressed</secondary></indexterm>
+<para><computeroutput>bool ConsoleKeyPressed ( )</computeroutput></para></section>
+</section>
+</section>

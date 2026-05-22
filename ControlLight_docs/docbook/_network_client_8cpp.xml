@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__network_client_8cpp" xml:lang="en-US">
+<title>NetworkClient.cpp File Reference</title>
+<indexterm><primary>NetworkClient.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;NetworkClient.h&quot;<?linebreak?>#include &quot;ControlAPI.h&quot;<?linebreak?>#include &quot;std.h&quot;<?linebreak?>#include &lt;thread&gt;<?linebreak?>#include &lt;format&gt;<?linebreak?></programlisting><simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>constexpr unsigned int <link linkend="__network_client_8cpp_1ac341ec2f068f9ed1428573fd291fd45e">MaxReconnectAttempts</link> = 100</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="__network_client_8cpp_1ac341ec2f068f9ed1428573fd291fd45e"/><section>
+    <title>MaxReconnectAttempts</title>
+<indexterm><primary>MaxReconnectAttempts</primary><secondary>NetworkClient.cpp</secondary></indexterm>
+<indexterm><primary>NetworkClient.cpp</primary><secondary>MaxReconnectAttempts</secondary></indexterm>
+<para><computeroutput>unsigned int MaxReconnectAttempts = 100<computeroutput>[constexpr]</computeroutput></computeroutput></para></section>
+</section>
+</section>
