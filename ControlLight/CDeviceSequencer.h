@@ -23,6 +23,7 @@ public:
 	unsigned int DefaultFPGAClockToBusClockRatio;
 	unsigned int FPGAClockToBusClockRatio;
 	unsigned int CurrentFPGAClockToBusClockRatio;
+	unsigned int CurrentFPGAClockToStrobeLengthRatio;
 	bool useExternalClock;
 	bool useStrobeGenerator;
 	bool connect;
@@ -43,6 +44,7 @@ private:
 	bool LastCommandWasSPICommand;
 	bool DoUseEdgeTriggeredLatches;
 	uint32_t LastBusData;
+	uint8_t LastBusDataMinimumSpacing_in_strobe_lengths;
 	std::unique_ptr<CDeviceRack> MyDeviceRack;
 public:
 	static const unsigned int MaxParallelBusDevices = 8 * 256 + 1;
@@ -83,15 +85,15 @@ public:
 	void AddBusCommandAndWait(uint32_t data, uint32_t delay);
 	void AddBusCommandAndWaitSPI(uint32_t data, uint32_t delay, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part,  bool bus_data15_idle_part);
 	void AddBusCommandToSequenceSPI(const uint32_t& content, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part);
-	void AddBusCommandToSequence(const uint32_t& content, bool OnlyWriteLargeDelays = false);
+	void AddBusCommandToSequence(const uint32_t& content, const uint8_t& minimum_spacing_in_strobe_lengths = 2);
 	bool SetValue_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 	bool SetRegister_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 	bool SetValueSerialDevice_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 	bool SetRegisterSerialDevice_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 
-	void WriteBusAddressAndDataToBuffer(const uint16_t& MultiIOAddress, const uint16_t& Data) {
+	void WriteBusAddressAndDataToBuffer(const uint16_t& MultiIOAddress, const uint16_t& Data, const uint8_t& minimum_spacing_in_strobe_lengths = 2) {
 		uint32_t content = MultiIOAddress << 16 | Data;
-		AddBusCommandToSequence(content);
+		AddBusCommandToSequence(content, minimum_spacing_in_strobe_lengths);
 	}
 
 	void WriteBusAddressAndDataToBufferSPI(const uint16_t& MultiIOAddress, const uint16_t& Data, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part) {

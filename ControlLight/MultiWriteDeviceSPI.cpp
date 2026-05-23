@@ -107,7 +107,7 @@ void CMultiWriteDeviceSPI::AddToBusBuffer(unsigned short value, bool CreateSPICl
 	AssureMinimumSPIClockPeriodLength();
 }
 
-bool CMultiWriteDeviceSPI::WriteToBus()
+bool CMultiWriteDeviceSPI::WriteToBus(const uint8_t& minimum_spacing_in_strobe_lengths)
 {
     if (!Enabled) return false;
     if (BusBufferLength == 0) return false;
@@ -115,10 +115,10 @@ bool CMultiWriteDeviceSPI::WriteToBus()
 		const bool clock_idle = SPI_CPOL;
 		const bool clock_active = !SPI_CPOL;
 		const bool bus_data15_first_part = clock_idle;
-		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (BusBuffer[BusBufferStart] & ~(0x8000)) | ((bus_data15_first_part) ? 0x8000 : 0), /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/(BusBufferSPICreateClock) ? clock_active : clock_idle, /*bus_data15_idle_part*/clock_idle); //ToDo: get SPI clock from a buffer, as this could be different per SPI mode and per thing to do; also: as we have transparent latches, make it possible to address additional control lines with three strobe-length command
+		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (BusBuffer[BusBufferStart] & ~(0x8000)) | ((bus_data15_first_part) ? 0x8000 : 0), /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/(BusBufferSPICreateClock[BusBufferStart]) ? clock_active : clock_idle, /*bus_data15_idle_part*/clock_idle); //ToDo: get SPI clock from a buffer, as this could be different per SPI mode and per thing to do; also: as we have transparent latches, make it possible to address additional control lines with three strobe-length command
 	}
 	else {
-		MyDeviceSequencer->WriteBusAddressAndDataToBuffer(MultiIOAddress, BusBuffer[BusBufferStart]);
+		MyDeviceSequencer->WriteBusAddressAndDataToBuffer(MultiIOAddress, BusBuffer[BusBufferStart], minimum_spacing_in_strobe_lengths);
 	}
 	BusBufferStart++;
 	if (BusBufferStart >= MultiWriteDeviceSPIMaxBusBuffer) BusBufferStart = 0;
@@ -128,6 +128,18 @@ bool CMultiWriteDeviceSPI::WriteToBus()
 
 void CMultiWriteDeviceSPI::WriteAllToBus(bool End_SPI_clock_node)
 {
+	if (BusBufferLength == 1) {
+		if ((SPI_clock_type == E_SPI_clock_FPGA) && (Current_SPI_clock_type != E_SPI_clock_FPGA)) {
+			if (!BusBufferSPICreateClock[BusBufferStart]) {
+				//We use an SPI card with transparent latches (faster for SPI command)
+				//We are not in SPI clock generation mode, and have only one non-SPI command to send, i.e. an update of some control line. 
+				//This can be done in one bus cycle, if we extend it to 3x strobe length, 
+				//as we use transparent latches and the strobe has to go back to zero before moving on
+				WriteToBus(/*minimum_spacing_in_strobe_lengths*/ 3);
+				return;
+			}
+		}
+	}
 	if ((SPI_clock_type == E_SPI_clock_FPGA) && (Current_SPI_clock_type != E_SPI_clock_FPGA)) {
 		SetSPIChipSelect(true, /*write_immediately*/ false);
 		//enter bit-banged FPGA SPI mode 

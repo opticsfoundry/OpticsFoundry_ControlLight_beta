@@ -1018,9 +1018,9 @@ void CEthernetControllerFirefly::AddCommandStep(uint32_t data, uint32_t delay) {
 		AddErrorMessage("CEthernetControllerFirefly::AddCommandStep : delay too long.");
 		return;
 	}
-	else if (delay < 2) {
+	else if (delay < 1) {
 		AddErrorMessage("CEthernetControllerFirefly::AddCommandStep : delay too short.");
-		delay = 2;
+		delay = 1;
 	}
 
 	uint32_t low_buffer = ((delay & delay_mask_low) << 5) + (command_mask & command);
@@ -1038,9 +1038,9 @@ void CEthernetControllerFirefly::AddCommandStepSPI(uint32_t data, uint32_t delay
 		AddErrorMessage("CEthernetControllerFirefly::AddCommandStepSPI : delay too long.");
 		return;
 	}
-	else if (delay < 2) {
+	else if (delay < 1) {
 		AddErrorMessage("CEthernetControllerFirefly::AddCommandStepSPI : delay too short.");
-		delay = 2;
+		delay = 1;
 	}
 
 	uint32_t low_buffer = ((delay & delay_mask) << 5) |

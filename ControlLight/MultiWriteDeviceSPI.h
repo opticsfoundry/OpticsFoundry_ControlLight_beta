@@ -64,7 +64,7 @@ public:
 	unsigned short ControlRegisterContent;
 	CDeviceSequencer* MyDeviceSequencer;
 public:		
-	virtual bool WriteToBus();
+	bool WriteToBus(const uint8_t& minimum_spacing_in_strobe_lengths = 2);
 	void WriteAllToBus(bool End_SPI_clock_node = true);
 	CMultiWriteDeviceSPI(unsigned short aBus, unsigned long aBaseAddress, CDeviceSequencer* _MyDeviceSequencer);
 	~CMultiWriteDeviceSPI();

@@ -65,6 +65,8 @@ CDeviceSequencer::CDeviceSequencer(
 	if (FPGAClockToBusClockRatio < 2) FPGAClockToBusClockRatio = 2;
 	DefaultFPGAClockToBusClockRatio = FPGAClockToBusClockRatio;
 	CurrentFPGAClockToBusClockRatio = FPGAClockToBusClockRatio;
+	
+
 	useExternalClock = _useExternalClock;
 	useStrobeGenerator = _useStrobeGenerator;
 	connect = _connect;
@@ -125,9 +127,11 @@ double CDeviceSequencer::GetBusFrequency_in_Hz() {
 void CDeviceSequencer::UpdateClockRatio() {
 	if (DoUseEdgeTriggeredLatches) {
 		CurrentFPGAClockToBusClockRatio = ((2 * (FPGAClockToBusClockRatio)) / 3);
+		CurrentFPGAClockToStrobeLengthRatio = CurrentFPGAClockToBusClockRatio / 2;
 	}
 	else {
 		CurrentFPGAClockToBusClockRatio = FPGAClockToBusClockRatio;
+		CurrentFPGAClockToStrobeLengthRatio = CurrentFPGAClockToBusClockRatio / 3;
 	}
 	//	MyEthernetMultiIOControllerFirefly->SetFPGAClockToBusClockRatio(FPGAClockToBusClockRatio);
 	BusFrequency_in_Hz = GetBusFrequency_in_Hz();
@@ -166,6 +170,7 @@ void CDeviceSequencer::Initialize(unsigned long _PCBufferSize_in_u64) {
 	TimeDebt_in_ms = 0;
 	CurrentTimeDebt_in_ms = 0;
 	LastBusData = 0;
+	LastBusDataMinimumSpacing_in_strobe_lengths = 0;
 	LastCommandWasSpecialCommand = true;
 }
 
@@ -185,6 +190,7 @@ void CDeviceSequencer::StartAssemblingSequence() {
 	//There can be multiple sequences in the buffer. This function starts the very first of these sequences.
 	BufferPosition = 0;
 	LastBusData = 0;
+	LastBusDataMinimumSpacing_in_strobe_lengths = 0;
 	LastCommandWasSpecialCommand = true;
 	StartAssemblingNextSequence();
 }
@@ -264,8 +270,10 @@ inline void CDeviceSequencer::AddBusCommandAndWait(uint32_t busdata, uint32_t de
 		return;
 	}
 	else if (delay < 2) {
-		AddErrorMessage("CDeviceSequencer::AddBusCommandAndWait : delay too short.");
 		delay = 2;
+		double added_time = 2 / clockFrequency * 1000.0;
+		CurrentTimeDebt_in_ms += added_time;
+		TimeDebt_in_ms += added_time;
 	}
 
 	uint32_t low_buffer = ( ( (delay - 1) & delay_mask_low) << 5) + (command_mask & command);
@@ -291,8 +299,10 @@ inline void CDeviceSequencer::AddBusCommandAndWaitSPI(uint32_t data, uint32_t de
 		return;
 	}
 	else if (delay < 2) {
-		AddErrorMessage("CDeviceSequencer::AddBusCommandAndWaitSPI : delay too short.");
 		delay = 2;
+		double added_time = 2 / clockFrequency * 1000.0;
+		CurrentTimeDebt_in_ms += added_time;
+		TimeDebt_in_ms += added_time;
 	}
 
 	uint32_t low_buffer = (((delay - 1) & delay_mask) << 5) |
@@ -314,17 +324,17 @@ inline void CDeviceSequencer::AddBusCommandAndWaitSPI(uint32_t data, uint32_t de
 }
 
 void CDeviceSequencer::AddBusCommandToSequenceSPI(const uint32_t& content, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part) {
-	if (!LastCommandWasSPICommand) AddBusCommandToSequence(0, /*OnlyWriteLargeDelays*/ true); //we might have to add some wait before starting SPI mode
+	if (!LastCommandWasSPICommand) AddBusCommandToSequence(0); //we might have to add some wait before starting SPI mode
 	LastCommandWasSPICommand = true;
 	uint32_t spacing = Delay_in_ms * clockFrequency / 1000.0;
-	if (spacing < 2) spacing = 2;
 	AddBusCommandAndWaitSPI(content, spacing, bus_strobe_first_part, bus_strobe_second_part, bus_strobe_idle_part, bus_data15_second_part, bus_data15_idle_part);
 }
 
-void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, bool OnlyWriteLargeDelays) {
+void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, const uint8_t& minimum_spacing_in_strobe_lengths) {
 	if (LastCommandWasSPICommand) {
 		LastCommandWasSPICommand = false;
 		LastBusData = content;
+		LastBusDataMinimumSpacing_in_strobe_lengths = minimum_spacing_in_strobe_lengths;
 	}
 	//static uint32_t LeftoverSpacing = 0;
 	if (BufferPosition >= PCBufferSize_in_u64) {
@@ -342,17 +352,21 @@ void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, bool Onl
 		if (LastCommandWasSpecialCommand) {
 			AddBusCommandAndWait(0, maxspacing);
 			LastBusData = content;
+			LastBusDataMinimumSpacing_in_strobe_lengths = minimum_spacing_in_strobe_lengths;
 			LastCommandWasSpecialCommand = false;
 		}
 		else {
 			AddBusCommandAndWait(LastBusData, maxspacing);
 			LastBusData = content;
+			LastBusDataMinimumSpacing_in_strobe_lengths = minimum_spacing_in_strobe_lengths;
 		}
 		spacing64 -= maxspacing;
 	}
 	uint32_t spacing = spacing64;
 	if (spacing == 0) {
-		spacing = CurrentFPGAClockToBusClockRatio;
+		if (LastBusDataMinimumSpacing_in_strobe_lengths > 2) {
+			spacing = CurrentFPGAClockToStrobeLengthRatio * LastBusDataMinimumSpacing_in_strobe_lengths;
+		} else spacing = CurrentFPGAClockToBusClockRatio;
 		double added_time = CurrentFPGAClockToBusClockRatio / clockFrequency * 1000.0;
 		CurrentTimeDebt_in_ms += added_time;
 		TimeDebt_in_ms += added_time;
@@ -362,10 +376,12 @@ void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, bool Onl
 		//at the beginning of a special command, the LastBusData is written out and the remaining wait time is waited.
 		//Therefore nothing to write out now.
 		//We just put this bus data onto the todo list for next time.
+		//And wait if the user as issued a Wait_in_ms() command since the special command
 		
-		if (spacing > (OnlyWriteLargeDelays) ? 2 : 0) AddBusCommandAndWait(0, spacing);
+		if (spacing > 0) AddBusCommandAndWait(0, spacing);
 		
 		LastBusData = content;
+		LastBusDataMinimumSpacing_in_strobe_lengths = minimum_spacing_in_strobe_lengths;
 		//LeftoverSpacing = spacing;
 	}
 	else {
@@ -376,6 +392,7 @@ void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, bool Onl
 		// Finally we store the requested bus data update as to be done next time.
 		AddBusCommandAndWait(LastBusData, /*LeftoverSpacing + */spacing);
 		LastBusData = content;
+		LastBusDataMinimumSpacing_in_strobe_lengths = minimum_spacing_in_strobe_lengths;
 		//LeftoverSpacing = 0;
 	}
 	LastCommandWasSpecialCommand = false;
