@@ -96,7 +96,7 @@ public:
 
 	void WriteBusAddressAndDataToBufferSPI(const uint16_t& MultiIOAddress, const uint16_t& Data, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part) {
 		uint32_t content = MultiIOAddress << 16 | Data;
-		AddBusCommandToSequence(content);
+		AddBusCommandToSequenceSPI(content, bus_strobe_first_part, bus_strobe_second_part, bus_strobe_idle_part, bus_data15_second_part, bus_data15_idle_part);
 	}
 
 	bool Wait_ms(double time_in_ms);

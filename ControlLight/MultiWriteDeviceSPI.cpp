@@ -35,10 +35,14 @@ CMultiWriteDeviceSPI::CMultiWriteDeviceSPI(unsigned short aBus, unsigned long aB
 	BaseAddress = aBaseAddress;
 	MultiIOAddress = Bus + (unsigned char)BaseAddress;
 
-	for (unsigned int i = 0; i < MultiWriteDeviceSPIMaxBusBuffer; i++) BusBuffer[i] = 0;
+	for (unsigned int i = 0; i < MultiWriteDeviceSPIMaxBusBuffer; i++) { 
+		BusBuffer[i] = 0; 
+		BusBufferSPICreateClock[i] = false;
+	}
 	BusBufferStart = 0;
 	BusBufferEnd = 0;
 	BusBufferLength = 0;
+	Current_SPI_clock_type = E_SPI_clock_bit_banged;
 
 	ControlRegisterContent = 0;
 	SPI_CS_bit = 0;
@@ -84,18 +88,19 @@ void CMultiWriteDeviceSPI::AssureMinimumSPIClockPeriodLength() {
 	double MinimumClockHalfPeriod_in_ms = 500.0 / SPI_frequency_in_Hz;
 	double BusPeriod_in_ms = 1000.0 / MyDeviceSequencer->BusFrequency_in_Hz;
 	if (BusPeriod_in_ms < MinimumClockHalfPeriod_in_ms) {
-		WriteAllToBus();
+		WriteAllToBus(/*End_SPI_clock_node*/ false);
 		MyDeviceSequencer->Wait_ms(MinimumClockHalfPeriod_in_ms);
 	}
 }
 
-void CMultiWriteDeviceSPI::AddToBusBuffer(unsigned short value) {
+void CMultiWriteDeviceSPI::AddToBusBuffer(unsigned short value, bool CreateSPIClock) {
 	if (!Enabled) return;
 	if (BusBufferLength >= MultiWriteDeviceSPIMaxBusBuffer) {
 		ControlMessageBox(std::format("CMultiWriteDeviceSPI::AddToBusBuffer : Bus Buffer exceeded ({})", MultiWriteDeviceSPIMaxBusBuffer));
 		return;
 	}
-	BusBuffer[BusBufferEnd] = value;
+	BusBufferSPICreateClock[BusBufferEnd] = CreateSPIClock;
+	BusBuffer[BusBufferEnd] = value;	
 	BusBufferLength++;
 	BusBufferEnd++;
 	if (BusBufferEnd >= MultiWriteDeviceSPIMaxBusBuffer) BusBufferEnd = 0;
@@ -107,7 +112,10 @@ bool CMultiWriteDeviceSPI::WriteToBus()
     if (!Enabled) return false;
     if (BusBufferLength == 0) return false;
 	if (SPI_clock_type == E_SPI_clock_FPGA) {
-		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, BusBuffer[BusBufferStart] & ~(0x8000), /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/1, /*bus_data15_idle_part*/0); //ToDo: get SPI clock from a buffer, as this could be different per SPI mode and per thing to do; also: as we have transparent latches, make it possible to address additional control lines with three strobe-length command
+		const bool clock_idle = SPI_CPOL;
+		const bool clock_active = !SPI_CPOL;
+		const bool bus_data15_first_part = clock_idle;
+		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (BusBuffer[BusBufferStart] & ~(0x8000)) | ((bus_data15_first_part) ? 0x8000 : 0), /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/(BusBufferSPICreateClock) ? clock_active : clock_idle, /*bus_data15_idle_part*/clock_idle); //ToDo: get SPI clock from a buffer, as this could be different per SPI mode and per thing to do; also: as we have transparent latches, make it possible to address additional control lines with three strobe-length command
 	}
 	else {
 		MyDeviceSequencer->WriteBusAddressAndDataToBuffer(MultiIOAddress, BusBuffer[BusBufferStart]);
@@ -118,27 +126,33 @@ bool CMultiWriteDeviceSPI::WriteToBus()
     return true;
 }
 
-void CMultiWriteDeviceSPI::WriteAllToBus()
+void CMultiWriteDeviceSPI::WriteAllToBus(bool End_SPI_clock_node)
 {
-	if (SPI_clock_type == E_SPI_clock_FPGA) {
-		//enter bitbanged FPGA SPI mode 
-		constexpr bool bus_data15_first_part = false;
-		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (bus_data15_first_part) ? 0x80 : 0, /*bus_strobe_first_part*/ 0, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/0, /*bus_data15_idle_part*/0); //ToDo: check and possibly adapt baseline clock level to SPIMode
+	if ((SPI_clock_type == E_SPI_clock_FPGA) && (Current_SPI_clock_type != E_SPI_clock_FPGA)) {
+		SetSPIChipSelect(true, /*write_immediately*/ false);
+		//enter bit-banged FPGA SPI mode 
+		const bool clock_idle = SPI_CPOL;
+		const bool bus_data15_first_part = clock_idle;
+		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (ControlRegisterContent & ~(0x8000)) | ((bus_data15_first_part) ? 0x8000 : 0), /*bus_strobe_first_part*/ 0, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/clock_idle, /*bus_data15_idle_part*/clock_idle);
+		Current_SPI_clock_type = E_SPI_clock_FPGA;
 	}
 	while (WriteToBus()) {
 	}
-	if (SPI_clock_type == E_SPI_clock_FPGA) {
-		//leave bitbanged FPGA SPI mode 
-		constexpr bool bus_data15_first_part = false;
-		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (bus_data15_first_part) ? 0x80 : 0, /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 0, /*bus_strobe_idle_part*/0, /*bus_data15_second_part*/0, /*bus_data15_idle_part*/0); //ToDo: check and possibly adapt baseline clock level to SPIMode
+	if ((SPI_clock_type == E_SPI_clock_FPGA) && (End_SPI_clock_node) && (Current_SPI_clock_type == E_SPI_clock_FPGA)) {
+		SetSPIChipSelect(false, /*write_immediately*/ false);
+		//leave bit-banged FPGA SPI mode 
+		const bool clock_idle = SPI_CPOL;
+		const bool bus_data15_first_part = clock_idle;
+		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (ControlRegisterContent & ~(0x8000)) | ((bus_data15_first_part) ? 0x8000 : 0), /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 0, /*bus_strobe_idle_part*/0, /*bus_data15_second_part*/clock_idle, /*bus_data15_idle_part*/clock_idle);
+		Current_SPI_clock_type = E_SPI_clock_bit_banged;
 	}
 }
 
-void CMultiWriteDeviceSPI::SetControlRegister(unsigned char start_bit, unsigned char nr_bits, unsigned short value, bool write_immediately) {
+void CMultiWriteDeviceSPI::SetControlRegister(unsigned char start_bit, unsigned char nr_bits, unsigned short value, bool write_immediately, bool CreateSPIClock) {
 	unsigned short mask = (1 << nr_bits) - 1;
 	unsigned short shifted_value = (value & mask) << start_bit;
 	ControlRegisterContent = (ControlRegisterContent & ~(mask << start_bit)) | shifted_value;
-	if (write_immediately) AddToBusBuffer(ControlRegisterContent);
+	if (write_immediately) AddToBusBuffer(ControlRegisterContent, CreateSPIClock);
 }
 
 void CMultiWriteDeviceSPI::ConfigureSPI(unsigned char _SPI_CS_bit, unsigned char  _SDIO_0_bit, unsigned char _SDIO_1_bit, unsigned char _SDIO_2_bit, unsigned char _SDIO_3_bit, unsigned char _SPI_SCLK_bit, E_SPI_clock_type _SPI_clock_type) {
@@ -159,8 +173,8 @@ void CMultiWriteDeviceSPI::SetSPIClock(bool clock, bool write_immediately) {
 	SetControlRegister(SPI_SCLK_bit, 1, (clock) ? 1 : 0, write_immediately);
 }
 
-void CMultiWriteDeviceSPI::SetSPIChipSelect(bool cs) {
-	SetControlRegister(SPI_CS_bit, 1, (cs) ? 1 : 0);
+void CMultiWriteDeviceSPI::SetSPIChipSelect(bool cs, bool write_immediately) {
+	SetControlRegister(SPI_CS_bit, 1, (cs) ? 1 : 0, write_immediately);
 }
 void CMultiWriteDeviceSPI::SetSPIDataOut(bool data) {
 	SetControlRegister(SDIO_0_bit, 1, (data) ? 1 : 0);
@@ -229,8 +243,8 @@ void CMultiWriteDeviceSPI::WriteSPIBitBangedMode0Simple(unsigned int number_of_b
 			);
 		};
 
-	SetSPIChipSelect(false);
-	SetSPIClock(false);
+	SetSPIChipSelect(false, /*write_immediately*/ true); //ToDo: check that we can also use this code with write_immediately = false in this command. Would safe one bus period.
+	SetSPIClock(false, /*write_immediately*/ true);
 
 	if (QSPIMode) {
 		unsigned int bit_to_send_0;
@@ -281,7 +295,7 @@ void CMultiWriteDeviceSPI::WriteSPIBitBangedMode0Simple(unsigned int number_of_b
 		}
 	}
 
-	SetSPIChipSelect(true);
+	SetSPIChipSelect(true, /*write_immediately*/ true);
 
 #ifdef DebugSPI
 	if (DebugFile) {
@@ -305,6 +319,10 @@ void CMultiWriteDeviceSPI::WriteSPIBitBanged(unsigned int number_of_bits_out, ui
 	// data bit number_of_bits_out - 1 = MSB
 	// SPI must send MSB first
 
+	if (Current_SPI_clock_type == E_SPI_clock_FPGA) {
+		WriteSPIBitBangedFPGAClock(number_of_bits_out, data);
+		return;
+	}
 
 
 	if (number_of_bits_out == 0 || number_of_bits_out > 64) {
@@ -342,7 +360,7 @@ void CMultiWriteDeviceSPI::WriteSPIBitBanged(unsigned int number_of_bits_out, ui
 		};
 
 	SetSPIClock(clock_idle);
-	SetSPIChipSelect(false);
+	SetSPIChipSelect(false, /*write_immediately*/ true);
 
 	if (QSPIMode) {
 		for (unsigned int i = 0; i < number_of_bits_out; i += 4) {
@@ -424,7 +442,154 @@ void CMultiWriteDeviceSPI::WriteSPIBitBanged(unsigned int number_of_bits_out, ui
 		SetSPIClock(clock_idle);
 	}
 
-	SetSPIChipSelect(true);
+	SetSPIChipSelect(true, /*write_immediately*/ true);
+
+#ifdef DebugSPI
+	if (DebugFile) {
+		unsigned long data_low = data & 0xFFFFFFFF;
+		unsigned long data_high = (data >> 32) & 0xFFFFFFFF;
+		std::string buf = std::format(
+			"Wrote {} bits, data = {:08X} {:08X} = first bit sent {} last bit sent",
+			number_of_bits_out,
+			data_high,
+			data_low,
+			format_binary_64(data, number_of_bits_out)
+		);
+		*DebugFile << buf << std::endl;
+	}
+#endif
+}
+
+
+//Generalized code, implementing any SPI mode
+void CMultiWriteDeviceSPI::WriteSPIBitBangedFPGAClock(unsigned int number_of_bits_out, uint64_t data) {
+	// data bit 0 = LSB
+	// data bit number_of_bits_out - 1 = MSB
+	// SPI must send MSB first
+
+
+
+	if (number_of_bits_out == 0 || number_of_bits_out > 64) {
+		return; // or throw
+	}
+
+	if (QSPIMode && (number_of_bits_out % 4 != 0)) {
+		return; // or throw
+	}
+
+	const bool clock_idle = SPI_CPOL;
+	const bool clock_active = !SPI_CPOL;
+
+	auto GetBitMSBFirst = [&](unsigned int bit_index) -> unsigned int {
+		return static_cast<unsigned int>(
+			(data >> (number_of_bits_out - 1 - bit_index)) & 0x1
+			);
+		};
+
+	auto WriteSingleSPIDataOut = [&](unsigned int bit_value, bool write_immediately) {
+		// Assumption: normal SPI MOSI is SDIO_0.
+		// If SetSPIDataOut() uses a different bit internally, replace SDIO_0_bit here.
+		SetControlRegister(SDIO_0_bit, 1, bit_value ? 1 : 0, write_immediately, /* CreateSPIClock */ true);
+		};
+
+	auto WriteQSPIDataOut = [&](unsigned int bit0,
+		unsigned int bit1,
+		unsigned int bit2,
+		unsigned int bit3,
+		bool write_immediately) {
+			SetControlRegister(SDIO_0_bit, 1, bit0 ? 1 : 0, false);
+			SetControlRegister(SDIO_1_bit, 1, bit1 ? 1 : 0, false);
+			SetControlRegister(SDIO_2_bit, 1, bit2 ? 1 : 0, false);
+			SetControlRegister(SDIO_3_bit, 1, bit3 ? 1 : 0, write_immediately, /* CreateSPIClock */ true);
+		};
+
+	//Clock idle and CS are updated in WriteAllToBus when entering bit-banged FPGA clock mode, no need to do it here
+	//SetSPIClock(clock_idle, /*write_immediately*/ false);
+	//SetSPIChipSelect(false, /*write_immediately*/ false);
+
+	//ToDo: carefully walk through all four SPI modes and check that data and clock timing is as intended
+	if (QSPIMode) {
+		for (unsigned int i = 0; i < number_of_bits_out; i += 4) {
+			unsigned int bit_to_send_3 = GetBitMSBFirst(i + 0);
+			unsigned int bit_to_send_2 = GetBitMSBFirst(i + 1);
+			unsigned int bit_to_send_1 = GetBitMSBFirst(i + 2);
+			unsigned int bit_to_send_0 = GetBitMSBFirst(i + 3);
+
+			if (!SPI_CPHA) {
+				// CPHA = 0:
+				// First bit group: data must be written before sample edge.
+				// Later bit groups: previous trailing edge + next data setup are combined.
+
+				if (i == 0) {
+					WriteQSPIDataOut(bit_to_send_0, bit_to_send_1, bit_to_send_2, bit_to_send_3, true);
+				}
+				else {
+					//SetSPIClock(clock_idle, false);
+					WriteQSPIDataOut(bit_to_send_0, bit_to_send_1, bit_to_send_2, bit_to_send_3, true);
+				}
+
+				// Leading edge = sample edge
+				//SetSPIClock(clock_active);
+			}
+			else {
+				// CPHA = 1:
+				// Data may change on the leading edge.
+				// Therefore data update + leading edge can be combined.
+				// Trailing edge = sample edge.
+
+				WriteQSPIDataOut(bit_to_send_0, bit_to_send_1, bit_to_send_2, bit_to_send_3, true);
+
+				// Leading edge + data update
+				//SetSPIClock(clock_active);
+
+				// Trailing edge = sample edge
+				//SetSPIClock(clock_idle);
+			}
+		}
+	}
+	else {
+		for (unsigned int i = 0; i < number_of_bits_out; i++) {
+			unsigned int bit_to_send = GetBitMSBFirst(i);
+
+			if (!SPI_CPHA) {
+				// CPHA = 0:
+				// First bit: data setup must be written before sample edge.
+				// Later bits: previous trailing edge + next data setup are combined.
+
+				if (i == 0) {
+					WriteSingleSPIDataOut(bit_to_send, true);
+				}
+				else {
+					//SetSPIClock(clock_idle, false);
+					WriteSingleSPIDataOut(bit_to_send, true);
+				}
+
+				// Leading edge = sample edge
+				//SetSPIClock(clock_active);
+			}
+			else {
+				// CPHA = 1:
+				// Data changes on leading edge.
+				// Sample happens on trailing edge.
+
+				WriteSingleSPIDataOut(bit_to_send, true);
+
+				// Leading edge + data update
+				//SetSPIClock(clock_active);
+
+				// Trailing edge = sample edge
+				//SetSPIClock(clock_idle);
+			}
+		}
+	}
+
+	// Finish final half-cycle for CPHA = 0.
+	if (!SPI_CPHA) {
+		//SetSPIClock(clock_idle);
+	}
+
+	//Clock idle and CS are updated in WriteAllToBus when entering bit-banged FPGA clock mode, no need to do it here
+	//SetSPIChipSelect(true, /*write_immediately*/ false);
 
 #ifdef DebugSPI
 	if (DebugFile) {
