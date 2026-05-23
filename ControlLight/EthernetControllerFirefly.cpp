@@ -1014,6 +1014,15 @@ void CEthernetControllerFirefly::AddCommandStep(uint32_t data, uint32_t delay) {
 	const uint8_t command_mask = 0x1F;  //5 bit
 	uint8_t command = CMD_STEP;
 
+	if (delay > 0x7FFFFFFF) { //31 bit
+		AddErrorMessage("CEthernetControllerFirefly::AddCommandStep : delay too long.");
+		return;
+	}
+	else if (delay < 2) {
+		AddErrorMessage("CEthernetControllerFirefly::AddCommandStep : delay too short.");
+		delay = 2;
+	}
+
 	uint32_t low_buffer = ((delay & delay_mask_low) << 5) + (command_mask & command);
 	uint32_t high_buffer = ((bus_data_mask & data) << 4) | ((delay >> 27) & delay_mask_high);
 	AddSequencerCommandToSequenceList( high_buffer, low_buffer);
@@ -1028,6 +1037,10 @@ void CEthernetControllerFirefly::AddCommandStepSPI(uint32_t data, uint32_t delay
 	if (delay > 0x03FFFFFF) {
 		AddErrorMessage("CEthernetControllerFirefly::AddCommandStepSPI : delay too long.");
 		return;
+	}
+	else if (delay < 2) {
+		AddErrorMessage("CEthernetControllerFirefly::AddCommandStepSPI : delay too short.");
+		delay = 2;
 	}
 
 	uint32_t low_buffer = ((delay & delay_mask) << 5) |

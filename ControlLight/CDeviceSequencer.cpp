@@ -259,6 +259,15 @@ inline void CDeviceSequencer::AddBusCommandAndWait(uint32_t busdata, uint32_t de
 	const uint8_t command_mask = 0x1F;  //5 bit
 	uint8_t command = 1; //CMD_STEP
 
+	if (delay > 0x7FFFFFFF) {
+		AddErrorMessage("CDeviceSequencer::AddBusCommandAndWait : delay too long.");
+		return;
+	}
+	else if (delay < 2) {
+		AddErrorMessage("CDeviceSequencer::AddBusCommandAndWait : delay too short.");
+		delay = 2;
+	}
+
 	uint32_t low_buffer = ( ( (delay - 1) & delay_mask_low) << 5) + (command_mask & command);
 	uint32_t high_buffer = ((bus_data_mask & busdata) << 4) | ((delay >> 27) & delay_mask_high);
 
@@ -280,6 +289,10 @@ inline void CDeviceSequencer::AddBusCommandAndWaitSPI(uint32_t data, uint32_t de
 	if (delay > 0x03FFFFFF) {
 		AddErrorMessage("CDeviceSequencer::AddBusCommandAndWaitSPI : delay too long.");
 		return;
+	}
+	else if (delay < 2) {
+		AddErrorMessage("CDeviceSequencer::AddBusCommandAndWaitSPI : delay too short.");
+		delay = 2;
 	}
 
 	uint32_t low_buffer = (((delay - 1) & delay_mask) << 5) |
@@ -303,7 +316,8 @@ inline void CDeviceSequencer::AddBusCommandAndWaitSPI(uint32_t data, uint32_t de
 void CDeviceSequencer::AddBusCommandToSequenceSPI(const uint32_t& content, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part) {
 	if (!LastCommandWasSPICommand) AddBusCommandToSequence(0, /*OnlyWriteLargeDelays*/ true); //we might have to add some wait before starting SPI mode
 	LastCommandWasSPICommand = true;
-	uint32_t spacing = CurrentFPGAClockToBusClockRatio;
+	uint32_t spacing = Delay_in_ms * clockFrequency / 1000.0;
+	if (spacing < 2) spacing = 2;
 	AddBusCommandAndWaitSPI(content, spacing, bus_strobe_first_part, bus_strobe_second_part, bus_strobe_idle_part, bus_data15_second_part, bus_data15_idle_part);
 }
 
