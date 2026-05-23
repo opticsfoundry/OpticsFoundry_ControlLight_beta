@@ -24,8 +24,8 @@ std::string DebugFilePath = "D:\\Florian\\OpticsFoundry\\OpticsFoundryControl\\D
 #endif
 
 CMultiWriteDeviceSPI::CMultiWriteDeviceSPI(unsigned short aBus, unsigned long aBaseAddress, CDeviceSequencer* _MyDeviceSequencer)
-	: CMultiWriteDevice()
 {
+
 	QSPIMode = false;
 	MyDeviceSequencer = _MyDeviceSequencer;
 	ForceWriting=false;	
@@ -69,6 +69,17 @@ CMultiWriteDeviceSPI::~CMultiWriteDeviceSPI()
 #endif
 }
 
+void CMultiWriteDeviceSPI::SwitchForceWritingMode(bool OnOff) {
+	ForceWriting = OnOff;
+}
+
+
+void CMultiWriteDeviceSPI::Enable(bool OnOff)
+{
+	Enabled = OnOff;
+}
+
+
 void CMultiWriteDeviceSPI::AssureMinimumSPIClockPeriodLength() {
 	double MinimumClockHalfPeriod_in_ms = 500.0 / SPI_frequency_in_Hz;
 	double BusPeriod_in_ms = 1000.0 / MyDeviceSequencer->BusFrequency_in_Hz;
@@ -95,7 +106,12 @@ bool CMultiWriteDeviceSPI::WriteToBus()
 {
     if (!Enabled) return false;
     if (BusBufferLength == 0) return false;
-	MyDeviceSequencer->WriteBusAddressAndDataToBuffer(MultiIOAddress, BusBuffer[BusBufferStart]);
+	if (SPI_clock_type == E_SPI_clock_FPGA) {
+		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, BusBuffer[BusBufferStart] & ~(0x8000), /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/1, /*bus_data15_idle_part*/0); //ToDo: get SPI clock from a buffer, as this could be different per SPI mode and per thing to do; also: as we have transparent latches, make it possible to address additional control lines with three strobe-length command
+	}
+	else {
+		MyDeviceSequencer->WriteBusAddressAndDataToBuffer(MultiIOAddress, BusBuffer[BusBufferStart]);
+	}
 	BusBufferStart++;
 	if (BusBufferStart >= MultiWriteDeviceSPIMaxBusBuffer) BusBufferStart = 0;
 	BusBufferLength--;
@@ -104,7 +120,17 @@ bool CMultiWriteDeviceSPI::WriteToBus()
 
 void CMultiWriteDeviceSPI::WriteAllToBus()
 {
+	if (SPI_clock_type == E_SPI_clock_FPGA) {
+		//enter bitbanged FPGA SPI mode 
+		constexpr bool bus_data15_first_part = false;
+		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (bus_data15_first_part) ? 0x80 : 0, /*bus_strobe_first_part*/ 0, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/0, /*bus_data15_idle_part*/0); //ToDo: check and possibly adapt baseline clock level to SPIMode
+	}
 	while (WriteToBus()) {
+	}
+	if (SPI_clock_type == E_SPI_clock_FPGA) {
+		//leave bitbanged FPGA SPI mode 
+		constexpr bool bus_data15_first_part = false;
+		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (bus_data15_first_part) ? 0x80 : 0, /*bus_strobe_first_part*/ 1, /*bus_strobe_second_part*/ 0, /*bus_strobe_idle_part*/0, /*bus_data15_second_part*/0, /*bus_data15_idle_part*/0); //ToDo: check and possibly adapt baseline clock level to SPIMode
 	}
 }
 
@@ -115,13 +141,14 @@ void CMultiWriteDeviceSPI::SetControlRegister(unsigned char start_bit, unsigned 
 	if (write_immediately) AddToBusBuffer(ControlRegisterContent);
 }
 
-void CMultiWriteDeviceSPI::SetSPIPortBits(unsigned char _SPI_CS_bit, unsigned char  _SDIO_0_bit, unsigned char _SDIO_1_bit, unsigned char _SDIO_2_bit, unsigned char _SDIO_3_bit, unsigned char _SPI_SCLK_bit) {
+void CMultiWriteDeviceSPI::ConfigureSPI(unsigned char _SPI_CS_bit, unsigned char  _SDIO_0_bit, unsigned char _SDIO_1_bit, unsigned char _SDIO_2_bit, unsigned char _SDIO_3_bit, unsigned char _SPI_SCLK_bit, E_SPI_clock_type _SPI_clock_type) {
 	SPI_CS_bit = _SPI_CS_bit;
 	SDIO_0_bit = _SDIO_0_bit;
 	SDIO_1_bit = _SDIO_1_bit;
 	SDIO_2_bit = _SDIO_2_bit;
 	SDIO_3_bit = _SDIO_3_bit;
 	SPI_SCLK_bit = _SPI_SCLK_bit;
+	SPI_clock_type = _SPI_clock_type;
 }
 
 void CMultiWriteDeviceSPI::SetQSPIMode(bool OnOff) {

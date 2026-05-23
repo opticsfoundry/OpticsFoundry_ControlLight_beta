@@ -44,7 +44,7 @@ int main() {
 	}
 
 	for (const int address : {1, 10}) {
-		builder.RegisterDDSAD9959Board(/*Sequencer*/ 0, /*Address*/ address, /*ClockFrequencyinMHz*/ 500);
+		builder.RegisterDDSAD9959Board(/*Sequencer*/ 0, /*Address*/ address, /*ClockFrequencyinMHz*/ 500, /*version*/ 0.09);
 	}
 
 	builder.Save();

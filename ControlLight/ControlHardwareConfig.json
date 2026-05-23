@@ -93,13 +93,15 @@
       "Sequencer": 0,
       "Address": 3,
       "ClockFrequencyinMHz": 500,
-      "FrequencyMultiplier": 1
+      "FrequencyMultiplier": 1,
+      "Version": 0.16
     },
     {
       "Sequencer": 0,
       "Address": 4,
       "ClockFrequencyinMHz": 500,
-      "FrequencyMultiplier": 1
+      "FrequencyMultiplier": 1,
+      "Version":  0.16
     }
   ],
   "AnalogInBoards12bit": []

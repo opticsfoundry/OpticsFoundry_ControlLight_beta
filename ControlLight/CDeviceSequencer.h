@@ -40,6 +40,7 @@ private:
 	double MaxTimeDebt_in_ms;
 	double CurrentTimeDebt_in_ms;
 	bool LastCommandWasSpecialCommand;
+	bool LastCommandWasSPICommand;
 	bool DoUseEdgeTriggeredLatches;
 	uint32_t LastBusData;
 	std::unique_ptr<CDeviceRack> MyDeviceRack;
@@ -81,13 +82,19 @@ public:
 	void AddCommandToSequence(const uint32_t& high_word, const uint32_t& low_word);
 	void AddBusCommandAndWait(uint32_t data, uint32_t delay);
 	void AddBusCommandAndWaitSPI(uint32_t data, uint32_t delay, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part,  bool bus_data15_idle_part);
-	void AddBusCommandToSequence(const uint32_t& content);
+	void AddBusCommandToSequenceSPI(const uint32_t& content, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part);
+	void AddBusCommandToSequence(const uint32_t& content, bool OnlyWriteLargeDelays = false);
 	bool SetValue_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 	bool SetRegister_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 	bool SetValueSerialDevice_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 	bool SetRegisterSerialDevice_Sequencer(const unsigned int& Address, const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);
 
 	void WriteBusAddressAndDataToBuffer(const uint16_t& MultiIOAddress, const uint16_t& Data) {
+		uint32_t content = MultiIOAddress << 16 | Data;
+		AddBusCommandToSequence(content);
+	}
+
+	void WriteBusAddressAndDataToBufferSPI(const uint16_t& MultiIOAddress, const uint16_t& Data, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part) {
 		uint32_t content = MultiIOAddress << 16 | Data;
 		AddBusCommandToSequence(content);
 	}

@@ -11,6 +11,7 @@ public:
 	double externalClockFrequency;
 	double frequencyMultiplier;
 	bool AD9958;
+	double version;
 
 public:
 	CDeviceAD9959(
@@ -18,7 +19,8 @@ public:
 		unsigned int _MyAddress,
 		double _externalClockFrequency,
 		unsigned int _frequencyMultiplier,
-		bool _AD9958
+		bool _AD9958, 
+		double _version
 	);
 	virtual ~CDeviceAD9959();
 	virtual bool SetRegister(const unsigned int& SubAddress, const uint8_t* Data, const unsigned long& DataLength_in_bit, const uint8_t& StartBit);

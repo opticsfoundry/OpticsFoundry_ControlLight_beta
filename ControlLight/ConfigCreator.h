@@ -51,7 +51,8 @@ public:
 		const std::optional<int>& SlotNr = std::nullopt);
 
 	void RegisterDDSAD9959Board(int Sequencer = 0, int Address = 21, double ClockFrequencyinMHz = 300,
-		double FrequencyMultiplier = 1, bool AD9958 = false, const std::optional<std::string>& Model = std::nullopt,
+		double FrequencyMultiplier = 1, bool AD9958 = false, double version = 0, 
+		const std::optional<std::string>& Model = std::nullopt,
 		const std::optional<std::string>& SN = std::nullopt,
 		const std::optional<int>& RackNr = std::nullopt,
 		const std::optional<int>& SlotNr = std::nullopt);

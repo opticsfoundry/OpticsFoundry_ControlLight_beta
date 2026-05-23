@@ -101,14 +101,15 @@ class ConfigBuilder:
         }, Model=Model, SN=SN, RackNr=RackNr, SlotNr=SlotNr))
 
     def RegisterDDSAD9959Board(self, Sequencer=0, Address=21, ClockFrequencyinMHz=300,
-                                FrequencyMultiplier=1, AD9958=False, Model=None, SN=None,
+                                FrequencyMultiplier=1, AD9958=False, version = 0, Model=None, SN=None,
                                 RackNr=None, SlotNr=None):
         self.config["DDSAD9959Boards"].append(self._add_optional_hardware_fields({
             "Sequencer": Sequencer,
             "Address": Address,
             "ClockFrequencyinMHz": ClockFrequencyinMHz,
             "FrequencyMultiplier": FrequencyMultiplier,
-            "AD9958": "1" if AD9958 else "0"
+            "AD9958": "1" if AD9958 else "0",
+            "Version": version
         }, Model=Model, SN=SN, RackNr=RackNr, SlotNr=SlotNr))
 
     def RegisterAnalogInBoard12bit(self, Sequencer=0, Address=80, NumberChannels=4, MinVoltage=-10, MaxVoltage=10,

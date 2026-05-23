@@ -1011,13 +1011,15 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 		/// @param externalClockFrequency the external clock frequency of the device to add.
 		/// @param frequencyMultiplier the frequency multiplier of the device to add.
 		/// @param AD9958 true if the connected device is the two-channel AD9958 variant, false for the four-channel AD9959.
+		/// @param version Version of the AD9959 board. This decides on way bit-banged SPI is performed.
 		/// @return See return convention above.
 		API_EXPORT ERROR_CODE_TYPE CLA_FN(AddDeviceAD9959)(
 			unsigned int sequencer,
 			unsigned int address,
 			double externalClockFrequency,
 			unsigned int frequencyMultiplier,
-			bool AD9958);
+			bool AD9958,
+			double version);
 
 		/// @brief Add a 12 bit analog input device to the sequencer.
 		/// @param sequencer the sequencer to use.

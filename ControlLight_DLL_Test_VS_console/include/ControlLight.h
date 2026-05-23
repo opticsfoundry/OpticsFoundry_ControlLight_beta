@@ -1016,7 +1016,8 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 			unsigned int address,
 			double externalClockFrequency,
 			unsigned int frequencyMultiplier,
-			bool AD9958);
+			bool AD9958,
+			double version);
 
 		/// @brief Add a 12 bit analog input device to the sequencer.
 		/// @param sequencer the sequencer to use.

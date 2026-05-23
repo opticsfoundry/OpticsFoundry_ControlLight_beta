@@ -414,7 +414,8 @@ PYBIND11_MODULE(control_light_api, m) {
                 py::arg("address"),
                 py::arg("external_clock_frequency"),
                 py::arg("frequency_multiplier"),
-                py::arg("ad9958")
+                py::arg("ad9958"),
+                py::arg("version")
                 )
 
             // AddDeviceAnalogIn12bit

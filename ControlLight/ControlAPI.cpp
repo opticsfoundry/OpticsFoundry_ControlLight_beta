@@ -1551,10 +1551,12 @@ bool CLA_InitializeMFC(bool InitializeAfx, bool InitializeAfxSocket) {
 			double externalClockFrequency_in_MHz;
 			unsigned int frequencyMultiplier;
 			unsigned int AD9958;
+			double version;
 			LOAD_VALUE(sequencer, "Sequencer", 0);
 			LOAD_VALUE(externalClockFrequency_in_MHz, "ClockFrequencyinMHz", 300000000);
 			LOAD_VALUE(frequencyMultiplier, "FrequencyMultiplier", 1);
 			LOAD_VALUE(AD9958, "AD9958", 0);
+			LOAD_VALUE(version, "Version", 0);
 
 			if (!GetSequencerBeforeInitialization(sequencer)) {
 				RETURN_ERROR(false, "CLA_AddDeviceAD9959FromJSON: Invalid sequencer");
@@ -1564,7 +1566,8 @@ bool CLA_InitializeMFC(bool InitializeAfx, bool InitializeAfxSocket) {
 				address,
 				externalClockFrequency_in_MHz,
 				frequencyMultiplier,
-				AD9958 == 1);
+				AD9958 == 1,
+				version);
 			RETURN_ERROR(!SequencerList[sequencer]->ErrorOccured(), "CLA_AddDeviceAD9959FromJSON: error on initialization");
 		}
 
@@ -1574,7 +1577,8 @@ bool CLA_InitializeMFC(bool InitializeAfx, bool InitializeAfxSocket) {
 			unsigned int address,
 			double externalClockFrequency,
 			unsigned int frequencyMultiplier,
-			bool AD9958) {
+			bool AD9958,
+			double version) {
 			API_LOCK_GUARD;
 			if (!GetSequencerBeforeInitialization(sequencer)) {
 				API_UNLOCK_RETURN_ERROR(false, "CLA_AddDeviceAD9959: Invalid sequencer");
@@ -1584,7 +1588,8 @@ bool CLA_InitializeMFC(bool InitializeAfx, bool InitializeAfxSocket) {
 				address,
 				externalClockFrequency,
 				frequencyMultiplier,
-				AD9958);
+				AD9958,
+				version);
 			API_UNLOCK_RETURN_ERROR(!SequencerList[sequencer]->ErrorOccured(), "CLA_AddDeviceAD9959: error on initialization");
 		}
 

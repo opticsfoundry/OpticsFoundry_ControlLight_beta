@@ -215,7 +215,7 @@ typedef bool (*SequencerSetSPIModeFunc)(const unsigned int& Sequencer, uint8_t S
 typedef bool (*SequencerSetI2CParametersFunc)(const unsigned int& Sequencer, uint8_t I2C_0_Destination, uint8_t I2C_delay_start_stop, uint8_t I2C_delay_data_setup, uint8_t I2C_delay_clock_high, uint8_t I2C_delay_clock_low, uint8_t I2C_delay_pause_before_read);
 typedef bool (*SelectRackSlotFunc)(const unsigned int& Sequencer, uint8_t rack_nr, uint8_t slot_nr);
 typedef bool (*ResetI2CMultiplexerFunc)(const unsigned int& Sequencer);
-typedef bool (*AddDeviceAD9959Func)(unsigned int sequencer, unsigned int address, double externalClockFrequency, unsigned int frequencyMultiplier, bool AD9958);
+typedef bool (*AddDeviceAD9959Func)(unsigned int sequencer, unsigned int address, double externalClockFrequency, unsigned int frequencyMultiplier, bool AD9958, double version);
 
 #endif
 
@@ -491,7 +491,7 @@ typedef bool (*SetAD9959PowerFunc)(const unsigned int&, const unsigned int&, uin
         bool SequencerSetI2CParameters(const unsigned int& Sequencer, uint8_t I2C_0_Destination, uint8_t I2C_delay_start_stop, uint8_t I2C_delay_data_setup, uint8_t I2C_delay_clock_high, uint8_t I2C_delay_clock_low, uint8_t I2C_delay_pause_before_read);
         bool SelectRackSlot(const unsigned int& Sequencer, uint8_t rack_nr, uint8_t slot_nr);
         bool ResetI2CMultiplexer(const unsigned int& Sequencer);
-        bool AddDeviceAD9959(unsigned int sequencer, unsigned int address, double externalClockFrequency, unsigned int frequencyMultiplier, bool AD9958);
+        bool AddDeviceAD9959(unsigned int sequencer, unsigned int address, double externalClockFrequency, unsigned int frequencyMultiplier, bool AD9958, double version);
     
         //the following are convenience functions, which allow us to define nice names to the few most important functions
         //You can add as many convenience functions as you like. Make sure to copy them also into the list of convenience functions in CDevice, CDevice.h, to assure they can always be called in any device.

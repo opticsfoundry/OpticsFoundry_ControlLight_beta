@@ -39,6 +39,8 @@ typedef enum
 #define CS_GPIO_PORT         GPIOA
 #define CS_PIN               GPIO_PIN_1
 
+
+
 const unsigned int SPIBufferLength = 14;
 constexpr unsigned int AD9959NumberOfRegisters = 92;
 
@@ -55,15 +57,18 @@ private:
     double FrequencyScale;
     bool UpdateRegistersModeAutomatic;
     bool AD9958;
+    double version;
     bool IOUpdateEnabled;
     
     uint32_t AktValueContents[AD9959NumberOfRegisters]; //keeps track of Value, contains value after bus buffer has been finished to be written out
     unsigned char WritePrecision[AD9959NumberOfRegisters];
 public:
     double FrequencyMultiplier;
+private:
+    unsigned char SPI_IOUpdate_bit;
 
 public:
-    CAD9959(unsigned short aBus, unsigned long aBaseAddress, double aExternalClockFrequency_in_Hz, double aFrequencyMultiplier, bool aAD9958, CDeviceSequencer* _MyDeviceSequencer);
+    CAD9959(unsigned short aBus, unsigned long aBaseAddress, double aExternalClockFrequency_in_Hz, double aFrequencyMultiplier, bool aAD9958, double aversion, CDeviceSequencer* _MyDeviceSequencer);
     
     virtual ~CAD9959();
     void SetIOUpdate(bool OnOff);

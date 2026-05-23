@@ -1410,9 +1410,9 @@ bool CControlLightAPI::ResetI2CMultiplexer(const unsigned int& Sequencer) {
         return false;
 }
 
-bool CControlLightAPI::AddDeviceAD9959(unsigned int sequencer, unsigned int address, double externalClockFrequency, unsigned int frequencyMultiplier, bool AD9958) {
+bool CControlLightAPI::AddDeviceAD9959(unsigned int sequencer, unsigned int address, double externalClockFrequency, unsigned int frequencyMultiplier, bool AD9958, double version) {
     if (CLA_AddDeviceAD9959)
-        return CLA_AddDeviceAD9959(sequencer, address, externalClockFrequency, frequencyMultiplier, AD9958);
+        return CLA_AddDeviceAD9959(sequencer, address, externalClockFrequency, frequencyMultiplier, AD9958, version);
     else
         return false;
 }

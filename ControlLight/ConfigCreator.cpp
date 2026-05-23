@@ -136,14 +136,15 @@ void ConfigCreator::RegisterDDSAD9858Board(int Sequencer, int Address, double Cl
 }
 
 void ConfigCreator::RegisterDDSAD9959Board(int Sequencer, int Address, double ClockFrequencyinMHz,
-	double FrequencyMultiplier, bool AD9958, const optional<string>& Model, const optional<string>& SN,
+	double FrequencyMultiplier, bool AD9958, double version, const optional<string>& Model, const optional<string>& SN,
 	const optional<int>& RackNr, const optional<int>& SlotNr) {
 	json entry = {
 		{"Sequencer", Sequencer},
 		{"Address", Address},
 		{"ClockFrequencyinMHz", ClockFrequencyinMHz},
 		{"FrequencyMultiplier", FrequencyMultiplier},
-		{"AD9958", (AD9958) ? 1 : 0}
+		{"AD9958", (AD9958) ? 1 : 0},
+		{"Version", version}
 	};
 	AddOptionalHardwareFields(entry, Model, SN, RackNr, SlotNr);
 	config_["DDSAD9959Boards"].push_back(entry);

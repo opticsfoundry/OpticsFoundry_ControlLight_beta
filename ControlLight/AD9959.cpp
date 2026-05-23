@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "AD9959.h"
-#include "MultiWriteDevice.h"
+#include "MultiWriteDeviceSPI.h"
 #include "ControlAPI.h"
 #include "CDeviceSequencer.h"
 #include "std.h"
@@ -56,9 +56,17 @@ uint32_t AD9959WriteReadSPINothing(unsigned int chip_select, unsigned int number
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CAD9959::CAD9959(unsigned short aBus, unsigned long aBaseAddress, double aExternalClockFrequency_in_Hz, double aFrequencyMultiplier, bool aAD9958, CDeviceSequencer* _MyDeviceSequencer)
+CAD9959::CAD9959(unsigned short aBus, unsigned long aBaseAddress, double aExternalClockFrequency_in_Hz, double aFrequencyMultiplier, bool aAD9958, double aversion, CDeviceSequencer* _MyDeviceSequencer)
     : CMultiWriteDeviceSPI(aBus, aBaseAddress, _MyDeviceSequencer) {
-    SetSPIPortBits(/* SPI_CS_bit*/14, /*SDIO_0_bit = SPI_MOSI_bit*/ 12, /*SDIO_1_bit = */ 11, /*SDIO_2_bit */ 10, /*SDIO_3_bit = Sync_IO */ 9, /*SPI_SCLK_bit*/ 13);  //SDIO_3 is the sync_io pin
+    version = aversion;
+    if (version < 0.17) {
+        ConfigureSPI(/* SPI_CS_bit*/14, /*SDIO_0_bit = SPI_MOSI_bit*/ 12, /*SDIO_1_bit = */ 11, /*SDIO_2_bit */ 10, /*SDIO_3_bit = Sync_IO */ 9, /*SPI_SCLK_bit*/ 13, /*SPI_clock_type*/ E_SPI_clock_bit_banged);  //SDIO_3 is the sync_io pin
+        SPI_IOUpdate_bit = 15;
+    }
+    else {
+        ConfigureSPI(/* SPI_CS_bit*/14, /*SDIO_0_bit = SPI_MOSI_bit*/ 12, /*SDIO_1_bit = */ 11, /*SDIO_2_bit */ 10, /*SDIO_3_bit = Sync_IO */ 9, /*SPI_SCLK_bit*/ 15, /*SPI_clock_type*/ E_SPI_clock_FPGA);  //SDIO_3 is the sync_io pin
+        SPI_IOUpdate_bit = 13;
+    }
     BytesToTransmit = 0;
 
     InputClockFrequency_in_Hz = 1E6 * aExternalClockFrequency_in_Hz; //conversion MHz to Hz
@@ -88,7 +96,7 @@ CAD9959::~CAD9959() {
 //AD9959 DDS0 digital port control lines
 
 void CAD9959::SetIOUpdate(bool OnOff) {
-    SetControlRegister(15, 1, (OnOff) ? 1 : 0);
+    SetControlRegister(SPI_IOUpdate_bit, 1, (OnOff) ? 1 : 0);
 }
 
 void CAD9959::SetSDIO_3(bool OnOff) {

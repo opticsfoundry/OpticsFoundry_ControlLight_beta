@@ -879,10 +879,11 @@ json GetAutoConfigJSON(const std::string& filename) {
 					entry["FrequencyMultiplier"] = (*board_json).value("FrequencyMultiplier", 1);
 					auto_config["DDSAD9858Boards"].push_back(entry);
 				}
-				else if ((model_prefix == "DDSAD9959") || (model_prefix == "DDSAD9959")) {
+				else if ((model_prefix == "DDSAD9958") || (model_prefix == "DDSAD9959")) {
 					json entry;
 					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
 					entry["Address"] = (*board_json).value("Address", 21);
+					entry["Version"] = (*board_json).value("Version", 21);
 					if (board_json->contains("ClockFrequency")) {
 						entry["ClockFrequency"] = (*board_json)["ClockFrequency"];
 					}

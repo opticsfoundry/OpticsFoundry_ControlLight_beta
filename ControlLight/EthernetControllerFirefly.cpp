@@ -1025,6 +1025,11 @@ void CEthernetControllerFirefly::AddCommandStepSPI(uint32_t data, uint32_t delay
 	const uint8_t command_mask = 0x1F; //5 bit
 	uint8_t command = CMD_STEP_SPI;
 
+	if (delay > 0x03FFFFFF) {
+		AddErrorMessage("CEthernetControllerFirefly::AddCommandStepSPI : delay too long.");
+		return;
+	}
+
 	uint32_t low_buffer = ((delay & delay_mask) << 5) |
 		((bus_data15_second_part ? 1u : 0u) << 31) |
 		(command_mask & command);

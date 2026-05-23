@@ -1,6 +1,5 @@
 #pragma once
 
-#include "MultiWriteDevice.h"
 #include <cstdint>
 
 
@@ -14,10 +13,27 @@ class CDeviceSequencer;
 
 class CMultiIO;
 
+typedef enum
+{
+	E_SPI_clock_bit_banged,
+	E_SPI_clock_FPGA
+} E_SPI_clock_type;
+
+
 const unsigned int MultiWriteDeviceSPIMaxBusBuffer = 1024*128;
 
-class CMultiWriteDeviceSPI : public CMultiWriteDevice
+class CMultiWriteDeviceSPI
 {
+//things formerly inherited from CMultiWriteDevice
+public:
+	bool ForceWriting;
+	unsigned short MultiIOAddress;
+	bool Enabled;
+public:
+	void SwitchForceWritingMode(bool OnOff);
+	void Enable(bool OnOff);
+//end things from CMultiWriteDevice
+
 private:
 	unsigned long BaseAddress;
 	unsigned short Bus;
@@ -36,6 +52,7 @@ private:
 	bool QSPIMode;
 	bool SPI_CPHA;
 	bool SPI_CPOL;
+	E_SPI_clock_type SPI_clock_type;
 	double SPI_frequency_in_Hz; //0 means half of parallel bus speed
 	uint8_t SPI_mode;
 #ifdef DebugSPI
@@ -49,13 +66,8 @@ public:
 	void WriteAllToBus();
 	CMultiWriteDeviceSPI(unsigned short aBus, unsigned long aBaseAddress, CDeviceSequencer* _MyDeviceSequencer);
 	~CMultiWriteDeviceSPI();
-	void SetSPIPortBits(unsigned char _SPI_CS_bit, unsigned char  _SDIO_0_bit, unsigned char _SDIO_1_bit, unsigned char _SDIO_2_bit, unsigned char _SDIO_3_bit, unsigned char _SPI_SCLK_bit);
+	void ConfigureSPI(unsigned char _SPI_CS_bit, unsigned char  _SDIO_0_bit, unsigned char _SDIO_1_bit, unsigned char _SDIO_2_bit, unsigned char _SDIO_3_bit, unsigned char _SPI_SCLK_bit, E_SPI_clock_type _SPI_type = E_SPI_clock_FPGA);
 	void AddToBusBuffer(unsigned short value);
-	virtual bool HasSomethingToWriteToBus() { //inline code for speed
-		if (!Enabled) return false;
-		if (BusBufferLength == 0) return false;
-		return true;
-	}
 	void SetControlRegister(unsigned char start_bit, unsigned char nr_bits, unsigned short value, bool write_immediately = true);
 	void SetSPIClock(bool clock, bool write_immediately = true);
 	void SetSPIChipSelect(bool clock);
@@ -67,3 +79,11 @@ public:
 private:
 	void AssureMinimumSPIClockPeriodLength();
 };
+
+
+
+//virtual bool HasSomethingToWriteToBus() { //inline code for speed
+//	if (!Enabled) return false;
+//	if (BusBufferLength == 0) return false;
+///	return true;
+//}

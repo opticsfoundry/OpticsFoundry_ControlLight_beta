@@ -28,14 +28,16 @@ CDeviceAD9959::CDeviceAD9959(
 	unsigned int _MyAddress,
 	double _externalClockFrequency,
 	unsigned int _frequencyMultiplier,
-	bool _AD9958
+	bool _AD9958,
+	double _version
 ) : CDevice(_MySequencer, _MyAddress, "AD9959") {
 	externalClockFrequency = _externalClockFrequency;
 	frequencyMultiplier = _frequencyMultiplier;
 	AD9958 = _AD9958;
+	version = _version;
 	if (MySequencer->ParallelBusDeviceList[MyAddress] == nullptr) {
 		MySequencer->ParallelBusDeviceList[MyAddress] = this;
-		MyAD9959 = new CAD9959(/*bus*/0, MyAddress, externalClockFrequency, frequencyMultiplier, AD9958, MySequencer);
+		MyAD9959 = new CAD9959(/*bus*/0, MyAddress, externalClockFrequency, frequencyMultiplier, AD9958, version, MySequencer);
 	}
 	else {
 		std::ostringstream oss;
@@ -100,6 +102,7 @@ bool CDeviceAD9959::SetRegister(const unsigned int& SubAddress, const uint8_t* D
 		/*Value*/Data[0],
 		/*GetValue*/false,
 		/*DoIOUpdate*/true);
+	MyAD9959->WriteAllToBus();
 	return true;
 }
 
