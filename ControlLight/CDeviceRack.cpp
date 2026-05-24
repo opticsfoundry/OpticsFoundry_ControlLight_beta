@@ -67,9 +67,9 @@ bool CDeviceRack::SetValue(const unsigned int& SubAddress, const uint8_t* Data, 
 	}
 
 	//Reduce bus speed, as arbiter is slower than a normal dig out port to allow first-break then-make behavior.
-	MySequencer->SetFPGAClockToBusClockRatio(/* FPGAClockToBusClockRatio */ 50,  /*UpdateStrobeDuration*/ true); //this command waits for the strobe generator parameter update to have effect
+	MySequencer->SetStrobeDurationInFPGAClockPeriods(/*StrobeDurationInFPGAClockPeriods*/ 15, /*UpdateStrobeDuration*/ true);//this command waits for the strobe generator parameter update to have effect
 	MySequencer->WriteBusAddressAndDataToBuffer(MyAddress, LastValue);
-	MySequencer->Wait_ms(0.0005); //we need to wait till the rack arbiter has updated before we can shorten the strobe length again.
-	MySequencer->SetFPGAClockToBusClockRatio(/* FPGAClockToBusClockRatio == 0: use default ratio */ 0, /*UpdateStrobeDuration*/ true);
+	MySequencer->Add_non_user_wait_ms(0.0005); //we need to wait till the rack arbiter has updated before we can shorten the strobe length again.
+	MySequencer->SetStrobeDurationInFPGAClockPeriods(/*StrobeDurationInFPGAClockPeriods  == 0: use default ratio*/ 0, /*UpdateStrobeDuration*/ true);//this command waits for the strobe generator parameter update to have effect
 	return true;
 }

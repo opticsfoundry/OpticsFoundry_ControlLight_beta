@@ -80,7 +80,7 @@ public:
 	CEthernetControllerFirefly(CDeviceSequencer* _MySequencer);
 	virtual ~CEthernetControllerFirefly();
 	bool SendSequenceToFPGA(uint32_t* buffer, const std::string& DebugFileName = "");
-	void AddSequencerCommandToSequenceList(uint32_t high_buffer, uint32_t low_buffer);
+	void AddSequencerCommandToSequenceList(uint32_t high_buffer, uint32_t low_buffer, const uint8_t duration_in_FPGA_clock_cycles = 2);
 	void StartAnalogInAcquisition(unsigned char analog_in_type, unsigned char SPI_CS, unsigned int channel_nr, unsigned int number_of_datapoints, double delay_between_datapoints_in_ms);
 	bool AddSequencePreamble();
 	//bool AddData(uint32_t* BusData, uint32_t* Spacing, /*uint32_t* AbsoluteTime,*/ unsigned long Count);
@@ -119,7 +119,7 @@ public:
 	void DebugBuffer(const std::string& filename);
 	void AddSequencerCommandToBuffer(uint32_t* buffer, uint32_t n, uint32_t high_buffer, uint32_t low_buffer);
 	void ClearSequencerCommandList();
-	void AddSequencerCommand(uint32_t high_word, uint32_t low_word);
+	void AddSequencerCommand(uint32_t high_word, uint32_t low_word, const uint8_t duration_in_FPGA_clock_cycles = 2);
 	bool SwitchDebugMode(bool OnOff, const std::string& aFilename);
 	void SwitchDebugLED(bool OnOff);
 	void IgnoreTCPIP(bool OnOff);

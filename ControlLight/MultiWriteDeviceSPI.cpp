@@ -87,6 +87,7 @@ void CMultiWriteDeviceSPI::Enable(bool OnOff)
 void CMultiWriteDeviceSPI::AssureMinimumSPIClockPeriodLength() {
 	double MinimumClockHalfPeriod_in_ms = 500.0 / SPI_frequency_in_Hz;
 	double BusPeriod_in_ms = 1000.0 / MyDeviceSequencer->BusFrequency_in_Hz;
+	
 	if (BusPeriod_in_ms < MinimumClockHalfPeriod_in_ms) {
 		WriteAllToBus(/*End_SPI_clock_node*/ false);
 		MyDeviceSequencer->Wait_ms(MinimumClockHalfPeriod_in_ms);
@@ -148,7 +149,7 @@ void CMultiWriteDeviceSPI::WriteAllToBus(bool End_SPI_clock_node)
 		MyDeviceSequencer->WriteBusAddressAndDataToBufferSPI(MultiIOAddress, (ControlRegisterContent & ~(0x8000)) | ((bus_data15_first_part) ? 0x8000 : 0), /*bus_strobe_first_part*/ 0, /*bus_strobe_second_part*/ 1, /*bus_strobe_idle_part*/1, /*bus_data15_second_part*/clock_idle, /*bus_data15_idle_part*/clock_idle);
 		Current_SPI_clock_type = E_SPI_clock_FPGA;
 	}
-	while (WriteToBus()) {
+	while (WriteToBus(/*minimum_spacing_in_strobe_lengths*/ 3)) {  //ToDo: find out why 2 doesn't work here; seems to be a speed limit of the electronics; If solved: if we use transparent latches and E_SPI_clock_bit_banged, this needs to be 3
 	}
 	if ((SPI_clock_type == E_SPI_clock_FPGA) && (End_SPI_clock_node) && (Current_SPI_clock_type == E_SPI_clock_FPGA)) {
 		SetSPIChipSelect(false, /*write_immediately*/ false);
@@ -231,7 +232,8 @@ void CMultiWriteDeviceSPI::WriteSPIBitBangedMode0Simple(unsigned int number_of_b
 	// SPI must send MSB first
 
 	//ToDo: take SPI_mode and SPI_frequency_in_Hz into account
-	// MySequencer->SetFPGAClockToBusClockRatio(/* FPGAClockToBusClockRatio */ XXX, /*UpdateStrobeDuration*/ false);
+	// MySequencer->SetStrobeDurationInFPGAClockPeriods(/*StrobeDurationInFPGAClockPeriods  == 0: use default ratio*/ 0, /*UpdateStrobeDuration*/ true);//this command waits for the strobe generator parameter update to have effect
+
 
 	if (number_of_bits_out == 0 || number_of_bits_out > 64) {
 		return; // or throw

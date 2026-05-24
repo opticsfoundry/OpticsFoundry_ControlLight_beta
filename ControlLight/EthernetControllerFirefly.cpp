@@ -137,7 +137,7 @@ void CEthernetControllerFirefly::ClearSequencerCommandList() {
 	//SequencerCommandListSize = 0;
 }
 
-void CEthernetControllerFirefly::AddSequencerCommand(uint32_t high_word, uint32_t low_word) {
+void CEthernetControllerFirefly::AddSequencerCommand(uint32_t high_word, uint32_t low_word, const uint8_t duration_in_FPGA_clock_cycles) {
 	/*if (SequencerCommandListSize >= MaxSequencerCommandListSize) {
 		AddErrorMessage("EthernetMultiIOControllerFirefly.cpp: AddSequencerCommand(): sequencer command list has too little memory, increase MaxSequencerCommandListSize.");
 		return MaxSequencerCommandListSize - 1;
@@ -151,7 +151,7 @@ void CEthernetControllerFirefly::AddSequencerCommand(uint32_t high_word, uint32_
 		std::string buf = std::format("data = {:08X} {:08X}", high_word, low_word);
 		(*DebugBufferFile) << buf << endl;
 	}
-	MySequencer->AddCommandToSequence(high_word, low_word);
+	MySequencer->AddCommandToSequence(high_word, low_word, duration_in_FPGA_clock_cycles);
 }
 
 
@@ -228,7 +228,7 @@ void CEthernetControllerFirefly::StartAnalogInAcquisition(unsigned char analog_i
 	//}
 }
 
-void CEthernetControllerFirefly::AddSequencerCommandToSequenceList(uint32_t high_buffer, uint32_t low_buffer) {
+void CEthernetControllerFirefly::AddSequencerCommandToSequenceList(uint32_t high_buffer, uint32_t low_buffer, const uint8_t duration_in_FPGA_clock_cycles) {
 	const unsigned int command = low_buffer & 0x1F;
 	if (command < NrCommands) {
 		if (CommandUsesBuffer[command]) {
@@ -236,7 +236,7 @@ void CEthernetControllerFirefly::AddSequencerCommandToSequenceList(uint32_t high
 			AddSequencerCommand(high_buffer, low_command_buffer);
 		}
 	}
-	AddSequencerCommand(high_buffer, low_buffer);
+	AddSequencerCommand(high_buffer, low_buffer, duration_in_FPGA_clock_cycles);
 }
 
 void CEthernetControllerFirefly::StartXADCAnalogInAcquisition(unsigned int channel_nr, unsigned int number_of_datapoints, double delay_between_datapoints_in_ms) {
@@ -466,7 +466,7 @@ void CEthernetControllerFirefly::AddCommandCalcAD9854FrequencyTuningWord(uint64_
 	uint32_t help2 = (ftw0 << 16) & 0xFFFF0000;
 	uint32_t low_buffer = (ftw0 << 16) & (help << 8) & (0x1F & command);
 	uint32_t high_buffer = ftw0 >> 16;
-	AddSequencerCommandToSequenceList(high_buffer, low_buffer);
+	AddSequencerCommandToSequenceList(high_buffer, low_buffer, /* duration_in_FPGA_clock_cycles*/ 4);
 }
 
 
@@ -633,7 +633,7 @@ void CEthernetControllerFirefly::AddCommandSetCoreOptions() {
 CMD_PL_TO_PS_COMMAND: begin
 PL_to_PS_command <= command_buffer[23:8];
 address <= address + 1;
-wait_time <= 0;
+wait_time <= 1;
 end
 */
 //Vitis command converted to Visual Studio command:
@@ -1092,11 +1092,14 @@ void CEthernetControllerFirefly::SetStrobeOptions(uint8_t strobe_choice, uint8_t
 	const uint8_t command_mask = 0x1F;  //5 bit
 	uint8_t command = CMD_SET_STROBE_OPTIONS;
 
-	uint32_t low_buffer = ((strobe_high_length & 0xFF) << 24) | ((strobe_low_length & 0xFF) << 16) | ((strobe_choice & 0x07) << 8) | (command_mask & CMD_LOAD_COMMAND_BUFFER);
+	if (strobe_low_length < 1) strobe_low_length = 1;
+	if (strobe_high_length < 1) strobe_high_length = 1;
+
+	uint32_t low_buffer = (((strobe_high_length - 1) & 0xFF) << 24) | (((strobe_low_length - 1) & 0xFF) << 16) | ((strobe_choice & 0x07) << 8) | (command_mask & CMD_LOAD_COMMAND_BUFFER);
 	uint32_t high_buffer = 0;
 	AddSequencerCommand(high_buffer, low_buffer);
 
-	low_buffer = ((strobe_high_length & 0xFF) << 24) | ((strobe_low_length & 0xFF) << 16) | ((strobe_choice & 0x07) << 8) | (command_mask & command);
+	low_buffer = (((strobe_high_length - 1) & 0xFF) << 24) | (((strobe_low_length - 1) & 0xFF) << 16) | ((strobe_choice & 0x07) << 8) | (command_mask & command);
 	high_buffer = 0;
 	AddSequencerCommand(high_buffer, low_buffer);
 
@@ -1784,10 +1787,10 @@ bool CEthernetControllerFirefly::AddSequencePreamble() {
 	uint32_t DelayMultiplier = FPGAClockToBusClockRatio;// floor(FPGAClockFrequencyInHz / BusFrequency - 1);
 	if (DelayMultiplier < 2) DelayMultiplier = 2;
 
-	unsigned int StrobeDelay = ((DelayMultiplier) / 3) - 1;
+	unsigned int StrobeDuration = ((DelayMultiplier) / 3);
 	AddCommandWriteSystemTimeToInputMemory(); //write time stamp to first command line
 	//strobe/clock output pin content: 0: clock 1: strobe, 2: low, 3: high, 4: flags_hi[31]
-	SetStrobeOptions( (FPGAUseStrobeGenerator) ? 1 : 0, StrobeDelay, StrobeDelay); // this command fills 2 command lines
+	SetStrobeOptions( (FPGAUseStrobeGenerator) ? 1 : 0, StrobeDuration, StrobeDuration); // this command fills 2 command lines
 	SetTriggerOptions(  ExternalTrigger0, ExternalTrigger1); // this command fills 6 command lines
 
 	//end of preamble

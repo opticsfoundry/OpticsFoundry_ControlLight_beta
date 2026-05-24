@@ -36,10 +36,10 @@ public:
 		//We need to test how fast one can go like this. As the delay between break and set of new demux input is 20ns, and the remaining delay is monoflop controlled, it should be fine up to 50MHz.
 		uint8_t Data = 1;
 		bool success = SetValue(0, &Data, 1, 7);
-		MySequencer->Wait_ms(0.01);
+		MySequencer->Add_non_user_wait_ms(0.01);
 		Data = 0;
 		success = success && SetValue(0, &Data, 1, 7);
-		MySequencer->Wait_ms(0.01);
+		MySequencer->Add_non_user_wait_ms(0.01);
 		return success;
 	}
 };

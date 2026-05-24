@@ -147,7 +147,7 @@ int main() {
 		if (!LoadControlHardwareInterface()) {
 			AddErrorMessage("Error loading hardware configuration file 2");
 
-			CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 2000000, false, true, true, true);
+			CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
 			CLA.AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 			CLA.AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 			CLA.AddDeviceDigitalOut(0, 1, 16);
@@ -302,7 +302,7 @@ int main() {
 		if (!LoadControlHardwareInterface()) {
 			AddErrorMessage("Error loading hardware configuration file 2");
 
-			CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 2000000, false, true, true, true);
+			CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
 			CLA_AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 			CLA_AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 			CLA_AddDeviceDigitalOut(0, 1, 16);
@@ -444,7 +444,7 @@ int main() {
 	if (!LoadControlHardwareInterface()) {
 		AddErrorMessage("Error loading hardware configuration file 2");
 
-		CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 2000000, false, true, true, true);
+		CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
 		CLA.AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 		CLA.AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 		CLA.AddDeviceDigitalOut(0, 1, 16);
@@ -567,7 +567,7 @@ bool InitializeSystem() {
 	if (!LoadControlHardwareInterface()) {
 		AddErrorMessage("Error loading hardware configuration file 2");
 
-		CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 2000000, false, true, true, true);
+		CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
 		CLA_AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 		CLA_AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 		CLA_AddDeviceDigitalOut(0, 1, 16);
@@ -992,8 +992,8 @@ void DemoFPGASequencerCyclicSequencing() {
 		cout << "Iteration " << CycleNr << ": ";
 		//We create sequence from scratch to update trigger settings and cycle number dependent sequence entries.
 		DemoSequence(CycleNr);
-		//CLA_ExecuteSequence("c:\\data\\DebugDemoFPGASequencerCyclicSequence.txt"); //Use this version to create debug file
-		CLA_ExecuteSequence(); //use this version to run without creating debug file
+		CLA_ExecuteSequence("c:\\data\\DebugDemoFPGASequencerCyclicSequence.txt"); //Use this version to create debug file
+		//CLA_ExecuteSequence(); //use this version to run without creating debug file
 		bool running = false;
 		unsigned long long DataPointsWritten = 0;
 		CLA_GetSequenceExecutionStatus(running, DataPointsWritten);
@@ -1077,7 +1077,7 @@ void DemoSmartSequencer() {
 	unsigned int AnalogOutBoardStartAddress = 20;
 	unsigned int DigitalOutAddress = 10;
 
-	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.112", 57978, true, 0, 100000000, 3, false, true, true, true);
+	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.112", 57978, true, 0, 100000000, 10, false, true, true, true);
 	CLA_AddDeviceAnalogOut16bit(0, AnalogOutBoardStartAddress, 4, true, -10, 10);
 	CLA_AddDeviceDigitalOut(0, DigitalOutAddress, 16);
 	CLA_AddDeviceAD9854(0, AD98450Address, 2, 300000000, 1, 1);
@@ -1205,7 +1205,7 @@ void DemoDDSVCO() {
 	unsigned int AnalogOutBoardStartAddress = 20;
 	unsigned int DigitalOutAddress = 10;
 
-	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 3, false, true, true, true);
+	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
 	CLA_AddDeviceAnalogOut16bit(0, AnalogOutBoardStartAddress, 4, true, -10, 10);
 	CLA_AddDeviceDigitalOut(0, DigitalOutAddress, 16);
 	CLA_AddDeviceAD9854(0, AD98450Address, 2, 300000000, 1, 1);

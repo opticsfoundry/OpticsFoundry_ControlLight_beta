@@ -13,7 +13,7 @@ public:
 
 	void RegisterSequencer(int Id = 0, const std::string& Type = "OpticsFoundrySequencerV1",
 		const std::string& IP = "192.168.0.104", int Port = 7, bool Master = true,
-		int StartDelay = 10, int ClockFrequencyinMHz = 100, int FPGAClockToBusClockRatio = 15,
+		int StartDelay = 10, int ClockFrequencyinMHz = 100, int StrobeDurationInFPGAClockPeriods = 15,
 		bool UseExternalClock = false, bool UseStrobeGenerator = true, bool UseEdgeTriggeredLatches = true, bool Connect = true,
 		bool DebugOn = false, const std::optional<std::string>& Model = std::nullopt,
 		const std::optional<std::string>& SN = std::nullopt,

@@ -38,7 +38,7 @@ CDeviceSequencer::CDeviceSequencer(
 	bool _master,
 	unsigned int _startDelay,
 	double _clockFrequency,
-	unsigned int _FPGAClockToBusClockRatio,
+	unsigned int _StrobeDurationInFPGAClockPeriods,
 	bool _useExternalClock,
 	bool _useStrobeGenerator,
 	bool _useEdgeTriggeredLatches,
@@ -61,7 +61,10 @@ CDeviceSequencer::CDeviceSequencer(
 	master = _master;
 	startDelay = _startDelay;
 	clockFrequency = _clockFrequency;
-	FPGAClockToBusClockRatio = _FPGAClockToBusClockRatio;
+	DoUseEdgeTriggeredLatches = _useEdgeTriggeredLatches;
+	StrobeDurationInFPGAClockPeriods = _StrobeDurationInFPGAClockPeriods;
+	DefaultStrobeDurationInFPGAClockPeriods = StrobeDurationInFPGAClockPeriods;
+	FPGAClockToBusClockRatio = 3 * StrobeDurationInFPGAClockPeriods - 1;  //why -1
 	if (FPGAClockToBusClockRatio < 2) FPGAClockToBusClockRatio = 2;
 	DefaultFPGAClockToBusClockRatio = FPGAClockToBusClockRatio;
 	CurrentFPGAClockToBusClockRatio = FPGAClockToBusClockRatio;
@@ -74,7 +77,7 @@ CDeviceSequencer::CDeviceSequencer(
 	for (int n = 0; n < MaxBuffer; n++) Buffer[n] = nullptr;
 	LastCommandWasSpecialCommand = true;
 	LastCommandWasSPICommand = false;
-	DoUseEdgeTriggeredLatches = _useEdgeTriggeredLatches;
+	Non_user_delay_in_ms = 0;
 	UpdateClockRatio();
 
 	AbsoluteTime_in_ms = 0;
@@ -126,14 +129,13 @@ double CDeviceSequencer::GetBusFrequency_in_Hz() {
 
 void CDeviceSequencer::UpdateClockRatio() {
 	if (DoUseEdgeTriggeredLatches) {
-		CurrentFPGAClockToBusClockRatio = ((2 * (FPGAClockToBusClockRatio)) / 3);
-		CurrentFPGAClockToStrobeLengthRatio = CurrentFPGAClockToBusClockRatio / 2;
+		CurrentFPGAClockToBusClockRatio = 2 * StrobeDurationInFPGAClockPeriods; 
+		CurrentFPGAClockToStrobeDurationRatio = StrobeDurationInFPGAClockPeriods;
 	}
 	else {
-		CurrentFPGAClockToBusClockRatio = FPGAClockToBusClockRatio;
-		CurrentFPGAClockToStrobeLengthRatio = CurrentFPGAClockToBusClockRatio / 3;
+		CurrentFPGAClockToBusClockRatio = 3 * StrobeDurationInFPGAClockPeriods;  
+		CurrentFPGAClockToStrobeDurationRatio = StrobeDurationInFPGAClockPeriods;  
 	}
-	//	MyEthernetMultiIOControllerFirefly->SetFPGAClockToBusClockRatio(FPGAClockToBusClockRatio);
 	BusFrequency_in_Hz = GetBusFrequency_in_Hz();
 }
 
@@ -142,14 +144,15 @@ void CDeviceSequencer::UseEdgeTriggeredLatches(bool _UseEdgeTriggeredLatches) {
 	UpdateClockRatio();
 }
 
-void CDeviceSequencer::SetFPGAClockToBusClockRatio(const unsigned int _FPGAClockToBusClockRatio, const bool UpdateStrobeDuration) {
-	FPGAClockToBusClockRatio = (_FPGAClockToBusClockRatio > 0) ? _FPGAClockToBusClockRatio : DefaultFPGAClockToBusClockRatio;
-	if (FPGAClockToBusClockRatio < 2) FPGAClockToBusClockRatio = 2;
+void CDeviceSequencer::SetStrobeDurationInFPGAClockPeriods(const unsigned int _StrobeDurationInFPGAClockPeriods, const bool UpdateStrobeDuration) {  
+	// StrobeDurationInFPGAClockPeriods  == 0: use default ratio
+	StrobeDurationInFPGAClockPeriods = (_StrobeDurationInFPGAClockPeriods > 0) ? _StrobeDurationInFPGAClockPeriods : DefaultStrobeDurationInFPGAClockPeriods;
+	if (StrobeDurationInFPGAClockPeriods < 1) StrobeDurationInFPGAClockPeriods = 1;
+	FPGAClockToBusClockRatio = 3 * StrobeDurationInFPGAClockPeriods - 1;  //why -1?
 	UpdateClockRatio();
 	if (UpdateStrobeDuration) {
-		uint8_t StrobeDuration = ((FPGAClockToBusClockRatio) / 3) - 1;
-		MyEthernetMultiIOControllerFirefly->SetStrobeOptions(/* StrobeChoice: Use FPGA strobe generator */ 1, StrobeDuration, StrobeDuration);
-		Wait_ms(0.0001);//we need to wait for the strobe change to have effect
+		MyEthernetMultiIOControllerFirefly->SetStrobeOptions(/* StrobeChoice: Use FPGA strobe generator */ 1, StrobeDurationInFPGAClockPeriods, StrobeDurationInFPGAClockPeriods);
+		Add_non_user_wait_ms(0.0001);//we need to wait for the strobe change to have effect
 	}
 }
 
@@ -210,7 +213,7 @@ void CDeviceSequencer::StartAssemblingNextSequence() {
 }
 
 //Why does declaring it inline not work for this function? It would be useful to do so, as it's called very often from just one place.
-void CDeviceSequencer::AddCommandToSequence(const uint32_t& high_word, const uint32_t& low_word) {
+void CDeviceSequencer::AddCommandToSequence(const uint32_t& high_word, const uint32_t& low_word, const uint8_t duration_in_FPGA_clock_cycles) {
 	if ((!LastCommandWasSpecialCommand) || (Delay_in_ms > 0)) {
 		//this is a special command. We need to first send out LastBusData and then wait as needed before executing it.
 		AddBusCommandToSequence(LastBusData);
@@ -225,7 +228,7 @@ void CDeviceSequencer::AddCommandToSequence(const uint32_t& high_word, const uin
 	LastCommandWasSpecialCommand = true;
 	//Most special commands take only 3 FPGA clock cycles.
 	//ToDo: some commands can take more, e.g. the LongWait command. Would need table of commands with their wait time to calculate this better. For now: don't use those commands.
-	double added_time = 3 / clockFrequency * 1000.0;
+	double added_time = duration_in_FPGA_clock_cycles / clockFrequency * 1000.0;
 	CurrentTimeDebt_in_ms += added_time;
 	TimeDebt_in_ms += added_time;
 }
@@ -341,7 +344,12 @@ void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, const ui
 		AddErrorMessage("Buffer overflow"); 
 		return;
 	}
-	uint64_t spacing64 = Delay_in_ms * clockFrequency / 1000.0;
+	uint64_t spacing64 = (Delay_in_ms + Non_user_delay_in_ms) * clockFrequency / 1000.0;
+	if (Non_user_delay_in_ms > 0) {
+		CurrentTimeDebt_in_ms += Non_user_delay_in_ms;
+		TimeDebt_in_ms += Non_user_delay_in_ms;
+		Non_user_delay_in_ms = 0;
+	}
 	if (spacing64 > 60*60*1000*1000*100) {
 		AddErrorMessage("CDeviceSequencer::AddBusCommandToSequence : delay longer than one hour. This looks like a bug."); 
 		return;
@@ -363,14 +371,19 @@ void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, const ui
 		spacing64 -= maxspacing;
 	}
 	uint32_t spacing = spacing64;
-	if (spacing == 0) {
-		if (LastBusDataMinimumSpacing_in_strobe_lengths > 2) {
-			spacing = CurrentFPGAClockToStrobeLengthRatio * LastBusDataMinimumSpacing_in_strobe_lengths;
-		} else spacing = CurrentFPGAClockToBusClockRatio;
-		double added_time = CurrentFPGAClockToBusClockRatio / clockFrequency * 1000.0;
-		CurrentTimeDebt_in_ms += added_time;
-		TimeDebt_in_ms += added_time;
+	if (!LastCommandWasSpecialCommand) {
+		uint32_t min_spacing = CurrentFPGAClockToStrobeDurationRatio * LastBusDataMinimumSpacing_in_strobe_lengths;
+		if (CurrentFPGAClockToBusClockRatio > min_spacing) min_spacing = CurrentFPGAClockToBusClockRatio;
+
+		if (spacing < min_spacing) {
+			uint32_t added_spacing = min_spacing - spacing;
+			spacing = min_spacing;
+			double added_time = added_spacing / clockFrequency * 1000.0;
+			CurrentTimeDebt_in_ms += added_time;
+			TimeDebt_in_ms += added_time;
+		}
 	}
+	
 	AdvanceTime();
 	if (LastCommandWasSpecialCommand) {
 		//at the beginning of a special command, the LastBusData is written out and the remaining wait time is waited.
@@ -571,6 +584,10 @@ bool CDeviceSequencer::Wait_ms(double time_in_ms) {
 		if (TimeDebt_in_ms > MaxTimeDebt_in_ms) return false;//ToDo throw error
 	}
 	return true;
+}
+
+void CDeviceSequencer::Add_non_user_wait_ms(double time_in_ms) {
+	Non_user_delay_in_ms += time_in_ms;
 }
 
 double CDeviceSequencer::GetTime_ms() {

@@ -570,7 +570,7 @@ typedef bool (*SetAD9959PowerFunc)(const unsigned int&, const unsigned int&, uin
             bool master,
             unsigned int startDelay,
             double clockFrequency,
-            unsigned long FPGAClockToBusClockRatio,
+            unsigned long StrobeDurationInFPGAClockPeriods,
             bool useExternalClock,
             bool useStrobeGenerator,
             bool useEdgeTriggeredLatches,

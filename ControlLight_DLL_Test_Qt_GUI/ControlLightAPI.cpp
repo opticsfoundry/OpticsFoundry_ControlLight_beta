@@ -1494,13 +1494,13 @@ bool CControlLightAPI::AddDeviceSequencer(
     bool master,
     unsigned int startDelay,
     double clockFrequency,
-    unsigned long FPGAClockToBusClockRatio,
+    unsigned long StrobeDurationInFPGAClockPeriods,
     bool useExternalClock,
     bool useStrobeGenerator,
     bool useEdgeTriggeredLatches,
     bool connect) {
     if (CLA_AddDeviceSequencer)
-        return CLA_AddDeviceSequencer(id, type, ip, port, master, startDelay, clockFrequency, FPGAClockToBusClockRatio, useExternalClock, useStrobeGenerator, useEdgeTriggeredLatches, connect);
+        return CLA_AddDeviceSequencer(id, type, ip, port, master, startDelay, clockFrequency, StrobeDurationInFPGAClockPeriods, useExternalClock, useStrobeGenerator, useEdgeTriggeredLatches, connect);
     else
         return false;
 }

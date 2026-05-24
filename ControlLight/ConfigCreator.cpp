@@ -45,7 +45,7 @@ void ConfigCreator::AddOptionalHardwareFields(json& entry,
 }
 
 void ConfigCreator::RegisterSequencer(int Id, const std::string& Type, const std::string& IP, int Port,
-	bool Master, int StartDelay, int ClockFrequencyinMHz, int FPGAClockToBusClockRatio, bool UseExternalClock,
+	bool Master, int StartDelay, int ClockFrequencyinMHz, int StrobeDurationInFPGAClockPeriods, bool UseExternalClock,
 	bool UseStrobeGenerator, bool UseEdgeTriggeredLatches, bool Connect, bool DebugOn, const optional<string>& Model,
 	const optional<string>& SN, const optional<int>& RackNr, const optional<int>& SlotNr) {
 	json entry = {
@@ -56,7 +56,7 @@ void ConfigCreator::RegisterSequencer(int Id, const std::string& Type, const std
 		{"Master", Master},
 		{"StartDelay", StartDelay},
 		{"ClockFrequencyinMHz", ClockFrequencyinMHz},
-		{"FPGAClockToBusClockRatio", FPGAClockToBusClockRatio},
+		{"StrobeDurationInFPGAClockPeriods", StrobeDurationInFPGAClockPeriods},
 		{"UseExternalClock", UseExternalClock},
 		{"UseStrobeGenerator", UseStrobeGenerator},
 		{"UseEdgeTriggeredLatches", UseEdgeTriggeredLatches},

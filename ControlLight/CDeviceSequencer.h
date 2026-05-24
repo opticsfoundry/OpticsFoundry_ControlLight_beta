@@ -20,10 +20,12 @@ public:
 	bool IsMaster() { return master; }
 	unsigned int startDelay;
 	double clockFrequency;
+	unsigned int StrobeDurationInFPGAClockPeriods;
+	unsigned int DefaultStrobeDurationInFPGAClockPeriods;
 	unsigned int DefaultFPGAClockToBusClockRatio;
 	unsigned int FPGAClockToBusClockRatio;
 	unsigned int CurrentFPGAClockToBusClockRatio;
-	unsigned int CurrentFPGAClockToStrobeLengthRatio;
+	unsigned int CurrentFPGAClockToStrobeDurationRatio;
 	bool useExternalClock;
 	bool useStrobeGenerator;
 	bool connect;
@@ -37,6 +39,7 @@ private:
 	uint64_t AbsoluteTime_in_ms;
 	uint32_t BufferPosition;
 	double Delay_in_ms;
+	double Non_user_delay_in_ms;
 	double TimeDebt_in_ms; 
 	double MaxTimeDebt_in_ms;
 	double CurrentTimeDebt_in_ms;
@@ -59,7 +62,7 @@ public:
 		bool _master,
 		unsigned int _startDelay,
 		double _clockFrequency,
-		unsigned int _FPGAClockToBusClockRatio,
+		unsigned int _StrobeDurationInFPGAClockPeriods,
 		bool _useExternalClock,
 		bool _useStrobeGenerator,
 		bool _useEdgeTriggeredLatches,
@@ -68,7 +71,7 @@ public:
 	double GetBusFrequency_in_Hz();
 	void AdvanceTime();
 	void UseEdgeTriggeredLatches(bool UseEdgeTriggeredLatches);
-	void SetFPGAClockToBusClockRatio(const unsigned int _FPGAClockToBusClockRatio, const bool UpdateStrobeDuration);
+	void SetStrobeDurationInFPGAClockPeriods(const unsigned int _StrobeDurationInFPGAClockPeriods, const bool UpdateStrobeDuration);
 	void Initialize(unsigned long _PCBufferSize_in_u64);
 	void SwitchDebugMode(bool OnOff, const std::string &FileName);
 	void TransmitOnlyDifferenceBetweenCommandSequenceIfPossible(bool OnOff);
@@ -81,7 +84,7 @@ public:
 	bool IsSequenceRunning(bool& running, unsigned long long& DataPointsWritten);
 	bool WaitTillEndOfSequence(double timeout_in_s = 0);
 	bool WaitTillEndOfSequenceThenGetInputData(uint8_t*& buffer, unsigned long& buffer_length, unsigned long& EndTimeOfCycle, double timeout_in_s);
-	void AddCommandToSequence(const uint32_t& high_word, const uint32_t& low_word);
+	void AddCommandToSequence(const uint32_t& high_word, const uint32_t& low_word, const uint8_t duration_in_FPGA_clock_cycles = 2);
 	void AddBusCommandAndWait(uint32_t data, uint32_t delay);
 	void AddBusCommandAndWaitSPI(uint32_t data, uint32_t delay, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part,  bool bus_data15_idle_part);
 	void AddBusCommandToSequenceSPI(const uint32_t& content, bool bus_strobe_first_part, bool bus_strobe_second_part, bool bus_strobe_idle_part, bool bus_data15_second_part, bool bus_data15_idle_part);
@@ -102,6 +105,7 @@ public:
 	}
 
 	bool Wait_ms(double time_in_ms);
+	void Add_non_user_wait_ms(double time_in_ms);
 	double GetTime_ms();
 	double GetTimeDebt_ms() { return TimeDebt_in_ms; };
 	unsigned long GetNextBufferPosition() { return BufferPosition; }

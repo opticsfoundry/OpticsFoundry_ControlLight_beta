@@ -3,7 +3,7 @@ from ConfigCreator import ConfigBuilder
 
 if __name__ == "__main__":
     builder = ConfigBuilder(filename="ControlHardwareConfig.json")
-    builder.RegisterSequencer(IP="192.168.0.112", Port=57978, ClockFrequencyinMHz=100, FPGAClockToBusClockRatio=15, DebugOn=False)  # 0.104 #90.108
+    builder.RegisterSequencer(IP="192.168.0.112", Port=57978, ClockFrequencyinMHz=100, StrobeDurationInFPGAClockPeriods=15, DebugOn=False)  # 0.104 #90.108
     builder.RegisterSerialPortBoard(Sequencer=0, Address=251, RackNr=0, SlotNr=1)
     analog_out_configs = [
         (24, True, -10, 10),  # each of these lines configures 4 analog outputs in consecutive order of addresses
