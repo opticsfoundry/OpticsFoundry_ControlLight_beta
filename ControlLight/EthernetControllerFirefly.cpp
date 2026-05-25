@@ -1996,7 +1996,7 @@ bool CEthernetControllerFirefly::AttemptGetNextCycleNumber(long& NextCycleNumber
 }
 
 bool CEthernetControllerFirefly::SwitchDebugMode(bool OnOff, const std::string& aFilename) {
-	(void)aFilename;
+	Debug(OnOff, aFilename);
 	if (OnOff) return AttemptNetworkCommand([this]() {return Command("switch_debug_mode_on"); });
 	else return AttemptNetworkCommand([this]() {return Command("switch_debug_mode_off"); });
 }

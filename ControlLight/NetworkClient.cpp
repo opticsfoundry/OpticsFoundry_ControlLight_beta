@@ -42,10 +42,13 @@ CNetworkClient::~CNetworkClient()
 	}
 }
 
-void CNetworkClient::Debug(const std::string& filename) {
+void CNetworkClient::Debug(bool OnOff, const std::string& filename) {
 	DebugFileName = filename;
-	DebugOn = true;
-	if (Network) Network->DebugStart(DebugFileName);
+	DebugOn = OnOff;
+	if (Network) {
+		if (!OnOff) Network->DebugStop();
+		if (OnOff) Network->DebugStart(DebugFileName);
+	}
 }
 
 bool CNetworkClient::ConnectSocket(const std::string& host, unsigned int port, const std::string& SocketName) {

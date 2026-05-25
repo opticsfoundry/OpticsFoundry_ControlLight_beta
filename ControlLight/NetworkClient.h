@@ -46,5 +46,5 @@ public:
 	bool GetCommand(CString &Command, double timeout_in_seconds = 5);
 	CNetworkClient(int amode, bool aFastWrite = false);
 	virtual ~CNetworkClient();
-	void Debug(const std::string& filename);
+	void Debug(bool OnOff, const std::string& filename);
 };
