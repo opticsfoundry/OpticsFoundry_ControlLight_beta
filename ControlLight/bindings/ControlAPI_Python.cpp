@@ -103,6 +103,15 @@ PYBIND11_MODULE(control_light_api, m) {
 		        self.GetNextBufferPositionOfMasterSequencer(next_buffer_position);
 		        return next_buffer_position;
 			})
+		.def("get_buffer_length", [](ControlLight_API& self, unsigned int sequencer) {
+		        uint32_t filled_buffer_length = 0;
+		        uint32_t max_buffer_length = 0;
+		        self.GetBufferLength(sequencer, filled_buffer_length, max_buffer_length);
+		        return py::dict(
+		            "filled_buffer_length"_a = filled_buffer_length,
+		            "max_buffer_length"_a = max_buffer_length
+		        );
+			}, py::arg("sequencer"))
 
         .def("set_periodic_trigger_ms", &ControlLight_API::SetPeriodicTrigger_ms, py::arg("periodic_trigger_period_in_ms"), py::arg("periodic_trigger_allowed_wait_time_in_ms"))
         .def("get_next_cycle_number", [](ControlLight_API& self) {

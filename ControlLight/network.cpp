@@ -65,7 +65,7 @@ void CNetwork::Flush()
 
 void CNetwork::DebugStart(const std::string& Filename) {
 	DebugStop();
-	DebugFile = new ofstream(Filename, ios::out);
+	if (Filename != "") DebugFile = new ofstream(Filename, ios::out);
 }
 
 void CNetwork::DebugStop() {

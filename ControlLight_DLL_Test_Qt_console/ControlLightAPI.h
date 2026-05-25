@@ -177,6 +177,7 @@ typedef void (*TransmitOnlyDifferenceBetweenCommandSequenceIfPossibleFunc)(bool 
 typedef void (*StartAssemblingNextSequenceFunc)();
 typedef unsigned int (*GetNumberOfSequencersFunc)();
 typedef bool (*GetNextBufferPositionOfMasterSequencerFunc)(unsigned long& next_buffer_position);
+typedef bool (*GetBufferLengthFunc)(const unsigned int& Sequencer, uint32_t& FilledBufferLength, uint32_t& MaxBufferLength);
 typedef bool (*SetPeriodicTrigger_msFunc)(double PeriodicTriggerPeriod_in_ms, double PeriodicTriggerAllowedWaitTime_in_ms);
 typedef bool (*GetNextCycleNumberFunc)(long& NextCycleNumber);
 typedef bool (*ResetCycleNumberFunc)();
@@ -357,6 +358,7 @@ typedef bool (*SetAD9959PowerFunc)(const unsigned int&, const unsigned int&, uin
     StartAssemblingNextSequenceFunc CLA_StartAssemblingNextSequence;
     GetNumberOfSequencersFunc CLA_GetNumberOfSequencers;
     GetNextBufferPositionOfMasterSequencerFunc CLA_GetNextBufferPositionOfMasterSequencer;
+    GetBufferLengthFunc CLA_GetBufferLength;
     SetPeriodicTrigger_msFunc CLA_SetPeriodicTrigger_ms;
     GetNextCycleNumberFunc CLA_GetNextCycleNumber;
     ResetCycleNumberFunc CLA_ResetCycleNumber;
@@ -457,6 +459,7 @@ typedef bool (*SetAD9959PowerFunc)(const unsigned int&, const unsigned int&, uin
         void StartAssemblingNextSequence();
         unsigned int GetNumberOfSequencers();
         bool GetNextBufferPositionOfMasterSequencer(unsigned long& next_buffer_position);
+        bool GetBufferLength(const unsigned int& Sequencer, uint32_t& FilledBufferLength, uint32_t& MaxBufferLength);
         bool SetPeriodicTrigger_ms(double PeriodicTriggerPeriod_in_ms, double PeriodicTriggerAllowedWaitTime_in_ms);
         bool GetNextCycleNumber(long& NextCycleNumber);
         bool ResetCycleNumber();

@@ -340,6 +340,13 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 		/// @return See return convention above.
 		API_EXPORT ERROR_CODE_TYPE CLA_FN(GetNextBufferPositionOfMasterSequencer)(unsigned long& next_buffer_position);
 
+		/// @brief Get the filled and maximum buffer lengths of a specific sequencer.
+		/// @param Sequencer the sequencer to use.
+		/// @param FilledBufferLength output parameter receiving the current filled buffer length.
+		/// @param MaxBufferLength output parameter receiving the maximum buffer length.
+		/// @return See return convention above.
+		API_EXPORT ERROR_CODE_TYPE CLA_FN(GetBufferLength)(const unsigned int& Sequencer, uint32_t& FilledBufferLength, uint32_t& MaxBufferLength);
+
 		/// @brief Set the periodic trigger timing used by the master sequencer.
 		/// @param PeriodicTriggerPeriod_in_ms the period of the periodic trigger in ms.
 		/// @param PeriodicTriggerAllowedWaitTime_in_ms the maximum time in ms the master sequencer may wait for the next periodic trigger before reporting an error.

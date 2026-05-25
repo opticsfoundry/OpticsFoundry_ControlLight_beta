@@ -1284,6 +1284,17 @@ bool CLA_InitializeMFC(bool InitializeAfx, bool InitializeAfxSocket) {
 			API_UNLOCK_RETURN_ERROR(!NewErrorOccured, "GetNextBufferPositionOfMasterSequencer: error");
 		}
 
+		API_EXPORT ERROR_CODE_TYPE CLA_FNDEF(GetBufferLength)(const unsigned int& Sequencer, uint32_t& FilledBufferLength, uint32_t& MaxBufferLength) {
+			API_LOCK_GUARD;
+			if (Sequencer >= MaxSequencers || !ShortSequencerList[Sequencer]) {
+				FilledBufferLength = 0;
+				MaxBufferLength = 0;
+				API_UNLOCK_RETURN_ERROR(false, "GetBufferLength: sequencer not found");
+			}
+			ShortSequencerList[Sequencer]->GetBufferLength(FilledBufferLength, MaxBufferLength);
+			API_UNLOCK_RETURN_ERROR(!NewErrorOccured, "GetBufferLength: error");
+		}
+
 		API_EXPORT ERROR_CODE_TYPE CLA_FNDEF(SetPeriodicTrigger_ms)(double PeriodicTriggerPeriod_in_ms, double PeriodicTriggerAllowedWaitTime_in_ms) {
 			API_LOCK_GUARD;
 			if (!MasterSequencer) {

@@ -136,6 +136,7 @@ void CControlLightAPI::Set_CLA_CallsToNull() {
     CLA_StartAssemblingNextSequence = nullptr;
     CLA_GetNumberOfSequencers = nullptr;
     CLA_GetNextBufferPositionOfMasterSequencer = nullptr;
+    CLA_GetBufferLength = nullptr;
     CLA_SetPeriodicTrigger_ms = nullptr;
     CLA_GetNextCycleNumber = nullptr;
     CLA_ResetCycleNumber = nullptr;
@@ -293,6 +294,7 @@ bool CControlLightAPI::LoadDLL() {
     TRY_RESOLVE(CLA_StartAssemblingNextSequence);
     TRY_RESOLVE(CLA_GetNumberOfSequencers);
     TRY_RESOLVE(CLA_GetNextBufferPositionOfMasterSequencer);
+    TRY_RESOLVE(CLA_GetBufferLength);
     TRY_RESOLVE(CLA_SetPeriodicTrigger_ms);
     TRY_RESOLVE(CLA_GetNextCycleNumber);
     TRY_RESOLVE(CLA_ResetCycleNumber);
@@ -531,6 +533,7 @@ API_EXPORT ERROR_CODE_TYPE CLA_SetAD9959Power(const unsigned int& Sequencer, con
     CLA_StartAssemblingNextSequence = (StartAssemblingNextSequenceFunc)CLA_Lib->resolve("CLA_StartAssemblingNextSequence");
     CLA_GetNumberOfSequencers = (GetNumberOfSequencersFunc)CLA_Lib->resolve("CLA_GetNumberOfSequencers");
     CLA_GetNextBufferPositionOfMasterSequencer = (GetNextBufferPositionOfMasterSequencerFunc)CLA_Lib->resolve("CLA_GetNextBufferPositionOfMasterSequencer");
+    CLA_GetBufferLength = (GetBufferLengthFunc)CLA_Lib->resolve("CLA_GetBufferLength");
     CLA_SetPeriodicTrigger_ms = (SetPeriodicTrigger_msFunc)CLA_Lib->resolve("CLA_SetPeriodicTrigger_ms");
     CLA_GetNextCycleNumber = (GetNextCycleNumberFunc)CLA_Lib->resolve("CLA_GetNextCycleNumber");
     CLA_ResetCycleNumber = (ResetCycleNumberFunc)CLA_Lib->resolve("CLA_ResetCycleNumber");
@@ -638,6 +641,7 @@ API_EXPORT ERROR_CODE_TYPE CLA_SetAD9959Power(const unsigned int& Sequencer, con
         !CLA_StartAssemblingNextSequence ||
         !CLA_GetNumberOfSequencers ||
         !CLA_GetNextBufferPositionOfMasterSequencer ||
+        !CLA_GetBufferLength ||
         !CLA_SetPeriodicTrigger_ms ||
         !CLA_GetNextCycleNumber ||
         !CLA_ResetCycleNumber ||
@@ -1152,6 +1156,13 @@ unsigned int CControlLightAPI::GetNumberOfSequencers() {
 bool CControlLightAPI::GetNextBufferPositionOfMasterSequencer(unsigned long& next_buffer_position) {
     if (CLA_GetNextBufferPositionOfMasterSequencer)
         return CLA_GetNextBufferPositionOfMasterSequencer(long&next_buffer_position);
+    else
+        return false;
+}
+
+bool CControlLightAPI::GetBufferLength(const unsigned int& Sequencer, uint32_t& FilledBufferLength, uint32_t& MaxBufferLength) {
+    if (CLA_GetBufferLength)
+        return CLA_GetBufferLength(Sequencer, FilledBufferLength, MaxBufferLength);
     else
         return false;
 }
