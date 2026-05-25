@@ -111,6 +111,9 @@ PYBIND11_MODULE(control_light_api, m) {
                 return next_cycle_number;
             })
         .def("reset_cycle_number", &ControlLight_API::ResetCycleNumber)
+        .def("reset_sequencer", &ControlLight_API::ResetSequencer, py::arg("sequencer_id"))
+        .def("reset_all_sequencers", &ControlLight_API::ResetAllSequencers)
+        .def("reset_all_sequencer", &ControlLight_API::ResetAllSequencers)
         
         //I2C port
         .def("transmit_i2c_port", transmit_i2c_port, py::arg("i2c_port"), py::arg("i2c_destination"), py::arg("i2c_address"), py::arg("send_data"), py::arg("receive_length"), py::arg("i2c_clock_frequency_in_hz"), py::arg("fail_silently") = false)

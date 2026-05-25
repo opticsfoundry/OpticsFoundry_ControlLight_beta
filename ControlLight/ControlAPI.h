@@ -661,7 +661,6 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 		/// @return See return convention above.
 		API_EXPORT ERROR_CODE_TYPE CLA_FN(WaitTillEndOfSequence)(double timeout_in_s = 0);
 
-	
 		//check how far the sequence has been executed
 		/// @brief Get the current status of the sequence execution.
 		/// @param  running returns true if the sequence is running, false if it is not.
@@ -680,6 +679,16 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 		/// @param MaxTimeDebt_in_ms maximum time debt in ms. If the sequencer commands make the time advance more than this, the sequencer will stop and wait for the next command.
 		/// @return See return convention above.
 		API_EXPORT ERROR_CODE_TYPE CLA_FN(SetTimeDebtGuard_in_ms)(const double& MaxTimeDebt_in_ms);
+
+
+		/**  @brief Reset one sequencer, including the FPGA fabric.
+		* @param Sequencer the sequencer to reset.
+		*/
+		API_EXPORT ERROR_CODE_TYPE CLA_FN(ResetSequencer)(uint8_t SequencerID);
+		
+		/**  @brief Reset all sequencers, including their FPGA fabric.
+		*/
+		API_EXPORT ERROR_CODE_TYPE CLA_FN(ResetAllSequencers)();
 
 		/** @brief Start analog acquisition on the specified channel.
 		 * This function places a commandto for the FPGA in the sequencer buffer.

@@ -479,6 +479,10 @@ bool CDeviceSequencer::WaitTillEndOfSequenceThenGetInputData(uint8_t*& buffer, u
 	}
 }
 
+bool CDeviceSequencer::ResetSequencer() {
+	return MyEthernetMultiIOControllerFirefly->Reset();
+}
+
 void CDeviceSequencer::StartAssemblingCPUCommandSequence() {
 	if (master) {
 		MyEthernetMultiIOControllerFirefly->StartAssemblingCPUCommandSequence();

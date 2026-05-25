@@ -31,4 +31,6 @@ if __name__ == "__main__":
     for addr in [3, 4]:
         builder.RegisterDDSAD9959Board(Address=addr, ClockFrequencyinMHz=500, version = 0.09)
 
+    builder.RegisterDDSAD9959Board(Address=5, ClockFrequencyinMHz=500, version = 0.01)
+
     builder.Save()

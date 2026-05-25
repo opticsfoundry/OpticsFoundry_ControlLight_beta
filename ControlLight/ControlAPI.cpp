@@ -573,7 +573,6 @@ bool CLA_InitializeMFC(bool InitializeAfx, bool InitializeAfxSocket) {
 			CATCH_MFC_EX_E
 		}
 
-		
 		API_EXPORT ERROR_CODE_TYPE CLA_FNDEF(GetSequenceExecutionStatus)(bool& running, unsigned long long& DataPointsWritten) {
 			CATCH_MFC_EX_S
 			API_LOCK_GUARD;
@@ -633,6 +632,26 @@ bool CLA_InitializeMFC(bool InitializeAfx, bool InitializeAfxSocket) {
 			return SequencerList[Sequencer];
 		}
 		
+		API_EXPORT ERROR_CODE_TYPE CLA_FNDEF(ResetSequencer)(uint8_t SequencerID) {
+		API_LOCK_GUARD;
+			CDeviceSequencer* sequencer = GetSequencer(SequencerID);
+			if (!sequencer) {
+				API_UNLOCK_RETURN_ERROR(false, "CLA_ResetSequencer : Invalid sequencer");
+			}
+			bool ret = sequencer->ResetSequencer();
+			if (!ret) {API_UNLOCK_RETURN_ERROR(false, "CLA_ResetSequencer error: sequencer error.");}
+			API_UNLOCK_RETURN_ERROR(!NewErrorOccured , "CLA_ResetSequencer: error");
+		}
+
+		API_EXPORT ERROR_CODE_TYPE CLA_FNDEF(ResetAllSequencers)() {
+		API_LOCK_GUARD;
+			bool ret = true;
+			for (int i = 0; i < NrSequencers; i++) {
+				ret = ShortSequencerList[i]->ResetSequencer();
+				if (!ret) {API_UNLOCK_RETURN_ERROR(false, "CLA_ResetAllSequencers error: sequencer error.");}
+			}
+			API_UNLOCK_RETURN_ERROR(!NewErrorOccured , "CLA_ResetAllSequencers: error");
+		}
 		
 		API_EXPORT ERROR_CODE_TYPE CLA_FNDEF(SequencerStartAnalogInAcquisition)(const unsigned int& Sequencer, const uint8_t &analog_in_type, const uint8_t &SPI_CS, const uint8_t& ChannelNumber, const uint32_t& NumberOfDataPoints, const double& DelayBetweenDataPoints_in_ms) {
 			API_LOCK_GUARD;

@@ -158,7 +158,7 @@ bool ConnectWithTimeout(CSocket& sock, const std::string& host, unsigned int por
 		int sel = select(0, nullptr, &writeSet, nullptr, &timeout);
 		if (sel <= 0 || !FD_ISSET(sock, &writeSet)) {
 			sock.Close();
-			std::string message = std::format("Connection timed out or failed. IP = {}, port = {}.\n\nIf this is wrong, check the IP address given in ControlHardwareConfigFileCreator.py and run that script again.\n\nIf you don't use ControlHardwareConfig.json to configure control, check the IP given in ControlParam_SystemParamList.txt.", host, port);
+			std::string message = std::format("Connection timed out or failed. IP = {}, port = {}.\n\nIf this is wrong, check the IP address given in ControlHardwareConfigFileCreator.py and run that script again.", host, port);
 			if (showError) AddErrorMessage(message);
 			return false;
 		}

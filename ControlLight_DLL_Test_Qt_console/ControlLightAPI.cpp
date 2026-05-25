@@ -139,6 +139,8 @@ void CControlLightAPI::Set_CLA_CallsToNull() {
     CLA_SetPeriodicTrigger_ms = nullptr;
     CLA_GetNextCycleNumber = nullptr;
     CLA_ResetCycleNumber = nullptr;
+    CLA_ResetSequencer = nullptr;
+    CLA_ResetAllSequencers = nullptr;
     CLA_WriteConfigEEPROM = nullptr;
     CLA_ReadConfigEEPROM = nullptr;
     CLA_WriteConfigAddress = nullptr;
@@ -294,6 +296,8 @@ bool CControlLightAPI::LoadDLL() {
     TRY_RESOLVE(CLA_SetPeriodicTrigger_ms);
     TRY_RESOLVE(CLA_GetNextCycleNumber);
     TRY_RESOLVE(CLA_ResetCycleNumber);
+    TRY_RESOLVE(CLA_ResetSequencer);
+    TRY_RESOLVE(CLA_ResetAllSequencers);
     TRY_RESOLVE(CLA_WriteConfigEEPROM);
     TRY_RESOLVE(CLA_ReadConfigEEPROM);
     TRY_RESOLVE(CLA_WriteConfigAddress);
@@ -530,6 +534,8 @@ API_EXPORT ERROR_CODE_TYPE CLA_SetAD9959Power(const unsigned int& Sequencer, con
     CLA_SetPeriodicTrigger_ms = (SetPeriodicTrigger_msFunc)CLA_Lib->resolve("CLA_SetPeriodicTrigger_ms");
     CLA_GetNextCycleNumber = (GetNextCycleNumberFunc)CLA_Lib->resolve("CLA_GetNextCycleNumber");
     CLA_ResetCycleNumber = (ResetCycleNumberFunc)CLA_Lib->resolve("CLA_ResetCycleNumber");
+    CLA_ResetSequencer = (ResetSequencerFunc)CLA_Lib->resolve("CLA_ResetSequencer");
+    CLA_ResetAllSequencers = (ResetAllSequencersFunc)CLA_Lib->resolve("CLA_ResetAllSequencers");
     CLA_WriteConfigEEPROM = (WriteConfigEEPROMFunc)CLA_Lib->resolve("CLA_WriteConfigEEPROM");
     CLA_ReadConfigEEPROM = (ReadConfigEEPROMFunc)CLA_Lib->resolve("CLA_ReadConfigEEPROM");
     CLA_WriteConfigAddress = (WriteConfigAddressFunc)CLA_Lib->resolve("CLA_WriteConfigAddress");
@@ -635,6 +641,8 @@ API_EXPORT ERROR_CODE_TYPE CLA_SetAD9959Power(const unsigned int& Sequencer, con
         !CLA_SetPeriodicTrigger_ms ||
         !CLA_GetNextCycleNumber ||
         !CLA_ResetCycleNumber ||
+        !CLA_ResetSequencer ||
+        !CLA_ResetAllSequencers ||
         !CLA_WriteConfigEEPROM ||
         !CLA_ReadConfigEEPROM ||
         !CLA_WriteConfigAddress ||
@@ -1165,6 +1173,20 @@ bool CControlLightAPI::GetNextCycleNumber(long& NextCycleNumber) {
 bool CControlLightAPI::ResetCycleNumber() {
     if (CLA_ResetCycleNumber)
         return CLA_ResetCycleNumber();
+    else
+        return false;
+}
+
+bool CControlLightAPI::ResetSequencer(uint8_t SequencerID) {
+    if (CLA_ResetSequencer)
+        return CLA_ResetSequencer(SequencerID);
+    else
+        return false;
+}
+
+bool CControlLightAPI::ResetAllSequencers() {
+    if (CLA_ResetAllSequencers)
+        return CLA_ResetAllSequencers();
     else
         return false;
 }

@@ -607,7 +607,8 @@ void DemoSequence(unsigned long CycleNumber) {
 	constexpr uint8_t DigOut_1_addr = 2;
 	constexpr uint8_t AD9959_0_addr = 3;
 	constexpr uint8_t AD9959_1_addr = 4;
-	constexpr uint8_t AnaOut_0_addr = 5;
+	constexpr uint8_t AD9959_2_addr = 5; //Old AD9958 with transparent latches
+	constexpr uint8_t AnaOut_0_addr = 16;
 
 	//select which card you want to test
 	constexpr uint8_t DigOutAddr = DigOut_0_addr;
@@ -992,8 +993,8 @@ void DemoFPGASequencerCyclicSequencing() {
 		cout << "Iteration " << CycleNr << ": ";
 		//We create sequence from scratch to update trigger settings and cycle number dependent sequence entries.
 		DemoSequence(CycleNr);
-		CLA_ExecuteSequence("c:\\data\\DebugDemoFPGASequencerCyclicSequence.txt"); //Use this version to create debug file
-		//CLA_ExecuteSequence(); //use this version to run without creating debug file
+		//CLA_ExecuteSequence("c:\\data\\DebugDemoFPGASequencerCyclicSequence.txt"); //Use this version to create debug file
+		CLA_ExecuteSequence(); //use this version to run without creating debug file
 		bool running = false;
 		unsigned long long DataPointsWritten = 0;
 		CLA_GetSequenceExecutionStatus(running, DataPointsWritten);

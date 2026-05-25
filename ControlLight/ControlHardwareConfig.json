@@ -11,17 +11,17 @@
       "Master": true,
       "StartDelay": 10,
       "ClockFrequency": 100000000,
-      "StrobeDurationInFPGAClockPeriods": 2,
+      "StrobeDurationInFPGAClockPeriods": 15,
       "UseExternalClock": false,
       "UseStrobeGenerator": true,
-      "UseEdgeTriggeredLatches": true,
+      "UseEdgeTriggeredLatches": false,
       "Connect": true
     }
   ],
   "AnalogOutBoards16bit": [
     {
       "Sequencer": 0,
-      "StartAddress": 5,
+      "StartAddress": 16,
       "NumberChannels": 4,
       "Signed": true,
       "MinVoltage": -10,
@@ -101,7 +101,15 @@
       "Address": 4,
       "ClockFrequencyinMHz": 500,
       "FrequencyMultiplier": 1,
-      "Version":  0.16
+      "Version": 0.16
+    },
+    {
+      "Sequencer": 0,
+      "Address": 5,
+      "AD9958": 1,
+      "ClockFrequencyinMHz": 500,
+      "FrequencyMultiplier": 1,
+      "Version": 0.01
     }
   ],
   "AnalogInBoards12bit": []

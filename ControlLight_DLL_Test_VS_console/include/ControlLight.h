@@ -681,6 +681,15 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 		/// @return See return convention above.
 		API_EXPORT ERROR_CODE_TYPE CLA_FN(SetTimeDebtGuard_in_ms)(const double& MaxTimeDebt_in_ms);
 
+		/**  @brief Reset one sequencer, including the FPGA fabric.
+		* @param SequencerID the sequencer to reset.
+		*/
+		API_EXPORT ERROR_CODE_TYPE CLA_FN(ResetSequencer)(uint8_t SequencerID);
+
+		/**  @brief Reset all sequencers, including their FPGA fabric.
+		*/
+		API_EXPORT ERROR_CODE_TYPE CLA_FN(ResetAllSequencers)();
+
 		/** @brief Start analog acquisition on the specified channel.
 		 * This function places a commandto for the FPGA in the sequencer buffer.
 		 * The analog in acquisition will start when this command is executed by the FPGA.

@@ -180,6 +180,8 @@ typedef bool (*GetNextBufferPositionOfMasterSequencerFunc)(unsigned long& next_b
 typedef bool (*SetPeriodicTrigger_msFunc)(double PeriodicTriggerPeriod_in_ms, double PeriodicTriggerAllowedWaitTime_in_ms);
 typedef bool (*GetNextCycleNumberFunc)(long& NextCycleNumber);
 typedef bool (*ResetCycleNumberFunc)();
+typedef bool (*ResetSequencerFunc)(uint8_t SequencerID);
+typedef bool (*ResetAllSequencersFunc)();
 typedef bool (*WriteConfigEEPROMFunc)(uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, const char* data, size_t length);
 typedef bool (*ReadConfigEEPROMFunc)(uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, char* data, size_t& length, bool &I2C_success);
 typedef bool (*WriteConfigAddressFunc)(uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t address);
@@ -358,6 +360,8 @@ typedef bool (*SetAD9959PowerFunc)(const unsigned int&, const unsigned int&, uin
     SetPeriodicTrigger_msFunc CLA_SetPeriodicTrigger_ms;
     GetNextCycleNumberFunc CLA_GetNextCycleNumber;
     ResetCycleNumberFunc CLA_ResetCycleNumber;
+    ResetSequencerFunc CLA_ResetSequencer;
+    ResetAllSequencersFunc CLA_ResetAllSequencers;
     WriteConfigEEPROMFunc CLA_WriteConfigEEPROM;
     ReadConfigEEPROMFunc CLA_ReadConfigEEPROM;
     WriteConfigAddressFunc CLA_WriteConfigAddress;
@@ -456,6 +460,8 @@ typedef bool (*SetAD9959PowerFunc)(const unsigned int&, const unsigned int&, uin
         bool SetPeriodicTrigger_ms(double PeriodicTriggerPeriod_in_ms, double PeriodicTriggerAllowedWaitTime_in_ms);
         bool GetNextCycleNumber(long& NextCycleNumber);
         bool ResetCycleNumber();
+        bool ResetSequencer(uint8_t SequencerID);
+        bool ResetAllSequencers();
         bool WriteConfigEEPROM(uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, const char* data, size_t length);
         bool ReadConfigEEPROM(uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, char* data, size_t& length, bool &I2C_success);
         bool WriteConfigAddress(uint8_t SequencerID, uint8_t RackNr, uint8_t SlotNr, uint8_t address);
