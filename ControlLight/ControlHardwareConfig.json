@@ -11,7 +11,7 @@
       "Master": true,
       "StartDelay": 10,
       "ClockFrequency": 100000000,
-      "StrobeDurationInFPGAClockPeriods": 15,
+      "StrobeDurationInFPGAClockPeriods": 2,
       "UseExternalClock": false,
       "UseStrobeGenerator": true,
       "UseEdgeTriggeredLatches": true,

@@ -178,7 +178,7 @@ void CMultiWriteDeviceSPI::ConfigureSPI(unsigned char _SPI_CS_bit, unsigned char
 	SPI_clock_type = _SPI_clock_type;
 }
 
-void CMultiWriteDeviceSPI::SetQSPIMode(bool OnOff) {
+void CMultiWriteDeviceSPI::DefineQSPIMode(bool OnOff) {
 	QSPIMode = OnOff;
 }
 

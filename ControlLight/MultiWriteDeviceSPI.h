@@ -78,7 +78,7 @@ public:
 	void WriteSPIBitBanged(unsigned int number_of_bits_out, uint64_t data);
 	void WriteSPIBitBangedFPGAClock(unsigned int number_of_bits_out, uint64_t data);
 	void WriteSPIBitBangedMode0Simple(unsigned int number_of_bits_out, uint64_t data);
-	virtual void SetQSPIMode(bool OnOff);
+	void DefineQSPIMode(bool OnOff);
 private:
 	void AssureMinimumSPIClockPeriodLength();
 };

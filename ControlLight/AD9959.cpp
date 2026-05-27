@@ -10,7 +10,7 @@
 #include <format>
 #include <cmath>
 
-
+#define DefaultQSPIMode true
 
 // Register addresses, writing to (MSB is 0 for a write)
 #define CSR     0x00            //!< Channel select register            1 Byte
@@ -51,6 +51,7 @@ uint32_t AD9959WriteReadSPINothing(unsigned int chip_select, unsigned int number
 
 
 
+
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -86,6 +87,7 @@ CAD9959::CAD9959(unsigned short aBus, unsigned long aBaseAddress, double aExtern
 
     //SetSPIFrequencyAndMode(/*SPI_frequency_in_Hz*/ 200.0/500.0*InputClockFrequency_in_Hz, /*SPI_mode*/ 0);
     SetSPIFrequencyAndMode(/*SPI_frequency_in_Hz*/ 50*1000*1000, /*SPI_mode*/ 0);
+    DefineQSPIMode(DefaultQSPIMode);
 }
 
 CAD9959::~CAD9959() {
@@ -302,7 +304,7 @@ void CAD9959::SetQSPIMode(bool OnOff) {
     */
     SetSDIO_3(false);
     SetRegisterBits(/*RegisterNr*/CSR, /*LowestBitNr*/ 1, /* NrBits*/ 2, (OnOff) ? 3 : 0, /*GetValue*/false, /*DoIOUpdate*/ true, /*ForceWrite*/ false);
-    CMultiWriteDeviceSPI::SetQSPIMode(OnOff);
+    DefineQSPIMode(OnOff);
 }
 
 // Private Functions --------------------------------------------------
@@ -543,7 +545,7 @@ void CAD9959::MasterReset() {
         WritePrecision[i] = AD9959ValueLength[i];
     }
     SetIOUpdateEnabled(true);
-    CMultiWriteDeviceSPI::SetQSPIMode(false);
+    DefineQSPIMode(false);
     // Toggle MASTER_RESET
     SetReset(true);
     // Minimum pulse width needs to be > 1 SYNC_CLK period (~160ns)
@@ -569,9 +571,7 @@ void CAD9959::MasterReset() {
     // sync_io low (To enable SPI reception)
     SetSyncIO(false);
     //Switch to QSPI mode
-    // 
-    // ToDo: after debugging of SPI mode ends, reenable QSPI
-    SetQSPIMode(true);
+    SetQSPIMode(DefaultQSPIMode);
 }
 
 void CAD9959::SetWriteChannels(bool channel0, bool channel1, bool channel2, bool channel3) {
