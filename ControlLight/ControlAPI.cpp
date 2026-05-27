@@ -4,6 +4,7 @@
 #include <afxwin.h>         // MFC core and standard components
 #include <afxsock.h>      // MFC socket extensions
 #include <afx.h>
+#include <atlconv.h>          // For CT2A (CString to std::string)
 #endif
 
 #include "include/json.hpp"
@@ -13,7 +14,6 @@ using json = nlohmann::json;
 #include "AutoConfig.h"
 
 #include "CDeviceSequencer.h"
-#include "CDeviceRack.h"
 #include "CDeviceAnalogOut.h"
 #include "CDeviceAnalogIn.h"
 #include "CDeviceAD9854.h"
@@ -21,9 +21,7 @@ using json = nlohmann::json;
 #include "CDeviceAD9858.h"
 #include "CDeviceAD9959.h"
 
-#include <format>
 #include <string>
-#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <cstdint>      // for uint8_t, uint32_t, etc.

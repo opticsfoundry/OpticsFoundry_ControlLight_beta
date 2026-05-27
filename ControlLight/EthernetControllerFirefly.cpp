@@ -363,7 +363,7 @@ CMD_CONDITIONAL_JUMP_FORWARD: begin  //here we assume that the program assemblin
 */
 void CEthernetControllerFirefly::AddCommandJumpForward(unsigned int jump_length, bool unconditional_jump, bool condition_0, bool condition_1, bool condition_PS, bool condition_dig_in, uint8_t dig_in_bit_nr) {
 	unsigned char command = CMD_CONDITIONAL_JUMP_FORWARD;
-	unsigned __int32 low_buffer =
+	uint32_t low_buffer =
 		((condition_0 ? (1 << 9) : 0) |
 			(condition_1 ? (1 << 10) : 0) |
 			(condition_PS ? (1 << 11) : 0) |
@@ -371,7 +371,7 @@ void CEthernetControllerFirefly::AddCommandJumpForward(unsigned int jump_length,
 			((dig_in_bit_nr & 0x7) << 5) |
 			(condition_dig_in ? (1 << 8) : 0) |
 			command);
-	unsigned __int32 high_buffer = jump_length & 0xFF;
+	uint32_t high_buffer = jump_length & 0xFF;
 	AddSequencerCommandToSequenceList(high_buffer, low_buffer);
 }
 
@@ -391,7 +391,7 @@ CMD_CONDITIONAL_JUMP_BACKWARD: begin  //here we assume that the program assembli
 
 void CEthernetControllerFirefly::AddCommandJumpBackward(unsigned int jump_length, bool unconditional_jump, bool condition_0, bool condition_1, bool condition_PS, bool condition_dig_in, uint8_t dig_in_bit_nr, bool loop_count_greater_zero) {
 	unsigned char command = CMD_CONDITIONAL_JUMP_BACKWARD;
-	unsigned __int32 low_buffer =
+	uint32_t low_buffer =
 		((condition_0 ? (1 << 9) : 0) |
 			(condition_1 ? (1 << 10) : 0) |
 			(condition_PS ? (1 << 11) : 0) |
@@ -401,7 +401,7 @@ void CEthernetControllerFirefly::AddCommandJumpBackward(unsigned int jump_length
 			(condition_dig_in ? (1 << 8) : 0) |
 			command);
 
-	unsigned __int32 high_buffer = jump_length & 0xFF;
+	uint32_t high_buffer = jump_length & 0xFF;
 	AddSequencerCommandToSequenceList(high_buffer, low_buffer);
 }
 
@@ -777,10 +777,10 @@ void CEthernetControllerFirefly::AddCommandTransmitSPI(const uint8_t chip_select
 
 void CEthernetControllerFirefly::AddCommandRepeatedOutIn(const uint16_t number_of_datapoints, const double delay_between_datapoints_in_ms, uint8_t RepeatedOutInCommand, const bool SPI_restart_wait_on_ready_low) {
 	uint8_t command = CMD_INPUT_REPEATED_OUT_IN;
-	unsigned __int32 INPUT_REPEAT_repeats = number_of_datapoints;
-	unsigned __int32 INPUT_REPEAT_wait = floor(delay_between_datapoints_in_ms * FPGAClockFrequencyInHz / 1000);
-	unsigned __int32 INPUT_REPEAT_command = RepeatedOutInCommand;  //0: stop, 1: SPI input, 2: digital input, 3: dig_event_time_tagger, 4: analog in
-	unsigned __int32 INPUT_REPEAT_trigger_secondary_interrupt_when_finished = 1;//this is needed if input BRAM buffer should be copied to DDR when half buffer full
+	uint32_t INPUT_REPEAT_repeats = number_of_datapoints;
+	uint32_t INPUT_REPEAT_wait = floor(delay_between_datapoints_in_ms * FPGAClockFrequencyInHz / 1000);
+	uint32_t INPUT_REPEAT_command = RepeatedOutInCommand;  //0: stop, 1: SPI input, 2: digital input, 3: dig_event_time_tagger, 4: analog in
+	uint32_t INPUT_REPEAT_trigger_secondary_interrupt_when_finished = 1;//this is needed if input BRAM buffer should be copied to DDR when half buffer full
 
 	uint32_t low_buffer = ((INPUT_REPEAT_repeats & 0xFFFFF) << 8) | (((SPI_restart_wait_on_ready_low) ? 1 : 0) << 7) | command;
 	uint32_t high_buffer = (INPUT_REPEAT_wait & 0xFFFFFF)  | (INPUT_REPEAT_trigger_secondary_interrupt_when_finished << (56 - 32)) | ((INPUT_REPEAT_command & 0x7) << (57 - 32));
@@ -830,20 +830,20 @@ void CEthernetControllerFirefly::StartSPIAnalogInAcquisition_MCP3208(unsigned ch
 
 	if (channel_nr > 7) channel_nr = 7;
 
-	unsigned __int32 SPI_SINGLE_ENDED_INPUT = 1;
+	uint32_t SPI_SINGLE_ENDED_INPUT = 1;
 	//old code with LSB first
-	//unsigned __int32 SPI_ANALOG_IN_NR = channel_nr;
-	//unsigned __int32 SPI_IN_NR_REVERSED = (((SPI_ANALOG_IN_NR & 1)>0) ? 4 : 0) + (((SPI_ANALOG_IN_NR & 2)>0) ? 2 : 0) + (((SPI_ANALOG_IN_NR & 4)>0) ? 1 : 0);
-	//unsigned __int32 SPI_DATA_REVERSED = 1 + (SPI_SINGLE_ENDED_INPUT << 1) + (SPI_IN_NR_REVERSED << 2);
+	//uint32_t SPI_ANALOG_IN_NR = channel_nr;
+	//uint32_t SPI_IN_NR_REVERSED = (((SPI_ANALOG_IN_NR & 1)>0) ? 4 : 0) + (((SPI_ANALOG_IN_NR & 2)>0) ? 2 : 0) + (((SPI_ANALOG_IN_NR & 4)>0) ? 1 : 0);
+	//uint32_t SPI_DATA_REVERSED = 1 + (SPI_SINGLE_ENDED_INPUT << 1) + (SPI_IN_NR_REVERSED << 2);
 	//SPI_DATA = 1+2;
 
 	//Data is written MSB first
-	unsigned __int32 SPI_DATA = (1<<5) + (SPI_SINGLE_ENDED_INPUT << 4) + (channel_nr << 1);
+	uint32_t SPI_DATA = (1<<5) + (SPI_SINGLE_ENDED_INPUT << 4) + (channel_nr << 1);
 
 
 	unsigned char command = CMD_LOAD_REG_LOW;
-	unsigned __int32 low_buffer = (SPI_DATA << 5) | command;
-	unsigned __int32 high_buffer = 0;
+	uint32_t low_buffer = (SPI_DATA << 5) | command;
+	uint32_t high_buffer = 0;
 	AddSequencerCommandToSequenceList( high_buffer, low_buffer);
 
 	command = CMD_LOAD_REG_HIGH;
@@ -865,10 +865,10 @@ void CEthernetControllerFirefly::StartSPIAnalogInAcquisition_MCP3208(unsigned ch
 	*/
 
 	command = CMD_SPI_OUT_IN;
-	unsigned __int32 SPI_out_length = 6;
-	unsigned __int32 SPI_in_length = 13;
-	//unsigned __int32 SPI_CS = 1;
-	unsigned __int32 wait_time = 0;
+	uint32_t SPI_out_length = 6;
+	uint32_t SPI_in_length = 13;
+	//uint32_t SPI_CS = 1;
+	uint32_t wait_time = 0;
 	constexpr unsigned char SPI_port = 1;
 	unsigned char SPI_SEL_next = (SPI_port == 0) ? 0x01 : 0x02; //2 SPI ports, port 0 is controlled by bit zero here, port 1 is bit one here; 1 means active under PL control; if inactive they are under PS control
 	unsigned char SPI_chip_select_next;
@@ -900,16 +900,16 @@ void CEthernetControllerFirefly::StartSPIAnalogInAcquisition_MCP3208(unsigned ch
 
 	*/
 	command = CMD_INPUT_REPEATED_OUT_IN;
-	unsigned __int32 INPUT_REPEAT_repeats = number_of_datapoints;
-	unsigned __int32 INPUT_REPEAT_wait = floor(delay_between_datapoints_in_ms * FPGAClockFrequencyInHz / 1000);
-	unsigned __int32 INPUT_REPEAT_command = 1;  //SPI input
-	unsigned __int32 INPUT_REPEAT_trigger_secondary_interrupt_when_finished = 1;//this is needed if input BRAM buffer should be copied to DDR when half buffer full
+	uint32_t INPUT_REPEAT_repeats = number_of_datapoints;
+	uint32_t INPUT_REPEAT_wait = floor(delay_between_datapoints_in_ms * FPGAClockFrequencyInHz / 1000);
+	uint32_t INPUT_REPEAT_command = 1;  //SPI input
+	uint32_t INPUT_REPEAT_trigger_secondary_interrupt_when_finished = 1;//this is needed if input BRAM buffer should be copied to DDR when half buffer full
 
 	low_buffer = (INPUT_REPEAT_repeats << 8) | command;
 	high_buffer = INPUT_REPEAT_wait | (INPUT_REPEAT_trigger_secondary_interrupt_when_finished << (56 - 32)) | (INPUT_REPEAT_command << (57 - 32));
 	AddSequencerCommandToSequenceList( high_buffer, low_buffer);
 
-	//unsigned __int32 DelayMultiplier = FPGAClockToBusClockRatio;// floor(FPGAClockFrequencyInHz / BusFrequency);
+	//uint32_t DelayMultiplier = FPGAClockToBusClockRatio;// floor(FPGAClockFrequencyInHz / BusFrequency);
 	//if (DelayMultiplier < 2) DelayMultiplier = 2;
 	//if (DelayMultiplier == 1) {
 	//	AddCommandStep(0, DelayMultiplier * 3 - 2); //CMD_STEP doing nothing, just in order to keep the time calculated by COutput aligned with the time used by the FPGA; needed because the four commands above only consume 4 FPGA cycles, but are accounted for with 2 bus cycles by COutput
