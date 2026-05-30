@@ -12,7 +12,7 @@
       "Master": true,
       "StartDelay": 10,
       "ClockFrequencyinMHz": 100,
-      "FPGAClockToBusClockRatio": 15,
+      "StrobeDurationInFPGAClockPeriods": 15,
       "UseExternalClock": false,
       "UseStrobeGenerator": true,
       "UseEdgeTriggeredLatches": true,
@@ -185,14 +185,24 @@
       "Address": 3,
       "ClockFrequencyinMHz": 500,
       "FrequencyMultiplier": 1,
-      "AD9958": "0"
+      "AD9958": 0,
+      "Version": 0.09
     },
     {
       "Sequencer": 0,
       "Address": 4,
       "ClockFrequencyinMHz": 500,
       "FrequencyMultiplier": 1,
-      "AD9958": "0"
+      "AD9958": 0,
+      "Version": 0.09
+    },
+    {
+      "Sequencer": 0,
+      "Address": 5,
+      "ClockFrequencyinMHz": 500,
+      "FrequencyMultiplier": 1,
+      "AD9958": 0,
+      "Version": 0.01
     }
   ],
   "AnalogInBoards12bit": []

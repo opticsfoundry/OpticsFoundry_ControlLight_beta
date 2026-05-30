@@ -404,7 +404,7 @@ bool CControlLightAPI::LoadDLL() {
         unsigned int port,
         bool master,
         unsigned int startDelay,
-        double clockFrequency,
+        double clockFrequencyinMHz,
         unsigned long FPGAClockToBusClockRatio,
         bool useExternalClock,
         bool useStrobeGenerator,
@@ -772,7 +772,7 @@ void CControlLightAPI::Cleanup() {
         unsigned int port,
         bool master,
         unsigned int startDelay,
-        double clockFrequency,
+        double clockFrequencyinMHz,
         unsigned long FPGAClockToBusClockRatio,
         bool useExternalClock,
         bool useStrobeGenerator,
@@ -1526,14 +1526,14 @@ bool CControlLightAPI::AddDeviceSequencer(
     unsigned int port,
     bool master,
     unsigned int startDelay,
-    double clockFrequency,
+    double clockFrequencyinMHz,
     unsigned long StrobeDurationInFPGAClockPeriods,
     bool useExternalClock,
     bool useStrobeGenerator,
     bool useEdgeTriggeredLatches,
     bool connect) {
     if (CLA_AddDeviceSequencer)
-        return CLA_AddDeviceSequencer(id, type, ip, port, master, startDelay, clockFrequency, StrobeDurationInFPGAClockPeriods, useExternalClock, useStrobeGenerator, useEdgeTriggeredLatches, connect);
+        return CLA_AddDeviceSequencer(id, type, ip, port, master, startDelay, clockFrequencyinMHz, StrobeDurationInFPGAClockPeriods, useExternalClock, useStrobeGenerator, useEdgeTriggeredLatches, connect);
     else
         return false;
 }

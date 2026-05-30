@@ -37,7 +37,7 @@ CDeviceSequencer::CDeviceSequencer(
 	unsigned int _port,
 	bool _master,
 	unsigned int _startDelay,
-	double _clockFrequency,
+	double _clockFrequencyinMHz,
 	unsigned int _StrobeDurationInFPGAClockPeriods,
 	bool _useExternalClock,
 	bool _useStrobeGenerator,
@@ -60,7 +60,7 @@ CDeviceSequencer::CDeviceSequencer(
 	port = _port;
 	master = _master;
 	startDelay = _startDelay;
-	clockFrequency = _clockFrequency;
+	clockFrequency = _clockFrequencyinMHz*1000000;
 	DoUseEdgeTriggeredLatches = _useEdgeTriggeredLatches;
 	StrobeDurationInFPGAClockPeriods = _StrobeDurationInFPGAClockPeriods;
 	DefaultStrobeDurationInFPGAClockPeriods = StrobeDurationInFPGAClockPeriods;
@@ -330,10 +330,14 @@ void CDeviceSequencer::AddBusCommandToSequenceSPI(const uint32_t& content, bool 
 	if (!LastCommandWasSPICommand) AddBusCommandToSequence(0); //we might have to add some wait before starting SPI mode
 	LastCommandWasSPICommand = true;
 	uint32_t spacing = Delay_in_ms * clockFrequency / 1000.0;
+	AdvanceTime();
 	AddBusCommandAndWaitSPI(content, spacing, bus_strobe_first_part, bus_strobe_second_part, bus_strobe_idle_part, bus_data15_second_part, bus_data15_idle_part);
 }
 
-void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, const uint8_t& minimum_spacing_in_strobe_lengths) {
+void CDeviceSequencer::AddBusCommandToSequence(const uint32_t& content, uint8_t minimum_spacing_in_strobe_lengths) {
+	if (minimum_spacing_in_strobe_lengths == 0) {
+		minimum_spacing_in_strobe_lengths = (DoUseEdgeTriggeredLatches) ? 2 : 3;
+	}
 	if (LastCommandWasSPICommand) {
 		LastCommandWasSPICommand = false;
 		LastBusData = content;

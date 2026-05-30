@@ -373,7 +373,7 @@ PYBIND11_MODULE(control_light_api, m) {
                 py::arg("port"),
                 py::arg("master"),
                 py::arg("start_delay"),
-                py::arg("clock_frequency"),
+                py::arg("clock_frequency_in_MHz"),
                 py::arg("fpga_clock_to_bus_clock_ratio"),
                 py::arg("use_external_clock"),
                 py::arg("use_strobe_generator"),

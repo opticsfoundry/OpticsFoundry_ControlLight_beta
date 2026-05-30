@@ -65,7 +65,7 @@ int main() {
 	if (!LoadControlHardwareInterface()) {
 		ControlMessageBox("Error loading hardware configuration file");
 		
-		CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.109", 7, true, 0, 100000000, 10, false, true, true, true);
+		CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.109", 7, true, 0, 100, 10, false, true, true, true);
 		CLA_AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 		CLA_AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 		CLA_AddDeviceDigitalOut(0, 1, 16);

@@ -147,7 +147,7 @@ int main() {
 		if (!LoadControlHardwareInterface()) {
 			AddErrorMessage("Error loading hardware configuration file 2");
 
-			CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
+			CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100, 10, false, true, true, true);
 			CLA.AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 			CLA.AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 			CLA.AddDeviceDigitalOut(0, 1, 16);
@@ -302,7 +302,7 @@ int main() {
 		if (!LoadControlHardwareInterface()) {
 			AddErrorMessage("Error loading hardware configuration file 2");
 
-			CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
+			CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100, 10, false, true, true, true);
 			CLA_AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 			CLA_AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 			CLA_AddDeviceDigitalOut(0, 1, 16);
@@ -444,7 +444,7 @@ int main() {
 	if (!LoadControlHardwareInterface()) {
 		AddErrorMessage("Error loading hardware configuration file 2");
 
-		CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
+		CLA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100, 10, false, true, true, true);
 		CLA.AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 		CLA.AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 		CLA.AddDeviceDigitalOut(0, 1, 16);
@@ -567,7 +567,7 @@ bool InitializeSystem() {
 	if (!LoadControlHardwareInterface()) {
 		AddErrorMessage("Error loading hardware configuration file 2");
 
-		CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
+		CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100, 10, false, true, true, true);
 		CLA_AddDeviceAnalogOut16bit(0, 24, 4, true, -10, 10);
 		CLA_AddDeviceAnalogOut16bit(0, 552, 4, true, -10, 10);
 		CLA_AddDeviceDigitalOut(0, 1, 16);
@@ -609,11 +609,15 @@ void DemoSequence(unsigned long CycleNumber) {
 	constexpr uint8_t AD9959_1_addr = 4;
 	constexpr uint8_t AD9959_2_addr = 5; //Old AD9958 with transparent latches
 	constexpr uint8_t AnaOut_0_addr = 16;
+	constexpr uint8_t SerialPort_0_SlotNr = 5;
+	constexpr uint8_t SerialPort_1_SlotNr = 2;
+
 
 	//select which card you want to test
 	constexpr uint8_t DigOutAddr = DigOut_0_addr;
 	constexpr uint8_t AnaOutAddr = AnaOut_0_addr;
 	constexpr uint8_t AD9959Addr = AD9959_0_addr;
+	constexpr uint8_t SerialPortSlotNr = SerialPort_0_SlotNr;
 
 	CLA_StartAssemblingSequence();  //starts sequence and stores timetag. If DemoSequence is called from DemoFPGASequencerCyclicSequencing, the sequence waits after that timetag till the clock cycle counter in the FPGA reaches the target
 	CLA_SequencerWriteSystemTimeToInputMemory(SequencerNr); //a second time tag. When cycling sequences, this allows to determine the time the FPGA waited for a trigger. This time should always be reasonably large (a few 10ms at least) to accomodate timing fluctuations of the PC and the ethernet connection.
@@ -654,15 +658,16 @@ void DemoSequence(unsigned long CycleNumber) {
 	//This is achieved by a rack slot arbiter on the backplane.
 	//This tests the reliability of the arbiter by blinking the rack slot selection LED, available on e.g. the serial IO board. 
 	for (int j = 1; j < 5; j++) {
-		CLA_SelectRackSlot(SequencerNr, /*RackNr*/ 0, 5);
+		CLA_SelectRackSlot(SequencerNr, /*RackNr*/ 0, SerialPortSlotNr);
 		CLA_Wait_ms(50);
 		uint8_t r = 16*(rand()/RAND_MAX);
-		if (r == 5) r = 4;
+		if (r == SerialPortSlotNr) r = SerialPortSlotNr+1;
+		if (r > 15) r = 0;
 		CLA_SelectRackSlot(SequencerNr, /*RackNr*/ 0, r);
 		CLA_Wait_ms(50);
 	}
 	
-	CLA_SelectRackSlot(SequencerNr, /*RackNr*/ 0, 5);
+	CLA_SelectRackSlot(SequencerNr, /*RackNr*/ 0, SerialPortSlotNr);
 
 	if (InputTestType == E_TestAnalogInput) {
 		//Test analog in with convenience function
@@ -734,7 +739,13 @@ void DemoSequence(unsigned long CycleNumber) {
 	//We reanable automatic IO Update. The next SPI command will be written and then an IO Update will be sent that activates all newly programmed parameter values
 	CLA_SetIOUpdateEnabled(SequencerNr, AD9959Addr, true);
 	CLA_SetPhaseOfChannel(SequencerNr, AD9959Addr, 3, 270);
-
+	
+	/*CLA_Wait_ms(500);
+	for (int j = 1; j < 100; j++) {
+		CLA_Wait_ms(0.002);
+		CLA_SetFrequencyOfChannel(SequencerNr, AD9959Addr, 1, 10.0 * j / 100.0);//in MHz
+	}*/
+	
 	for (int j = 1; j < 100; j=j+10) {
 		CLA_SetVoltage(SequencerNr, AnaOutAddr, 10.0 * j / 100.0);
 		uint16_t data = 0xffff;
@@ -749,7 +760,7 @@ void DemoSequence(unsigned long CycleNumber) {
 		//CLA_Wait_ms(10);
 	}
 	CLA_SetFrequencyOfChannel(SequencerNr, AD9959Addr, 1, 0.1);//in MHz
-	CLA_Wait_ms(10);
+	CLA_Wait_ms(0.10);
 	//A very simple ramp procedure. ToDo: program ramp management system
 	RampVoltage(SequencerNr, /*Address*/ AnaOutAddr, /*StartVoltage*/ -10, /* TargetVoltage*/ 10, /*Duration_in_ms*/ 100, /*StepSize_in_ms*/ 0.1);
 	CLA_SequencerSwitchDebugLED(SequencerNr, 0);
@@ -1078,7 +1089,7 @@ void DemoSmartSequencer() {
 	unsigned int AnalogOutBoardStartAddress = 20;
 	unsigned int DigitalOutAddress = 10;
 
-	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.112", 57978, true, 0, 100000000, 10, false, true, true, true);
+	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.112", 57978, true, 0, 100, 10, false, true, true, true);
 	CLA_AddDeviceAnalogOut16bit(0, AnalogOutBoardStartAddress, 4, true, -10, 10);
 	CLA_AddDeviceDigitalOut(0, DigitalOutAddress, 16);
 	CLA_AddDeviceAD9854(0, AD98450Address, 2, 300000000, 1, 1);
@@ -1206,7 +1217,7 @@ void DemoDDSVCO() {
 	unsigned int AnalogOutBoardStartAddress = 20;
 	unsigned int DigitalOutAddress = 10;
 
-	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100000000, 10, false, true, true, true);
+	CLA_AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.1.90", 7, true, 0, 100, 10, false, true, true, true);
 	CLA_AddDeviceAnalogOut16bit(0, AnalogOutBoardStartAddress, 4, true, -10, 10);
 	CLA_AddDeviceDigitalOut(0, DigitalOutAddress, 16);
 	CLA_AddDeviceAD9854(0, AD98450Address, 2, 300000000, 1, 1);
@@ -1325,30 +1336,34 @@ void DemoWriteConfigEEPROM() {
 	constexpr size_t MaxEEPROMPayloadBytes = 256;
 	
 	//const string model_name = "Backplane";
-	//const string version = "0.16";
+	//const double version = 0.16;
 	//const string type = "1";
 	
 	const string model_name = "DDSAD9959";
-	const string version = "0.09";
+	const double version = 0.09;
 	const string type = "";
 
 	//const string model_name = "Sequencer";
-	//const string version = "0.04";
+	//const double version = 0.04;
 	//const string type = "Z-turn V2";
 
 	//const string model_name = "SerialPort";
-	//const string version = "0.03";
+	//const double version = 0.03;
 	//const string type = "";
 
 	//const string model_name = "DigitalOut";
-	//const string version = "0.07";
+	//const double version = 0.07;
+	//const string type = "16 bit";
+
+	//const string model_name = "AnalogOut";
+	//const double version = 0.16;
 	//const string type = "";
 
 	constexpr unsigned int SNSuffix = 0;
 
 	constexpr uint8_t SequencerNr = 0;
 	constexpr uint8_t RackNr = 0;
-	constexpr uint8_t SlotNr = 2; //Slots: 0...11, Backplane: 12
+	constexpr uint8_t SlotNr = 4; //Slots: 0...11, Backplane: 12
 
 	if (SNSuffix > 99) {
 		cout << "EEPROM write skipped: serial number suffix " << SNSuffix
@@ -1367,9 +1382,9 @@ void DemoWriteConfigEEPROM() {
 
 	ostringstream json_stream;
 	json_stream << "{\"Model\":\"" << model_name
-		<< "\", \"Version\":\"" << version;
-	if (type!="") json_stream << "\", \"Type\":\"" << type;
-	json_stream << "\", \"SN\":\"" << serial_stream.str() << "\"}";
+		<< "\", \"Version\":" << fixed << setprecision(2) << version;
+	if (type!="") json_stream << ", \"Type\":\"" << type << "\"";
+	json_stream << ", \"SN\":\"" << serial_stream.str() << "\"}";
 	const string json_payload = json_stream.str();
 
 	if (json_payload.size() > MaxEEPROMPayloadBytes) {

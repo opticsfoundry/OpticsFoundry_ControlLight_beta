@@ -202,4 +202,6 @@ public:
     uint32_t SetValue(unsigned char RegisterNr, uint32_t Value, bool GetValue = false, bool DoIOUpdate = true, bool forceWrite = false);
     //void LoadLatches();
     //void UpdateRegisters();
+private:
+    void DefineInitialConditions();
 };

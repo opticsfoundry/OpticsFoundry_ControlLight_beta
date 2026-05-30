@@ -10,11 +10,11 @@
       "Port": 57978,
       "Master": true,
       "StartDelay": 10,
-      "ClockFrequency": 100000000,
+      "clockFrequencyinMHz": 100,
       "StrobeDurationInFPGAClockPeriods": 2,
+      "UseEdgeTriggeredLatches": true,
       "UseExternalClock": false,
       "UseStrobeGenerator": true,
-      "UseEdgeTriggeredLatches": true,
       "Connect": true
     }
   ],
@@ -52,6 +52,12 @@
     {
       "Sequencer": 0,
       "Address": 251,
+      "RackNr": 0,
+      "SlotNr": 1
+    },
+    {
+      "Sequencer": 0,
+      "Address": 6,
       "RackNr": 0,
       "SlotNr": 1
     }

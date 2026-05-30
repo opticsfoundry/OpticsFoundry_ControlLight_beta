@@ -54,7 +54,7 @@ bool InitializeSequencer() {
     CA.Configure(/*DisplayErrors*/false);
     if (!LoadControlHardwareInterface()) {
         //MessageBox("Error loading hardware configuration file");
-        bool success = CA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.109", 7, true, 0, 100000000, 10, false, true, true, true);
+        bool success = CA.AddDeviceSequencer(0, "OpticsFoundrySequencerV1", "192.168.0.109", 7, true, 0, 100, 10, false, true, true, true);
         if (!success) {
             MessageBox("Adding sequencer didn't work.");
             return false;

@@ -87,7 +87,7 @@ CAD9959::CAD9959(unsigned short aBus, unsigned long aBaseAddress, double aExtern
 
     //SetSPIFrequencyAndMode(/*SPI_frequency_in_Hz*/ 200.0/500.0*InputClockFrequency_in_Hz, /*SPI_mode*/ 0);
     SetSPIFrequencyAndMode(/*SPI_frequency_in_Hz*/ 50*1000*1000, /*SPI_mode*/ 0);
-    DefineQSPIMode(DefaultQSPIMode);
+    DefineInitialConditions();
 }
 
 CAD9959::~CAD9959() {
@@ -536,6 +536,19 @@ void CAD9959::AssurePulseIsLongerThanSyncClockPeriod() {
         MyDeviceSequencer->Add_non_user_wait_ms(safetymargin * MinimumResetPulseDuration_in_ms);
         //CLA_Wait_ms(safetymargin * MinimumResetPulseDuration_in_ms);  
     }
+}
+
+void CAD9959::DefineInitialConditions() {
+    for (int i = 0; i < AD9959NumberOfRegisters; i++) {
+        AktValueContents[i] = AD9959MasterResetValueContents[i];
+        WritePrecision[i] = AD9959ValueLength[i];
+    }
+    SetIOUpdateEnabled(true);
+    DefineQSPIMode(DefaultQSPIMode);
+    ControlRegisterContent = 0;
+    //DefineSyncIO(false);
+    //DefineReset(false);
+    //DefinePowerDown(false);
 }
 
 void CAD9959::MasterReset() {

@@ -108,7 +108,7 @@ class ConfigBuilder:
             "Address": Address,
             "ClockFrequencyinMHz": ClockFrequencyinMHz,
             "FrequencyMultiplier": FrequencyMultiplier,
-            "AD9958": "1" if AD9958 else "0",
+            "AD9958": 1 if AD9958 else 0,
             "Version": version
         }, Model=Model, SN=SN, RackNr=RackNr, SlotNr=SlotNr))
 

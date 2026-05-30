@@ -82,6 +82,7 @@ namespace {
 		destination["SlotNr"] = slot_nr;
 		CopyFieldIfPresent(source, destination, "Model");
 		CopyFieldIfPresent(source, destination, "SN");
+		CopyFieldIfPresent(source, destination, "Version");
 	}
 
 	void PrintEEPROMData(const char* label, const uint8_t* data, const size_t length) {
@@ -783,6 +784,7 @@ json GetAutoConfigJSON(const std::string& filename) {
 		{"AnalogInBoards12bit", json::array()}
 	};
 
+	
 	for (uint8_t SequencerNr = 0; SequencerNr < AUTO_CONFIG_API_CALL(GetNumberOfSequencers); ++SequencerNr) {
 		const std::string sequencer_key = "Sequencer" + std::to_string(SequencerNr);
 		if (!discovered_config.contains(sequencer_key)) {
@@ -798,123 +800,133 @@ json GetAutoConfigJSON(const std::string& filename) {
 			const json& rack_json = discovered_config[sequencer_key][rack_key];
 
 			for (uint8_t SlotNr = 0; SlotNr < NrSlots; ++SlotNr) {
-				const json* board_json = nullptr;
-				if (SlotNr == NrSlots - 1) {
-					if (rack_json.is_object() && rack_json.contains("Address")) {
-						board_json = &rack_json;
-					}
-				}
-				else {
-					const std::string slot_key = "Slot" + std::to_string(SlotNr);
-					if (rack_json.contains(slot_key)) {
-						board_json = &rack_json[slot_key];
-					}
-				}
-
-				if (board_json == nullptr || !board_json->is_object()) {
-					continue;
-				}
-
-				const std::string model_prefix = GetModelPrefix(*board_json);
-				if (model_prefix.empty()) {
-					continue;
-				}
-
-				if (model_prefix == "AnalogOut16bit") {
-					json entry;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					entry["StartAddress"] = (*board_json).value("Address", 24);
-					entry["NumberChannels"] = (*board_json).value("NumberChannels", 4);
-					entry["Signed"] = (*board_json).value("Signed", true);
-					entry["MinVoltage"] = (*board_json).value("MinVoltage", -10.0);
-					entry["MaxVoltage"] = (*board_json).value("MaxVoltage", 10.0);
-					auto_config["AnalogOutBoards16bit"].push_back(entry);
-				}
-				else if (model_prefix == "DigitalOut") {
-					json entry;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					entry["Address"] = (*board_json).value("Address", 1);
-					entry["NumberChannels"] = (*board_json).value("NumberChannels", 16);
-					auto_config["DigitalOutBoards"].push_back(entry);
-				}
-				else if (model_prefix == "SerialPort") {
-					json entry;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					entry["Address"] = (*board_json).value("Address", 1);
-					auto_config["SerialPortBoards"].push_back(entry);
-				}
-				else if (model_prefix == "DDSAD9854") {
-					json entry;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					entry["Address"] = (*board_json).value("Address", 132);
-					entry["Version"] = (*board_json).value("Version", 2);
-					if (board_json->contains("ExternalClockFrequency")) {
-						entry["ExternalClockFrequency"] = (*board_json)["ExternalClockFrequency"];
-					}
-					else if (board_json->contains("ExternalClockFrequencyinMHz")) {
-						entry["ExternalClockFrequency"] = (*board_json)["ExternalClockFrequencyinMHz"].get<double>() * 1e6;
-						entry["ExternalClockFrequencyinMHz"] = (*board_json)["ExternalClockFrequencyinMHz"];
+				try {
+					const json* board_json = nullptr;
+					if (SlotNr == NrSlots - 1) {
+						if (rack_json.is_object() && rack_json.contains("Address")) {
+							board_json = &rack_json;
+						}
 					}
 					else {
-						entry["ExternalClockFrequency"] = 300000000.0;
+						const std::string slot_key = "Slot" + std::to_string(SlotNr);
+						if (rack_json.contains(slot_key)) {
+							board_json = &rack_json[slot_key];
+						}
 					}
-					entry["PLLReferenceMultiplier"] = (*board_json).value("PLLReferenceMultiplier", 1);
-					entry["FrequencyMultiplier"] = (*board_json).value("FrequencyMultiplier", 1);
-					auto_config["DDSAD9854Boards"].push_back(entry);
-				}
-				else if (model_prefix == "DDSAD9858") {
-					json entry;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					entry["Address"] = (*board_json).value("Address", 50);
-					if (board_json->contains("ClockFrequency")) {
-						entry["ClockFrequency"] = (*board_json)["ClockFrequency"];
+
+					if (board_json == nullptr || !board_json->is_object()) {
+						continue;
 					}
-					else if (board_json->contains("ClockFrequencyinMHz")) {
-						entry["ClockFrequency"] = (*board_json)["ClockFrequencyinMHz"].get<double>() * 1e6;
-						entry["ClockFrequencyinMHz"] = (*board_json)["ClockFrequencyinMHz"];
+
+					const std::string model_prefix = GetModelPrefix(*board_json);
+					if (model_prefix.empty()) {
+						continue;
+					}
+
+					if (model_prefix == "AnalogOut16bit") {
+						json entry;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						entry["StartAddress"] = (*board_json).value("Address", 24);
+						entry["NumberChannels"] = (*board_json).value("NumberChannels", 4);
+						entry["Signed"] = (*board_json).value("Signed", true);
+						entry["MinVoltage"] = (*board_json).value("MinVoltage", -10.0);
+						entry["MaxVoltage"] = (*board_json).value("MaxVoltage", 10.0);
+						auto_config["AnalogOutBoards16bit"].push_back(entry);
+					}
+					else if (model_prefix == "DigitalOut") {
+						json entry;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						entry["Address"] = (*board_json).value("Address", 1);
+						entry["NumberChannels"] = (*board_json).value("NumberChannels", 16);
+						auto_config["DigitalOutBoards"].push_back(entry);
+					}
+					else if (model_prefix == "SerialPort") {
+						json entry;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						entry["Address"] = (*board_json).value("Address", 1);
+						auto_config["SerialPortBoards"].push_back(entry);
+					}
+					else if (model_prefix == "DDSAD9854") {
+						json entry;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						entry["Address"] = (*board_json).value("Address", 132);
+						entry["Version"] = (*board_json).value("Version", 2);
+						if (board_json->contains("ExternalClockFrequency")) {
+							entry["ExternalClockFrequency"] = (*board_json)["ExternalClockFrequency"];
+						}
+						else if (board_json->contains("ExternalClockFrequencyinMHz")) {
+							entry["ExternalClockFrequency"] = (*board_json)["ExternalClockFrequencyinMHz"].get<double>() * 1e6;
+							entry["ExternalClockFrequencyinMHz"] = (*board_json)["ExternalClockFrequencyinMHz"];
+						}
+						else {
+							entry["ExternalClockFrequency"] = 300000000.0;
+						}
+						entry["PLLReferenceMultiplier"] = (*board_json).value("PLLReferenceMultiplier", 1);
+						entry["FrequencyMultiplier"] = (*board_json).value("FrequencyMultiplier", 1);
+						auto_config["DDSAD9854Boards"].push_back(entry);
+					}
+					else if (model_prefix == "DDSAD9858") {
+						json entry;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						entry["Address"] = (*board_json).value("Address", 50);
+						if (board_json->contains("ClockFrequency")) {
+							entry["ClockFrequency"] = (*board_json)["ClockFrequency"];
+						}
+						else if (board_json->contains("ClockFrequencyinMHz")) {
+							entry["ClockFrequency"] = (*board_json)["ClockFrequencyinMHz"].get<double>() * 1e6;
+							entry["ClockFrequencyinMHz"] = (*board_json)["ClockFrequencyinMHz"];
+						}
+						else {
+							entry["ClockFrequency"] = 300000000.0;
+						}
+						entry["FrequencyMultiplier"] = (*board_json).value("FrequencyMultiplier", 1);
+						auto_config["DDSAD9858Boards"].push_back(entry);
+					}
+					else if ((model_prefix == "DDSAD9958") || (model_prefix == "DDSAD9959")) {
+						json entry;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						entry["Address"] = (*board_json).value("Address", 21);
+						entry["Version"] = (*board_json).value("Version", 0.16);
+						if (board_json->contains("ClockFrequency")) {
+							entry["ClockFrequency"] = (*board_json)["ClockFrequency"];
+						}
+						else if (board_json->contains("ClockFrequencyinMHz")) {
+							entry["ClockFrequency"] = (*board_json)["ClockFrequencyinMHz"].get<double>() * 1e6;
+							entry["ClockFrequencyinMHz"] = (*board_json)["ClockFrequencyinMHz"];
+						}
+						else {
+							entry["ClockFrequency"] = 300000000.0;
+						}
+						entry["FrequencyMultiplier"] = (*board_json).value("FrequencyMultiplier", 1);
+						auto_config["DDSAD9959Boards"].push_back(entry);
+					}
+					else if (model_prefix == "AnalogIn12bit") {
+						json entry;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						entry["ChipSelect"] = (*board_json).value("ChipSelect", (*board_json).value("Address", 1));
+						entry["Signed"] = (*board_json).value("Signed", false);
+						entry["MinVoltage"] = (*board_json).value("MinVoltage", 0.0);
+						entry["MaxVoltage"] = (*board_json).value("MaxVoltage", 10.0);
+						auto_config["AnalogInBoards12bit"].push_back(entry);
 					}
 					else {
-						entry["ClockFrequency"] = 300000000.0;
+						json entry = *board_json;
+						AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
+						auto_config["Rack"].push_back(entry);
 					}
-					entry["FrequencyMultiplier"] = (*board_json).value("FrequencyMultiplier", 1);
-					auto_config["DDSAD9858Boards"].push_back(entry);
 				}
-				else if ((model_prefix == "DDSAD9958") || (model_prefix == "DDSAD9959")) {
-					json entry;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					entry["Address"] = (*board_json).value("Address", 21);
-					entry["Version"] = (*board_json).value("Version", 21);
-					if (board_json->contains("ClockFrequency")) {
-						entry["ClockFrequency"] = (*board_json)["ClockFrequency"];
-					}
-					else if (board_json->contains("ClockFrequencyinMHz")) {
-						entry["ClockFrequency"] = (*board_json)["ClockFrequencyinMHz"].get<double>() * 1e6;
-						entry["ClockFrequencyinMHz"] = (*board_json)["ClockFrequencyinMHz"];
-					}
-					else {
-						entry["ClockFrequency"] = 300000000.0;
-					}
-					entry["FrequencyMultiplier"] = (*board_json).value("FrequencyMultiplier", 1);
-					auto_config["DDSAD9959Boards"].push_back(entry);
-				}
-				else if (model_prefix == "AnalogIn12bit") {
-					json entry;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					entry["ChipSelect"] = (*board_json).value("ChipSelect", (*board_json).value("Address", 1));
-					entry["Signed"] = (*board_json).value("Signed", false);
-					entry["MinVoltage"] = (*board_json).value("MinVoltage", 0.0);
-					entry["MaxVoltage"] = (*board_json).value("MaxVoltage", 10.0);
-					auto_config["AnalogInBoards12bit"].push_back(entry);
-				}
-				else {
-					json entry = *board_json;
-					AddCommonMetadata(*board_json, entry, SequencerNr, RackNr, SlotNr);
-					auto_config["Rack"].push_back(entry);
+				catch (const json::exception& e) {
+					cout << "Failed to parse JSON from EEPROM of sequencer " << static_cast<unsigned int>(SequencerNr)
+						<< ", rack " << static_cast<unsigned int>(RackNr)
+						<< ", slot " << static_cast<unsigned int>(SlotNr)
+						<< ": " << e.what() << endl;
+					//AddErrorMessage("JSON exception");
+					return false;
 				}
 			}
 		}
 	}
-
+	
 	if (!filename.empty()) {
 		const std::string output_filename = MakeConfigOutputFilename(filename);
 		std::ofstream file(output_filename);

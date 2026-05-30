@@ -944,7 +944,7 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 		/// @param port the port of the device sequencer to add.
 		/// @param master true if the device sequencer is a master, false if it is a slave.
 		/// @param startDelay the start delay of the device sequencer to add.
-		/// @param clockFrequency the clock frequency of the device sequencer to add.
+		/// @param clockFrequencyinMHz the clock frequency in MHz of the device sequencer to add.
 		/// @param FPGAClockToBusClockRatio the FPGA clock to bus clock ratio of the device sequencer to add.
 		/// @param useExternalClock true if the device sequencer should use an external clock, false if it should use the internal clock.
 		/// @param useStrobeGenerator true if the device sequencer should use a strobe generator, false if it should not.
@@ -958,7 +958,7 @@ namespace CLA { //optional, for C++ APIs, use namespace CLA, instead of precedin
 			unsigned int port,
 			bool master,
 			unsigned int startDelay,
-			double clockFrequency,
+			double clockFrequencyinMHz,
 			unsigned long FPGAClockToBusClockRatio,
 			bool useExternalClock,
 			bool useStrobeGenerator,
