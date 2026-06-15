@@ -280,7 +280,7 @@ inline void CDeviceSequencer::AddBusCommandAndWait(uint32_t busdata, uint32_t de
 	}
 
 	uint32_t low_buffer = ( ( (delay - 1) & delay_mask_low) << 5) + (command_mask & command);
-	uint32_t high_buffer = ((bus_data_mask & busdata) << 4) | ((delay >> 27) & delay_mask_high);
+	uint32_t high_buffer = ((bus_data_mask & busdata) << 4) | (((delay - 1) >> 27) & delay_mask_high);
 
 	if (BufferPosition >= PCBufferSize_in_u64 / 2) {
 		AddErrorMessage("Buffer overflow"); //ToDo: throw exception

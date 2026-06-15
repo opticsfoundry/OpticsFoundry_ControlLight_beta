@@ -879,6 +879,7 @@ void DemoSequenceAnalyseData(unsigned long CycleNumber, uint32_t* buffer, const 
 	static unsigned int NumberOfTimesFailedRun = 0;
 	static Time starttime = Clock::now();
 	static Time last_starttime = Clock::now();
+	if ((!buffer) || (buffer_length==0)) return;
 
 	bool CycleSuccessful = true;
 	//FPGA soft trigger SystemTime is in first 8 bytes thanks to CLA automatically putting WriteSystemTimeToInputMemory before cyclic trigger

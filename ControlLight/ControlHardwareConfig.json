@@ -12,7 +12,7 @@
       "StartDelay": 10,
       "clockFrequencyinMHz": 100,
       "StrobeDurationInFPGAClockPeriods": 2,
-      "UseEdgeTriggeredLatches": true,
+      "UseEdgeTriggeredLatches": false,
       "UseExternalClock": false,
       "UseStrobeGenerator": true,
       "Connect": true
@@ -115,7 +115,7 @@
       "AD9958": 1,
       "ClockFrequencyinMHz": 25,
       "FrequencyMultiplier": 1,
-      "Version": 0.01
+      "Version": 1.01
     }
   ],
   "AnalogInBoards12bit": []
